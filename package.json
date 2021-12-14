@@ -20,12 +20,13 @@
   "types": "dist/index.d.ts",
   "sideEffects": false,
   "scripts": {
-    "build": "tsup",
-    "prepublishOnly": "npm run build",
+    "build": "MODE=modern tsup && mv dist/index.d.ts dist/modern.d.ts && MODE=node tsup",
     "release": "bumpp --commit --push --tag && npm publish",
     "lint": "eslint .",
     "lint:fix": "npm run lint -- --fix",
-    "test": "vitest"
+    "test": "vitest",
+    "test:deno": "cd tests/deno && deno run --allow-net --import-map=import_map.json --allow-env index.ts",
+    "prepublishOnly": "npm run build"
   },
   "bugs": {
     "url": "https://github.com/sxzz/jike-sdk/issues"
@@ -35,17 +36,18 @@
   },
   "homepage": "https://github.com/sxzz/jike-sdk#readme",
   "dependencies": {
-    "ky": "^0.28.7"
+    "ky": "^0.28.7",
+    "node-fetch": "3.1.0"
   },
   "devDependencies": {
     "@sxzz/eslint-config-prettier": "1.6.1",
     "@sxzz/eslint-config-ts": "1.6.1",
     "@types/node": "*",
     "bumpp": "7.1.1",
+    "esbuild": "^0.14.5",
     "eslint": "8.4.1",
     "eslint-define-config": "1.2.0",
     "esno": "0.13.0",
-    "node-fetch": "3.1.0",
     "tsup": "5.11.4",
     "typescript": "4.5.4",
     "vite": "2.7.2",

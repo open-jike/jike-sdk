@@ -1,6 +1,6 @@
 import { beforeAll, describe, expect, it } from 'vitest'
 
-import { getAccessToken, request, setAccessToken } from '../src'
+import { getAccessToken, request, setAccessToken } from '..'
 import { API_BASE } from '../src/constants'
 
 describe('common', () => {

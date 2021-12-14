@@ -26,7 +26,7 @@ describe('users should work', () => {
   })
 
   it('sendSms should work', async () => {
-    const mobile = process.env['MOBILE']
+    const mobile = process.env.MOBILE
     if (!mobile) throw new Error('please set environment variable `MOBILE`')
     const result = await api.getSmsCode('86', mobile)
     expect(result.success).toBe(true)

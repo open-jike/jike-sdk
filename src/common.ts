@@ -1,8 +1,8 @@
 import ky from 'ky'
 import { API_BASE } from './constants'
-import './fetch-node'
+import install from './fetch-node'
 
-export const isNode = true
+install()
 
 let accessToken = ''
 export const setAccessToken = (token: string) => (accessToken = token)

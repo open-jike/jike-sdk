@@ -35,7 +35,7 @@ client.profile()
 ### Deno
 
 ```ts
-import { setAccessToken, api } from 'https://cdn.skypack.dev/jike-sdk'
+import { setAccessToken, api } from 'https://cdn.skypack.dev/jike-sdk/dist/modern.js'
 
 setAccessToken('your access token')
 api.getSmsCode('86', 'your mobile phone')
