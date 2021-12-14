@@ -6,7 +6,14 @@
 
 **本项目仅供学习交流使用，在使用过程中对你或他人造成的任何损失我们概不负责。**
 
+## Features
+
+- ⭐️ 同时支持 浏览器扩展、Node.js、Deno
+- 🦾 自带 TypeScript 类型声明
+
 ## Usage
+
+### Node.js
 
 ```bash
 npm i jike-sdk
@@ -25,11 +32,18 @@ const client = Client('your access token')
 client.profile()
 ```
 
+### Deno
+
+```ts
+import { setAccessToken, api } from 'https://cdn.skypack.dev/jike-sdk'
+
+setAccessToken('your access token')
+api.getSmsCode('86', 'your mobile phone')
+```
+
 ## TODO
 
 - Support more APIs
-- Supoort Deno
-- Support browser
 
 ## Alternatives
 
