@@ -8,7 +8,7 @@
 
 ## Features
 
-- ⭐️ 同时支持 浏览器扩展、Node.js、Deno
+- ⭐️ 同时支持 Node.js / 浏览器 / Deno
 - 🦾 自带 TypeScript 类型声明
 
 ## Usage
@@ -35,11 +35,37 @@ client.profile()
 ### Deno
 
 ```ts
-import { setAccessToken, api } from 'https://cdn.skypack.dev/jike-sdk/dist/modern.js'
+import {
+  setAccessToken,
+  api,
+} from 'https://cdn.skypack.dev/jike-sdk/dist/modern.js?dts'
 
 setAccessToken('your access token')
 api.getSmsCode('86', 'your mobile phone')
 ```
+
+### 浏览器
+
+```ts
+import { setAccessToken } from 'jike-sdk/dist/modern'
+
+setAccessToken('your access token')
+```
+
+或使用 CDN 的方式加载（与 Deno 一致）
+
+```html
+<script type="module">
+  import {
+    setAccessToken,
+    getAccessToken,
+  } from 'https://cdn.skypack.dev/jike-sdk/dist/modern.js'
+  setAccessToken('your access token')
+  console.log(getAccessToken())
+</script>
+```
+
+**由于 CORS 策略的原因，第三方网站无法直接请求即刻服务器。但可以使用浏览器扩展的能力请求。**
 
 ## TODO
 
