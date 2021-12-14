@@ -39,6 +39,7 @@
   "devDependencies": {
     "@sxzz/eslint-config-prettier": "^1.6.1",
     "@sxzz/eslint-config-vue": "^1.6.4",
+    "bumpp": "^7.1.1",
     "eslint": "^8.4.1",
     "eslint-define-config": "^1.2.0",
     "esno": "^0.13.0",
