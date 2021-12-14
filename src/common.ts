@@ -3,6 +3,7 @@ import { API_BASE } from './constants'
 
 let accessToken = ''
 export const setAccessToken = (token: string) => (accessToken = token)
+export const getAccessToken = () => accessToken
 
 export const request = got.extend({
   prefixUrl: API_BASE,
