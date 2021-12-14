@@ -1,5 +1,5 @@
 import { request } from '../common'
-import type { UserProfile, UserRefreshTokenResponse } from '../interfaces'
+import type { UserProfile, UserRefreshTokenResponse } from '../types/response'
 
 /**
  * 获取个人主页

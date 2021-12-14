@@ -220,3 +220,9 @@ export interface CreatePostResponse {
   toast: string
   data: PostInfo
 }
+
+export interface GetFollowingListResponse {
+  success: boolean
+  data: SimpleUser[]
+  loadMoreKey: { createdAt: Date }
+}

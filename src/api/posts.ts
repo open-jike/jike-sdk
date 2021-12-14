@@ -1,5 +1,5 @@
 import { request } from '..'
-import type { CreatePostResponse } from '../interfaces'
+import type { CreatePostResponse } from '../types/response'
 
 interface CreatePostOption {
   /**
