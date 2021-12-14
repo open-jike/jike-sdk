@@ -13,10 +13,10 @@ npm i jike-sdk
 ```
 
 ```ts
-import { setAccessToken, getFollowingList } from 'jike-sdk'
+import { api, setAccessToken } from 'jike-sdk'
 
 setAccessToken('your access token')
-getFollowingList('someone-username', {
+api.getFollowingList('82D23B32-CF36-4C59-AD6F-D05E3552CBF3', {
   limit: 100,
 })
 ```

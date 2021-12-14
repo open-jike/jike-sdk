@@ -1,5 +1,5 @@
 import { beforeAll, describe, it, expect } from 'vitest'
-import { setAccessToken, profile, refreshToken, getSmsCode } from '../src'
+import { setAccessToken, api } from '../src'
 
 describe('users should work', () => {
   beforeAll(() => {
@@ -10,7 +10,7 @@ describe('users should work', () => {
   })
 
   it('profile should work', async () => {
-    const result = await profile()
+    const result = await api.profile()
     expect(result.body.user.id).toBeTruthy()
     expect(result.body.user.username).toBeTruthy()
   })
@@ -19,7 +19,7 @@ describe('users should work', () => {
     const token = process.env['REFRESH_TOKEN']
     if (!token)
       throw new Error('please set environment variable `REFRESH_TOKEN`')
-    const result = await refreshToken(token)
+    const result = await api.refreshToken(token)
     expect(result.body.success).toBe(true)
     expect(result.body['x-jike-access-token']).toBeTruthy()
     expect(result.body['x-jike-refresh-token']).toBeTruthy()
@@ -28,7 +28,7 @@ describe('users should work', () => {
   it('sendSms should work', async () => {
     const mobile = process.env['MOBILE']
     if (!mobile) throw new Error('please set environment variable `MOBILE`')
-    const result = await getSmsCode('86', mobile)
+    const result = await api.getSmsCode('86', mobile)
     expect(result.body.success).toBe(true)
     expect(result.body.data.action).toBe('LOGIN')
   })
