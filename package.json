@@ -24,7 +24,8 @@
     "prepublishOnly": "npm run build",
     "release": "bumpp --commit --push --tag && npm publish",
     "lint": "eslint .",
-    "lint:fix": "npm run lint -- --fix"
+    "lint:fix": "npm run lint -- --fix",
+    "test": "vitest"
   },
   "bugs": {
     "url": "https://github.com/sxzz/jike-api/issues"
