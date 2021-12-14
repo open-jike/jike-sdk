@@ -1,5 +1,5 @@
-import { request } from '..'
-import type { PaginationOption } from '..'
+import { request } from '../common'
+import type { PaginationOption } from '../types/request'
 
 /**
  * 获取关注列表

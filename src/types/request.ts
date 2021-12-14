@@ -10,3 +10,16 @@ export interface PaginationOption {
    */
   loadMoreKey?: any
 }
+
+export interface CreatePostOption {
+  /**
+   * 同步到个人主页
+   * @default true
+   */
+  syncToPersonalUpdate?: boolean
+  /**
+   * 图片 key 列表
+   * @default []
+   */
+  pictureKeys?: string[]
+}

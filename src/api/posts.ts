@@ -1,18 +1,6 @@
-import { request } from '..'
+import { request } from '../common'
+import type { CreatePostOption } from '../types/request'
 import type { CreatePostResponse } from '../types/response'
-
-interface CreatePostOption {
-  /**
-   * 同步到个人主页
-   * @default true
-   */
-  syncToPersonalUpdate?: boolean
-  /**
-   * 图片 key 列表
-   * @default []
-   */
-  pictureKeys?: string[]
-}
 
 /**
  * 发送动态
