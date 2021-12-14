@@ -1,0 +1,46 @@
+{
+  "name": "jike-api",
+  "version": "0.0.1",
+  "description": "即刻 API",
+  "keywords": [
+    "jike",
+    "api"
+  ],
+  "license": "GPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sxzz/jike-api.git"
+  },
+  "author": "三咲智子 <sxzz@sxzz.moe>",
+  "files": [
+    "dist"
+  ],
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsup",
+    "prepublishOnly": "npm run build",
+    "release": "bumpp --commit --push --tag && npm publish",
+    "lint": "eslint .",
+    "lint:fix": "npm run lint -- --fix"
+  },
+  "bugs": {
+    "url": "https://github.com/sxzz/jike-api/issues"
+  },
+  "engines": {
+    "node": ">=12"
+  },
+  "homepage": "https://github.com/sxzz/jike-api#readme",
+  "devDependencies": {
+    "@sxzz/eslint-config-prettier": "^1.6.1",
+    "@sxzz/eslint-config-vue": "^1.6.4",
+    "eslint": "^8.4.1",
+    "eslint-define-config": "^1.2.0",
+    "esno": "^0.13.0",
+    "got": "^12.0.0",
+    "tsup": "^5.11.4",
+    "typescript": "^4.5.4"
+  }
+}
