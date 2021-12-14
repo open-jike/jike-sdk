@@ -21,9 +21,20 @@ getFollowingList('someone-username', {
 })
 ```
 
+## TODO
+
+- Add Client instance
+- Support more APIs
+- Supoort Deno
+- Support browser extension
+
 ## Alternatives
 
-- [jike-cli](https://github.com/junbaor/jike-cli) - 即刻命令行客户端
+- [jike-cli](https://github.com/junbaor/jike-cli) - 即刻命令行客户端 (Java)
+- [Jike Metro](https://github.com/Sorosliu1029/Jike-Metro) - 即刻 Ⓙ SDK (Python)
+- [Jike-Bus](https://github.com/nondanee/Jike-Bus) - 🚍 即刻 Ⓙ SDK for Node.js
+- [JIKEFM](https://github.com/0neSe7en/jikefm) - 即刻电台 📻 (Golang)
+- [jikeme](https://github.com/findingsea/jikeme) - 命令行摸 🐟 工具 (Golang)
 
 ## License
 
