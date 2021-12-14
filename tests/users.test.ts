@@ -11,8 +11,8 @@ describe('users should work', () => {
 
   it('profile should work', async () => {
     const result = await api.profile()
-    expect(result.body.user.id).toBeTruthy()
-    expect(result.body.user.username).toBeTruthy()
+    expect(result.user.id).toBeTruthy()
+    expect(result.user.username).toBeTruthy()
   })
 
   it('refreshToken should work', async () => {
@@ -20,16 +20,16 @@ describe('users should work', () => {
     if (!token)
       throw new Error('please set environment variable `REFRESH_TOKEN`')
     const result = await api.refreshToken(token)
-    expect(result.body.success).toBe(true)
-    expect(result.body['x-jike-access-token']).toBeTruthy()
-    expect(result.body['x-jike-refresh-token']).toBeTruthy()
+    expect(result.success).toBe(true)
+    expect(result['x-jike-access-token']).toBeTruthy()
+    expect(result['x-jike-refresh-token']).toBeTruthy()
   })
 
   it('sendSms should work', async () => {
     const mobile = process.env['MOBILE']
     if (!mobile) throw new Error('please set environment variable `MOBILE`')
     const result = await api.getSmsCode('86', mobile)
-    expect(result.body.success).toBe(true)
-    expect(result.body.data.action).toBe('LOGIN')
+    expect(result.success).toBe(true)
+    expect(result.data.action).toBe('LOGIN')
   })
 })

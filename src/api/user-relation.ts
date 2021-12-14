@@ -1,4 +1,5 @@
 import { request } from '../common'
+import type { GetFollowingListResponse } from '../types/response'
 import type { PaginationOption } from '../types/request'
 
 /**
@@ -6,14 +7,16 @@ import type { PaginationOption } from '../types/request'
  * @param username 用户名
  * @param option 选项
  */
-export const getFollowingList = (
+export const getFollowingList = <T = GetFollowingListResponse>(
   username: string,
   option: PaginationOption = {}
 ) =>
-  request.post('1.0/userRelation/getFollowingList', {
-    json: {
-      username,
-      limit: option.limit ?? 10,
-      loadMoreKey: option.loadMoreKey,
-    },
-  })
+  request
+    .post('1.0/userRelation/getFollowingList', {
+      json: {
+        username,
+        limit: option.limit ?? 10,
+        loadMoreKey: option.loadMoreKey,
+      },
+    })
+    .json<T>()

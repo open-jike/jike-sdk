@@ -14,7 +14,7 @@ describe('client should work', () => {
 
   it('access token should correct', async () => {
     setAccessToken('TEST TOKEN')
-    expect((await client.profile()).body.user.username).toBeTruthy()
+    expect((await client.profile()).user.username).toBeTruthy()
     expect(getAccessToken()).toBe(token)
   })
 })

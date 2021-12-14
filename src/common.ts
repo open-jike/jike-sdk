@@ -1,17 +1,20 @@
-import got from 'got'
+import ky from 'ky'
 import { API_BASE } from './constants'
+import './fetch-node'
+
+export const isNode = true
 
 let accessToken = ''
 export const setAccessToken = (token: string) => (accessToken = token)
 export const getAccessToken = () => accessToken
 
-export const request = got.extend({
+export const request = ky.create({
   prefixUrl: API_BASE,
-  responseType: 'json',
-  handlers: [
-    (options, next) => {
-      if (accessToken) options.headers['x-jike-access-token'] = accessToken
-      return next(options)
-    },
-  ],
+  hooks: {
+    beforeRequest: [
+      (req) => {
+        if (accessToken) req.headers.set('x-jike-access-token', accessToken)
+      },
+    ],
+  },
 })

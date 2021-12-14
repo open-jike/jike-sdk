@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest'
+import { beforeAll, describe, expect, it } from 'vitest'
 
 import { getAccessToken, request, setAccessToken } from '../src'
 import { API_BASE } from '../src/constants'
@@ -12,27 +12,30 @@ describe('common', () => {
   })
 
   describe('request options should be correct', () => {
-    it('prefix url should be correct', () => {
-      expect(request.defaults.options.prefixUrl).toBe(API_BASE)
-    })
+    const controller = new AbortController()
+    let req: Request
 
-    it('response type should be correct', () => {
-      expect(request.defaults.options.responseType).toBe('json')
-    })
-
-    it('access token should be correct', async () => {
+    beforeAll(async () => {
       const t = request('', {
+        signal: controller.signal,
         hooks: {
           beforeRequest: [
-            () => {
-              throw 'cancel request'
+            (req) => {
+              throw req
             },
           ],
         },
       })
-      t.cancel('canceled')
-      const { request: req } = await t.catch((err) => err)
-      expect(req.options.headers['x-jike-access-token']).toBe(token)
+      controller.abort()
+      req = await t.catch((err) => err)
+    })
+
+    it('prefix url should be correct', () => {
+      expect(req.url).toBe(API_BASE)
+    })
+
+    it('access token should be correct', () => {
+      expect(req.headers.get('x-jike-access-token')).toBe(token)
     })
   })
 })

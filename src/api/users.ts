@@ -8,7 +8,8 @@ import type {
 /**
  * 获取个人主页
  */
-export const profile = <T = UserProfile>() => request<T>('1.0/users/profile')
+export const profile = <T = UserProfile>() =>
+  request('1.0/users/profile').json<T>()
 
 /**
  * 刷新 Access Token
@@ -17,11 +18,13 @@ export const profile = <T = UserProfile>() => request<T>('1.0/users/profile')
 export const refreshToken = async <T = UserRefreshTokenResponse>(
   refreshToken: string
 ) =>
-  request.post<T>('app_auth_tokens.refresh', {
-    headers: {
-      'x-jike-refresh-token': refreshToken,
-    },
-  })
+  request
+    .post('app_auth_tokens.refresh', {
+      headers: {
+        'x-jike-refresh-token': refreshToken,
+      },
+    })
+    .json<T>()
 
 /**
  * 发送登录验证码
@@ -32,10 +35,12 @@ export const getSmsCode = <T = GetSmsCodeResponse>(
   areaCode: string,
   mobile: string
 ) =>
-  request.post<T>('1.0/users/getSmsCode', {
-    json: {
-      action: 'PHONE_MIX_LOGIN',
-      mobilePhoneNumber: mobile,
-      areaCode,
-    },
-  })
+  request
+    .post('1.0/users/getSmsCode', {
+      json: {
+        action: 'PHONE_MIX_LOGIN',
+        mobilePhoneNumber: mobile,
+        areaCode,
+      },
+    })
+    .json<T>()

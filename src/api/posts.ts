@@ -11,10 +11,12 @@ export const createPost = <T = CreatePostResponse>(
   content: string,
   options: CreatePostOption = {}
 ) =>
-  request.post<T>('1.0/originalPosts/create', {
-    json: {
-      content,
-      pictureKeys: options.pictureKeys ?? [],
-      syncToPersonalUpdate: options.syncToPersonalUpdate ?? true,
-    },
-  })
+  request
+    .post('1.0/originalPosts/create', {
+      json: {
+        content,
+        pictureKeys: options.pictureKeys ?? [],
+        syncToPersonalUpdate: options.syncToPersonalUpdate ?? true,
+      },
+    })
+    .json<T>()
