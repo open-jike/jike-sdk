@@ -13,20 +13,23 @@ npm i jike-sdk
 ```
 
 ```ts
-import { api, setAccessToken } from 'jike-sdk'
+import { api, setAccessToken, Client } from 'jike-sdk'
 
 setAccessToken('your access token')
 api.getFollowingList('82D23B32-CF36-4C59-AD6F-D05E3552CBF3', {
   limit: 100,
 })
+
+// Or
+const client = Client('your access token')
+client.profile()
 ```
 
 ## TODO
 
-- Add Client instance
 - Support more APIs
 - Supoort Deno
-- Support browser extension
+- Support browser
 
 ## Alternatives
 
