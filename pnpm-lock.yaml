@@ -2,7 +2,7 @@ lockfileVersion: 5.3
 
 specifiers:
   '@sxzz/eslint-config-prettier': ^1.6.1
-  '@sxzz/eslint-config-vue': ^1.6.4
+  '@sxzz/eslint-config-ts': ^1.6.1
   bumpp: ^7.1.1
   eslint: ^8.4.1
   eslint-define-config: ^1.2.0
@@ -18,7 +18,7 @@ dependencies:
 
 devDependencies:
   '@sxzz/eslint-config-prettier': 1.6.1_eslint@8.4.1
-  '@sxzz/eslint-config-vue': 1.6.4_eslint@8.4.1+typescript@4.5.4
+  '@sxzz/eslint-config-ts': 1.6.1_eslint@8.4.1+typescript@4.5.4
   bumpp: 7.1.1
   eslint: 8.4.1
   eslint-define-config: 1.2.0
@@ -356,20 +356,6 @@ packages:
       typescript: 4.5.4
     transitivePeerDependencies:
       - supports-color
-    dev: true
-
-  /@sxzz/eslint-config-vue/1.6.4_eslint@8.4.1+typescript@4.5.4:
-    resolution: {integrity: sha512-xbTwni/nCoNSg9dMYhRuaNHSULBqN2FCIjoDqfGMcCjKIUopraKPX/ADvTMyY5Mn+HaAviWdetoQCLldTlSang==}
-    peerDependencies:
-      eslint: '>=7.4.0'
-    dependencies:
-      '@sxzz/eslint-config-ts': 1.6.1_eslint@8.4.1+typescript@4.5.4
-      eslint: 8.4.1
-      eslint-define-config: 1.2.0
-      eslint-plugin-vue: 8.2.0_eslint@8.4.1
-    transitivePeerDependencies:
-      - supports-color
-      - typescript
     dev: true
 
   /@szmarczak/http-timer/5.0.1:
@@ -1521,21 +1507,6 @@ packages:
       - supports-color
     dev: true
 
-  /eslint-plugin-vue/8.2.0_eslint@8.4.1:
-    resolution: {integrity: sha512-cLIdTuOAMXyHeQ4drYKcZfoyzdwdBpH279X8/N0DgmotEI9yFKb5O/cAgoie/CkQZCH/MOmh0xw/KEfS90zY2A==}
-    engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
-    peerDependencies:
-      eslint: ^6.2.0 || ^7.0.0 || ^8.0.0
-    dependencies:
-      eslint: 8.4.1
-      eslint-utils: 3.0.0_eslint@8.4.1
-      natural-compare: 1.4.0
-      semver: 7.3.5
-      vue-eslint-parser: 8.0.1_eslint@8.4.1
-    transitivePeerDependencies:
-      - supports-color
-    dev: true
-
   /eslint-plugin-yml/0.10.1_eslint@8.4.1:
     resolution: {integrity: sha512-af0WgO3qaH+RW6jv1s6RzXKlg2NZLisN95lqGUf1KqBT6rEJyGSCpM49QYaSTvzmMaB/gcdbrnAfNoYwUn0Yig==}
     peerDependencies:
@@ -1556,14 +1527,6 @@ packages:
     dependencies:
       esrecurse: 4.3.0
       estraverse: 4.3.0
-    dev: true
-
-  /eslint-scope/6.0.0:
-    resolution: {integrity: sha512-uRDL9MWmQCkaFus8RF5K9/L/2fn+80yoW3jkD53l4shjCh26fCtvJGasxjUqP5OT87SYTxCVA3BwTUzuELx9kA==}
-    engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
-    dependencies:
-      esrecurse: 4.3.0
-      estraverse: 5.3.0
     dev: true
 
   /eslint-scope/7.1.0:
@@ -3254,24 +3217,6 @@ packages:
       source-map: 0.7.3
       tinyspy: 0.0.13
       vite: 2.7.2
-    dev: true
-
-  /vue-eslint-parser/8.0.1_eslint@8.4.1:
-    resolution: {integrity: sha512-lhWjDXJhe3UZw2uu3ztX51SJAPGPey1Tff2RK3TyZURwbuI4vximQLzz4nQfCv8CZq4xx7uIiogHMMoSJPr33A==}
-    engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
-    peerDependencies:
-      eslint: '>=6.0.0'
-    dependencies:
-      debug: 4.3.3
-      eslint: 8.4.1
-      eslint-scope: 6.0.0
-      eslint-visitor-keys: 3.1.0
-      espree: 9.2.0
-      esquery: 1.4.0
-      lodash: 4.17.21
-      semver: 7.3.5
-    transitivePeerDependencies:
-      - supports-color
     dev: true
 
   /which-boxed-primitive/1.0.2:
