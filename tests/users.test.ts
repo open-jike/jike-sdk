@@ -1,5 +1,5 @@
 import { beforeAll, describe, it, expect } from 'vitest'
-import { setAccessToken, profile, refreshToken } from '../src'
+import { setAccessToken, profile, refreshToken, getSmsCode } from '../src'
 
 describe('users should work', () => {
   beforeAll(() => {
@@ -23,5 +23,13 @@ describe('users should work', () => {
     expect(result.body.success).toBe(true)
     expect(result.body['x-jike-access-token']).toBeTruthy()
     expect(result.body['x-jike-refresh-token']).toBeTruthy()
+  })
+
+  it('sendSms should work', async () => {
+    const mobile = process.env['MOBILE']
+    if (!mobile) throw new Error('please set environment variable `MOBILE`')
+    const result = await getSmsCode('86', mobile)
+    expect(result.body.success).toBe(true)
+    expect(result.body.data.action).toBe('LOGIN')
   })
 })
