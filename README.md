@@ -1,4 +1,4 @@
-# jike-api 即刻 API
+# jike-sdk Ⓙ 即刻 SDK
 
 [![GitHub Repo stars](https://img.shields.io/github/stars/sxzz/jike-api?style=social)](https://github.com/sxzz/jike-plus)
 [![GitHub forks](https://img.shields.io/github/forks/sxzz/jike-api?style=social)](https://github.com/sxzz/jike-plus)
@@ -9,11 +9,11 @@
 ## Usage
 
 ```bash
-npm i jike-api
+npm i jike-sdk
 ```
 
 ```ts
-import { setAccessToken, getFollowingList } from 'jike-api'
+import { setAccessToken, getFollowingList } from 'jike-sdk'
 
 setAccessToken('your access token')
 getFollowingList('someone-username', {

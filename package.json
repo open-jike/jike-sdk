@@ -1,15 +1,15 @@
 {
-  "name": "jike-api",
+  "name": "jike-sdk",
   "version": "0.0.2",
-  "description": "即刻 API",
+  "description": "即刻 Ⓙ SDK for Node.js",
   "keywords": [
     "jike",
-    "api"
+    "sdk"
   ],
   "license": "GPL-3.0",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sxzz/jike-api.git"
+    "url": "git+https://github.com/sxzz/jike-sdk.git"
   },
   "author": "三咲智子 <sxzz@sxzz.moe>",
   "files": [
@@ -28,12 +28,12 @@
     "test": "vitest"
   },
   "bugs": {
-    "url": "https://github.com/sxzz/jike-api/issues"
+    "url": "https://github.com/sxzz/jike-sdk/issues"
   },
   "engines": {
     "node": ">=12"
   },
-  "homepage": "https://github.com/sxzz/jike-api#readme",
+  "homepage": "https://github.com/sxzz/jike-sdk#readme",
   "dependencies": {
     "got": "^12.0.0"
   },
