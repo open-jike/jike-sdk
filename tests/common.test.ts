@@ -1,7 +1,9 @@
 import { beforeAll, describe, expect, it } from 'vitest'
-
+import { AbortController } from 'node-abort-controller'
 import { getAccessToken, request, setAccessToken } from '../dist/node'
 import { API_BASE } from '../src/constants'
+
+if (!globalThis.AbortController) globalThis.AbortController = AbortController
 
 describe('common', () => {
   const token = 'TEST_TOKEN'
@@ -12,7 +14,7 @@ describe('common', () => {
   })
 
   describe('request options should be correct', () => {
-    const controller = new AbortController()
+    const controller = new globalThis.AbortController()
     let req: Request
 
     beforeAll(async () => {
