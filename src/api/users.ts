@@ -48,7 +48,7 @@ export const getSmsCode = <T = GetSmsCodeResponse>(
     .json<T>()
 
 /**
- * 登录
+ * 短信登录
  * @param areaCode 区号，如：+86
  * @param mobile 手机号
  * @param smsCode 短信验证码

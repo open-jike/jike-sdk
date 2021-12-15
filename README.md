@@ -62,7 +62,7 @@ client.users.profile()
 import { setAccessToken, api } from 'https://cdn.skypack.dev/jike-sdk?dts'
 
 setAccessToken('your access token')
-api.users.getSmsCode('86', 'your mobile phone')
+api.users.getSmsCode('+86', 'your mobile phone')
 ```
 
 ### 浏览器

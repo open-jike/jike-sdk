@@ -21,11 +21,21 @@ export const create = <T = CreatePostResponse>(
     })
     .json<T>()
 
+/**
+ * 获取动态详情
+ * @param id 动态ID
+ */
 export const get = <T = PostDetailResponse>(id: string) =>
   request('1.0/originalPosts/get', {
     searchParams: { id },
   }).json<T>()
 
+/**
+ * 分享动态
+ * @param id 动态ID
+ * @param method 分享方式
+ * @returns
+ */
 export const share = <T = { success: boolean }>(id: string, method: string) =>
   request
     .post('1.0/originalPosts/share', {
@@ -33,5 +43,27 @@ export const share = <T = { success: boolean }>(id: string, method: string) =>
         id,
         method,
       },
+    })
+    .json<T>()
+
+/**
+ * 点赞
+ * @param id 动态ID
+ */
+export const like = <T = { success: boolean }>(id: string) =>
+  request
+    .post('1.0/originalPosts/like', {
+      json: { id },
+    })
+    .json<T>()
+
+/**
+ * 取消点赞
+ * @param id 动态ID
+ */
+export const unlike = <T = { success: boolean }>(id: string) =>
+  request
+    .post('1.0/originalPosts/unlike', {
+      json: { id },
     })
     .json<T>()
