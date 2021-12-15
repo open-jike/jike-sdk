@@ -15,6 +15,29 @@
 - ⭐️ 同时支持 Node.js / 浏览器 / Deno
 - 🦾 自带 TypeScript 类型声明
 
+<details>
+  <summary>API 列表</summary>
+
+- 用户
+  - [x] 获取个人主页
+  - [x] 刷新 Access Token
+  - [x] 发送登录验证码
+  - [x] 短信登录
+- 用户关系
+  - [x] 获取关注列表
+  - [x] 获取被关注列表
+- 动态
+  - [x] 发送动态
+  - [ ] 上传图片
+  - [x] 获取动态详情
+  - [x] 分享动态
+  - [x] 点赞
+  - [x] 取消点赞
+- 主页
+  - [x] 获取用户动态
+
+</details>
+
 ## Usage
 
 ### Node.js

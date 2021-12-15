@@ -47,7 +47,7 @@ export const share = <T = { success: boolean }>(id: string, method: string) =>
     .json<T>()
 
 /**
- * 点赞
+ * 点赞动态
  * @param id 动态ID
  */
 export const like = <T = { success: boolean }>(id: string) =>
@@ -58,7 +58,7 @@ export const like = <T = { success: boolean }>(id: string) =>
     .json<T>()
 
 /**
- * 取消点赞
+ * 取消点赞动态
  * @param id 动态ID
  */
 export const unlike = <T = { success: boolean }>(id: string) =>
