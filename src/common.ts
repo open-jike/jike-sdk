@@ -19,6 +19,7 @@ export const request = ky.create({
     'os-version': env.osVersion,
     bundleid: env.bundleId,
   },
+  // throwHttpErrors: false,
   hooks: {
     beforeRequest: [
       (req) => {

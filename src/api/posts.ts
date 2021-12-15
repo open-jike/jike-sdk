@@ -1,6 +1,6 @@
 import { request } from '../common'
 import type { CreatePostOption } from '../types/request'
-import type { CreatePostResponse } from '../types/response'
+import type { CreatePostResponse, PostDetailResponse } from '../types/response'
 
 /**
  * 发送动态
@@ -17,6 +17,21 @@ export const createPost = <T = CreatePostResponse>(
         content,
         pictureKeys: options.pictureKeys ?? [],
         syncToPersonalUpdate: options.syncToPersonalUpdate ?? true,
+      },
+    })
+    .json<T>()
+
+export const getPost = <T = PostDetailResponse>(id: string) =>
+  request('1.0/originalPosts/get', {
+    searchParams: { id },
+  }).json<T>()
+
+export const share = <T = { success: boolean }>(id: string, method: string) =>
+  request
+    .post('1.0/originalPosts/share', {
+      json: {
+        id,
+        method,
       },
     })
     .json<T>()

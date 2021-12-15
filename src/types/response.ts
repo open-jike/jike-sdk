@@ -339,3 +339,128 @@ export interface SingleResponse {
     lastId: string
   }
 }
+
+export interface UrlsInText {
+  title: string
+  originalUrl: string
+  url: string
+  type: string
+}
+
+export interface SquarePicture {
+  format: string
+  picUrl: string
+  middlePicUrl: string
+  smallPicUrl: string
+  thumbnailUrl: string
+  livePhoto?: any
+  themes: any
+}
+
+export interface Tips {
+  inDraft: string
+  inComment: string
+}
+
+export interface Topic {
+  id: string
+  type: string
+  content: string
+  subscribersCount: number
+  squarePicture: SquarePicture
+  briefIntro: string
+  topicType: string
+  operateStatus: string
+  isValid: boolean
+  isVerified: boolean
+  topicId: number
+  isSearchable: boolean
+  likeIcon: string
+  messagePrefix: string
+  internalTags: any[]
+  customTags: any[]
+  auditStatus: string
+  newCategory: any[]
+  involvedUsers?: any
+  entryTab: string
+  tabs: any[]
+  rectanglePicture?: any
+  pictureUrl: string
+  thumbnailUrl: string
+  subscribedStatusRawValue: number
+  subscribedAt: Date
+  ref: string
+  isDreamTopic: boolean
+  isAnonymous: boolean
+  enablePictureComments: boolean
+  enablePictureWatermark: boolean
+  timeForRank: string
+  lastMessagePostTime: Date
+  createdAt: string
+  updatedAt: string
+  subscribersTextSuffix: string
+  subscribersName: string
+  friendsAlsoSubscribe: string
+  maintainer?: any
+  isUserTopicAdmin: boolean
+  activitySection?: any
+  activitySections: any[]
+  tips: Tips
+  toppingArea?: any
+  inShortcuts: boolean
+  preferSection: string
+  relatedHashtags: any[]
+  intro: string
+  squarePostUpdateTime: Date
+  subscribersAction: string
+  approximateSubscribersCount: string
+  subscribersDescription: string
+  isCommentForbidden: boolean
+  botCount: number
+  recentPost: string
+  source: string
+  enableForUserPost: boolean
+}
+
+export interface LinkInfo {
+  title: string
+  pictureUrl: string
+  linkUrl: string
+  source: string
+}
+
+export interface ReadTrackInfo {
+  recommendReason: string
+  recommendReasonPolicy: string
+}
+
+export interface PostDetail {
+  id: string
+  type: string
+  content: string
+  urlsInText: UrlsInText[]
+  status: string
+  isCommentForbidden: boolean
+  likeCount: number
+  commentCount: number
+  repostCount: number
+  shareCount: number
+  topic: Topic
+  linkInfo: LinkInfo
+  pictures: any[]
+  collected: boolean
+  collectTime?: any
+  user: SimpleUser
+  createdAt: Date
+  isFeatured: boolean
+  enablePictureComments: boolean
+  repostable: boolean
+  scrollingSubtitles: ScrollingSubtitle[]
+  pinned: Pinned
+  shouldShowCommentTip: boolean
+  readTrackInfo: ReadTrackInfo
+}
+
+export interface PostDetailResponse {
+  data: PostDetail
+}
