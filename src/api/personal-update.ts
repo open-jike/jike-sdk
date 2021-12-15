@@ -3,7 +3,7 @@ import type { PaginationOption } from '../types/request'
 import type { SingleResponse } from '../types/response'
 
 /**
- * 获取关注列表
+ * 获取用户动态
  * @param username 用户名
  * @param option 选项
  */

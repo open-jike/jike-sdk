@@ -1,3 +1,6 @@
+/**
+ * 分页选项
+ */
 export interface PaginationOption {
   /**
    * 最大记录数

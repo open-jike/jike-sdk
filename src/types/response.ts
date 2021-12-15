@@ -241,6 +241,12 @@ export interface GetFollowingListResponse {
   loadMoreKey: { createdAt: Date }
 }
 
+export interface GetFollowerListResponse {
+  success: boolean
+  data: SimpleUser[]
+  loadMoreKey: { createdAt: Date }
+}
+
 export interface GetSmsCodeResponse {
   success: boolean
   data: {
