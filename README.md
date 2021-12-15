@@ -19,8 +19,16 @@
 npm i jike-sdk
 ```
 
+#### ESM 导入
+
+如果使用 ESM 方式导入，需要把 `package.json` 的 `type` 设置为 `module`，或将后缀名改为 `.mjs`。
+
 ```ts
+// 自带 node-fetch
 import { api, setAccessToken, Client } from 'jike-sdk/node'
+
+// 不带 node-fetch，需要自行 ployfill
+// import { api, setAccessToken, Client } from 'jike-sdk'
 
 setAccessToken('your access token')
 api.getFollowingList('82D23B32-CF36-4C59-AD6F-D05E3552CBF3', {
@@ -30,6 +38,16 @@ api.getFollowingList('82D23B32-CF36-4C59-AD6F-D05E3552CBF3', {
 // Or
 const client = Client('your access token')
 client.profile()
+```
+
+#### CJS 导入
+
+```ts
+;(async () => {
+  const { setAccessToken, getAccessToken } = await import('jike-sdk/node')
+  setAccessToken('your access token')
+  console.log(getAccessToken())
+})()
 ```
 
 ### Deno
@@ -66,7 +84,8 @@ setAccessToken('your access token')
 
 ## TODO
 
-- Support more APIs
+- Support more low level APIs
+- Add some high level APIs
 
 ## Alternatives
 
