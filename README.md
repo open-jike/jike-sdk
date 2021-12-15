@@ -62,7 +62,7 @@ api.getSmsCode('86', 'your mobile phone')
 ### 浏览器
 
 ```ts
-import { setAccessToken } from 'jike-sdk/dist/index'
+import { setAccessToken } from 'jike-sdk'
 
 setAccessToken('your access token')
 ```
