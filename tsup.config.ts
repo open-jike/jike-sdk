@@ -37,9 +37,6 @@ const modern = (): Options => {
     format: ['cjs', 'esm'],
     splitting: false,
     esbuildPlugins: [RemoveFetch],
-    esbuildOptions: (options) => {
-      options.outExtension = {}
-    },
   }
 }
 
