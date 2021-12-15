@@ -7,7 +7,7 @@ import type { CreatePostResponse, PostDetailResponse } from '../types/response'
  * @param content 内容
  * @param options 其他选项
  */
-export const createPost = <T = CreatePostResponse>(
+export const create = <T = CreatePostResponse>(
   content: string,
   options: CreatePostOption = {}
 ) =>
@@ -21,7 +21,7 @@ export const createPost = <T = CreatePostResponse>(
     })
     .json<T>()
 
-export const getPost = <T = PostDetailResponse>(id: string) =>
+export const get = <T = PostDetailResponse>(id: string) =>
   request('1.0/originalPosts/get', {
     searchParams: { id },
   }).json<T>()

@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { getAccessToken, setAccessToken, Client } from '../../dist/index.js'
+import { getAccessToken, setAccessToken, Client } from '../../dist/index.mjs'
 
 setAccessToken('TEST-TOKEN')
 console.log(getAccessToken())
@@ -7,5 +7,5 @@ console.log(getAccessToken())
 const token = Deno.env.get('ACCESS_TOKEN')
 if (!token) throw new Error('please set environment variable `ACCESS_TOKEN`')
 
-const resp = await (Client(token) as any).profile()
+const resp = await (Client(token).users as any).profile()
 console.log(JSON.stringify(resp))

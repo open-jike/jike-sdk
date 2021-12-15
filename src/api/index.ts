@@ -4,9 +4,9 @@ import * as posts from './posts'
 import * as personalUpdate from './personal-update'
 
 export const api = {
-  ...users,
-  ...userRelation,
-  ...posts,
-  ...personalUpdate,
+  users,
+  userRelation,
+  posts,
+  personalUpdate,
 }
 export type Api = typeof api

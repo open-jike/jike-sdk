@@ -10,13 +10,13 @@ describe('posts should work', () => {
   it('share should work', async () => {
     const id = '61b8b9d298f39200100ba010'
 
-    const post = await api.getPost(id)
+    const post = await api.posts.get(id)
     const shareCount = post.data.shareCount
 
-    const result = await api.share('61b8b9d298f39200100ba010', 'weibo')
+    const result = await api.posts.share('61b8b9d298f39200100ba010', 'weibo')
     expect(result.success).toBe(true)
 
-    const updatedPost = await api.getPost(id)
+    const updatedPost = await api.posts.get(id)
     expect(updatedPost.data.shareCount).greaterThan(shareCount)
   })
 })

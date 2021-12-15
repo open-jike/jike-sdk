@@ -8,7 +8,7 @@ describe('users should work', () => {
   })
 
   it('profile should work', async () => {
-    const result = await api.profile()
+    const result = await api.users.profile()
     expect(result?.user?.id).toBeTruthy()
     expect(result?.user?.username).toBeTruthy()
   })
@@ -16,7 +16,7 @@ describe('users should work', () => {
   it('refreshToken should work', async () => {
     const token = process.env['REFRESH_TOKEN']
     if (!token) return
-    const result = await api.refreshToken(token)
+    const result = await api.users.refreshToken(token)
     expect(result.success).toBe(true)
     expect(result['x-jike-access-token']).toBeTruthy()
     expect(result['x-jike-refresh-token']).toBeTruthy()
@@ -27,14 +27,14 @@ describe('users should work', () => {
 
   it('sendSms should work', async () => {
     if (!mobile || smsCode) return
-    const result = await api.getSmsCode('+86', mobile)
+    const result = await api.users.getSmsCode('+86', mobile)
     expect(result.success).toBe(true)
     expect(result.data.action).toBe('LOGIN')
   })
 
   it('loginWithSmsCode should work', async () => {
     if (!mobile || !smsCode) return
-    const result = await api.loginWithSmsCode('+86', mobile, smsCode)
+    const result = await api.users.loginWithSmsCode('+86', mobile, smsCode)
     expect(result.success).toBe(true)
   })
 })

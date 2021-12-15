@@ -34,17 +34,21 @@ const modern = (): Options => {
   }
   return {
     ...common,
-    format: ['cjs', 'esm'],
+    format: ['esm'],
     splitting: false,
     esbuildPlugins: [RemoveFetch],
+    esbuildOptions: (options) => {
+      options.outExtension = {}
+    },
   }
 }
 
 const node = (): Options => ({
   ...common,
-  format: ['cjs', 'esm'],
+  format: ['esm'],
   clean: true,
   esbuildOptions: (options) => {
     options.entryNames = '[dir]/node'
+    options.outExtension = {}
   },
 })
