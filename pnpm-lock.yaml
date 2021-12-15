@@ -11,7 +11,7 @@ specifiers:
   esno: 0.13.0
   ky: ^0.28.7
   node-fetch: 3.1.0
-  tsup: 5.11.5
+  tsup: 5.11.6
   typescript: 4.5.4
   vite: 2.7.2
   vitest: 0.0.85
@@ -29,7 +29,7 @@ devDependencies:
   eslint: 8.4.1
   eslint-define-config: 1.2.0
   esno: 0.13.0_typescript@4.5.4
-  tsup: 5.11.5_typescript@4.5.4
+  tsup: 5.11.6_typescript@4.5.4
   typescript: 4.5.4
   vite: 2.7.2
   vitest: 0.0.85_vite@2.7.2
@@ -2919,8 +2919,8 @@ packages:
     resolution: {integrity: sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==}
     dev: true
 
-  /tsup/5.11.5_typescript@4.5.4:
-    resolution: {integrity: sha512-Excynz+DMkZvkqRQKuSW0OoKqJ2PkVJ1Vnte8/vIRkRXHmYq/0RBPKsZHLh4DraPVeyQ+dB2gbzpmarbTsc5DQ==}
+  /tsup/5.11.6_typescript@4.5.4:
+    resolution: {integrity: sha512-mKhLdQ1N2KMV31dsX4MLO5l4FOORf2+FvyAOott3ZgiSnKisZiOoCXwxPc97iPqIk5aouyQBTaZcjXKJV+C4pg==}
     hasBin: true
     peerDependencies:
       typescript: ^4.2.3
