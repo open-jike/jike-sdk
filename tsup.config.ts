@@ -34,7 +34,7 @@ const modern = (): Options => {
   }
   return {
     ...common,
-    format: ['esm'],
+    format: ['cjs', 'esm'],
     splitting: false,
     esbuildPlugins: [RemoveFetch],
     esbuildOptions: (options) => {

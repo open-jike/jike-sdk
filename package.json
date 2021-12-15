@@ -18,6 +18,7 @@
   ],
   "exports": {
     ".": {
+      "require": "./dist/index.js",
       "import": "./dist/index.mjs"
     },
     "./node": {
@@ -25,9 +26,9 @@
       "import": "./dist/node.mjs"
     }
   },
-  "main": "dist/node.js",
-  "module": "dist/node.mjs",
-  "types": "dist/node.d.ts",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
   "sideEffects": false,
   "scripts": {
     "build": "MODE=node tsup && mv dist/index.d.ts dist/node.d.ts && MODE=modern tsup",
