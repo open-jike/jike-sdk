@@ -233,3 +233,17 @@ export interface GetSmsCodeResponse {
     action: string
   }
 }
+
+export interface LoginFailureResponse {
+  success: false
+  error: string
+}
+
+export interface LoginSuccessResponse {
+  success: true
+  isRegister: boolean
+  user: User
+  enabledFeatures: string[]
+  agreedProtocol: string[]
+  bioUpdateAlert: boolean
+}

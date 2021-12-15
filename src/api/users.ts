@@ -3,6 +3,8 @@ import type {
   UserProfile,
   UserRefreshTokenResponse,
   GetSmsCodeResponse,
+  LoginFailureResponse,
+  LoginSuccessResponse,
 } from '../types/response'
 
 /**
@@ -28,7 +30,7 @@ export const refreshToken = async <T = UserRefreshTokenResponse>(
 
 /**
  * 发送登录验证码
- * @param areaCode 区号
+ * @param areaCode 区号，如：+86
  * @param mobile 手机号
  */
 export const getSmsCode = <T = GetSmsCodeResponse>(
@@ -39,8 +41,39 @@ export const getSmsCode = <T = GetSmsCodeResponse>(
     .post('1.0/users/getSmsCode', {
       json: {
         action: 'PHONE_MIX_LOGIN',
-        mobilePhoneNumber: mobile,
         areaCode,
+        mobilePhoneNumber: mobile,
       },
     })
     .json<T>()
+
+/**
+ * 登录
+ * @param areaCode 区号，如：+86
+ * @param mobile 手机号
+ * @param smsCode 短信验证码
+ */
+export const loginWithSmsCode = <
+  T = LoginFailureResponse | LoginSuccessResponse
+>(
+  areaCode: string,
+  mobile: string,
+  smsCode: string | number
+) =>
+  request
+    .post('1.0/users/mixLoginWithPhone', {
+      json: {
+        areaCode,
+        mobilePhoneNumber: mobile,
+        smsCode: `${smsCode}`,
+      },
+      headers: {
+        'x-jike-access-token': '',
+      },
+      throwHttpErrors: false,
+    })
+    .json<T>()
+    .then((data) => ({
+      success: !(data as any).error,
+      ...data,
+    }))

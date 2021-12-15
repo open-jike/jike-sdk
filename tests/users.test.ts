@@ -25,11 +25,19 @@ describe('users should work', () => {
     expect(result['x-jike-refresh-token']).toBeTruthy()
   })
 
+  const mobile = process.env.MOBILE
+  const smsCode = process.env.SMS_CODE
+
   it('sendSms should work', async () => {
-    const mobile = process.env.MOBILE
-    if (!mobile) throw new Error('please set environment variable `MOBILE`')
-    const result = await api.getSmsCode('86', mobile)
+    if (!mobile || smsCode) return
+    const result = await api.getSmsCode('+86', mobile)
     expect(result.success).toBe(true)
     expect(result.data.action).toBe('LOGIN')
+  })
+
+  it('loginWithSmsCode should work', async () => {
+    if (!mobile || !smsCode) return
+    const result = await api.loginWithSmsCode('+86', mobile, smsCode)
+    expect(result.success).toBe(true)
   })
 })
