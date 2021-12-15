@@ -49,6 +49,5 @@ const node = (): Options => ({
   clean: true,
   esbuildOptions: (options) => {
     options.entryNames = '[dir]/node'
-    options.outExtension = {}
   },
 })

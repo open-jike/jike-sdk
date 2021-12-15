@@ -12,7 +12,6 @@
     "url": "git+https://github.com/sxzz/jike-sdk.git"
   },
   "author": "三咲智子 <sxzz@sxzz.moe>",
-  "type": "module",
   "files": [
     "dist",
     "*.d.ts"
@@ -22,7 +21,7 @@
       "import": "./dist/index.js"
     },
     "./node": {
-      "import": "./dist/node.js"
+      "import": "./dist/node.mjs"
     }
   },
   "module": "dist/index.js",
