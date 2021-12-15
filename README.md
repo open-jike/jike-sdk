@@ -15,6 +15,8 @@
 
 ### Node.js
 
+Node.js >= 14
+
 ```bash
 npm i jike-sdk
 ```

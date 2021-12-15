@@ -40,7 +40,7 @@
     "url": "https://github.com/sxzz/jike-sdk/issues"
   },
   "engines": {
-    "node": ">=12"
+    "node": ">=14"
   },
   "homepage": "https://github.com/sxzz/jike-sdk#readme",
   "dependencies": {
