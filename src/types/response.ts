@@ -100,6 +100,11 @@ export interface SimpleUser {
   country?: string
   province?: string
   refRemark?: RefRemark
+  bio?: string
+  decorations?: Decorations
+  sponsorExpiresAt?: Date
+  trailingIcons?: TrailingIcon[]
+  following?: boolean
 }
 
 export interface ProfileVisitInfo {
@@ -213,6 +218,15 @@ export interface PostInfo {
   repostable: boolean
   rollouts: Rollouts
   scrollingSubtitles: ScrollingSubtitle[]
+
+  actionTime?: Date
+  pinned?: Pinned
+  target?: Target
+  targetType?: string
+  rootType?: string
+  liked?: boolean
+  syncCommentId?: string
+  replyToComment?: ReplyToComment
 }
 
 export interface CreatePostResponse {
@@ -246,4 +260,82 @@ export interface LoginSuccessResponse {
   enabledFeatures: string[]
   agreedProtocol: string[]
   bioUpdateAlert: boolean
+}
+
+export interface Sponsor {
+  picUrl: string
+  themes: {
+    dark: {
+      picUrl: string
+    }
+  }
+}
+
+export interface Decorations {
+  sponsor: Sponsor
+}
+
+export interface Picture {
+  picUrl: string
+  format: string
+}
+
+export interface TrailingIcon {
+  picture: Picture
+  picUrl: string
+  url: string
+}
+
+export interface Pinned {
+  personalUpdate: boolean
+}
+
+export interface Target {
+  type: string
+  id: string
+  content: string
+  urlsInText: any[]
+  status: string
+  user: SimpleUser
+  commentCount: number
+  repostCount: number
+  likeCount: number
+  shareCount: number
+  rootType: string
+  pictures: any[]
+  createdAt: Date
+  liked: boolean
+  collected: boolean
+  syncCommentId: string
+}
+export interface ReplyToComment {
+  type: string
+  id: string
+  targetType: string
+  targetId: string
+  threadId: string
+  createdAt: Date
+  level: number
+  content: string
+  urlsInText: any[]
+  likeCount: number
+  replyCount: number
+  status: string
+  user: SimpleUser
+  pictures: any[]
+  liked: boolean
+  enablePictureComments: boolean
+  readTrackInfo: any
+  collapsed: boolean
+  collapsible: boolean
+  isPinned: boolean
+  pinnable: boolean
+}
+
+export interface SingleResponse {
+  success: boolean
+  data: PostInfo[]
+  loadMoreKey: {
+    lastId: string
+  }
 }

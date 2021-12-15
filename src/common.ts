@@ -25,6 +25,7 @@ export const request = ky.create({
         const key = 'x-jike-access-token'
         if (req.headers.get(key) === '') req.headers.delete(key)
         else if (accessToken) req.headers.set(key, accessToken)
+        ;(req as any).highWaterMark = 1024 * 1024
       },
     ],
   },
