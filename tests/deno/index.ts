@@ -1,5 +1,5 @@
-/* eslint-disable no-console */
-import { getAccessToken, setAccessToken, Client } from '../../dist/modern.js'
+/* eslint-disable */
+import { getAccessToken, setAccessToken, Client } from '../../dist/index.js'
 
 setAccessToken('TEST-TOKEN')
 console.log(getAccessToken())

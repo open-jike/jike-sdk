@@ -3,6 +3,13 @@ import { defineConfig } from 'tsup'
 import type { Plugin } from 'esbuild'
 import type { Options } from 'tsup'
 
+const common: Options = {
+  target: 'es2019',
+  entry: ['src/index.ts'],
+  sourcemap: true,
+  dts: true,
+}
+
 export default defineConfig(() => {
   if (process.env.MODE === 'modern') return modern()
   else return node()
@@ -26,25 +33,21 @@ const modern = (): Options => {
     },
   }
   return {
-    target: 'es2019',
-    entry: ['src/index.ts'],
+    ...common,
     format: ['esm'],
-    sourcemap: true,
-    dts: true,
-    clean: true,
     splitting: false,
     esbuildPlugins: [RemoveFetch],
     esbuildOptions: (options) => {
-      options.entryNames = '[dir]/modern'
       options.outExtension = {}
     },
   }
 }
 
 const node = (): Options => ({
-  target: 'es2019',
-  entry: ['src/index.ts'],
+  ...common,
   format: ['cjs', 'esm'],
-  sourcemap: true,
-  dts: true,
+  clean: true,
+  esbuildOptions: (options) => {
+    options.entryNames = '[dir]/node'
+  },
 })

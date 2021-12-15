@@ -13,14 +13,24 @@
   },
   "author": "三咲智子 <sxzz@sxzz.moe>",
   "files": [
-    "dist"
+    "dist",
+    "*.d.ts"
   ],
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs"
+    },
+    "./node": {
+      "require": "./dist/node.js",
+      "import": "./dist/node.mjs"
+    }
+  },
+  "main": "dist/node.js",
+  "module": "dist/node.mjs",
+  "types": "dist/node.d.ts",
   "sideEffects": false,
   "scripts": {
-    "build": "MODE=modern tsup && mv dist/index.d.ts dist/modern.d.ts && MODE=node tsup",
+    "build": "MODE=node tsup && mv dist/index.d.ts dist/node.d.ts && MODE=modern tsup",
     "release": "bumpp --commit --push --tag && npm publish",
     "lint": "eslint .",
     "lint:fix": "npm run lint -- --fix",

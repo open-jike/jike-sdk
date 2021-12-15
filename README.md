@@ -20,7 +20,7 @@ npm i jike-sdk
 ```
 
 ```ts
-import { api, setAccessToken, Client } from 'jike-sdk'
+import { api, setAccessToken, Client } from 'jike-sdk/node'
 
 setAccessToken('your access token')
 api.getFollowingList('82D23B32-CF36-4C59-AD6F-D05E3552CBF3', {
@@ -35,10 +35,7 @@ client.profile()
 ### Deno
 
 ```ts
-import {
-  setAccessToken,
-  api,
-} from 'https://cdn.skypack.dev/jike-sdk/dist/modern.js?dts'
+import { setAccessToken, api } from 'https://cdn.skypack.dev/jike-sdk?dts'
 
 setAccessToken('your access token')
 api.getSmsCode('86', 'your mobile phone')
@@ -47,7 +44,7 @@ api.getSmsCode('86', 'your mobile phone')
 ### 浏览器
 
 ```ts
-import { setAccessToken } from 'jike-sdk/dist/modern'
+import { setAccessToken } from 'jike-sdk/dist/index'
 
 setAccessToken('your access token')
 ```
@@ -59,7 +56,7 @@ setAccessToken('your access token')
   import {
     setAccessToken,
     getAccessToken,
-  } from 'https://cdn.skypack.dev/jike-sdk/dist/modern.js'
+  } from 'https://cdn.skypack.dev/jike-sdk'
   setAccessToken('your access token')
   console.log(getAccessToken())
 </script>
