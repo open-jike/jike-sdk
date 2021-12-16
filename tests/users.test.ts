@@ -5,11 +5,19 @@ import { config } from './config'
 describe('users should work', () => {
   setApiConfig(config)
 
+  const username = '82D23B32-CF36-4C59-AD6F-D05E3552CBF3'
+
   it('profile should work', async () => {
     const result = await api.users.profile()
     expect(result.status).toBe(200)
     expect(result.data?.user?.id).toBeTruthy()
     expect(result.data?.user?.username).toBeTruthy()
+  })
+
+  it('profile with username should work', async () => {
+    const result = await api.users.profile(username)
+    expect(result.status).toBe(200)
+    expect(result.data?.user?.username).toBe(username)
   })
 
   it('refreshToken should work', async () => {

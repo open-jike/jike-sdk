@@ -19,7 +19,7 @@
   <summary>API 列表</summary>
 
 - 用户
-  - [x] 获取个人主页
+  - [x] 获取用户信息
   - [x] 刷新 Access Token
   - [x] 发送登录验证码
   - [x] 短信登录

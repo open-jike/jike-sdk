@@ -5,7 +5,7 @@ import { config } from './config'
 describe('user relation should work', () => {
   setApiConfig(config)
 
-  const username = '5C505995-681E-4C1E-AD4A-1CC683627B6E'
+  const username = '82D23B32-CF36-4C59-AD6F-D05E3552CBF3'
   const limit = 10
 
   it('getFollowerList should work', async () => {

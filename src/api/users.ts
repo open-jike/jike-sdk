@@ -8,10 +8,16 @@ import type {
 } from '../types/response'
 
 /**
- * 获取个人主页
+ * 获取用户信息
  */
-export const profile = <T = UserProfile>() =>
-  toResponse<T>(request('1.0/users/profile'))
+export const profile = <T = UserProfile>(username?: string) =>
+  toResponse<T>(
+    request('1.0/users/profile', {
+      searchParams: {
+        username: username ?? '',
+      },
+    })
+  )
 
 /**
  * 刷新 Access Token
