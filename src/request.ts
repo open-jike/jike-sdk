@@ -27,7 +27,6 @@ export const getApiConfig = () => apiConfig
 export const setAccessToken = (token: string) => (apiConfig.accessToken = token)
 export const getAccessToken = () => apiConfig.accessToken
 
-const fetch = globalThis.fetch
 export const request = ky.create({
   prefixUrl: API_BASE,
   headers: {
