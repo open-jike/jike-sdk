@@ -1,13 +1,8 @@
-import { beforeAll, describe, it, expect } from 'vitest'
-import { setAccessToken, api } from '../src'
-
+import { describe, it, expect } from 'vitest'
+import { api, setApiConfig } from '../src'
+import { config } from './config'
 describe('personal update should work', () => {
-  beforeAll(() => {
-    const token = process.env.ACCESS_TOKEN
-    if (!token)
-      throw new Error('please set environment variable `ACCESS_TOKEN`')
-    setAccessToken(token)
-  })
+  setApiConfig(config)
 
   it('single should work', async () => {
     const limit = 10
@@ -17,9 +12,10 @@ describe('personal update should work', () => {
         limit,
       }
     )
-    expect(result.success).toBe(true)
+    expect(result.status).toBe(200)
+    expect(result.data.success).toBe(true)
     expect(
-      result.data.filter((post) => !post.pinned.personalUpdate).length
+      result.data.data.filter((post) => !post.pinned.personalUpdate).length
     ).toBe(limit)
   })
 })

@@ -1,4 +1,4 @@
-import { request } from '../common'
+import { toResponse, request } from '../request'
 import type { PaginationOption } from '../types/request'
 import type { SingleResponse } from '../types/response'
 
@@ -11,12 +11,12 @@ export const single = async <T = SingleResponse>(
   username: string,
   option: PaginationOption = {}
 ) =>
-  request
-    .post('1.0/personalUpdate/single', {
+  toResponse<T>(
+    request.post('1.0/personalUpdate/single', {
       json: {
         username,
         limit: option.limit ?? 10,
         loadMoreKey: option.loadMoreKey,
       },
     })
-    .json<T>()
+  )

@@ -1,4 +1,4 @@
-import { request } from '../common'
+import { toResponse, request } from '../request'
 import type { CreatePostOption } from '../types/request'
 import type { CreatePostResponse, PostDetailResponse } from '../types/response'
 
@@ -11,24 +11,26 @@ export const create = <T = CreatePostResponse>(
   content: string,
   options: CreatePostOption = {}
 ) =>
-  request
-    .post('1.0/originalPosts/create', {
+  toResponse<T>(
+    request.post('1.0/originalPosts/create', {
       json: {
         content,
         pictureKeys: options.pictureKeys ?? [],
         syncToPersonalUpdate: options.syncToPersonalUpdate ?? true,
       },
     })
-    .json<T>()
+  )
 
 /**
  * 获取动态详情
  * @param id 动态ID
  */
 export const get = <T = PostDetailResponse>(id: string) =>
-  request('1.0/originalPosts/get', {
-    searchParams: { id },
-  }).json<T>()
+  toResponse<T>(
+    request('1.0/originalPosts/get', {
+      searchParams: { id },
+    })
+  )
 
 /**
  * 分享动态
@@ -37,33 +39,33 @@ export const get = <T = PostDetailResponse>(id: string) =>
  * @returns
  */
 export const share = <T = { success: boolean }>(id: string, method: string) =>
-  request
-    .post('1.0/originalPosts/share', {
+  toResponse<T>(
+    request.post('1.0/originalPosts/share', {
       json: {
         id,
         method,
       },
     })
-    .json<T>()
+  )
 
 /**
  * 点赞动态
  * @param id 动态ID
  */
 export const like = <T = { success: boolean }>(id: string) =>
-  request
-    .post('1.0/originalPosts/like', {
+  toResponse<T>(
+    request.post('1.0/originalPosts/like', {
       json: { id },
     })
-    .json<T>()
+  )
 
 /**
  * 取消点赞动态
  * @param id 动态ID
  */
 export const unlike = <T = { success: boolean }>(id: string) =>
-  request
-    .post('1.0/originalPosts/unlike', {
+  toResponse<T>(
+    request.post('1.0/originalPosts/unlike', {
       json: { id },
     })
-    .json<T>()
+  )

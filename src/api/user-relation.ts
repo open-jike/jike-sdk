@@ -1,4 +1,4 @@
-import { request } from '../common'
+import { request, toResponse } from '../request'
 import type {
   GetFollowingListResponse,
   GetFollowerListResponse,
@@ -14,15 +14,15 @@ export const getFollowingList = <T = GetFollowingListResponse>(
   username: string,
   option: PaginationOption = {}
 ) =>
-  request
-    .post('1.0/userRelation/getFollowingList', {
+  toResponse<T>(
+    request.post('1.0/userRelation/getFollowingList', {
       json: {
         username,
         limit: option.limit ?? 10,
         loadMoreKey: option.loadMoreKey,
       },
     })
-    .json<T>()
+  )
 
 /**
  * 获取被关注列表
@@ -33,12 +33,12 @@ export const getFollowerList = <T = GetFollowerListResponse>(
   username: string,
   option: PaginationOption = {}
 ) =>
-  request
-    .post('1.0/userRelation/getFollowerList', {
+  toResponse<T>(
+    request.post('1.0/userRelation/getFollowerList', {
       json: {
         username,
         limit: option.limit ?? 10,
         loadMoreKey: option.loadMoreKey,
       },
     })
-    .json<T>()
+  )

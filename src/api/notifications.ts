@@ -1,4 +1,4 @@
-import { request } from '../common'
+import { toResponse, request } from '../request'
 import type { PaginationOption } from '../types/request'
 import type { NotificationListResponse } from '../types/response'
 
@@ -9,10 +9,10 @@ import type { NotificationListResponse } from '../types/response'
 export const list = <T = NotificationListResponse>(
   option: Pick<PaginationOption, 'loadMoreKey'> = {}
 ) =>
-  request
-    .post('1.0/notifications/list', {
+  toResponse<T>(
+    request.post('1.0/notifications/list', {
       json: {
         loadMoreKey: option.loadMoreKey,
       },
     })
-    .json<T>()
+  )

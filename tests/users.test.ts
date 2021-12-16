@@ -1,25 +1,25 @@
-import { beforeAll, describe, it, expect } from 'vitest'
-import { setAccessToken, api } from '../src'
+import { describe, it, expect } from 'vitest'
+import { api, setApiConfig } from '../src'
+import { config } from './config'
 
 describe('users should work', () => {
-  beforeAll(() => {
-    const token = process.env.ACCESS_TOKEN
-    setAccessToken(token)
-  })
+  setApiConfig(config)
 
   it('profile should work', async () => {
     const result = await api.users.profile()
-    expect(result?.user?.id).toBeTruthy()
-    expect(result?.user?.username).toBeTruthy()
+    expect(result.status).toBe(200)
+    expect(result.data?.user?.id).toBeTruthy()
+    expect(result.data?.user?.username).toBeTruthy()
   })
 
   it('refreshToken should work', async () => {
     const token = process.env['REFRESH_TOKEN']
     if (!token) return
     const result = await api.users.refreshToken(token)
-    expect(result.success).toBe(true)
-    expect(result['x-jike-access-token']).toBeTruthy()
-    expect(result['x-jike-refresh-token']).toBeTruthy()
+    expect(result.status).toBe(200)
+    expect(result.data.success).toBe(true)
+    expect(result.data['x-jike-access-token']).toBeTruthy()
+    expect(result.data['x-jike-refresh-token']).toBeTruthy()
   })
 
   const mobile = process.env.MOBILE
@@ -27,17 +27,19 @@ describe('users should work', () => {
   const password = process.env.PASSWORD
 
   it('sendSms should work', async () => {
-    if (!mobile || smsCode) return
+    if (!mobile || smsCode || password) return
     const result = await api.users.getSmsCode('+86', mobile)
-    expect(result.success).toBe(true)
-    expect(result.data.action).toBe('LOGIN')
+    expect(result.status).toBe(200)
+    expect(result.data.success).toBe(true)
+    expect(result.data.data.action).toBe('LOGIN')
   })
 
   it('loginWithSmsCode should work', async () => {
     if (!mobile || !smsCode) return
     const result = await api.users.loginWithSmsCode('+86', mobile, smsCode)
-    expect(result.success).toBe(true)
-    if (result.success) expect(result.user).toBeTruthy()
+    expect(result.status).toBe(200)
+    expect(result.data.success).toBe(true)
+    if (result.data.success) expect(result.data.user).toBeTruthy()
   })
 
   it('loginWithPhoneAndPassword should work', async () => {
@@ -47,7 +49,8 @@ describe('users should work', () => {
       mobile,
       password
     )
-    expect(result.success).toBe(true)
-    if (result.success) expect(result.user).toBeTruthy()
+    expect(result.status).toBe(200)
+    expect(result.data.success).toBe(true)
+    if (result.data.success) expect(result.data.user).toBeTruthy()
   })
 })

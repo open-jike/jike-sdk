@@ -37,4 +37,4 @@ jobs:
       - name: Build
         run: pnpm build
       - name: Test
-        run: pnpm test run tests/common.test.ts
+        run: pnpm test run tests/request.test.ts

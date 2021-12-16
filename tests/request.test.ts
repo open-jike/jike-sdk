@@ -1,11 +1,17 @@
 import { beforeAll, describe, expect, it } from 'vitest'
 import { AbortController } from 'node-abort-controller'
-import { getAccessToken, request, setAccessToken } from '../dist/node'
+import {
+  getAccessToken,
+  request,
+  setAccessToken,
+  setApiConfig,
+} from '../dist/node'
 import { API_BASE } from '../src/constants'
+import type { ApiConfig } from '../dist/node'
 
 if (!globalThis.AbortController) globalThis.AbortController = AbortController
 
-describe('common', () => {
+describe('request', () => {
   const token = 'TEST_TOKEN'
   setAccessToken(token)
 
@@ -16,8 +22,15 @@ describe('common', () => {
   describe('request options should be correct', () => {
     const controller = new globalThis.AbortController()
     let req: Request
+    const apiConfig: ApiConfig = {
+      deviceId: 'TEST_DEVICE_ID',
+      idfv: 'TEST_IDFV',
+      userAgent: 'TEST_USER_AGENT',
+      accessToken: 'TEST_ACCESS_TOKEN',
+    }
 
     beforeAll(async () => {
+      setApiConfig(apiConfig)
       const t = request('', {
         signal: controller.signal,
         hooks: {
@@ -36,8 +49,13 @@ describe('common', () => {
       expect(req.url).toBe(API_BASE)
     })
 
-    it('access token should be correct', () => {
-      expect(req.headers.get('x-jike-access-token')).toBe(token)
+    it('headers should be correct', () => {
+      expect(req.headers.get('User-Agent')).toBe(apiConfig.userAgent)
+      expect(req.headers.get('x-jike-access-token')).toBe(apiConfig.accessToken)
+      expect(req.headers.get('x-jike-device-properties')).includes(
+        apiConfig.idfv
+      )
+      expect(req.headers.get('x-jike-device-id')).includes(apiConfig.deviceId)
     })
   })
 })

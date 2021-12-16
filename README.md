@@ -117,7 +117,6 @@ setAccessToken('your access token')
 
 ## TODO
 
-- Return response headers
 - Support more low level APIs
 - Add some high level APIs
 
