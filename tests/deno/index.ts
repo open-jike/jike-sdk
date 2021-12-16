@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { getAccessToken, setAccessToken, ApiClient } from '../../dist/index.js'
 
 setAccessToken('TEST-TOKEN')
