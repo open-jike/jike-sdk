@@ -14,7 +14,7 @@ specifiers:
   node-fetch: 3.1.0
   tsup: 5.11.6
   typescript: 4.5.4
-  vite: 2.7.2
+  vite: 2.7.3
   vitest: 0.0.92
 
 dependencies:
@@ -33,8 +33,8 @@ devDependencies:
   node-abort-controller: 3.0.1
   tsup: 5.11.6_typescript@4.5.4
   typescript: 4.5.4
-  vite: 2.7.2
-  vitest: 0.0.92_vite@2.7.2
+  vite: 2.7.3
+  vitest: 0.0.92_vite@2.7.3
 
 packages:
 
@@ -3028,8 +3028,8 @@ packages:
       spdx-expression-parse: 3.0.1
     dev: true
 
-  /vite/2.7.2:
-    resolution: {integrity: sha512-wMffVVdKZRZP/HwW3yttKL8X+IJePz7bUcnGm0vqljffpVwHpjWC3duZtJQHAGvy+wrTjmwU7vkULpZ1dVXY6w==}
+  /vite/2.7.3:
+    resolution: {integrity: sha512-GAY1P+9fLJOju1SRm8+hykVnEXog+E+KXuqqyMBQDriKCUIKzWnPn142yNNhSdf/ixYGYdUa5ce3A8WaEajzGw==}
     engines: {node: '>=12.2.0'}
     hasBin: true
     peerDependencies:
@@ -3052,7 +3052,7 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vitest/0.0.92_vite@2.7.2:
+  /vitest/0.0.92_vite@2.7.3:
     resolution: {integrity: sha512-qG55Yh31gsiOZm5sUSjYj03vjc7qQbpPsObCDm3qwv7a//m6iVVUHxa1Z8IxkkQ3fFh7zhGPDvaV9cr1l1zqWg==}
     engines: {node: '>=16.0.0'}
     hasBin: true
@@ -3078,7 +3078,7 @@ packages:
       piscina: 3.2.0
       source-map: 0.7.3
       tinyspy: 0.1.0
-      vite: 2.7.2
+      vite: 2.7.3
     dev: true
 
   /web-streams-polyfill/3.2.0:
