@@ -71,7 +71,7 @@ export interface ProfileTag {
 }
 
 export interface RestrictedAvatarChange {
-  nextChangeDate: Date
+  nextChangeDate: string
   limits: number
 }
 
@@ -84,8 +84,8 @@ export interface SimpleUser {
   id: string
   username: string
   screenName: string
-  createdAt: Date
-  updatedAt: Date
+  createdAt: string
+  updatedAt: string
   isVerified: boolean
   verifyMessage: string
   briefIntro: string
@@ -102,7 +102,7 @@ export interface SimpleUser {
   refRemark?: RefRemark
   bio?: string
   decorations?: Decorations
-  sponsorExpiresAt?: Date
+  sponsorExpiresAt?: string
   trailingIcons?: TrailingIcon[]
   following?: boolean
 }
@@ -116,8 +116,8 @@ export interface User {
   id: string
   username: string
   screenName: string
-  createdAt: Date
-  updatedAt: Date
+  createdAt: string
+  updatedAt: string
   isVerified: boolean
   verifyMessage: string
   briefIntro: string
@@ -141,7 +141,7 @@ export interface User {
   mobilePhoneNumber: string
   areaCode: string
   groupVersion: number
-  lastChangeNameTime: Date
+  lastChangeNameTime: string
   birthday: string
   wechatUserInfo: WechatUserInfo
   topicRoles: any[]
@@ -212,14 +212,14 @@ export interface PostInfo {
   collected: boolean
   collectTime?: any
   user: SimpleUser
-  createdAt: Date
+  createdAt: string
   isFeatured: boolean
   enablePictureComments: boolean
   repostable: boolean
   rollouts: Rollouts
   scrollingSubtitles: ScrollingSubtitle[]
 
-  actionTime?: Date
+  actionTime?: string
   pinned?: Pinned
   target?: Target
   targetType?: string
@@ -238,13 +238,13 @@ export interface CreatePostResponse {
 export interface GetFollowingListResponse {
   success: boolean
   data: SimpleUser[]
-  loadMoreKey: { createdAt: Date }
+  loadMoreKey: { createdAt: string }
 }
 
 export interface GetFollowerListResponse {
   success: boolean
   data: SimpleUser[]
-  loadMoreKey: { createdAt: Date }
+  loadMoreKey: { createdAt: string }
 }
 
 export interface GetSmsCodeResponse {
@@ -309,7 +309,7 @@ export interface Target {
   shareCount: number
   rootType: string
   pictures: any[]
-  createdAt: Date
+  createdAt: string
   liked: boolean
   collected: boolean
   syncCommentId: string
@@ -320,7 +320,7 @@ export interface ReplyToComment {
   targetType: string
   targetId: string
   threadId: string
-  createdAt: Date
+  createdAt: string
   level: number
   content: string
   urlsInText: any[]
@@ -394,14 +394,14 @@ export interface Topic {
   pictureUrl: string
   thumbnailUrl: string
   subscribedStatusRawValue: number
-  subscribedAt: Date
+  subscribedAt: string
   ref: string
   isDreamTopic: boolean
   isAnonymous: boolean
   enablePictureComments: boolean
   enablePictureWatermark: boolean
   timeForRank: string
-  lastMessagePostTime: Date
+  lastMessagePostTime: string
   createdAt: string
   updatedAt: string
   subscribersTextSuffix: string
@@ -417,7 +417,7 @@ export interface Topic {
   preferSection: string
   relatedHashtags: any[]
   intro: string
-  squarePostUpdateTime: Date
+  squarePostUpdateTime: string
   subscribersAction: string
   approximateSubscribersCount: string
   subscribersDescription: string
@@ -457,7 +457,7 @@ export interface PostDetail {
   collected: boolean
   collectTime?: any
   user: SimpleUser
-  createdAt: Date
+  createdAt: string
   isFeatured: boolean
   enablePictureComments: boolean
   repostable: boolean
@@ -469,4 +469,49 @@ export interface PostDetail {
 
 export interface PostDetailResponse {
   data: PostDetail
+}
+
+export interface ActionItem {
+  type: string
+  users: SimpleUser[]
+  usersCount: number
+  id: string
+  content: string
+  pictures: any[]
+  enablePictureComments: boolean
+  status: string
+  targetId: string
+  targetType: string
+  collapsible: boolean
+  collapsed: boolean
+}
+
+export interface ReferenceItem {
+  id: string
+  type: string
+  content: string
+  status: string
+  targetId: string
+  targetType: string
+}
+
+export interface Notification {
+  id: string
+  type: string
+  createdAt: string
+  updatedAt: string
+  stoppable: boolean
+  stopped: boolean
+  actionType: string
+  actionItem: ActionItem
+  linkUrl: string
+  linkType: string
+  referenceItem: ReferenceItem
+}
+
+export interface NotificationListResponse {
+  data: Notification[]
+  loadMoreKey: {
+    lastNotificationId: string
+  }
 }

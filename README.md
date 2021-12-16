@@ -24,6 +24,7 @@
   - [x] 发送登录验证码
   - [x] 短信登录
   - [x] 手机号与密码登录
+  - [ ] 保存设备 Token
 - 用户关系
   - [x] 获取关注列表
   - [x] 获取被关注列表
@@ -36,6 +37,8 @@
   - [x] 取消点赞
 - 主页
   - [x] 获取用户动态
+- 通知
+  - [x] 获取通知列表
 
 </details>
 
@@ -114,6 +117,7 @@ setAccessToken('your access token')
 
 ## TODO
 
+- Return response headers
 - Support more low level APIs
 - Add some high level APIs
 
