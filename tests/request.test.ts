@@ -1,4 +1,5 @@
 import { beforeAll, describe, expect, it } from 'vitest'
+import '../src/node-shim'
 import { AbortController } from 'node-abort-controller'
 import {
   getAccessToken,
