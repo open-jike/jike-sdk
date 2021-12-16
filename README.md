@@ -58,10 +58,10 @@ npm i jike-sdk
 
 ```ts
 // 自带 node-fetch
-import { api, setAccessToken, Client } from 'jike-sdk/node'
+import { api, setAccessToken, ApiClient } from 'jike-sdk/node'
 
 // 不带 node-fetch，需要自行 ployfill
-// import { api, setAccessToken, Client } from 'jike-sdk'
+// import { api, setAccessToken, ApiClient } from 'jike-sdk'
 
 setAccessToken('your access token')
 api.userRelation.getFollowingList('82D23B32-CF36-4C59-AD6F-D05E3552CBF3', {
@@ -69,7 +69,7 @@ api.userRelation.getFollowingList('82D23B32-CF36-4C59-AD6F-D05E3552CBF3', {
 })
 
 // Or
-const client = Client('your access token')
+const client = ApiClient('your access token')
 client.users.profile()
 ```
 
