@@ -24,6 +24,7 @@ describe('users should work', () => {
 
   const mobile = process.env.MOBILE
   const smsCode = process.env.SMS_CODE
+  const password = process.env.PASSWORD
 
   it('sendSms should work', async () => {
     if (!mobile || smsCode) return
@@ -36,5 +37,17 @@ describe('users should work', () => {
     if (!mobile || !smsCode) return
     const result = await api.users.loginWithSmsCode('+86', mobile, smsCode)
     expect(result.success).toBe(true)
+    if (result.success) expect(result.user).toBeTruthy()
+  })
+
+  it('loginWithPhoneAndPassword should work', async () => {
+    if (!mobile || !password) return
+    const result = await api.users.loginWithPhoneAndPassword(
+      '+86',
+      mobile,
+      password
+    )
+    expect(result.success).toBe(true)
+    if (result.success) expect(result.user).toBeTruthy()
   })
 })

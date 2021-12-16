@@ -77,3 +77,26 @@ export const loginWithSmsCode = <
       success: !(data as any).error,
       ...data,
     }))
+
+/**
+ * 手机号与密码登录
+ * @param areaCode 区号，如+86
+ * @param mobile 手机号
+ * @param password 密码
+ */
+export const loginWithPhoneAndPassword = <
+  T = LoginFailureResponse | LoginSuccessResponse
+>(
+  areaCode: string,
+  mobile: string,
+  password: string
+) =>
+  request
+    .post('1.0/users/loginWithPhoneAndPassword', {
+      json: {
+        areaCode,
+        mobilePhoneNumber: mobile,
+        password,
+      },
+    })
+    .json<T>()
