@@ -21,6 +21,10 @@ const modern = (): Options => {
     ...common,
     format: ['esm'],
     splitting: false,
+    define: {
+      isNode: 'false',
+    },
+    minifySyntax: true,
     esbuildOptions: (options) => {
       options.outExtension = {}
     },
@@ -31,6 +35,10 @@ const node = (): Options => ({
   ...common,
   format: ['esm'],
   clean: true,
+  define: {
+    isNode: 'true',
+  },
+  minifySyntax: true,
   inject: [$r('src/node-shim.ts')],
   esbuildOptions: (options) => {
     options.entryNames = '[dir]/node'

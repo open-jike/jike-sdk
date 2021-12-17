@@ -6,8 +6,9 @@ import {
   request,
   setAccessToken,
   setApiConfig,
+  resolveApiConfig,
 } from '../dist/node'
-import { API_BASE } from '../src/constants'
+import { API_BASE, defaultEnvironment } from '../src/constants'
 import type { ApiConfig } from '../dist/node'
 
 if (!globalThis.AbortController) globalThis.AbortController = AbortController
@@ -58,5 +59,11 @@ describe('request', () => {
       )
       expect(req.headers.get('x-jike-device-id')).includes(apiConfig.deviceId)
     })
+  })
+
+  it('uuid should be random', () => {
+    const config = resolveApiConfig({})
+    expect(config.deviceId).not.toBe(defaultEnvironment.deviceId)
+    expect(config.idfv).not.toBe(defaultEnvironment.idfv)
   })
 })

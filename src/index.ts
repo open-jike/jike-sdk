@@ -1,5 +1,6 @@
 export * from './request'
 export * from './api'
 export * from './api-client'
+export * from './client'
 export * from './types/response'
 export * from './types/request'

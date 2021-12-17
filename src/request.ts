@@ -1,7 +1,7 @@
 /// <reference lib="dom" />
-
 import ky from 'ky'
 import { API_BASE, defaultEnvironment } from './constants'
+import { generateUUID } from './utils'
 import type { ResponsePromise } from 'ky'
 
 export interface ApiConfig {
@@ -14,8 +14,16 @@ export interface ApiConfig {
 export const resolveApiConfig = (config: Partial<ApiConfig>): ApiConfig => {
   return {
     accessToken: config.accessToken || '',
-    deviceId: config.deviceId || defaultEnvironment.deviceId,
-    idfv: config.idfv || defaultEnvironment.idfv,
+    deviceId: (
+      config.deviceId ||
+      generateUUID() ||
+      defaultEnvironment.deviceId
+    ).toUpperCase(),
+    idfv: (
+      config.idfv ||
+      generateUUID() ||
+      defaultEnvironment.idfv
+    ).toUpperCase(),
     userAgent: config.userAgent || defaultEnvironment.userAgent,
   }
 }
@@ -57,7 +65,7 @@ export const request = ky.create({
   },
 })
 
-export interface ApiResponse<T>
+export interface ApiResponse<T = any>
   extends Pick<
     Response,
     'headers' | 'ok' | 'redirected' | 'status' | 'statusText' | 'type' | 'url'
