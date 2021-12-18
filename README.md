@@ -44,6 +44,8 @@
 
 ## Usage
 
+[API Reference](https://blog.sxzz.moe/jike-sdk/)
+
 ### Node.js
 
 Node.js >= 14.15.0 (推荐 v14.17.0 以上)
