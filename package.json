@@ -63,6 +63,6 @@
     "typedoc": "0.22.10",
     "typescript": "4.5.4",
     "vite": "2.7.3",
-    "vitest": "0.0.94"
+    "vitest": "0.0.97"
   }
 }
