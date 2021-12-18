@@ -16,7 +16,7 @@ specifiers:
   typedoc: 0.22.10
   typescript: 4.5.4
   vite: 2.7.3
-  vitest: 0.0.94
+  vitest: 0.0.97
 
 dependencies:
   ky: 0.28.7
@@ -36,13 +36,9 @@ devDependencies:
   typedoc: 0.22.10_typescript@4.5.4
   typescript: 4.5.4
   vite: 2.7.3
-  vitest: 0.0.94_vite@2.7.3
+  vitest: 0.0.97_vite@2.7.3
 
 packages:
-
-  /@assemblyscript/loader/0.10.1:
-    resolution: {integrity: sha512-H71nDOOL8Y7kWRLqf6Sums+01Q5msqBW2KhDUTemh1tvY04eSkSXrK0uj/4mmY0Xr16/3zyZmsrxN7CKuRbNRg==}
-    dev: true
 
   /@babel/code-frame/7.16.0:
     resolution: {integrity: sha512-IF4EOMEV+bfYwOmNxGzSnjR2EmQod7f1UXOpZM3l4i4o4QNwzjtJAu/HxdjHq0aYBvdqMuQEY1eg0nqW9ZPORA==}
@@ -608,10 +604,6 @@ packages:
 
   /balanced-match/1.0.2:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
-    dev: true
-
-  /base64-js/1.5.1:
-    resolution: {integrity: sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA==}
     dev: true
 
   /binary-extensions/2.2.0:
@@ -1627,10 +1619,6 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
-  /eventemitter-asyncresource/1.0.0:
-    resolution: {integrity: sha512-39F7TBIV0G7gTelxwbEqnwhp90eqCPON1k0NwNfwhgKn4Co4ybUbj2pECcXT0B3ztRKZ7Pw1JujUUgmQJHcVAQ==}
-    dev: true
-
   /execa/5.1.1:
     resolution: {integrity: sha512-8uSpZZocAZRBAPIEINJj3Lo9HyGitllczc27Eh5YYojjMFMn8yHMDMaUHE2Jqfq05D/wucwI4JGURyXt1vchyg==}
     engines: {node: '>=10'}
@@ -1882,18 +1870,6 @@ packages:
     engines: {node: '>= 0.4.0'}
     dependencies:
       function-bind: 1.1.1
-    dev: true
-
-  /hdr-histogram-js/2.0.1:
-    resolution: {integrity: sha512-uPZxl1dAFnjUFHWLZmt93vUUvtHeaBay9nVNHu38SdOjMSF/4KqJUqa1Seuj08ptU1rEb6AHvB41X8n/zFZ74Q==}
-    dependencies:
-      '@assemblyscript/loader': 0.10.1
-      base64-js: 1.5.1
-      pako: 1.0.11
-    dev: true
-
-  /hdr-histogram-percentiles-obj/3.0.0:
-    resolution: {integrity: sha512-7kIufnBqdsBGcSZLPJwqHT3yhk1QTsSlFsVD3kx5ixH/AlgBs9yM1q6DPhXZ8f8gtdqgh7N7/5btRLpQsS2gHw==}
     dev: true
 
   /hosted-git-info/2.8.9:
@@ -2321,24 +2297,9 @@ packages:
     resolution: {integrity: sha1-Sr6/7tdUHywnrPspvbvRXI1bpPc=}
     dev: true
 
-  /nice-napi/1.0.2:
-    resolution: {integrity: sha512-px/KnJAJZf5RuBGcfD+Sp2pAKq0ytz8j+1NehvgIGFkvtvFrDM3T8E4x/JJODXK9WZow8RRGrbA9QQ3hs+pDhA==}
-    os: ['!win32']
-    requiresBuild: true
-    dependencies:
-      node-addon-api: 3.2.1
-      node-gyp-build: 4.3.0
-    dev: true
-    optional: true
-
   /node-abort-controller/3.0.1:
     resolution: {integrity: sha512-/ujIVxthRs+7q6hsdjHMaj8hRG9NuWmwrz+JdRwZ14jdFoKSkm+vDsCbF9PLpnSqjaWQJuTmVtcWHNLr+vrOFw==}
     dev: true
-
-  /node-addon-api/3.2.1:
-    resolution: {integrity: sha512-mmcei9JghVNDYydghQmeDX8KoAm0FAiYyIcUt/N4nhyAipB17pllZQDOJD2fotxABnt4Mdz+dKTO7eftLg4d0A==}
-    dev: true
-    optional: true
 
   /node-fetch/3.1.0:
     resolution: {integrity: sha512-QU0WbIfMUjd5+MUzQOYhenAazakV7Irh1SGkWCsRzBwvm4fAhzEUaHMJ6QLP7gWT6WO9/oH2zhKMMGMuIrDyKw==}
@@ -2348,12 +2309,6 @@ packages:
       fetch-blob: 3.1.3
       formdata-polyfill: 4.0.10
     dev: false
-
-  /node-gyp-build/4.3.0:
-    resolution: {integrity: sha512-iWjXZvmboq0ja1pUGULQBexmxq8CV4xBhX7VDOTbL7ZR4FOowwY/VOtRxBN/yKxmdGoIp4j5ysNT4u3S2pDQ3Q==}
-    hasBin: true
-    dev: true
-    optional: true
 
   /node-releases/2.0.1:
     resolution: {integrity: sha512-CqyzN6z7Q6aMeF/ktcMVTzhAHCEpf8SOarwpzpf8pNBY2k5/oM34UHldUwp8VKI7uxct2HxSRdJjBaZeESzcxA==}
@@ -2476,10 +2431,6 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
-  /pako/1.0.11:
-    resolution: {integrity: sha512-4hLB8Py4zZce5s4yd9XzopqwVv/yGNhV1Bl8NTmCq1763HeK2+EwVTv+leGeL13Dnh2wfbqowVPXCIO0z4taYw==}
-    dev: true
-
   /parent-module/1.0.1:
     resolution: {integrity: sha512-GQ2EWRpQV8/o+Aw8YqtfZZPfNRWZYkbidE9k5rpl/hC3vtHHBfGm2Ifi6qWV+coDGkrUKZAxE3Lot5kcsRlh+g==}
     engines: {node: '>=6'}
@@ -2542,16 +2493,6 @@ packages:
   /pirates/4.0.4:
     resolution: {integrity: sha512-ZIrVPH+A52Dw84R0L3/VS9Op04PuQ2SEoJL6bkshmiTic/HldyW9Tf7oH5mhJZBK7NmDx27vSMrYEXPXclpDKw==}
     engines: {node: '>= 6'}
-    dev: true
-
-  /piscina/3.2.0:
-    resolution: {integrity: sha512-yn/jMdHRw+q2ZJhFhyqsmANcbF6V2QwmD84c6xRau+QpQOmtrBCoRGdvTfeuFDYXB5W2m6MfLkjkvQa9lUSmIA==}
-    dependencies:
-      eventemitter-asyncresource: 1.0.0
-      hdr-histogram-js: 2.0.1
-      hdr-histogram-percentiles-obj: 3.0.0
-    optionalDependencies:
-      nice-napi: 1.0.2
     dev: true
 
   /pkg-dir/2.0.0:
@@ -2906,6 +2847,11 @@ packages:
       any-promise: 1.3.0
     dev: true
 
+  /tinypool/0.0.3:
+    resolution: {integrity: sha512-nxFpgSXY/+ZHrwHhlSyY8qzyk4N6+IyZvsaI63/zXUjg++UtCqr3gB0t/CDoCvVKC7NIzzGFEhrAXLm0l1dglA==}
+    engines: {node: '>=14.0.0'}
+    dev: true
+
   /tinyspy/0.1.2:
     resolution: {integrity: sha512-ReLcUvHQeyg6FCXWoaajS2FdikgKWSuwrbrKdq4lr0lBAHK57JqBPEF0RZVqxVC+ap5+ktQemTBJJc9XDO+fgg==}
     engines: {node: '>=14.0.0'}
@@ -3087,8 +3033,8 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vitest/0.0.94_vite@2.7.3:
-    resolution: {integrity: sha512-1Kt/BH/qwp0PLdmsYyuejYgYbq8w8gu7ma1ZEXygIJOYipbnSCmvxDsqijfKLz7k5/RS7ILUnBdNfUVQ3eQvCA==}
+  /vitest/0.0.97_vite@2.7.3:
+    resolution: {integrity: sha512-8gFvjcqBhI78gB5tCEQShQTfmi9R8B4zn+HkOVw2h4e1ojv8fMLBjGCBG0J/RiNdaBXCWcwUy+INgFz3eNNbkA==}
     engines: {node: '>=16.0.0'}
     hasBin: true
     peerDependencies:
@@ -3110,8 +3056,8 @@ packages:
       chai-subset: 1.6.0
       fast-glob: 3.2.7
       local-pkg: 0.4.0
-      piscina: 3.2.0
       source-map: 0.7.3
+      tinypool: 0.0.3
       tinyspy: 0.1.2
       vite: 2.7.3
     dev: true
