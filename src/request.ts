@@ -65,13 +65,26 @@ export const request = ky.create({
   },
 })
 
-export interface ApiResponse<T = any>
-  extends Pick<
-    Response,
-    'headers' | 'ok' | 'redirected' | 'status' | 'statusText' | 'type' | 'url'
-  > {
-  data: T
+type ResponseMeta = Pick<
+  Response,
+  'headers' | 'ok' | 'redirected' | 'status' | 'statusText' | 'type' | 'url'
+>
+export interface ApiSuccessResponse<T = any> extends ResponseMeta {
+  data: T & {
+    /** 是否请求成功 */
+    success: true
+  }
 }
+export interface ApiFailureResponse<T = any> extends ResponseMeta {
+  data: T & {
+    /** 是否请求成功 */
+    success: false
+    /** 错误信息 */
+    error: string
+  }
+}
+export type ApiResponse<T = any> = ApiSuccessResponse<T> | ApiFailureResponse<T>
+
 export const toResponse = async <T>(
   response: ResponsePromise,
   hook?: (data: T) => T
@@ -82,6 +95,11 @@ export const toResponse = async <T>(
   if (contentType?.includes('application/json')) {
     data = await res.json()
     if (hook) data = hook(data)
+    if (typeof data === 'object')
+      data = {
+        success: data?.success !== false,
+        ...data,
+      }
   } else {
     data = await res.text()
   }

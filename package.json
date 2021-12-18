@@ -28,6 +28,7 @@
   "types": "dist/index.d.ts",
   "sideEffects": false,
   "scripts": {
+    "dev": "esmo playground/main.ts",
     "build": "MODE=node tsup && mv dist/index.d.ts dist/node.d.ts && MODE=modern tsup",
     "release": "bumpp --commit --push --tag && npm publish",
     "lint": "eslint .",

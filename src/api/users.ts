@@ -1,16 +1,16 @@
 import { toResponse, request } from '../request'
 import type {
+  MyProfile,
   UserProfile,
   UserRefreshTokenResponse,
   GetSmsCodeResponse,
-  LoginFailureResponse,
-  LoginSuccessResponse,
+  LoginResponse,
 } from '../types/response'
 
 /**
  * 获取用户信息
  */
-export const profile = <T = UserProfile>(username?: string) =>
+export const profile = <T = MyProfile & UserProfile>(username?: string) =>
   toResponse<T>(
     request('1.0/users/profile', {
       searchParams: {
@@ -59,9 +59,7 @@ export const getSmsCode = <T = GetSmsCodeResponse>(
  * @param mobile 手机号
  * @param smsCode 短信验证码
  */
-export const loginWithSmsCode = <
-  T = LoginFailureResponse | LoginSuccessResponse
->(
+export const loginWithSmsCode = <T = LoginResponse>(
   areaCode: string,
   mobile: string,
   smsCode: string | number
@@ -89,9 +87,7 @@ export const loginWithSmsCode = <
  * @param mobile 手机号
  * @param password 密码
  */
-export const loginWithPhoneAndPassword = <
-  T = LoginFailureResponse | LoginSuccessResponse
->(
+export const loginWithPhoneAndPassword = <T = LoginResponse>(
   areaCode: string,
   mobile: string,
   password: string

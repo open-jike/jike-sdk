@@ -1,26 +1,47 @@
 export interface AvatarImage {
+  /** 120px x 120px */
   thumbnailUrl: string
+  /** 300px x 300px */
   smallPicUrl: string
+  /** 800px x 800px */
   middlePicUrl: string
+  /** 1000px x 1000px */
   picUrl: string
+  /** 格式，如 jpeg */
   format: string
+
   campaignDecorationUrl: string
 }
 
+/**
+ * 统计信息
+ */
 export interface StatsCount {
+  /** 关注的话题 */
   topicSubscribed: number
+  /** 创建的话题 */
   topicCreated: number
+  /** 被关注数量 */
   followedCount: number
+  /** 关注数量 */
   followingCount: number
+  /** 精选动态数量 */
   highlightedPersonalUpdates: number
+  /** 获取点赞数 */
   liked: number
+  /** 夸夸数 */
   respectedCount: number
 }
 
+/** 背景图片 */
 export interface BackgroundImage {
+  /** 背景图图片地址 */
   picUrl: string
 }
 
+/**
+ * 偏好设置
+ */
 export interface Preferences {
   autoPlayVideo: boolean
   topicTagGuideOn: boolean
@@ -53,30 +74,51 @@ export interface Preferences {
   liveNotificationOn: boolean
 }
 
+/**
+ * 微信用户信息
+ */
 export interface WechatUserInfo {
+  /** 微信 `OpenId` */
   id: string
+  /** 微信昵称 */
   externalName: string
 }
 
+/**
+ * 勋章信息
+ */
 export interface Medal {
+  /** 图片地址 */
   picUrl: string
+  /** 勋章名称 */
   name: string
+  /** 获取时间 */
   gotMedalAt: string
 }
 
+/**
+ * 主页标签
+ */
 export interface ProfileTag {
-  picUrl: string
+  /** 图片地址 */
+  picUrl?: string
+  /** 类型 */
   type: string
+  /** 文本 */
   text: string
 }
 
-export interface RestrictedAvatarChange {
+/**
+ * 更换限制
+ */
+export interface RestrictedChange {
+  /**
+   * 下一次可更换时间
+   *
+   * ISO-8601 格式，如 `2015-03-04T00:00:00.000Z`
+   */
   nextChangeDate: string
-  limits: number
-}
-
-export interface RestrictedNameChange {
-  nextChangeDate: string
+  /** 限制天数 */
   limits: number
 }
 
@@ -107,75 +149,188 @@ export interface SimpleUser {
   following?: boolean
 }
 
+/**
+ * 访客信息
+ */
 export interface ProfileVisitInfo {
+  /** 今日访客数 */
   todayCount: number
+  /** 最后访客 */
   latestVisitor: SimpleUser
 }
 
-export interface User {
+/**
+ * 学校信息
+ */
+interface School {
+  /** 学校 ID */
   id: string
-  username: string
-  screenName: string
-  createdAt: string
-  updatedAt: string
-  isVerified: boolean
-  verifyMessage: string
-  briefIntro: string
-  avatarImage: AvatarImage
-  profileImageUrl: string
-  statsCount: StatsCount
-  isBannedForever: boolean
-  isSponsor: boolean
-  backgroundImage: BackgroundImage
-  bio: string
-  gender: string
-  city: string
-  country: string
-  province: string
-  groupId: string
-  preferences: Preferences
-  isBetaUser: boolean
-  usernameSet: boolean
-  wechatOpenId: string
-  wechatUnionId: string
-  mobilePhoneNumber: string
-  areaCode: string
-  groupVersion: number
-  lastChangeNameTime: string
-  birthday: string
-  wechatUserInfo: WechatUserInfo
-  topicRoles: any[]
-  school: Record<string, any> // TODO: unknown
-  zodiac: string
-  industry: string
-  showRespect: boolean
-  medals: Medal[]
-  profileTags: ProfileTag[]
-  backgroundMaskColor: string
-  isLoginUser: boolean
-  isBanned: boolean
-  userHasPosted: boolean
-  registerAppVersion: string
-  hasStories: boolean
-  restrictedAvatarChange: RestrictedAvatarChange
-  restrictedNameChange: RestrictedNameChange
-  isDefaultScreenName: boolean
-  profileVisitInfo: ProfileVisitInfo
+  /** 学校名称 */
+  name: string
+  /** 专业 */
+  major: string
+  /** 入学年份 */
+  enrollmentYear: number
+  /**
+   * 隐私类型
+   * - `PUBLIC`: 公开
+   * - `ALUMNI_ONLY`: 仅校友可见
+   */
+  privacyType: 'PUBLIC' | 'ALUMNI_ONLY'
 }
 
+export interface User {
+  /** 用户ID，无实际含义 */
+  id: string
+  /** 用户名 */
+  username: string
+  /** 昵称 */
+  screenName: string
+  /**
+   * 注册时间
+   *
+   * ISO-8601 格式，如 `2015-03-04T00:00:00.000Z`
+   */
+  createdAt: string
+  /**
+   * 最后更新资料时间
+   *
+   * ISO-8601 格式，如 `2015-03-04T00:00:00.000Z`
+   */
+  updatedAt: string
+  /** 是否已认证 */
+  isVerified: boolean
+  /** 认证信息 */
+  verifyMessage: string
+  /** 自我介绍，与 `bio` 一致 */
+  briefIntro: string
+  /** 头像信息 */
+  avatarImage: AvatarImage
+  /** 头像图片地址，120px x 120px */
+  profileImageUrl: string
+  /** 统计信息 */
+  statsCount: StatsCount
+  /** 是否永久封禁 */
+  isBannedForever: boolean
+  /** 是否是赞助者 */
+  isSponsor: boolean
+  /** 背景图 */
+  backgroundImage: BackgroundImage
+  /** 签名 */
+  bio: string
+  /** 性别 */
+  gender: 'MALE' | 'FEMALE'
+  /** 城市 ID，如 `001044001` */
+  city: string
+  /** 国家 ID，如 `001` */
+  country: string
+  /** 身份 ID，如 `001044` */
+  province: string
+  groupId: string
+  /** 偏好设置，仅自己可见 */
+  preferences?: Preferences
+  /** 是否是测试版用户，仅自己可见 */
+  isBetaUser?: boolean
+  usernameSet?: boolean
+  /** 微信 `OpenId`，仅自己可见 */
+  wechatOpenId?: string
+  /** 微信 `UnionId`，仅自己可见 */
+  wechatUnionId?: string
+  /**
+   * 手机号，仅自己可见
+   *
+   * 有打码，如 `*******1234`
+   */
+  mobilePhoneNumber?: string
+  /** 区号，仅自己可见，如 +86 */
+  areaCode?: string
+  groupVersion: number
+  /**
+   * 上次改名时间，仅自己可见
+   *
+   * ISO-8601 格式，如 `2015-03-04T00:00:00.000Z`
+   */
+  lastChangeNameTime?: string
+  /** 生日，仅自己可见，如 `2000-01-01` */
+  birthday?: string
+  /** 微信用户信息 */
+  wechatUserInfo: WechatUserInfo
+  topicRoles: any[]
+  school?: School
+  /** 星座 */
+  zodiac: string
+  /** 行业 */
+  industry?: string
+  /** 是否显示 `夸夸` */
+  showRespect: boolean
+  /** 勋章 */
+  medals: Medal[]
+  /** 主页标签 */
+  profileTags: ProfileTag[]
+  /** 背景图遮罩颜色，如 `#141A1F` */
+  backgroundMaskColor: string
+  /** 是否是登录用户，仅自己可见 */
+  isLoginUser?: boolean
+  /** 是否被封禁，仅自己可见 */
+  isBanned?: boolean
+  /** 是否发过动态，仅自己可见 */
+  userHasPosted?: boolean
+  /** 注册 APP 版本，仅自己可见 */
+  registerAppVersion?: string
+  /** 是否有日记，仅自己可见 */
+  hasStories?: boolean
+  /** 更换头像限制信息，仅自己可见 */
+  restrictedAvatarChange?: RestrictedChange
+  /** 更换昵称限制信息，仅自己可见 */
+  restrictedNameChange?: RestrictedChange
+  /** 是否是默认昵称，仅自己可见 */
+  isDefaultScreenName?: boolean
+  /** 访客信息，仅自己可见 */
+  profileVisitInfo?: ProfileVisitInfo
+}
+
+/**
+ * 底部栏图标信息
+ */
 export interface TabIcons {
+  /** 第四个图标 */
   tab4: string
 }
 
-export interface UserProfile {
+export interface GeneralProfile {
+  /** 用户信息 */
   user: User
-  enabledFeatures: string[]
-  agreedProtocol: string[]
-  tabIcons: TabIcons
+}
+
+/**
+ * 他人的用户信息
+ */
+export interface UserProfile extends GeneralProfile {
+  /** 关系信息，仅他人用户信息可见 */
+  relationMessage?: string
+  /** 关系用户，仅他人用户信息可见 */
+  relationUsers?: {
+    message: string
+    users: SimpleUser[]
+    page: string
+  }
+  /** 是否**不**可见，仅他人用户信息可见 */
+  invisible?: boolean
+}
+
+/**
+ * 自己的用户信息
+ */
+export interface MyProfile extends GeneralProfile {
+  /** 启用的功能，仅自己可见 */
+  enabledFeatures?: string[]
+  /** 同意的协议，仅自己可见 */
+  agreedProtocol?: string[]
+  /** 底部栏图标信息，仅自己可见 */
+  tabIcons?: TabIcons
 }
 
 export interface UserRefreshTokenResponse {
-  success: boolean
   'x-jike-access-token': string
   'x-jike-refresh-token': string
 }
@@ -230,36 +385,27 @@ export interface PostInfo {
 }
 
 export interface CreatePostResponse {
-  success: boolean
   toast: string
   data: PostInfo
 }
 
 export interface GetFollowingListResponse {
-  success: boolean
   data: SimpleUser[]
   loadMoreKey: { createdAt: string }
 }
 
 export interface GetFollowerListResponse {
-  success: boolean
   data: SimpleUser[]
   loadMoreKey: { createdAt: string }
 }
 
 export interface GetSmsCodeResponse {
-  success: boolean
   data: {
     action: string
   }
 }
 
-export interface LoginFailureResponse {
-  success: false
-  error: string
-}
-
-export interface LoginSuccessResponse {
+export interface LoginResponse {
   success: true
   isRegister: boolean
   user: User
@@ -339,7 +485,6 @@ export interface ReplyToComment {
 }
 
 export interface SingleResponse {
-  success: boolean
   data: PostInfo[]
   loadMoreKey: {
     lastId: string
