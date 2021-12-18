@@ -9,8 +9,9 @@ export {
 export * from './api'
 export * from './api-client'
 export * from './client'
-export * as Response from './types/response'
-export * as Request from './types/request'
+export * as ApiOptions from './types/options'
+export * as ApiResponses from './types/api-responses'
+export * as Entity from './types/entity'
 export type {
   ApiConfig,
   ApiResponse,

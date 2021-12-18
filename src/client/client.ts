@@ -51,9 +51,9 @@ export class JikeClient {
 
   /**
    * 发送短信验证码
-   * @param areaCode 区号，如：+86
+   * @param areaCode 区号，如 `+86`
    * @param mobile 手机号
-   * @throws {RequestFailureError}
+   * @throws {@link RequestFailureError} 请求失败错误
    */
   async sendSmsCode(areaCode: string | number, mobile: string) {
     const result = await this.#client.users.getSmsCode(
@@ -65,10 +65,10 @@ export class JikeClient {
 
   /**
    * 短信登录
-   * @param areaCode 区号，如：+86
+   * @param areaCode 区号，如 `+86`
    * @param mobile 手机号
    * @param smsCode 短信验证码
-   * @throws {RequestFailureError}
+   * @throws {@link RequestFailureError} 请求失败错误
    */
   async loginWithSmsCode(
     areaCode: string | number,
@@ -86,6 +86,11 @@ export class JikeClient {
     this.accessToken = result.headers.get('x-jike-access-token')!
   }
 
+  /**
+   * 获取用户
+   * @param username 用户名
+   * @returns {@link JikeUser} 实例
+   */
   getUser(username: string): JikeUser {
     return new JikeUser(this, username)
   }

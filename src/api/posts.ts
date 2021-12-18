@@ -1,13 +1,13 @@
 import { toResponse, request } from '../request'
-import type { CreatePostOption } from '../types/request'
-import type { CreatePostResponse, PostDetailResponse } from '../types/response'
+import type { CreatePostOption } from '../types/options'
+import type { Posts } from '../types/api-responses'
 
 /**
  * 发送动态
  * @param content 内容
  * @param options 其他选项
  */
-export const create = <T = CreatePostResponse>(
+export const create = <T = Posts.CreateResponse>(
   content: string,
   options: CreatePostOption = {}
 ) =>
@@ -25,7 +25,7 @@ export const create = <T = CreatePostResponse>(
  * 获取动态详情
  * @param id 动态ID
  */
-export const get = <T = PostDetailResponse>(id: string) =>
+export const get = <T = Posts.GetResponse>(id: string) =>
   toResponse<T>(
     request('1.0/originalPosts/get', {
       searchParams: { id },
@@ -38,7 +38,7 @@ export const get = <T = PostDetailResponse>(id: string) =>
  * @param method 分享方式
  * @returns
  */
-export const share = <T = { success: boolean }>(id: string, method: string) =>
+export const share = <T = {}>(id: string, method: string) =>
   toResponse<T>(
     request.post('1.0/originalPosts/share', {
       json: {
@@ -52,7 +52,7 @@ export const share = <T = { success: boolean }>(id: string, method: string) =>
  * 点赞动态
  * @param id 动态ID
  */
-export const like = <T = { success: boolean }>(id: string) =>
+export const like = <T = {}>(id: string) =>
   toResponse<T>(
     request.post('1.0/originalPosts/like', {
       json: { id },
@@ -63,7 +63,7 @@ export const like = <T = { success: boolean }>(id: string) =>
  * 取消点赞动态
  * @param id 动态ID
  */
-export const unlike = <T = { success: boolean }>(id: string) =>
+export const unlike = <T = {}>(id: string) =>
   toResponse<T>(
     request.post('1.0/originalPosts/unlike', {
       json: { id },

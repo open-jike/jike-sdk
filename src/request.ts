@@ -4,13 +4,24 @@ import { API_BASE, defaultEnvironment } from './constants'
 import { generateUUID } from './utils'
 import type { ResponsePromise } from 'ky'
 
+/**
+ * API 配置
+ */
 export interface ApiConfig {
+  /** `access-token` */
   accessToken: string
+  /** 设备 ID */
   deviceId: string
+  /** `idfv` */
   idfv: string
+  /** `User-Agent` 请求头 */
   userAgent: string
 }
 
+/**
+ * 解析 API 配置
+ * @param config 可空的配置
+ */
 export const resolveApiConfig = (config: Partial<ApiConfig>): ApiConfig => {
   return {
     accessToken: config.accessToken || '',
@@ -29,12 +40,27 @@ export const resolveApiConfig = (config: Partial<ApiConfig>): ApiConfig => {
 }
 let apiConfig: ApiConfig = resolveApiConfig({})
 
+/**
+ * 设置 API 配置
+ * @param config 配置
+ */
 export const setApiConfig = (config: Partial<ApiConfig>) =>
   (apiConfig = resolveApiConfig(config))
+
+/** 获取 API 配置 */
 export const getApiConfig = () => apiConfig
+
+/**
+ * 设置全局配置 `access-token`
+ * @param token `access-token`
+ */
 export const setAccessToken = (token: string) => (apiConfig.accessToken = token)
+/** 获取全局配置 `access-token` */
 export const getAccessToken = () => apiConfig.accessToken
 
+/**
+ * API 请求函数，继承自 [ky](https://github.com/sindresorhus/ky)
+ */
 export const request = ky.create({
   prefixUrl: API_BASE,
   headers: {
@@ -69,12 +95,20 @@ type ResponseMeta = Pick<
   Response,
   'headers' | 'ok' | 'redirected' | 'status' | 'statusText' | 'type' | 'url'
 >
+/**
+ * API 成功响应
+ * @template T 响应数据
+ */
 export interface ApiSuccessResponse<T = any> extends ResponseMeta {
   data: T & {
     /** 是否请求成功 */
     success: true
   }
 }
+/**
+ * API 失败响应
+ * @template T 响应数据
+ */
 export interface ApiFailureResponse<T = any> extends ResponseMeta {
   data: T & {
     /** 是否请求成功 */
@@ -83,6 +117,10 @@ export interface ApiFailureResponse<T = any> extends ResponseMeta {
     error: string
   }
 }
+/**
+ * API 响应
+ * @template T 响应数据
+ */
 export type ApiResponse<T = any> = ApiSuccessResponse<T> | ApiFailureResponse<T>
 
 export const toResponse = async <T>(

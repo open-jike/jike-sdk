@@ -1,20 +1,23 @@
+/**
+ * 头像图片
+ */
 export interface AvatarImage {
-  /** 120px x 120px */
+  /** `120px` x `120px` */
   thumbnailUrl: string
-  /** 300px x 300px */
+  /** `300px` x `300px` */
   smallPicUrl: string
-  /** 800px x 800px */
+  /** `800px` x `800px` */
   middlePicUrl: string
-  /** 1000px x 1000px */
+  /** `1000px` x `1000px` */
   picUrl: string
-  /** 格式，如 jpeg */
+  /** 格式，如 `jpeg` */
   format: string
 
   campaignDecorationUrl: string
 }
 
 /**
- * 统计信息
+ * 用户统计信息
  */
 export interface StatsCount {
   /** 关注的话题 */
@@ -122,33 +125,6 @@ export interface RestrictedChange {
   limits: number
 }
 
-export interface SimpleUser {
-  id: string
-  username: string
-  screenName: string
-  createdAt: string
-  updatedAt: string
-  isVerified: boolean
-  verifyMessage: string
-  briefIntro: string
-  avatarImage: AvatarImage
-  profileImageUrl: string
-  statsCount: StatsCount
-  isBannedForever: boolean
-  isSponsor: boolean
-  backgroundImage: BackgroundImage
-  gender: string
-  city?: string
-  country?: string
-  province?: string
-  refRemark?: RefRemark
-  bio?: string
-  decorations?: Decorations
-  sponsorExpiresAt?: string
-  trailingIcons?: TrailingIcon[]
-  following?: boolean
-}
-
 /**
  * 访客信息
  */
@@ -179,6 +155,9 @@ export interface School {
   privacyType: 'PUBLIC' | 'ALUMNI_ONLY'
 }
 
+/**
+ * 用户信息
+ */
 export interface User {
   /** 用户ID，无实际含义 */
   id: string
@@ -206,7 +185,7 @@ export interface User {
   briefIntro: string
   /** 头像信息 */
   avatarImage: AvatarImage
-  /** 头像图片地址，120px x 120px */
+  /** 头像图片地址，`120px` x `120px` */
   profileImageUrl: string
   /** 统计信息 */
   statsCount: StatsCount
@@ -242,7 +221,7 @@ export interface User {
    * 有打码，如 `*******1234`
    */
   mobilePhoneNumber?: string
-  /** 区号，仅自己可见，如 +86 */
+  /** 区号，仅自己可见，如 `+86` */
   areaCode?: string
   groupVersion: number
   /**
@@ -289,50 +268,39 @@ export interface User {
   profileVisitInfo?: ProfileVisitInfo
 }
 
+export interface SimpleUser {
+  id: string
+  username: string
+  screenName: string
+  createdAt: string
+  updatedAt: string
+  isVerified: boolean
+  verifyMessage: string
+  briefIntro: string
+  avatarImage: AvatarImage
+  profileImageUrl: string
+  statsCount: StatsCount
+  isBannedForever: boolean
+  isSponsor: boolean
+  backgroundImage: BackgroundImage
+  gender: string
+  city?: string
+  country?: string
+  province?: string
+  refRemark?: RefRemark
+  bio?: string
+  decorations?: Decorations
+  sponsorExpiresAt?: string
+  trailingIcons?: TrailingIcon[]
+  following?: boolean
+}
+
 /**
  * 底部栏图标信息
  */
 export interface TabIcons {
   /** 第四个图标 */
   tab4: string
-}
-
-export interface GeneralProfile {
-  /** 用户信息 */
-  user: User
-}
-
-/**
- * 他人的用户信息
- */
-export interface UserProfile extends GeneralProfile {
-  /** 关系信息，仅他人用户信息可见 */
-  relationMessage?: string
-  /** 关系用户，仅他人用户信息可见 */
-  relationUsers?: {
-    message: string
-    users: SimpleUser[]
-    page: string
-  }
-  /** 是否**不**可见，仅他人用户信息可见 */
-  invisible?: boolean
-}
-
-/**
- * 自己的用户信息
- */
-export interface MyProfile extends GeneralProfile {
-  /** 启用的功能，仅自己可见 */
-  enabledFeatures?: string[]
-  /** 同意的协议，仅自己可见 */
-  agreedProtocol?: string[]
-  /** 底部栏图标信息，仅自己可见 */
-  tabIcons?: TabIcons
-}
-
-export interface UserRefreshTokenResponse {
-  'x-jike-access-token': string
-  'x-jike-refresh-token': string
 }
 
 export interface RefRemark {
@@ -382,36 +350,6 @@ export interface PostInfo {
   liked?: boolean
   syncCommentId?: string
   replyToComment?: ReplyToComment
-}
-
-export interface CreatePostResponse {
-  toast: string
-  data: PostInfo
-}
-
-export interface GetFollowingListResponse {
-  data: SimpleUser[]
-  loadMoreKey: { createdAt: string }
-}
-
-export interface GetFollowerListResponse {
-  data: SimpleUser[]
-  loadMoreKey: { createdAt: string }
-}
-
-export interface GetSmsCodeResponse {
-  data: {
-    action: string
-  }
-}
-
-export interface LoginResponse {
-  success: true
-  isRegister: boolean
-  user: User
-  enabledFeatures: string[]
-  agreedProtocol: string[]
-  bioUpdateAlert: boolean
 }
 
 export interface Sponsor {
@@ -482,13 +420,6 @@ export interface ReplyToComment {
   collapsible: boolean
   isPinned: boolean
   pinnable: boolean
-}
-
-export interface SingleResponse {
-  data: PostInfo[]
-  loadMoreKey: {
-    lastId: string
-  }
 }
 
 export interface UrlsInText {
@@ -612,10 +543,6 @@ export interface PostDetail {
   readTrackInfo: ReadTrackInfo
 }
 
-export interface PostDetailResponse {
-  data: PostDetail
-}
-
 export interface ActionItem {
   type: string
   users: SimpleUser[]
@@ -652,11 +579,4 @@ export interface Notification {
   linkUrl: string
   linkType: string
   referenceItem: ReferenceItem
-}
-
-export interface NotificationListResponse {
-  data: Notification[]
-  loadMoreKey: {
-    lastNotificationId: string
-  }
 }

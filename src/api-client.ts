@@ -3,6 +3,11 @@ import { setApiConfig } from './request'
 import type { ApiConfig } from './request'
 import type { Api } from './api'
 
+/**
+ * API 客户端
+ * @description 用于多账号时，方便管理实例
+ * @param apiConfig API 配置
+ */
 export const ApiClient = (apiConfig: Partial<ApiConfig>): Api =>
   new Proxy(api, {
     get(target, prop) {

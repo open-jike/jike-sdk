@@ -1,7 +1,7 @@
 /**
  * 分页选项
  */
-export interface PaginationOption {
+export interface PaginationOption<T = any> {
   /**
    * 最大记录数
    * @default 10
@@ -11,7 +11,7 @@ export interface PaginationOption {
   /**
    * 上一页的 `loadMoreKey`
    */
-  loadMoreKey?: any
+  loadMoreKey?: T
 }
 
 export interface CreatePostOption {

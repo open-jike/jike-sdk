@@ -1,16 +1,13 @@
 import { request, toResponse } from '../request'
-import type {
-  GetFollowingListResponse,
-  GetFollowerListResponse,
-} from '../types/response'
-import type { PaginationOption } from '../types/request'
+import type { UserRelation } from '../types/api-responses'
+import type { PaginationOption } from '../types/options'
 
 /**
  * 获取关注列表
  * @param username 用户名
  * @param option 选项
  */
-export const getFollowingList = <T = GetFollowingListResponse>(
+export const getFollowingList = <T = UserRelation.GetFollowingListResponse>(
   username: string,
   option: PaginationOption = {}
 ) =>
@@ -29,7 +26,7 @@ export const getFollowingList = <T = GetFollowingListResponse>(
  * @param username 用户名
  * @param option 选项
  */
-export const getFollowerList = <T = GetFollowerListResponse>(
+export const getFollowerList = <T = UserRelation.GetFollowerListResponse>(
   username: string,
   option: PaginationOption = {}
 ) =>

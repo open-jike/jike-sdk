@@ -1,16 +1,12 @@
 import { toResponse, request } from '../request'
-import type {
-  MyProfile,
-  UserProfile,
-  UserRefreshTokenResponse,
-  GetSmsCodeResponse,
-  LoginResponse,
-} from '../types/response'
+import type { Users } from '../types/api-responses'
 
 /**
  * 获取用户信息
  */
-export const profile = <T = MyProfile & UserProfile>(username?: string) =>
+export const profile = <T = Users.MyProfile & Users.UserProfile>(
+  username?: string
+) =>
   toResponse<T>(
     request('1.0/users/profile', {
       searchParams: {
@@ -23,7 +19,7 @@ export const profile = <T = MyProfile & UserProfile>(username?: string) =>
  * 刷新 Access Token
  * @param refreshToken 登录时返回的 refresh token
  */
-export const refreshToken = async <T = UserRefreshTokenResponse>(
+export const refreshToken = async <T = Users.RefreshTokenResponse>(
   refreshToken: string
 ) =>
   toResponse<T>(
@@ -36,10 +32,10 @@ export const refreshToken = async <T = UserRefreshTokenResponse>(
 
 /**
  * 发送登录验证码
- * @param areaCode 区号，如：+86
+ * @param areaCode 区号，如 `+86`
  * @param mobile 手机号
  */
-export const getSmsCode = <T = GetSmsCodeResponse>(
+export const getSmsCode = <T = Users.GetSmsCodeResponse>(
   areaCode: string,
   mobile: string
 ) =>
@@ -55,11 +51,11 @@ export const getSmsCode = <T = GetSmsCodeResponse>(
 
 /**
  * 短信登录
- * @param areaCode 区号，如：+86
+ * @param areaCode 区号，如 `+86`
  * @param mobile 手机号
  * @param smsCode 短信验证码
  */
-export const loginWithSmsCode = <T = LoginResponse>(
+export const loginWithSmsCode = <T = Users.LoginResponse>(
   areaCode: string,
   mobile: string,
   smsCode: string | number
@@ -83,11 +79,11 @@ export const loginWithSmsCode = <T = LoginResponse>(
 
 /**
  * 手机号与密码登录
- * @param areaCode 区号，如+86
+ * @param areaCode 区号，如 `+86`
  * @param mobile 手机号
  * @param password 密码
  */
-export const loginWithPhoneAndPassword = <T = LoginResponse>(
+export const loginWithPhoneAndPassword = <T = Users.LoginResponse>(
   areaCode: string,
   mobile: string,
   password: string

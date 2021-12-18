@@ -1,13 +1,13 @@
 import { toResponse, request } from '../request'
-import type { PaginationOption } from '../types/request'
-import type { SingleResponse } from '../types/response'
+import type { PaginationOption } from '../types/options'
+import type { PersonalUpdate } from '../types/api-responses'
 
 /**
  * 获取用户动态
  * @param username 用户名
  * @param option 选项
  */
-export const single = async <T = SingleResponse>(
+export const single = async <T = PersonalUpdate.SingleResponse>(
   username: string,
   option: PaginationOption = {}
 ) =>
