@@ -1,0 +1,13 @@
+{
+  "entryPoints": [
+    "src/index.ts",
+    "src/api/notifications.ts",
+    "src/api/personal-update.ts",
+    "src/api/posts.ts",
+    "src/api/user-relation.ts",
+    "src/api/users.ts"
+  ],
+  "out": "docs",
+  "name": "Ⓙ Jike SDK",
+  "cleanOutputDir": true
+}

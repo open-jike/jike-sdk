@@ -162,7 +162,7 @@ export interface ProfileVisitInfo {
 /**
  * 学校信息
  */
-interface School {
+export interface School {
   /** 学校 ID */
   id: string
   /** 学校名称 */
