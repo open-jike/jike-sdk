@@ -1,4 +1,11 @@
-export * from './request'
+export {
+  request,
+  getAccessToken,
+  setAccessToken,
+  getApiConfig,
+  setApiConfig,
+  resolveApiConfig,
+} from './request'
 export * from './api'
 export * from './api-client'
 export * from './client'
