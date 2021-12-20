@@ -54,7 +54,7 @@
     "@sxzz/eslint-config-ts": "1.6.1",
     "@types/node": "*",
     "bumpp": "7.1.1",
-    "esbuild": "0.14.5",
+    "esbuild": "0.14.6",
     "eslint": "8.5.0",
     "eslint-define-config": "1.2.0",
     "esno": "0.13.0",
