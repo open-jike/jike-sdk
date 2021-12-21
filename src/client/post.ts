@@ -37,7 +37,7 @@ export class JikePost {
    * 获取动态详情
    * @returns 动态详情
    */
-  async getDetail() {
+  async queryDetail() {
     if (this.#detail) this.#detail
     const result = await this.apiClient.posts.get(this.type, this.id)
     if (!isSuccess(result)) throwRequestFailureError(result, '获取动态详情')
@@ -86,9 +86,9 @@ export class JikePost {
   }
 
   /**
-   * 获取评论
+   * 查询评论
    */
-  async getComments(
+  async queryComments(
     order: ListCommentOption['order'],
     option: PaginatedOption<'createdAt', ListCommentMoreKey> = {}
   ) {
