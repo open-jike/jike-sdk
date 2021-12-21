@@ -1,3 +1,6 @@
 export * from './client'
 export * from './user'
+export * from './post'
+export * as limit from './utils/limit'
 export { RequestFailureError } from './errors/LoginFailureError'
+export type { PaginatedOption } from './utils/paginate'

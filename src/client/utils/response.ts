@@ -1,14 +1,9 @@
-import { RequestFailureError } from './errors/LoginFailureError'
+import { RequestFailureError } from '../errors/LoginFailureError'
 import type {
   ApiSuccessResponse,
   ApiFailureResponse,
   ApiResponse,
-} from '../request'
-
-export const resolveAreaCode = (code: string | number) => {
-  if (typeof code === 'string' && code.startsWith('+')) return code
-  return `+${code}`
-}
+} from '../../request'
 
 export const isSuccess = <T extends Record<string, any>>(
   response: ApiResponse<T>
@@ -22,8 +17,8 @@ export function throwRequestFailureError<T extends Record<string, any>>(
   response: ApiFailureResponse<T>,
   action: string
 ): never {
-  throw new RequestFailureError(
-    response?.data?.error ?? `${action}失败，未知原因`,
-    response
-  )
+  let reason = response?.data?.error
+  if (!reason && response.status === 401) reason = '未登录'
+  reason ||= `${action}失败，未知原因`
+  throw new RequestFailureError(reason, response)
 }

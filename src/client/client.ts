@@ -1,7 +1,10 @@
 import { resolveApiConfig } from '../request'
 import { ApiClient } from '../api-client'
-import { isSuccess, resolveAreaCode, throwRequestFailureError } from './utils'
+import { isSuccess, throwRequestFailureError } from './utils/response'
+import { resolveAreaCode } from './utils/user'
 import { JikeUser } from './user'
+import { fetchPaginated } from './utils/paginate'
+import type { PaginatedOption } from './utils/paginate'
 import type { Api } from '../api'
 import type { ApiConfig } from '../request'
 
@@ -89,9 +92,41 @@ export class JikeClient {
   /**
    * 获取用户
    * @param username 用户名
+   * @template M 是否为自己
+   * - `true`: 是
+   * - `false`: 否
+   * - `boolean`: 未知 （默认）
    * @returns {@link JikeUser} 实例
    */
-  getUser(username: string): JikeUser {
-    return new JikeUser(this, username)
+  getUser<M extends boolean = boolean>(username: string): JikeUser {
+    return new JikeUser<M>(this, username)
+  }
+
+  getSelf() {
+    return new JikeUser<true>(this, undefined)
+  }
+
+  /**
+   * 查询通知
+   */
+  async queryNotifications(
+    option: PaginatedOption<'createdAt' | 'updatedAt', string> = {}
+  ) {
+    return fetchPaginated(
+      async (lastKey?: string) => {
+        const result = await this.#client.notifications.list({
+          loadMoreKey: lastKey ? { lastNotificationId: lastKey } : undefined,
+        })
+        if (!isSuccess(result)) throwRequestFailureError(result, '查询通知')
+        const newKey = result.data.loadMoreKey.lastNotificationId
+        return [newKey, result.data.data]
+      },
+      (item, data) => ({
+        createdAt: new Date(item.createdAt),
+        updatedAt: new Date(item.updatedAt),
+        total: data.length + 1,
+      }),
+      option
+    )
   }
 }
