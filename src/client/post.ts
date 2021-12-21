@@ -11,11 +11,14 @@ import type {
 import type { PostDetail, Comment } from '../types/entity'
 import type { JikeClient } from './client'
 
+/**
+ * 即刻动态
+ */
 export class JikePost {
   #client: JikeClient
   type: PostType
   id: string
-  #detail?: PostDetail
+  detail?: PostDetail
 
   constructor(
     client: JikeClient,
@@ -26,7 +29,7 @@ export class JikePost {
     this.#client = client
     this.type = type
     this.id = id
-    this.#detail = detail
+    this.detail = detail
   }
 
   get apiClient() {
@@ -38,10 +41,10 @@ export class JikePost {
    * @returns 动态详情
    */
   async queryDetail() {
-    if (this.#detail) this.#detail
+    if (this.detail) this.detail
     const result = await this.apiClient.posts.get(this.type, this.id)
     if (!isSuccess(result)) throwRequestFailureError(result, '获取动态详情')
-    return (this.#detail = result.data.data)
+    return (this.detail = result.data.data)
   }
 
   /**
@@ -89,7 +92,7 @@ export class JikePost {
    * 查询评论
    */
   async queryComments(
-    order: ListCommentOption['order'],
+    order?: ListCommentOption['order'],
     option: PaginatedOption<'createdAt', ListCommentMoreKey> = {}
   ) {
     const fetcher: PaginatedFetcher<Comment, ListCommentMoreKey> = async (
@@ -114,5 +117,21 @@ export class JikePost {
       }),
       option
     )
+  }
+}
+
+export class JikePostWithDetail extends JikePost {
+  constructor(
+    client: JikeClient,
+    type: PostType,
+    id: string,
+    detail: PostDetail
+  ) {
+    super(client, type, id, detail)
+    this.detail = detail
+  }
+
+  getDetail(): PostDetail {
+    return this.detail!
   }
 }

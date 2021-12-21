@@ -1,6 +1,6 @@
 import { isSuccess, throwRequestFailureError } from './utils/response'
 import { fetchPaginated } from './utils/paginate'
-import { JikePost } from './post'
+import { JikePostWithDetail } from './post'
 import { rawTypeToEnum } from './utils/post'
 import type { PostDetail } from '../types/entity'
 import type { Users } from '../types/api-responses'
@@ -83,7 +83,12 @@ export class JikeUser<M extends boolean = boolean> {
     )
     return data.map(
       (item) =>
-        new JikePost(this.#client, rawTypeToEnum(item.type), item.id, item)
+        new JikePostWithDetail(
+          this.#client,
+          rawTypeToEnum(item.type),
+          item.id,
+          item
+        )
     )
   }
 }
