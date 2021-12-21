@@ -1,6 +1,6 @@
 import { toResponse, request } from '../request'
 import type { PostTypeRaw } from '../types/entity'
-import type { AddCommentOption } from '../types/options'
+import type { AddCommentOption, ListCommentOption } from '../types/options'
 import type { Comments } from '../types/api-responses'
 
 export const add = <T = Comments.AddResponse>(
@@ -35,5 +35,22 @@ export const unlike = <T = {}>(targetType: PostTypeRaw, id: string) =>
   toResponse<T>(
     request.post('1.0/comments/unlike', {
       json: { targetType, id },
+    })
+  )
+
+export const listPrimary = <T = Comments.ListPrimaryResponse>(
+  targetType: PostTypeRaw,
+  targetId: string,
+  option: ListCommentOption = {}
+) =>
+  toResponse<T>(
+    request.post('1.0/comments/listPrimary', {
+      json: {
+        targetType,
+        targetId,
+        order: option.order ?? 'LIKES',
+        limit: option.limit,
+        loadMoreKey: option.loadMoreKey,
+      },
     })
   )

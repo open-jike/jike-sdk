@@ -321,11 +321,11 @@ export interface ScrollingSubtitle {
 }
 
 export type PostTypeRaw = 'ORIGINAL_POST' | 'REPOST'
-export interface PostInfo {
+export interface PostDetail {
   id: string
   type: PostTypeRaw
   content: string
-  urlsInText: any[]
+  urlsInText: UrlsInText[]
   status: string
   isCommentForbidden: boolean
   likeCount: number
@@ -342,7 +342,6 @@ export interface PostInfo {
   repostable: boolean
   rollouts: Rollouts
   scrollingSubtitles: ScrollingSubtitle[]
-
   actionTime?: string
   pinned?: Pinned
   target?: Target
@@ -399,30 +398,6 @@ export interface Target {
   collected: boolean
   syncCommentId: string
 }
-export interface Comment {
-  type: 'COMMENT'
-  id: string
-  targetType: string
-  targetId: string
-  threadId: string
-  createdAt: string
-  level: number
-  content: string
-  urlsInText: any[]
-  likeCount: number
-  replyCount: number
-  status: string
-  user: SimpleUser
-  pictures: any[]
-  liked: boolean
-  enablePictureComments: boolean
-  readTrackInfo: any
-  collapsed: boolean
-  collapsible: boolean
-  isPinned: boolean
-  pinnable: boolean
-}
-
 export interface UrlsInText {
   title: string
   originalUrl: string
@@ -517,33 +492,6 @@ export interface ReadTrackInfo {
   recommendReasonPolicy: string
 }
 
-export interface PostDetail {
-  id: string
-  type: string
-  content: string
-  urlsInText: UrlsInText[]
-  status: string
-  isCommentForbidden: boolean
-  likeCount: number
-  commentCount: number
-  repostCount: number
-  shareCount: number
-  topic: Topic
-  linkInfo: LinkInfo
-  pictures: any[]
-  collected: boolean
-  collectTime?: any
-  user: SimpleUser
-  createdAt: string
-  isFeatured: boolean
-  enablePictureComments: boolean
-  repostable: boolean
-  scrollingSubtitles: ScrollingSubtitle[]
-  pinned: Pinned
-  shouldShowCommentTip: boolean
-  readTrackInfo: ReadTrackInfo
-}
-
 export interface ActionItem {
   type: string
   users: SimpleUser[]
@@ -580,4 +528,63 @@ export interface Notification {
   linkUrl: string
   linkType: string
   referenceItem: ReferenceItem
+}
+
+export interface ReplyToComment {
+  type: string
+  id: string
+  targetType: string
+  targetId: string
+  threadId: string
+  createdAt: Date
+  level: number
+  content: string
+  likeCount: number
+  replyCount: number
+  status: string
+  user: SimpleUser
+}
+
+export interface HotReply {
+  type: string
+  id: string
+  targetType: string
+  targetId: string
+  threadId: string
+  createdAt: Date
+  level: number
+  content: string
+  likeCount: number
+  replyCount: number
+  status: string
+  user: SimpleUser
+  pictures: Picture[]
+  replyToComment: ReplyToComment
+}
+
+export interface Comment {
+  type: 'COMMENT'
+  id: string
+  targetType: string
+  targetId: string
+  threadId: string
+  createdAt: string
+  level: number
+  content: string
+  urlsInText: UrlsInText[]
+  likeCount: number
+  replyCount: number
+  status: string
+  user: SimpleUser
+  pictures: Picture[]
+  liked: boolean
+  hotReplies: HotReply[]
+  enablePictureComments: boolean
+  readTrackInfo: ReadTrackInfo
+  collapsed: boolean
+  collapsible: boolean
+  isPinned: boolean
+  hideable: boolean
+  deletable: boolean
+  pinnable: boolean
 }

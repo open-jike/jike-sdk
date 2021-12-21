@@ -8,6 +8,10 @@ export interface PaginatedOption<
   onNextPage?: (currentPage: number, key: T | undefined) => void
 }
 
+export type PaginatedFetcher<T, K> = (
+  lastKey: K | undefined
+) => Promise<[K | undefined, T[]]>
+
 export const fetchPaginated = async <
   T,
   K,

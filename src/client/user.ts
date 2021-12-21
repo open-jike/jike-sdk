@@ -2,8 +2,9 @@ import { isSuccess, throwRequestFailureError } from './utils/response'
 import { fetchPaginated } from './utils/paginate'
 import { JikePost } from './post'
 import { rawTypeToEnum } from './utils/post'
+import type { PostDetail } from '../types/entity'
 import type { Users } from '../types/api-responses'
-import type { PaginatedOption } from './utils/paginate'
+import type { PaginatedOption, PaginatedFetcher } from './utils/paginate'
 import type { JikeClient } from './client'
 
 /**
@@ -61,16 +62,19 @@ export class JikeUser<M extends boolean = boolean> {
    * 查询用户动态
    */
   async queryPersonalUpdate(option: PaginatedOption<'createdAt', string> = {}) {
+    const fetcher: PaginatedFetcher<PostDetail, string> = async (lastKey) => {
+      const result = await this.#client.apiClient.personalUpdate.single(
+        await this.getUsername(),
+        { limit: 500, loadMoreKey: lastKey ? { lastId: lastKey } : undefined }
+      )
+      if (!isSuccess(result)) throwRequestFailureError(result, '查询用户动态')
+
+      const newKey = result.data.loadMoreKey?.lastId
+      return [newKey, result.data.data]
+    }
+
     const data = await fetchPaginated(
-      async (lastKey?: string) => {
-        const result = await this.#client.apiClient.personalUpdate.single(
-          await this.getUsername(),
-          { limit: 500, loadMoreKey: lastKey ? { lastId: lastKey } : undefined }
-        )
-        if (!isSuccess(result)) throwRequestFailureError(result, '查询用户动态')
-        const newKey = result.data.loadMoreKey?.lastId
-        return [newKey, result.data.data]
-      },
+      fetcher,
       (item, data) => ({
         createdAt: new Date(item.createdAt),
         total: data.length + 1,

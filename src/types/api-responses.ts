@@ -2,7 +2,6 @@
 import type {
   Notification,
   PostDetail,
-  PostInfo,
   Comment,
   SimpleUser,
   TabIcons,
@@ -12,7 +11,7 @@ import type {
 export namespace Posts {
   export interface CreateResponse {
     toast: string
-    data: PostInfo
+    data: PostDetail
   }
   export interface GetResponse {
     data: PostDetail
@@ -56,7 +55,6 @@ export namespace Users {
   }
 
   export interface LoginResponse {
-    success: true
     isRegister: boolean
     user: User
     enabledFeatures: string[]
@@ -109,7 +107,7 @@ export namespace Users {
 
 export namespace PersonalUpdate {
   export interface SingleResponse {
-    data: PostInfo[]
+    data: PostDetail[]
     loadMoreKey: {
       lastId: string
     }
@@ -118,8 +116,15 @@ export namespace PersonalUpdate {
 
 export namespace Comments {
   export interface AddResponse {
-    success: boolean
     data: Comment
     toast: string
+  }
+
+  export interface ListPrimaryResponse {
+    data: Comment[]
+    loadMoreKey: {
+      key: string
+      partition: string
+    }
   }
 }

@@ -39,6 +39,16 @@ describe('posts should work', () => {
 })
 
 describe('comment should work', () => {
+  it('get should work', async () => {
+    const result = await api.comments.listPrimary(
+      'ORIGINAL_POST',
+      '61c0d39877abf80010426ba3'
+    )
+    expect(result.status).toBe(200)
+    expect(result.data.success).toBe(true)
+    expect(result.data.data.length).greaterThan(0)
+  })
+
   it('like should work', async () => {
     const result = await api.comments.like(
       'ORIGINAL_POST',
@@ -76,7 +86,11 @@ describe('new post should work', () => {
   })
 
   it('comment should work', async () => {
-    const result = await api.comments.add('ORIGINAL_POST', id, '测试评论')
+    const result = await api.comments.add(
+      'ORIGINAL_POST',
+      id,
+      `测试评论${Math.random()}`
+    )
     expect(result.status).toBe(200)
     expect(result.data.success).toBe(true)
     expect(result.data.toast).toBe('发送成功')

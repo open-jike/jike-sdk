@@ -52,3 +52,11 @@ export interface AddCommentOption {
    */
   pictureKeys?: string[]
 }
+
+export interface ListCommentMoreKey {
+  key: string
+  partition: string
+}
+export type ListCommentOption = PaginationOption<ListCommentMoreKey> & {
+  order?: 'LIKES' | 'TIME'
+}
