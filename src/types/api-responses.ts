@@ -25,7 +25,7 @@ export namespace Posts {
 export namespace Notifications {
   export interface ListResponse {
     data: Notification[]
-    loadMoreKey: {
+    loadMoreKey?: {
       lastNotificationId: string
     }
   }

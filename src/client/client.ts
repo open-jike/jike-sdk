@@ -118,7 +118,7 @@ export class JikeClient {
           loadMoreKey: lastKey ? { lastNotificationId: lastKey } : undefined,
         })
         if (!isSuccess(result)) throwRequestFailureError(result, '查询通知')
-        const newKey = result.data.loadMoreKey.lastNotificationId
+        const newKey = result.data.loadMoreKey?.lastNotificationId
         return [newKey, result.data.data]
       },
       (item, data) => ({
