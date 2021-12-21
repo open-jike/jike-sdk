@@ -5,7 +5,7 @@ specifiers:
   '@sxzz/eslint-config-ts': 1.6.1
   '@types/node': '*'
   bumpp: 7.1.1
-  dayjs: ^1.10.7
+  dayjs: 1.10.7
   esbuild: 0.14.6
   eslint: 8.5.0
   eslint-define-config: 1.2.0
