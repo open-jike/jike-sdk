@@ -9,7 +9,7 @@ import type { PersonalUpdate } from '../types/api-responses'
  */
 export const single = async <T = PersonalUpdate.SingleResponse>(
   username: string,
-  option: PaginationOption = {}
+  option: PaginationOption<{ lastId: string }> = {}
 ) =>
   toResponse<T>(
     request.post('1.0/personalUpdate/single', {

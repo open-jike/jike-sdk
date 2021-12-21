@@ -3,6 +3,7 @@ import type {
   Notification,
   PostDetail,
   PostInfo,
+  Comment,
   SimpleUser,
   TabIcons,
   User,
@@ -15,6 +16,10 @@ export namespace Posts {
   }
   export interface GetResponse {
     data: PostDetail
+  }
+  export interface RemoveResponse {
+    /** 提示文本 */
+    toast: string
   }
 }
 
@@ -96,6 +101,10 @@ export namespace Users {
     /** 底部栏图标信息，仅自己可见 */
     tabIcons?: TabIcons
   }
+
+  export type Profile<M extends boolean = boolean> = M extends true
+    ? MyProfile
+    : UserProfile
 }
 
 export namespace PersonalUpdate {
@@ -104,5 +113,13 @@ export namespace PersonalUpdate {
     loadMoreKey: {
       lastId: string
     }
+  }
+}
+
+export namespace Comments {
+  export interface AddResponse {
+    success: boolean
+    data: Comment
+    toast: string
   }
 }

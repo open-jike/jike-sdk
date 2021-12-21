@@ -320,9 +320,10 @@ export interface ScrollingSubtitle {
   type: string
 }
 
+export type PostTypeRaw = 'ORIGINAL_POST' | 'REPOST'
 export interface PostInfo {
   id: string
-  type: string
+  type: PostTypeRaw
   content: string
   urlsInText: any[]
   status: string
@@ -349,7 +350,7 @@ export interface PostInfo {
   rootType?: string
   liked?: boolean
   syncCommentId?: string
-  replyToComment?: ReplyToComment
+  replyToComment?: Comment
 }
 
 export interface Sponsor {
@@ -398,8 +399,8 @@ export interface Target {
   collected: boolean
   syncCommentId: string
 }
-export interface ReplyToComment {
-  type: string
+export interface Comment {
+  type: 'COMMENT'
   id: string
   targetType: string
   targetId: string

@@ -7,7 +7,10 @@ import type { Notifications } from '../types/api-responses'
  * @param option 分页选项
  */
 export const list = <T = Notifications.ListResponse>(
-  option: Pick<PaginationOption, 'loadMoreKey'> = {}
+  option: Pick<
+    PaginationOption<{ lastNotificationId: string }>,
+    'loadMoreKey'
+  > = {}
 ) =>
   toResponse<T>(
     request.post('1.0/notifications/list', {
