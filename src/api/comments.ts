@@ -17,7 +17,7 @@ export const add = <T = Comments.AddResponse>(
         currentPageName: 14,
         content,
         syncToPersonalUpdates: option.syncToPersonalUpdates ?? false,
-        pictureKeys: option.syncToPersonalUpdates ?? [],
+        pictureKeys: option.pictureKeys ?? [],
         targetId,
         targetType,
       },
