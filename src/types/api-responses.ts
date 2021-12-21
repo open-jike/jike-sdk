@@ -128,3 +128,9 @@ export namespace Comments {
     }
   }
 }
+
+export namespace Upload {
+  export interface TokenResponse {
+    uptoken: string
+  }
+}
