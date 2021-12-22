@@ -24,17 +24,18 @@ describe('request', () => {
   describe('request options should be correct', () => {
     const controller = new globalThis.AbortController()
     let req: Request
-    const apiConfig: ApiConfig = {
+    const apiConfig: ApiConfig = resolveApiConfig({
       deviceId: 'TEST_DEVICE_ID',
       idfv: 'TEST_IDFV',
       userAgent: 'TEST_USER_AGENT',
       accessToken: 'TEST_ACCESS_TOKEN',
-    }
+    })
 
     beforeAll(async () => {
       setApiConfig(apiConfig)
       const t = request('', {
         signal: controller.signal,
+        retry: 0,
         hooks: {
           beforeRequest: [
             (req) => {
