@@ -1,9 +1,12 @@
+import { HTTPError } from 'ky'
 import { resolveApiConfig } from '../request'
 import { ApiClient } from '../api-client'
 import { isSuccess, throwRequestFailureError } from './utils/response'
 import { resolveAreaCode } from './utils/user'
 import { JikeUser } from './user'
 import { fetchPaginated } from './utils/paginate'
+import { AuthorizationError } from './errors/AuthorizationError'
+import type { BeforeRetryState } from 'ky/distribution/types/hooks'
 import type { PaginatedOption } from './utils/paginate'
 import type { Api } from '../api'
 import type { ApiConfig } from '../request'
@@ -37,7 +40,7 @@ export class JikeClient {
 
   constructor(
     auth: { accessToken?: string; refreshToken?: string } = {},
-    apiConfig: Partial<Omit<ApiConfig, 'accessToken'>> = {}
+    apiConfig: Partial<Omit<ApiConfig, 'accessToken' | 'beforeRetry'>> = {}
   ) {
     this.#accessToken = auth.accessToken ?? ''
     this.#refreshToken = auth.refreshToken ?? ''
@@ -49,7 +52,20 @@ export class JikeClient {
     this.#client = ApiClient({
       ...this.#apiConfig,
       accessToken: this.#accessToken,
+      beforeRetry: this.beforeRetry.bind(this),
     })
+  }
+
+  private async beforeRetry({ request, error }: BeforeRetryState) {
+    if (!(error instanceof HTTPError)) return false
+
+    const response = error.response
+    if (response.status !== 401) return false
+
+    await this.renewToken()
+    request.headers.set('x-jike-access-token', this.#accessToken)
+
+    return true
   }
 
   /**
@@ -128,5 +144,20 @@ export class JikeClient {
       }),
       option
     )
+  }
+
+  async renewToken() {
+    if (!this.#refreshToken)
+      throw new Error('登录状态已失效，请重新获取 access-token！')
+
+    const result = await this.apiClient.users.refreshToken(this.#refreshToken)
+    if (!isSuccess(result)) {
+      throw new AuthorizationError(
+        '刷新 access-token 失败。可能是太久没有活动，refresh token 已失效！'
+      )
+    }
+
+    this.#refreshToken = result.data['x-jike-refresh-token']
+    this.accessToken = result.data['x-jike-access-token']
   }
 }

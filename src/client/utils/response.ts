@@ -1,4 +1,4 @@
-import { RequestFailureError } from '../errors/LoginFailureError'
+import { RequestFailureError } from '../errors/RequestFailureError'
 import type {
   ApiSuccessResponse,
   ApiFailureResponse,

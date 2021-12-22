@@ -1,7 +1,8 @@
 /// <reference lib="dom" />
-import ky from 'ky'
+import ky, { HTTPError } from 'ky'
 import { API_BASE, defaultEnvironment } from './constants'
 import { generateUUID } from './utils'
+import type { BeforeRetryState } from 'ky/distribution/types/hooks'
 import type { ResponsePromise } from 'ky'
 
 /**
@@ -16,6 +17,8 @@ export interface ApiConfig {
   idfv: string
   /** `User-Agent` 请求头 */
   userAgent: string
+  /** 是否重试 */
+  beforeRetry: (state: BeforeRetryState) => boolean | Promise<boolean>
 }
 
 /**
@@ -36,6 +39,7 @@ export const resolveApiConfig = (config: Partial<ApiConfig>): ApiConfig => {
       defaultEnvironment.idfv
     ).toUpperCase(),
     userAgent: config.userAgent || defaultEnvironment.userAgent,
+    beforeRetry: config.beforeRetry ?? (() => false),
   }
 }
 let apiConfig: ApiConfig = resolveApiConfig({})
@@ -69,14 +73,17 @@ export const request = ky.create({
     'os-version': defaultEnvironment.osVersion,
     bundleid: defaultEnvironment.bundleId,
   },
-  throwHttpErrors: false,
+  retry: {
+    limit: 2,
+    statusCodes: [401],
+  },
   fetch,
   hooks: {
     beforeRequest: [
       (req) => {
         const key = 'x-jike-access-token'
         if (req.headers.get(key) === '') req.headers.delete(key)
-        else if (apiConfig.accessToken)
+        else if (apiConfig.accessToken && !req.headers.has(key))
           req.headers.set(key, apiConfig.accessToken)
 
         req.headers.set('User-Agent', apiConfig.userAgent)
@@ -86,6 +93,12 @@ export const request = ky.create({
           JSON.stringify({ idfv: apiConfig.idfv })
         )
         ;(req as any).highWaterMark = 1024 * 1024
+      },
+    ],
+    beforeRetry: [
+      async (opts) => {
+        const isRetry = await apiConfig.beforeRetry(opts)
+        return isRetry ? undefined : ky.stop
       },
     ],
   },
@@ -127,7 +140,14 @@ export const toResponse = async <T>(
   response: ResponsePromise,
   hook?: (data: T) => T
 ): Promise<ApiResponse<T>> => {
-  const res = await response
+  let res: Response
+  try {
+    res = await response
+  } catch (err: unknown) {
+    if (err instanceof HTTPError) {
+      res = err.response
+    } else throw err
+  }
   const contentType = res.headers.get('content-type')
   let data: any
   if (contentType?.includes('application/json')) {

@@ -1,12 +1,12 @@
 import { describe, it, expect } from 'vitest'
 import { JikeClient } from '../src'
-import { RequestFailureError } from '../src/client/errors/LoginFailureError'
-import { config } from './config'
+import { RequestFailureError } from '../src/client/errors/RequestFailureError'
+import { config, refreshToken } from './config'
 
-describe('notifications should work', () => {
+describe('login should work', () => {
   const client = new JikeClient(
     { accessToken: config.accessToken },
-    { deviceId: config.deviceId, idfv: config.idfv }
+    { ...config }
   )
   const mobile = process.env.MOBILE
 
@@ -28,4 +28,13 @@ describe('notifications should work', () => {
         ])
     }
   })
+})
+
+it('renew token should work', async () => {
+  const client = new JikeClient(
+    { accessToken: 'ERROR', refreshToken },
+    { ...config }
+  )
+  const username = await client.getSelf().getUsername()
+  expect(username).to.be.a('string')
 })
