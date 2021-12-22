@@ -76,6 +76,7 @@ export const request = ky.create({
   retry: {
     limit: 2,
     statusCodes: [401],
+    methods: ['get', 'post', 'put', 'head', 'delete', 'options', 'trace'],
   },
   fetch,
   hooks: {
