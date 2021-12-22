@@ -41,7 +41,7 @@ export namespace UserRelation {
 
   export interface GetFollowerListResponse {
     data: SimpleUser[]
-    loadMoreKey: {
+    loadMoreKey?: {
       createdAt: string
     }
   }

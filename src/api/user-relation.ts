@@ -28,7 +28,7 @@ export const getFollowingList = <T = UserRelation.GetFollowingListResponse>(
  */
 export const getFollowerList = <T = UserRelation.GetFollowerListResponse>(
   username: string,
-  option: PaginationOption = {}
+  option: PaginationOption<{ createdAt: string }> = {}
 ) =>
   toResponse<T>(
     request.post('1.0/userRelation/getFollowerList', {

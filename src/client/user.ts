@@ -2,7 +2,7 @@ import { isSuccess, throwRequestFailureError } from './utils/response'
 import { fetchPaginated } from './utils/paginate'
 import { JikePostWithDetail } from './post'
 import { rawTypeToEnum } from './utils/post'
-import type { PostDetail } from '../types/entity'
+import type { PostDetail, SimpleUser } from '../types/entity'
 import type { Users } from '../types/api-responses'
 import type { PaginatedOption, PaginatedFetcher } from './utils/paginate'
 import type { JikeClient } from './client'
@@ -89,6 +89,33 @@ export class JikeUser<M extends boolean = boolean> {
           item.id,
           item
         )
+    )
+  }
+
+  /**
+   * 查询用户被关注
+   */
+  queryFollowers(option: PaginatedOption<never, string> = {}) {
+    const fetcher: PaginatedFetcher<SimpleUser, string> = async (lastKey) => {
+      const result = await this.#client.apiClient.userRelation.getFollowerList(
+        await this.getUsername(),
+        {
+          limit: 20,
+          loadMoreKey: lastKey ? { createdAt: lastKey } : undefined,
+        }
+      )
+      if (!isSuccess(result)) throwRequestFailureError(result, '查询用户被关注')
+
+      const newKey = result.data.loadMoreKey?.createdAt
+      return [newKey, result.data.data]
+    }
+
+    return fetchPaginated(
+      fetcher,
+      (_item, data) => ({
+        total: data.length + 1,
+      }),
+      option
     )
   }
 }
