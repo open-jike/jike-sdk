@@ -59,7 +59,7 @@
     "@types/sharp": "0.29.4",
     "bumpp": "7.1.1",
     "dayjs": "1.10.7",
-    "esbuild": "0.14.7",
+    "esbuild": "0.14.8",
     "eslint": "8.5.0",
     "eslint-define-config": "1.2.0",
     "esno": "0.13.0",
