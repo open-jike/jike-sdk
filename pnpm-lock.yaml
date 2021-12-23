@@ -24,7 +24,7 @@ specifiers:
   typedoc: 0.22.10
   typescript: 4.5.4
   vite: 2.7.6
-  vitest: 0.0.107
+  vitest: 0.0.109
 
 dependencies:
   form-data: 4.0.0
@@ -52,7 +52,7 @@ devDependencies:
   typedoc: 0.22.10_typescript@4.5.4
   typescript: 4.5.4
   vite: 2.7.6
-  vitest: 0.0.107_vite@2.7.6
+  vitest: 0.0.109_vite@2.7.6
 
 packages:
 
@@ -3285,8 +3285,8 @@ packages:
     engines: {node: '>=14.0.0'}
     dev: true
 
-  /tinyspy/0.2.4:
-    resolution: {integrity: sha512-A6C0zYMhY2cECXJwJfgesG1jbEjz/d9Enuzx5cC1qiSrGp6eZDMtO8Dxl0Nrn47wR9abEtGr2ckQi52OoJ7eiQ==}
+  /tinyspy/0.2.6:
+    resolution: {integrity: sha512-HXNA1PZ9p95rWK7h3DvWaDK06XmsjN3ldZjacW/1F0viVfPanTGSQ6l2iQyjNElD0Nd5ogfq/hT0sx2Hdyz4wQ==}
     engines: {node: '>=14.0.0'}
     dev: true
 
@@ -3476,8 +3476,8 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vitest/0.0.107_vite@2.7.6:
-    resolution: {integrity: sha512-rkzeKgi1ehGyjCTjXFiYCCeaW+k1DAR4QA046lWQX+qwTSLjP4tOtHeGoXYxhJLY17VbMcPlDMEaX7V71EgpDA==}
+  /vitest/0.0.109_vite@2.7.6:
+    resolution: {integrity: sha512-OC0WNQCOEkKljQf6o4FVlPELvubPw1WiprkALqWwE+kwH7f7u8AKwxI2NefP8d0EgfHuOU5TnRhjsE69TeFdaQ==}
     engines: {node: '>=14.14.0'}
     hasBin: true
     peerDependencies:
@@ -3498,7 +3498,7 @@ packages:
       chai: 4.3.4
       local-pkg: 0.4.0
       tinypool: 0.0.5
-      tinyspy: 0.2.4
+      tinyspy: 0.2.6
       vite: 2.7.6
     dev: true
 
