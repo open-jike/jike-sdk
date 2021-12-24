@@ -1,11 +1,12 @@
 import type { LimitFn, LimitOptionAll, LimitOption } from './limit'
 
 export interface PaginatedOption<
+  T,
   L extends keyof LimitOptionAll = keyof LimitOptionAll,
-  T = unknown
+  K = unknown
 > {
   limit?: LimitFn<L | 'total'>
-  onNextPage?: (currentPage: number, key: T | undefined) => void
+  onNextPage?: (currentPage: number, key: K | undefined, data: T[]) => void
 }
 
 export type PaginatedFetcher<T, K> = (
@@ -19,7 +20,7 @@ export const fetchPaginated = async <
 >(
   fetcher: (lastKey: K | undefined) => Promise<[K | undefined, T[]]>,
   limitOptionGetter: (item: T, data: T[]) => LimitOption<L | 'total'>,
-  option: PaginatedOption<L, K>
+  option: PaginatedOption<T, L, K>
 ) => {
   let lastKey: K | undefined = undefined
   const data: T[] = []
@@ -38,7 +39,7 @@ export const fetchPaginated = async <
       data.push(item)
     }
 
-    option.onNextPage?.(page, lastKey)
+    option.onNextPage?.(page, lastKey, data)
 
     page++
   } while (isContinue && lastKey)

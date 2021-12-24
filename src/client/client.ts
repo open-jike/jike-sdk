@@ -6,8 +6,9 @@ import { resolveAreaCode } from './utils/user'
 import { JikeUser } from './user'
 import { fetchPaginated } from './utils/paginate'
 import { AuthorizationError } from './errors/AuthorizationError'
+import type { Notification } from '../types/entity'
 import type { BeforeRetryState } from 'ky/distribution/types/hooks'
-import type { PaginatedOption } from './utils/paginate'
+import type { PaginatedOption, PaginatedFetcher } from './utils/paginate'
 import type { Api } from '../api'
 import type { ApiConfig } from '../request'
 
@@ -126,17 +127,22 @@ export class JikeClient {
    * 查询通知
    */
   async queryNotifications(
-    option: PaginatedOption<'createdAt' | 'updatedAt', string> = {}
+    option: PaginatedOption<
+      Notification,
+      'createdAt' | 'updatedAt',
+      string
+    > = {}
   ) {
+    const fetcher: PaginatedFetcher<Notification, string> = async (lastKey) => {
+      const result = await this.#client.notifications.list({
+        loadMoreKey: lastKey ? { lastNotificationId: lastKey } : undefined,
+      })
+      if (!isSuccess(result)) throwRequestFailureError(result, '查询通知')
+      const newKey = result.data.loadMoreKey?.lastNotificationId
+      return [newKey, result.data.data]
+    }
     return fetchPaginated(
-      async (lastKey?: string) => {
-        const result = await this.#client.notifications.list({
-          loadMoreKey: lastKey ? { lastNotificationId: lastKey } : undefined,
-        })
-        if (!isSuccess(result)) throwRequestFailureError(result, '查询通知')
-        const newKey = result.data.loadMoreKey?.lastNotificationId
-        return [newKey, result.data.data]
-      },
+      fetcher,
       (item, data) => ({
         createdAt: new Date(item.createdAt),
         updatedAt: new Date(item.updatedAt),

@@ -7,6 +7,11 @@ import type { Users } from '../types/api-responses'
 import type { PaginatedOption, PaginatedFetcher } from './utils/paginate'
 import type { JikeClient } from './client'
 
+export interface FollowerWithTime {
+  followTime?: string
+  user: SimpleUser
+}
+
 /**
  * @template M 是否为自己
  */
@@ -61,7 +66,9 @@ export class JikeUser<M extends boolean = boolean> {
   /**
    * 查询用户动态
    */
-  async queryPersonalUpdate(option: PaginatedOption<'createdAt', string> = {}) {
+  async queryPersonalUpdate(
+    option: PaginatedOption<PostDetail, 'createdAt', string> = {}
+  ) {
     const fetcher: PaginatedFetcher<PostDetail, string> = async (lastKey) => {
       const result = await this.#client.apiClient.personalUpdate.single(
         await this.getUsername(),
@@ -95,7 +102,7 @@ export class JikeUser<M extends boolean = boolean> {
   /**
    * 查询用户被关注
    */
-  queryFollowers(option: PaginatedOption<never, string> = {}) {
+  queryFollowers(option: PaginatedOption<SimpleUser, never, string> = {}) {
     const fetcher: PaginatedFetcher<SimpleUser, string> = async (lastKey) => {
       const result = await this.#client.apiClient.userRelation.getFollowerList(
         await this.getUsername(),
@@ -122,11 +129,9 @@ export class JikeUser<M extends boolean = boolean> {
   /**
    * 查询用户被关注（带关注时间，较慢）
    */
-  queryFollowersWithTime(option: PaginatedOption<'followTime', string> = {}) {
-    type FollowerWithTime = {
-      followTime?: string
-      user: SimpleUser
-    }
+  queryFollowersWithTime(
+    option: PaginatedOption<FollowerWithTime, 'followTime', string> = {}
+  ) {
     const fetcher: PaginatedFetcher<FollowerWithTime, string> = async (
       lastKey
     ) => {
@@ -157,7 +162,7 @@ export class JikeUser<M extends boolean = boolean> {
   /**
    * 查询用户关注
    */
-  queryFollowings(option: PaginatedOption<never, string> = {}) {
+  queryFollowings(option: PaginatedOption<SimpleUser, never, string> = {}) {
     const fetcher: PaginatedFetcher<SimpleUser, string> = async (lastKey) => {
       const result = await this.#client.apiClient.userRelation.getFollowingList(
         await this.getUsername(),

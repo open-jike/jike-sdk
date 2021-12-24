@@ -1,3 +1,4 @@
 *.ts
 *.json
+*.txt
 !tsconfig.json

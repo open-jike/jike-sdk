@@ -93,7 +93,7 @@ export class JikePost {
    */
   async queryComments(
     order?: ListCommentOption['order'],
-    option: PaginatedOption<'createdAt', ListCommentMoreKey> = {}
+    option: PaginatedOption<Comment, 'createdAt', ListCommentMoreKey> = {}
   ) {
     const fetcher: PaginatedFetcher<Comment, ListCommentMoreKey> = async (
       lastKey
