@@ -6,7 +6,7 @@ specifiers:
   '@types/faker': 5.5.9
   '@types/md5': 2.3.1
   '@types/node': '*'
-  '@types/sharp': 0.29.4
+  '@types/sharp': 0.29.5
   bumpp: 7.1.1
   dayjs: 1.10.7
   esbuild: 0.14.8
@@ -37,7 +37,7 @@ devDependencies:
   '@types/faker': 5.5.9
   '@types/md5': 2.3.1
   '@types/node': 16.11.13
-  '@types/sharp': 0.29.4
+  '@types/sharp': 0.29.5
   bumpp: 7.1.1
   dayjs: 1.10.7
   esbuild: 0.14.8
@@ -411,8 +411,8 @@ packages:
     resolution: {integrity: sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==}
     dev: true
 
-  /@types/sharp/0.29.4:
-    resolution: {integrity: sha512-asrPef2LYenr76zBzyy+Fw40yGzq/q/CY77mUP5n43DnuWjQoOB+8vxnzFcqccz+LF+A7mbnknGCfpVWSG82Bw==}
+  /@types/sharp/0.29.5:
+    resolution: {integrity: sha512-3TC+S3H5RwnJmLYMHrcdfNjz/CaApKmujjY9b6PU/pE6n0qfooi99YqXGWoW8frU9EWYj/XTI35Pzxa+ThAZ5Q==}
     dependencies:
       '@types/node': 16.11.13
     dev: true
