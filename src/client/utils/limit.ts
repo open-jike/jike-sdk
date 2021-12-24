@@ -3,6 +3,7 @@ export interface LimitOptionAll {
   createdAt: Date
   updatedAt: Date
   currentPage: number
+  followTime: Date
 }
 export type LimitOption<T extends keyof LimitOptionAll> = Pick<
   LimitOptionAll,
@@ -19,16 +20,22 @@ export const limitMaxCount =
     total <= target
 
 export const limitAfterTime =
-  <T extends 'createdAt' | 'updatedAt'>(type: T, target: Date): LimitFn<T> =>
+  <T extends 'createdAt' | 'updatedAt' | 'followTime'>(
+    type: T,
+    target: Date
+  ): LimitFn<T> =>
   (opt) => {
-    const option = opt as LimitOption<'createdAt' | 'updatedAt'>
+    const option = opt as LimitOption<'createdAt' | 'updatedAt' | 'followTime'>
     return new Date(option[type]).getTime() >= target.getTime()
   }
 
 export const limitBeforeTime =
-  <T extends 'createdAt' | 'updatedAt'>(type: T, target: Date): LimitFn<T> =>
+  <T extends 'createdAt' | 'updatedAt' | 'followTime'>(
+    type: T,
+    target: Date
+  ): LimitFn<T> =>
   (opt) => {
-    const option = opt as LimitOption<'createdAt' | 'updatedAt'>
+    const option = opt as LimitOption<'createdAt' | 'updatedAt' | 'followTime'>
     return new Date(option[type]).getTime() < target.getTime()
   }
 

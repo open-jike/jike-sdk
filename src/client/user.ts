@@ -118,4 +118,63 @@ export class JikeUser<M extends boolean = boolean> {
       option
     )
   }
+
+  /**
+   * 查询用户被关注（带关注时间，较慢）
+   */
+  queryFollowersWithTime(option: PaginatedOption<'followTime', string> = {}) {
+    type FollowerWithTime = {
+      followTime?: string
+      user: SimpleUser
+    }
+    const fetcher: PaginatedFetcher<FollowerWithTime, string> = async (
+      lastKey
+    ) => {
+      const result = await this.#client.apiClient.userRelation.getFollowerList(
+        await this.getUsername(),
+        { limit: 1, loadMoreKey: lastKey ? { createdAt: lastKey } : undefined }
+      )
+      if (!isSuccess(result)) throwRequestFailureError(result, '查询用户被关注')
+
+      const newKey = result.data.loadMoreKey?.createdAt
+      const data: FollowerWithTime = {
+        user: result.data.data[0],
+        followTime: newKey,
+      }
+      return [newKey, [data]]
+    }
+
+    return fetchPaginated(
+      fetcher,
+      (item, data) => ({
+        followTime: item.followTime ? new Date(item.followTime) : new Date(0),
+        total: data.length + 1,
+      }),
+      option
+    )
+  }
+
+  /**
+   * 查询用户关注
+   */
+  queryFollowings(option: PaginatedOption<never, string> = {}) {
+    const fetcher: PaginatedFetcher<SimpleUser, string> = async (lastKey) => {
+      const result = await this.#client.apiClient.userRelation.getFollowingList(
+        await this.getUsername(),
+        { limit: 20, loadMoreKey: lastKey ? { createdAt: lastKey } : undefined }
+      )
+      if (!isSuccess(result)) throwRequestFailureError(result, '查询用户被关注')
+
+      const newKey = result.data.loadMoreKey?.createdAt
+      return [newKey, result.data.data]
+    }
+
+    return fetchPaginated(
+      fetcher,
+      (_item, data) => ({
+        total: data.length + 1,
+      }),
+      option
+    )
+  }
 }
