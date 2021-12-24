@@ -24,7 +24,7 @@ specifiers:
   typedoc: 0.22.10
   typescript: 4.5.4
   vite: 2.7.6
-  vitest: 0.0.109
+  vitest: 0.0.110
 
 dependencies:
   form-data: 4.0.0
@@ -52,7 +52,7 @@ devDependencies:
   typedoc: 0.22.10_typescript@4.5.4
   typescript: 4.5.4
   vite: 2.7.6
-  vitest: 0.0.109_vite@2.7.6
+  vitest: 0.0.110_vite@2.7.6
 
 packages:
 
@@ -3485,8 +3485,8 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vitest/0.0.109_vite@2.7.6:
-    resolution: {integrity: sha512-OC0WNQCOEkKljQf6o4FVlPELvubPw1WiprkALqWwE+kwH7f7u8AKwxI2NefP8d0EgfHuOU5TnRhjsE69TeFdaQ==}
+  /vitest/0.0.110_vite@2.7.6:
+    resolution: {integrity: sha512-UeeKJhJn26iCf3yCi8y5pREs/MNyanvHkCkVbhuYlyQITLkDDCMNkdw6ESma2c2v7VoWwp8zXsEr09GT4hMO3w==}
     engines: {node: '>=14.14.0'}
     hasBin: true
     peerDependencies:
