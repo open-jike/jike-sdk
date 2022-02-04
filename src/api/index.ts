@@ -13,8 +13,8 @@ import * as upload from './upload'
  * - {@link api/posts | `posts`}: 动态
  * - {@link api/personal-update | `personalUpdate`}: 主页
  * - {@link api/notifications | `notifications`}: 通知
- * - {@link api/comments | `comments`}: 通知
- * - {@link api/upload | `upload`}: 通知
+ * - {@link api/comments | `comments`}: 评论
+ * - {@link api/upload | `upload`}: 上传
  */
 export const api = {
   users,
