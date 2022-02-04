@@ -1,4 +1,4 @@
-# jike-sdk Ⓙ 即刻 SDK
+# jike-sdk Ⓙ Jike SDK
 
 [![Unit Test](https://github.com/sxzz/jike-sdk/actions/workflows/unit-test.yml/badge.svg)](https://github.com/sxzz/jike-sdk/actions/workflows/unit-test.yml)
 [![GitHub](https://img.shields.io/github/license/sxzz/jike-sdk)](https://github.com/sxzz/jike-sdk)
@@ -122,7 +122,7 @@ setAccessToken('your access token')
 </script>
 ```
 
-**由于 CORS 策略的原因，第三方网站无法直接请求即刻服务器。但可以使用浏览器扩展的能力请求。**
+**由于 CORS 策略的原因，第三方网站无法直接请求外部服务器。但可以使用浏览器扩展的能力请求。**
 
 ## TODO
 

@@ -12,7 +12,7 @@ import type { PostDetail, Comment } from '../types/entity'
 import type { JikeClient } from './client'
 
 /**
- * 即刻动态
+ * Jike 动态
  */
 export class JikePost {
   #client: JikeClient

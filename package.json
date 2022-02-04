@@ -1,7 +1,7 @@
 {
   "name": "jike-sdk",
   "version": "0.7.0-beta.10",
-  "description": "即刻 Ⓙ SDK for Node.js",
+  "description": "Jike Ⓙ SDK for Node.js",
   "keywords": [
     "jike",
     "sdk"
