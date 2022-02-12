@@ -5,7 +5,7 @@ export interface PaginatedOption<
   L extends keyof LimitOptionAll = keyof LimitOptionAll,
   K = unknown
 > {
-  limit?: LimitFn<L | 'total'>
+  limit?: LimitFn<T, L | 'total'>
   /**
    * 当获取下一页时触发，返回 false 将停止获取下一页
    */
@@ -43,7 +43,10 @@ export const fetchPaginated = async <
 
     const list = result[1]
     for (const item of list) {
-      if (option.limit && !option.limit(limitOptionGetter(item, data))) {
+      if (
+        option.limit &&
+        !option.limit(limitOptionGetter(item, data), item, data)
+      ) {
         isContinue = false
         break
       }

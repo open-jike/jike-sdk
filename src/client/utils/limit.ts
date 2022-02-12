@@ -5,14 +5,15 @@ export interface LimitOptionAll {
   currentPage: number
   followTime: Date
 }
-export type LimitOption<T extends keyof LimitOptionAll> = Pick<
+export type LimitOption<K extends keyof LimitOptionAll> = Pick<
   LimitOptionAll,
-  T
+  K
 >
 
-export type LimitFn<T extends keyof LimitOptionAll = keyof LimitOptionAll> = (
-  opt: LimitOption<T>
-) => boolean
+export type LimitFn<
+  T,
+  K extends keyof LimitOptionAll = keyof LimitOptionAll
+> = (opt: LimitOption<K>, item: T, data: T[]) => boolean
 
 export const limitMaxCount =
   (target: number): LimitFn<'total'> =>
