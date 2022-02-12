@@ -67,7 +67,7 @@
     "md5": "2.3.0",
     "node-abort-controller": "3.0.1",
     "sharp": "0.29.3",
-    "tsup": "5.11.10",
+    "tsup": "5.11.13",
     "typedoc": "0.22.10",
     "typescript": "4.5.4",
     "vite": "2.7.10",
