@@ -61,7 +61,7 @@
     "dayjs": "1.10.7",
     "esbuild": "0.14.10",
     "eslint": "8.6.0",
-    "eslint-define-config": "1.2.1",
+    "eslint-define-config": "1.2.4",
     "esno": "0.13.0",
     "faker": "5.5.3",
     "md5": "2.3.0",
