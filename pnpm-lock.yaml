@@ -1,9 +1,9 @@
 lockfileVersion: 5.3
 
 specifiers:
+  '@faker-js/faker': ^6.0.0-alpha.6
   '@sxzz/eslint-config-prettier': 1.6.1
   '@sxzz/eslint-config-ts': 1.6.2
-  '@types/faker': 5.5.9
   '@types/md5': 2.3.2
   '@types/node': '*'
   '@types/sharp': 0.29.5
@@ -13,7 +13,6 @@ specifiers:
   eslint: 8.6.0
   eslint-define-config: 1.2.4
   esno: 0.13.0
-  faker: 5.5.3
   form-data: ^4.0.0
   ky: ^0.28.7
   md5: 2.3.0
@@ -32,9 +31,9 @@ dependencies:
   node-fetch: 3.1.0
 
 devDependencies:
+  '@faker-js/faker': 6.0.0-alpha.6
   '@sxzz/eslint-config-prettier': 1.6.1_eslint@8.6.0
   '@sxzz/eslint-config-ts': 1.6.2_eslint@8.6.0+typescript@4.5.4
-  '@types/faker': 5.5.9
   '@types/md5': 2.3.2
   '@types/node': 17.0.8
   '@types/sharp': 0.29.5
@@ -44,7 +43,6 @@ devDependencies:
   eslint: 8.6.0
   eslint-define-config: 1.2.4
   esno: 0.13.0_typescript@4.5.4
-  faker: 5.5.3
   md5: 2.3.0
   node-abort-controller: 3.0.1
   sharp: 0.29.3
@@ -282,6 +280,11 @@ packages:
       - supports-color
     dev: true
 
+  /@faker-js/faker/6.0.0-alpha.6:
+    resolution: {integrity: sha512-+jatKq8wYwOgCpVQ0wE4t9BglS16qJH/Nu4WjPU+ABTywivTY8BCsD1XIZhw9iXDq3t1InyiXmz+R70TcUMbrg==}
+    engines: {node: '>=14.0.0', npm: '>=7.0.0'}
+    dev: true
+
   /@humanwhocodes/config-array/0.9.2:
     resolution: {integrity: sha512-UXOuFCGcwciWckOpmfKDq/GyhlTf9pN/BzG//x8p8zTOFEcGuA68ANXheFS0AGvy3qgZqLBUkMs7hqzqCKOVwA==}
     engines: {node: '>=10.10.0'}
@@ -383,10 +386,6 @@ packages:
 
   /@types/chai/4.3.0:
     resolution: {integrity: sha512-/ceqdqeRraGolFTcfoXNiqjyQhZzbINDngeoAq9GoHa8PPK1yNzTaxWjA6BFWp5Ua9JpXEMSS4s5i9tS0hOJtw==}
-    dev: true
-
-  /@types/faker/5.5.9:
-    resolution: {integrity: sha512-uCx6mP3UY5SIO14XlspxsGjgaemrxpssJI0Ol+GfhxtcKpv9pgRZYsS4eeKeHVLje6Qtc8lGszuBI461+gVZBA==}
     dev: true
 
   /@types/json-schema/7.0.9:
@@ -2011,10 +2010,6 @@ packages:
   /expand-template/2.0.3:
     resolution: {integrity: sha512-XYfuKMvj4O35f/pOXLObndIRvyQ+/+6AhODh+OKWj9S9498pHHn/IMszH+gt0fBCRWMNfk1ZSp5x3AifmnI2vg==}
     engines: {node: '>=6'}
-    dev: true
-
-  /faker/5.5.3:
-    resolution: {integrity: sha512-wLTv2a28wjUyWkbnX7u/ABZBkUkIF2fCd73V6P2oFqEGEktDfzWx4UxrSqtPRw0xPRAcjeAOIiJWqZm3pP4u3g==}
     dev: true
 
   /fast-deep-equal/3.1.3:

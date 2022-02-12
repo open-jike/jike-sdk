@@ -1,7 +1,7 @@
 import sharp from 'sharp'
 import Md5 from 'md5'
 import { describe, it, expect } from 'vitest'
-import faker from 'faker'
+import { faker } from '@faker-js/faker'
 import { setApiConfig, api } from '../src'
 import { config } from './config'
 
