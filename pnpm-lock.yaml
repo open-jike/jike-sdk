@@ -18,7 +18,7 @@ specifiers:
   md5: 2.3.0
   node-abort-controller: 3.0.1
   node-fetch: 3.1.0
-  sharp: 0.29.3
+  sharp: 0.30.1
   tsup: 5.11.13
   typedoc: 0.22.11
   typescript: 4.5.4
@@ -45,7 +45,7 @@ devDependencies:
   esno: 0.13.0_typescript@4.5.4
   md5: 2.3.0
   node-abort-controller: 3.0.1
-  sharp: 0.29.3
+  sharp: 0.30.1
   tsup: 5.11.13_typescript@4.5.4
   typedoc: 0.22.11_typescript@4.5.4
   typescript: 4.5.4
@@ -884,8 +884,9 @@ packages:
       simple-swizzle: 0.2.2
     dev: true
 
-  /color/4.1.0:
-    resolution: {integrity: sha512-o2rkkxyLGgYoeUy1OodXpbPAQNmlNBrirQ8ODO8QutzDiDMNdezSOZLNnusQ6pUpCQJUsaJIo9DZJKqa2HgH7A==}
+  /color/4.2.1:
+    resolution: {integrity: sha512-MFJr0uY4RvTQUKvPq7dh9grVOTYSFeXja2mBXioCGjnjJoXrAp9jJ1NQTDR73c9nwBSAQiNKloKl5zq9WB9UPw==}
+    engines: {node: '>=12.5.0'}
     dependencies:
       color-convert: 2.0.1
       color-string: 1.9.0
@@ -1016,10 +1017,9 @@ packages:
     resolution: {integrity: sha1-hMbhWbgZBP3KWaDvRM2HDTElD5o=}
     dev: true
 
-  /detect-libc/1.0.3:
-    resolution: {integrity: sha1-+hN8S9aY7fVc1c0CrFWfkaTEups=}
-    engines: {node: '>=0.10'}
-    hasBin: true
+  /detect-libc/2.0.0:
+    resolution: {integrity: sha512-S55LzUl8HUav8l9E2PBTlC5PAJrHK7tkM+XXFGD+fbsbkTzhCpG6K05LxJcUOEWzMa4v6ptcMZ9s3fOdJDu0Zw==}
+    engines: {node: '>=8'}
     dev: true
 
   /dir-glob/3.0.1:
@@ -2594,8 +2594,8 @@ packages:
     resolution: {integrity: sha512-/ujIVxthRs+7q6hsdjHMaj8hRG9NuWmwrz+JdRwZ14jdFoKSkm+vDsCbF9PLpnSqjaWQJuTmVtcWHNLr+vrOFw==}
     dev: true
 
-  /node-addon-api/4.2.0:
-    resolution: {integrity: sha512-eazsqzwG2lskuzBqCGPi7Ac2UgOoMz8JVOXVhTvvPDYhthvNpefx8jWD8Np7Gv+2Sz0FlPWZk0nJV0z598Wn8Q==}
+  /node-addon-api/4.3.0:
+    resolution: {integrity: sha512-73sE9+3UaLYYFmDsFZnqCInzPyh3MqIwZO9cw58yIqAZhONrrabrYyYe3TuIqtIiOuTXVhsGau8hcrhhwSsDIQ==}
     dev: true
 
   /node-fetch/3.1.0:
@@ -2833,12 +2833,12 @@ packages:
       source-map-js: 1.0.2
     dev: true
 
-  /prebuild-install/7.0.0:
-    resolution: {integrity: sha512-IvSenf33K7JcgddNz2D5w521EgO+4aMMjFt73Uk9FRzQ7P+QZPKrp7qPsDydsSwjGt3T5xRNnM1bj1zMTD5fTA==}
+  /prebuild-install/7.0.1:
+    resolution: {integrity: sha512-QBSab31WqkyxpnMWQxubYAHR5S9B2+r81ucocew34Fkl98FhvKIF50jIJnNOBmAZfyNV7vE5T6gd3hTVWgY6tg==}
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
-      detect-libc: 1.0.3
+      detect-libc: 2.0.0
       expand-template: 2.0.3
       github-from-package: 0.0.0
       minimist: 1.2.5
@@ -2848,7 +2848,7 @@ packages:
       npmlog: 4.1.2
       pump: 3.0.0
       rc: 1.2.8
-      simple-get: 4.0.0
+      simple-get: 4.0.1
       tar-fs: 2.1.1
       tunnel-agent: 0.6.0
     dev: true
@@ -3052,17 +3052,17 @@ packages:
     resolution: {integrity: sha1-BF+XgtARrppoA93TgrJDkrPYkPc=}
     dev: true
 
-  /sharp/0.29.3:
-    resolution: {integrity: sha512-fKWUuOw77E4nhpyzCCJR1ayrttHoFHBT2U/kR/qEMRhvPEcluG4BKj324+SCO1e84+knXHwhJ1HHJGnUt4ElGA==}
+  /sharp/0.30.1:
+    resolution: {integrity: sha512-ycpz81q8AeVjz1pGvvirQBeJcYE2sXAjcLXR/69LWOe/oxavBLOrenZcTzvTXn83jqAGqY+OuwF+2kFXzbKtDA==}
     engines: {node: '>=12.13.0'}
     requiresBuild: true
     dependencies:
-      color: 4.1.0
-      detect-libc: 1.0.3
-      node-addon-api: 4.2.0
-      prebuild-install: 7.0.0
+      color: 4.2.1
+      detect-libc: 2.0.0
+      node-addon-api: 4.3.0
+      prebuild-install: 7.0.1
       semver: 7.3.5
-      simple-get: 4.0.0
+      simple-get: 4.0.1
       tar-fs: 2.1.1
       tunnel-agent: 0.6.0
     dev: true
@@ -3103,8 +3103,8 @@ packages:
     resolution: {integrity: sha512-cSFtAPtRhljv69IK0hTVZQ+OfE9nePi/rtJmw5UjHeVyVroEqJXP1sFztKUy1qU+xvz3u/sfYJLa947b7nAN2Q==}
     dev: true
 
-  /simple-get/4.0.0:
-    resolution: {integrity: sha512-ZalZGexYr3TA0SwySsr5HlgOOinS4Jsa8YB2GJ6lUNAazyAu4KG/VmzMTwAt2YVXzzVj8QmefmAonZIK2BSGcQ==}
+  /simple-get/4.0.1:
+    resolution: {integrity: sha512-brv7p5WgH0jmQJr1ZDDfKDOSeWWg+OVypG99A/5vYGPqJ6pxiaHLy8nxtFjBA7oMa01ebA9gfh1uMCFqOuXxvA==}
     dependencies:
       decompress-response: 6.0.0
       once: 1.4.0
