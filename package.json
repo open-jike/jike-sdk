@@ -53,7 +53,7 @@
   "devDependencies": {
     "@sxzz/eslint-config-prettier": "1.6.1",
     "@sxzz/eslint-config-ts": "1.6.2",
-    "@types/faker": "5.5.9",
+    "@types/faker": "6.6.8",
     "@types/md5": "2.3.2",
     "@types/node": "*",
     "@types/sharp": "0.29.5",
@@ -63,7 +63,7 @@
     "eslint": "8.6.0",
     "eslint-define-config": "1.2.4",
     "esno": "0.13.0",
-    "faker": "5.5.3",
+    "faker": "6.6.6",
     "md5": "2.3.0",
     "node-abort-controller": "3.0.1",
     "sharp": "0.29.3",
