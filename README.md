@@ -66,10 +66,10 @@ npm i jike-sdk
 如果使用 ESM 方式导入，需要把 `package.json` 的 `type` 设置为 `module`，或将后缀名改为 `.mjs`。
 
 ```ts
-// 自带 node-fetch, form-data
+// 自带 node-fetch
 import { api, setAccessToken, ApiClient } from 'jike-sdk/node'
 
-// 不带 node-fetch 和 form-data，需要自行 ployfill
+// 不带 node-fetch，需要自行 ployfill
 // import { api, setAccessToken, ApiClient } from 'jike-sdk'
 
 setAccessToken('your access token')
