@@ -4,7 +4,7 @@ specifiers:
   '@sxzz/eslint-config-prettier': 1.6.1
   '@sxzz/eslint-config-ts': 1.6.2
   '@types/faker': 5.5.9
-  '@types/md5': 2.3.1
+  '@types/md5': 2.3.2
   '@types/node': '*'
   '@types/sharp': 0.29.5
   bumpp: 7.1.1
@@ -35,7 +35,7 @@ devDependencies:
   '@sxzz/eslint-config-prettier': 1.6.1_eslint@8.6.0
   '@sxzz/eslint-config-ts': 1.6.2_eslint@8.6.0+typescript@4.5.4
   '@types/faker': 5.5.9
-  '@types/md5': 2.3.1
+  '@types/md5': 2.3.2
   '@types/node': 17.0.8
   '@types/sharp': 0.29.5
   bumpp: 7.1.1
@@ -397,10 +397,8 @@ packages:
     resolution: {integrity: sha1-7ihweulOEdK4J7y+UnC86n8+ce4=}
     dev: true
 
-  /@types/md5/2.3.1:
-    resolution: {integrity: sha512-OK3oe+ALIoPSo262lnhAYwpqFNXbiwH2a+0+Z5YBnkQEwWD8fk5+PIeRhYA48PzvX9I4SGNpWy+9bLj8qz92RQ==}
-    dependencies:
-      '@types/node': 17.0.8
+  /@types/md5/2.3.2:
+    resolution: {integrity: sha512-v+JFDu96+UYJ3/UWzB0mEglIS//MZXgRaJ4ubUPwOM0gvLc/kcQ3TWNYwENEK7/EcXGQVrW8h/XqednSjBd/Og==}
     dev: true
 
   /@types/node/17.0.8:
