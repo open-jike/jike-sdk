@@ -1,4 +1,3 @@
-*.ts
-*.json
-*.txt
+*
 !tsconfig.json
+!.gitignore
