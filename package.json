@@ -67,7 +67,7 @@
     "sharp": "0.30.1",
     "tsup": "5.11.13",
     "typedoc": "0.22.11",
-    "typescript": "4.5.4",
+    "typescript": "4.5.5",
     "vite": "2.8.1",
     "vitest": "0.3.4"
   }
