@@ -62,7 +62,7 @@
     "esbuild": "0.14.21",
     "eslint": "8.6.0",
     "eslint-define-config": "1.2.4",
-    "esno": "0.13.0",
+    "esno": "0.14.1",
     "md5": "2.3.0",
     "node-abort-controller": "3.0.1",
     "sharp": "0.29.3",
