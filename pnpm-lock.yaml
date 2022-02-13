@@ -11,7 +11,7 @@ specifiers:
   dayjs: 1.10.7
   esbuild: 0.14.21
   eslint: 8.9.0
-  eslint-define-config: 1.2.4
+  eslint-define-config: 1.2.5
   esno: 0.14.1
   ky: ^0.28.7
   md5: 2.3.0
@@ -39,7 +39,7 @@ devDependencies:
   dayjs: 1.10.7
   esbuild: 0.14.21
   eslint: 8.9.0
-  eslint-define-config: 1.2.4
+  eslint-define-config: 1.2.5
   esno: 0.14.1
   md5: 2.3.0
   node-abort-controller: 3.0.1
@@ -358,7 +358,7 @@ packages:
       eslint: '>=7.4.0'
     dependencies:
       eslint: 8.9.0
-      eslint-define-config: 1.2.4
+      eslint-define-config: 1.2.5
       eslint-plugin-html: 6.2.0
       eslint-plugin-import: 2.25.4_eslint@8.9.0
       eslint-plugin-jsonc: 1.7.0_eslint@8.9.0
@@ -375,7 +375,7 @@ packages:
     dependencies:
       eslint: 8.9.0
       eslint-config-prettier: 8.3.0_eslint@8.9.0
-      eslint-define-config: 1.2.4
+      eslint-define-config: 1.2.5
       eslint-plugin-prettier: 4.0.0_07b422646bb75d3db791621d4fdbc992
       eslint-plugin-yml: 0.10.1_eslint@8.9.0
       prettier: 2.5.1
@@ -393,7 +393,7 @@ packages:
       '@typescript-eslint/eslint-plugin': 5.11.0_15a231715447500ed5c06da64c8aef1c
       '@typescript-eslint/parser': 5.11.0_eslint@8.9.0+typescript@4.5.5
       eslint: 8.9.0
-      eslint-define-config: 1.2.4
+      eslint-define-config: 1.2.5
       typescript: 4.5.5
     transitivePeerDependencies:
       - supports-color
@@ -1367,9 +1367,9 @@ packages:
       eslint: 8.9.0
     dev: true
 
-  /eslint-define-config/1.2.4:
-    resolution: {integrity: sha512-HTdOfrqthSd6lpl/fRp2+BKSCR/d+knNi66c6mOIxEYjorSkqRdLkmPhmLAW5akOp3+MuP25YgKcFHSsknaigw==}
-    engines: {node: '>= 16.9.0', npm: '>= 7.0.0', pnpm: '>= 6.29.1'}
+  /eslint-define-config/1.2.5:
+    resolution: {integrity: sha512-WVvtYiovaQTUVHZmB5xnP6HyBktJIOpL4XWFPaSgA/gKFndnD4o5yRRv2EZXqQAU1kdwD/ZHKGrHJ2C6gdSgCA==}
+    engines: {node: '>= 16.9.0', npm: '>= 7.0.0', pnpm: '>= 6.30.1'}
     dev: true
 
   /eslint-import-resolver-node/0.3.6:
