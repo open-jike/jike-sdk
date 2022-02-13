@@ -62,10 +62,9 @@ export namespace Users {
     bioUpdateAlert: boolean
   }
 
-  export interface RefreshTokenResponse {
-    'x-jike-access-token': string
-    'x-jike-refresh-token': string
-  }
+  export type RefreshTokenResponse = {
+    [K in `x-${string}-access-token`]: string
+  } & { [K in `x-${string}-refresh-token`]: string }
 
   export interface GeneralProfile {
     /** 用户信息 */

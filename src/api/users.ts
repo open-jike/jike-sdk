@@ -1,4 +1,4 @@
-import { toResponse, request } from '../request'
+import { getApiConfig, toResponse, request } from '../request'
 import type { Users } from '../types/api-responses'
 
 /**
@@ -25,7 +25,7 @@ export const refreshToken = async <T = Users.RefreshTokenResponse>(
   toResponse<T>(
     request.post('app_auth_tokens.refresh', {
       headers: {
-        'x-jike-refresh-token': refreshToken,
+        [`x-${getApiConfig().endpointId}-refresh-token`]: refreshToken,
       },
     })
   )
@@ -68,7 +68,7 @@ export const loginWithSmsCode = <T = Users.LoginResponse>(
         smsCode: `${smsCode}`,
       },
       headers: {
-        'x-jike-access-token': '',
+        [`x-${getApiConfig().endpointId}-access-token`]: '',
       },
     }),
     (data) => ({

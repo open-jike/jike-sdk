@@ -10,49 +10,46 @@ import type { Notification } from '../types/entity'
 import type { BeforeRetryState } from 'ky/distribution/types/hooks'
 import type { PaginatedOption, PaginatedFetcher } from './utils/paginate'
 import type { Api } from '../api'
-import type { ApiConfig } from '../request'
+import type { ApiConfig, ApiConfigResolved } from '../request'
 
 export class JikeClient {
-  #accessToken: string
   #refreshToken: string
-  #apiConfig: ApiConfig
+  #config: ApiConfigResolved
   #client!: Api
 
   get accessToken() {
-    return this.#accessToken
+    return this.#config.accessToken
   }
   set accessToken(token) {
-    this.#accessToken = token
+    this.#config.accessToken = token
     this.createClient()
   }
   get refreshToken() {
     return this.#refreshToken
   }
-  get apiConfig() {
-    return this.#apiConfig
+  get config() {
+    return this.#config
   }
-  set apiConfig(config) {
-    this.#apiConfig = config
+  set config(config) {
+    this.#config = config
     this.createClient()
   }
   get apiClient() {
     return this.#client
   }
 
-  constructor(
-    auth: { accessToken?: string; refreshToken?: string } = {},
-    apiConfig: Partial<Omit<ApiConfig, 'accessToken' | 'beforeRetry'>> = {}
-  ) {
-    this.#accessToken = auth.accessToken ?? ''
-    this.#refreshToken = auth.refreshToken ?? ''
-    this.#apiConfig = resolveApiConfig(apiConfig)
+  constructor({
+    refreshToken = '',
+    ...config
+  }: ApiConfig & { refreshToken?: string }) {
+    this.#refreshToken = refreshToken
+    this.#config = resolveApiConfig(config)
     this.createClient()
   }
 
   private createClient() {
     this.#client = ApiClient({
-      ...this.#apiConfig,
-      accessToken: this.#accessToken,
+      ...this.#config,
       beforeRetry: this.beforeRetry.bind(this),
     })
   }
@@ -64,7 +61,10 @@ export class JikeClient {
     if (response.status !== 401) return false
 
     await this.renewToken()
-    request.headers.set('x-jike-access-token', this.#accessToken)
+    request.headers.set(
+      `x-${this.#config.endpointId}-access-token`,
+      this.#config.accessToken
+    )
 
     return true
   }
@@ -102,8 +102,12 @@ export class JikeClient {
     )
     if (!isSuccess(result)) throwRequestFailureError(result, '登录')
 
-    this.#refreshToken = result.headers.get('x-jike-refresh-token')!
-    this.accessToken = result.headers.get('x-jike-access-token')!
+    this.#refreshToken = result.headers.get(
+      `x-${this.#config.endpointId}-refresh-token`
+    )!
+    this.accessToken = result.headers.get(
+      `x-${this.#config.endpointId}-access-token`
+    )!
   }
 
   /**
@@ -163,7 +167,8 @@ export class JikeClient {
       )
     }
 
-    this.#refreshToken = result.data['x-jike-refresh-token']
-    this.accessToken = result.data['x-jike-access-token']
+    this.#refreshToken =
+      result.data[`x-${this.#config.endpointId}-refresh-token`]
+    this.accessToken = result.data[`x-${this.#config.endpointId}-access-token`]
   }
 }

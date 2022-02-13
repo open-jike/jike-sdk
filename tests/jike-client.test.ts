@@ -4,10 +4,7 @@ import { RequestFailureError } from '../src/client/errors/RequestFailureError'
 import { config, refreshToken } from './config'
 
 describe('login should work', () => {
-  const client = new JikeClient(
-    { accessToken: config.accessToken },
-    { ...config }
-  )
+  const client = new JikeClient(config)
   const mobile = process.env.MOBILE
 
   it('sendSmsCode should work', async () => {
@@ -31,10 +28,11 @@ describe('login should work', () => {
 })
 
 it('renew token should work', async () => {
-  const client = new JikeClient(
-    { accessToken: 'ERROR', refreshToken },
-    { ...config }
-  )
+  const client = new JikeClient({
+    accessToken: 'ERROR',
+    refreshToken,
+    ...config,
+  })
   const username = await client.getSelf().getUsername()
   expect(username).to.be.a('string')
 })

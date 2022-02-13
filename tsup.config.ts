@@ -22,7 +22,7 @@ const modern = (): Options => {
     format: ['esm'],
     splitting: false,
     define: {
-      isNode: 'false',
+      IS_NODE: 'false',
     },
     minifySyntax: true,
     esbuildOptions: (options) => {
@@ -36,7 +36,7 @@ const node = (): Options => ({
   format: ['esm'],
   clean: true,
   define: {
-    isNode: 'true',
+    IS_NODE: 'true',
   },
   minifySyntax: true,
   inject: [$r('src/node-shim.ts')],

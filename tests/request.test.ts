@@ -4,20 +4,29 @@ import { AbortController } from 'node-abort-controller'
 import {
   getAccessToken,
   request,
-  setAccessToken,
   setApiConfig,
   resolveApiConfig,
 } from '../dist/node'
-import { API_BASE, defaultEnvironment } from '../src/constants'
+import { defaultEnvironment } from '../src/constants'
 import type { ApiConfig } from '../dist/node'
 
 if (!globalThis.AbortController) globalThis.AbortController = AbortController
 
 describe('request', () => {
-  const token = 'TEST_TOKEN'
-  setAccessToken(token)
+  const config = {
+    endpointId: 'keji',
+    endpointUrl: 'https://keji.org/api/',
+    bundleId: 'org.keji.keji',
+    buildNo: '10086',
+    userAgent: 'keji-useragent',
+  }
 
   it('access token should not be empty', () => {
+    const token = 'TEST_TOKEN'
+    setApiConfig({
+      accessToken: token,
+      ...config,
+    })
     expect(getAccessToken()).toBe(token)
   })
 
@@ -25,6 +34,7 @@ describe('request', () => {
     const controller = new globalThis.AbortController()
     let req: Request
     const apiConfig: ApiConfig = resolveApiConfig({
+      ...config,
       deviceId: 'TEST_DEVICE_ID',
       idfv: 'TEST_IDFV',
       userAgent: 'TEST_USER_AGENT',
@@ -49,22 +59,26 @@ describe('request', () => {
     })
 
     it('prefix url should be correct', () => {
-      expect(req.url).toBe(API_BASE)
+      expect(req.url).toBe(config.endpointUrl)
     })
 
     it('headers should be correct', () => {
       expect(req.headers.get('User-Agent')).toBe(apiConfig.userAgent)
-      expect(req.headers.get('x-jike-access-token')).toBe(apiConfig.accessToken)
-      expect(req.headers.get('x-jike-device-properties')).includes(
-        apiConfig.idfv
+      expect(req.headers.get(`x-${config.endpointId}-access-token`)).toBe(
+        apiConfig.accessToken
       )
-      expect(req.headers.get('x-jike-device-id')).includes(apiConfig.deviceId)
+      expect(
+        req.headers.get(`x-${config.endpointId}-device-properties`)
+      ).includes(apiConfig.idfv)
+      expect(req.headers.get(`x-${config.endpointId}-device-id`)).includes(
+        apiConfig.deviceId
+      )
     })
   })
 
   it('uuid should be random', () => {
-    const config = resolveApiConfig({})
-    expect(config.deviceId).not.toBe(defaultEnvironment.deviceId)
-    expect(config.idfv).not.toBe(defaultEnvironment.idfv)
+    const cfg = resolveApiConfig(config)
+    expect(cfg.deviceId).not.toBe(defaultEnvironment.deviceId)
+    expect(cfg.idfv).not.toBe(defaultEnvironment.idfv)
   })
 })

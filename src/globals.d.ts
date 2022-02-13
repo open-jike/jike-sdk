@@ -1,5 +1,5 @@
 declare global {
-  const isNode: boolean
+  const IS_NODE: boolean
   const randomUUID: () => string
 }
 

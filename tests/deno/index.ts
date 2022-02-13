@@ -1,10 +1,7 @@
-import { getAccessToken, setAccessToken, ApiClient } from '../../dist/index.js'
+import { setApiConfig, ApiClient } from '../../dist/index.js'
+import { config } from './config.ts'
 
-setAccessToken('TEST-TOKEN')
-console.log(getAccessToken())
+setApiConfig(config)
 
-const token = Deno.env.get('ACCESS_TOKEN')
-if (!token) throw new Error('please set environment variable `ACCESS_TOKEN`')
-
-const resp = await (ApiClient({ accessToken: token }).users as any).profile()
+const resp = await (ApiClient(config).users as any).profile()
 console.log(JSON.stringify(resp))
