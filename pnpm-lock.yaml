@@ -13,7 +13,7 @@ specifiers:
   eslint: 8.9.0
   eslint-define-config: 1.2.5
   esno: 0.14.1
-  ky: ^0.28.7
+  ky: ^0.29.0
   md5: 2.3.0
   node-abort-controller: 3.0.1
   node-fetch: 3.2.0
@@ -25,7 +25,7 @@ specifiers:
   vitest: 0.3.5
 
 dependencies:
-  ky: 0.28.7
+  ky: 0.29.0
   node-fetch: 3.2.0
 
 devDependencies:
@@ -2221,8 +2221,8 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
-  /ky/0.28.7:
-    resolution: {integrity: sha512-a23i6qSr/ep15vdtw/zyEQIDLoUaKDg9Jf04CYl/0ns/wXNYna26zJpI+MeIFaPeDvkrjLPrKtKOiiI3IE53RQ==}
+  /ky/0.29.0:
+    resolution: {integrity: sha512-01TBSOqlHmLfcQhHseugGHLxPtU03OyZWaLDWt5MfzCkijG6xWFvAQPhKVn0cR2MMjYvBP9keQ8A3+rQEhLO5g==}
     engines: {node: '>=12'}
     dev: false
 

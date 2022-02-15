@@ -46,7 +46,7 @@
   },
   "homepage": "https://github.com/sxzz/jike-sdk#readme",
   "dependencies": {
-    "ky": "^0.28.7",
+    "ky": "^0.29.0",
     "node-fetch": "3.2.0"
   },
   "devDependencies": {
