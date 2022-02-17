@@ -9,7 +9,7 @@
   "license": "AGPL-3.0",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sxzz/jike-sdk.git"
+    "url": "git+https://github.com/open-jike/jike-sdk.git"
   },
   "author": "三咲智子 <sxzz@sxzz.moe>",
   "files": [
@@ -39,12 +39,12 @@
     "prepublishOnly": "npm run build"
   },
   "bugs": {
-    "url": "https://github.com/sxzz/jike-sdk/issues"
+    "url": "https://github.com/open-jike/jike-sdk/issues"
   },
   "engines": {
     "node": ">=14"
   },
-  "homepage": "https://github.com/sxzz/jike-sdk#readme",
+  "homepage": "https://github.com/open-jike/jike-sdk#readme",
   "dependencies": {
     "ky": "^0.28.7",
     "node-fetch": "3.2.0"
