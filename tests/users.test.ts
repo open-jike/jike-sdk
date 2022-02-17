@@ -26,8 +26,8 @@ describe('users should work', () => {
     const result = await api.users.refreshToken(token)
     expect(result.status).toBe(200)
     expect(result.data.success).toBe(true)
-    expect(result.data['x-jike-access-token']).toBeTruthy()
-    expect(result.data['x-jike-refresh-token']).toBeTruthy()
+    expect(result.data[`x-${config.endpointId}-access-token`]).toBeTruthy()
+    expect(result.data[`x-${config.endpointId}-refresh-token`]).toBeTruthy()
   })
 
   const mobile = process.env.MOBILE
