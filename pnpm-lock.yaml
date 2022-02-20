@@ -1,7 +1,7 @@
 lockfileVersion: 5.3
 
 specifiers:
-  '@faker-js/faker': 6.0.0-alpha.6
+  '@faker-js/faker': 6.0.0-alpha.7
   '@sxzz/eslint-config-prettier': 1.6.1
   '@sxzz/eslint-config-ts': 1.6.2
   '@types/md5': 2.3.2
@@ -29,7 +29,7 @@ dependencies:
   node-fetch: 3.2.0
 
 devDependencies:
-  '@faker-js/faker': 6.0.0-alpha.6
+  '@faker-js/faker': 6.0.0-alpha.7
   '@sxzz/eslint-config-prettier': 1.6.1_eslint@8.9.0
   '@sxzz/eslint-config-ts': 1.6.2_eslint@8.9.0+typescript@4.5.5
   '@types/md5': 2.3.2
@@ -285,8 +285,8 @@ packages:
       - supports-color
     dev: true
 
-  /@faker-js/faker/6.0.0-alpha.6:
-    resolution: {integrity: sha512-+jatKq8wYwOgCpVQ0wE4t9BglS16qJH/Nu4WjPU+ABTywivTY8BCsD1XIZhw9iXDq3t1InyiXmz+R70TcUMbrg==}
+  /@faker-js/faker/6.0.0-alpha.7:
+    resolution: {integrity: sha512-T2nYE8+EfzfkRMLMSm7UvgC7fZ2KkKEyCMeyPVS0q2cuvENbt1SjWyu0bOJ0JqBbTs1g+gYMWMFMXspWlzNVmQ==}
     engines: {node: '>=14.0.0', npm: '>=7.0.0'}
     dev: true
 
