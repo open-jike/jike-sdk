@@ -66,7 +66,7 @@
     "node-abort-controller": "3.0.1",
     "sharp": "0.30.1",
     "tsup": "5.11.13",
-    "typedoc": "0.22.11",
+    "typedoc": "0.22.12",
     "typescript": "4.5.5",
     "vite": "2.8.1",
     "vitest": "0.3.5"

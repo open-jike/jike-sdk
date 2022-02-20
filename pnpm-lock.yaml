@@ -19,7 +19,7 @@ specifiers:
   node-fetch: 3.2.0
   sharp: 0.30.1
   tsup: 5.11.13
-  typedoc: 0.22.11
+  typedoc: 0.22.12
   typescript: 4.5.5
   vite: 2.8.1
   vitest: 0.3.5
@@ -45,7 +45,7 @@ devDependencies:
   node-abort-controller: 3.0.1
   sharp: 0.30.1
   tsup: 5.11.13_typescript@4.5.5
-  typedoc: 0.22.11_typescript@4.5.5
+  typedoc: 0.22.12_typescript@4.5.5
   typescript: 4.5.5
   vite: 2.8.1
   vitest: 0.3.5
@@ -3241,8 +3241,8 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /typedoc/0.22.11_typescript@4.5.5:
-    resolution: {integrity: sha512-pVr3hh6dkS3lPPaZz1fNpvcrqLdtEvXmXayN55czlamSgvEjh+57GUqfhAI1Xsuu/hNHUT1KNSx8LH2wBP/7SA==}
+  /typedoc/0.22.12_typescript@4.5.5:
+    resolution: {integrity: sha512-FcyC+YuaOpr3rB9QwA1IHOi9KnU2m50sPJW5vcNRPCIdecp+3bFkh7Rq5hBU1Fyn29UR2h4h/H7twZHWDhL0sw==}
     engines: {node: '>= 12.10.0'}
     hasBin: true
     peerDependencies:
