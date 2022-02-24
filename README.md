@@ -139,4 +139,4 @@ setAccessToken('your access token')
 
 ## License
 
-[GPL-3.0](./LICENSE) License © 2021 [三咲智子](https://github.com/sxzz)
+[AGPL-3.0](./LICENSE) License © 2021-PRESENT [三咲智子](https://github.com/sxzz)
