@@ -1,3 +1,14 @@
 {
-  extends: ['config:js-lib', ':prHourlyLimitNone', ':labels(dependencies)'],
+  extends: ['config:base', 'schedule:weekly', 'group:allNonMajor'],
+  labels: ['dependencies'],
+  pin: false,
+  rangeStrategy: 'bump',
+  node: false,
+  packageRules: [
+    {
+      depTypeList: ['peerDependencies'],
+      enabled: false,
+    },
+  ],
+  ignoreDeps: ['node'],
 }
