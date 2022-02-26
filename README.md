@@ -51,7 +51,7 @@
 
 ## Usage
 
-[API Reference](https://blog.sxzz.moe/jike-sdk/)
+[API Reference](https://jike-sdk.surge.sh/)
 
 ### Node.js
 
