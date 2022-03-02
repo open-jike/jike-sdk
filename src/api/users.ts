@@ -97,3 +97,16 @@ export const loginWithPhoneAndPassword = <T = Users.LoginResponse>(
       },
     })
   )
+
+/**
+ * 弹一弹
+ * @param username 用户名
+ */
+export const avatarGreet = <T = Users.AvatarGreetResponse>(username: string) =>
+  toResponse<T>(
+    request.post('1.0/users/avatarGreet/create', {
+      json: {
+        username,
+      },
+    })
+  )

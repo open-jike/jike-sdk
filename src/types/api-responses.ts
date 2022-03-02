@@ -102,6 +102,10 @@ export namespace Users {
   export type Profile<M extends boolean = boolean> = M extends true
     ? MyProfile
     : UserProfile
+
+  export interface AvatarGreetResponse {
+    success: boolean
+  }
 }
 
 export namespace PersonalUpdate {
