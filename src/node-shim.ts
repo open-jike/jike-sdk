@@ -4,6 +4,7 @@ import {
   Headers,
   Request,
   Response,
+  File,
   // @ts-expect-error
   FormData,
 } from 'node-fetch'
@@ -19,6 +20,7 @@ if (!globals.fetch) {
 }
 
 if (!globals.FormData) {
+  globals.File = File
   globals.FormData = FormData
 }
 

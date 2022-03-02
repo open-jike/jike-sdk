@@ -3,8 +3,9 @@ import { setApiConfig, api } from '../../src'
 import { PostType } from '../../src/types/options'
 import { config } from '../config'
 
+setApiConfig(config)
+
 describe('posts should work', () => {
-  setApiConfig(config)
   const id = '61b8b9d298f39200100ba010'
 
   it('share should work', async () => {

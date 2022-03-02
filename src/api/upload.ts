@@ -10,8 +10,14 @@ export const token = <T = Upload.TokenResponse>(md5: string) =>
   )
 
 export const upload = async (image: File | Buffer, token: string) => {
+  let file: File
+  if (typeof Buffer !== 'undefined' && Buffer.isBuffer(image)) {
+    file = new File([image.buffer], '?')
+  } else {
+    file = image as File
+  }
   const formData = new FormData()
-  formData.append('file', image as any)
+  formData.append('file', file)
   formData.append('token', token)
   const result = await ky
     .post('https://upload.qiniup.com/', {

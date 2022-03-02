@@ -4,7 +4,7 @@ import { defaultEnvironment } from './constants'
 import { generateUUID } from './utils'
 import type { KyInstance } from 'ky/distribution/types/ky'
 import type { BeforeRetryState } from 'ky/distribution/types/hooks'
-import type { ResponsePromise } from 'ky'
+import type { ResponsePromise, Options } from 'ky'
 
 /**
  * API 配置
@@ -64,7 +64,11 @@ let apiConfig: ApiConfigResolved = undefined as any // MUST BE SET FIRST
  */
 export const setApiConfig = (config: ApiConfig) => {
   apiConfig = resolveApiConfig(config)
-  _request = ky.create({
+  _request = ky.create(resolveKyOptions())
+}
+
+export const resolveKyOptions = (): Options => {
+  return {
     prefixUrl: apiConfig.endpointUrl,
     headers: {
       manufacturer: defaultEnvironment.manufacturer,
@@ -107,7 +111,7 @@ export const setApiConfig = (config: ApiConfig) => {
         },
       ],
     },
-  })
+  }
 }
 
 /** 获取 API 配置 */
