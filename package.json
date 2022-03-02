@@ -1,0 +1,75 @@
+{
+  "name": "jike-sdk",
+  "version": "0.7.0-beta.10",
+  "description": "Jike Ⓙ SDK for Node.js",
+  "keywords": [
+    "jike",
+    "sdk"
+  ],
+  "license": "AGPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/open-jike/jike-sdk.git"
+  },
+  "author": "三咲智子 <sxzz@sxzz.moe>",
+  "files": [
+    "dist",
+    "*.d.ts"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/index.js"
+    },
+    "./node": {
+      "import": "./dist/node.mjs"
+    }
+  },
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "sideEffects": false,
+  "scripts": {
+    "dev": "esmo playground/main.ts",
+    "build": "MODE=node tsup && mv dist/index.d.ts dist/node.d.ts && MODE=modern tsup",
+    "docs:build": "typedoc",
+    "docs:preview": "serve docs",
+    "lint": "eslint .",
+    "lint:fix": "npm run lint -- --fix",
+    "test": "vitest",
+    "test:deno": "cd tests/deno && deno run --allow-net --import-map=import_map.json --allow-env index.ts",
+    "release": "bumpp --commit --push --tag && npm publish",
+    "prepublishOnly": "npm run build"
+  },
+  "bugs": {
+    "url": "https://github.com/open-jike/jike-sdk/issues"
+  },
+  "engines": {
+    "node": ">=14"
+  },
+  "homepage": "https://github.com/open-jike/jike-sdk#readme",
+  "dependencies": {
+    "ky": "^0.29.0",
+    "node-fetch": "3.2.1"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^6.0.0-alpha.7",
+    "@sxzz/eslint-config-prettier": "^1.7.0",
+    "@sxzz/eslint-config-ts": "^1.7.0",
+    "@types/md5": "^2.3.2",
+    "@types/node": "^*",
+    "@types/sharp": "^0.29.5",
+    "bumpp": "^7.1.1",
+    "dayjs": "^1.10.8",
+    "esbuild": "^0.14.23",
+    "eslint": "^8.10.0",
+    "eslint-define-config": "^1.2.5",
+    "esno": "^0.14.1",
+    "md5": "^2.3.0",
+    "node-abort-controller": "^3.0.1",
+    "serve": "^13.0.2",
+    "sharp": "^0.30.1",
+    "tsup": "^5.11.13",
+    "typedoc": "^0.22.12",
+    "typescript": "^4.6.2",
+    "vitest": "^0.5.9"
+  }
+}

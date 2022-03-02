@@ -1,0 +1,5 @@
+{
+  "imports": {
+    "ky": "https://cdn.skypack.dev/ky?dts"
+  }
+}
