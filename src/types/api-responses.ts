@@ -6,6 +6,7 @@ import type {
   SimpleUser,
   TabIcons,
   User,
+  RecommendPost,
 } from './entity'
 
 export namespace Posts {
@@ -34,7 +35,7 @@ export namespace Notifications {
 export namespace UserRelation {
   export interface GetFollowingListResponse {
     data: SimpleUser[]
-    loadMoreKey: {
+    loadMoreKey?: {
       createdAt: string
     }
   }
@@ -111,7 +112,7 @@ export namespace Users {
 export namespace PersonalUpdate {
   export interface SingleResponse {
     data: PostDetail[]
-    loadMoreKey: {
+    loadMoreKey?: {
       lastId: string
     }
   }
@@ -125,7 +126,7 @@ export namespace Comments {
 
   export interface ListPrimaryResponse {
     data: Comment[]
-    loadMoreKey: {
+    loadMoreKey?: {
       key: string
       partition: string
     }
@@ -135,5 +136,15 @@ export namespace Comments {
 export namespace Upload {
   export interface TokenResponse {
     uptoken: string
+  }
+}
+
+export namespace RecommendFeed {
+  export interface ListResponse {
+    data: RecommendPost[]
+    toastMessage: string
+    loadMoreKey?: {
+      page: number
+    }
   }
 }

@@ -1,9 +1,9 @@
 /**
- * 分页选项
+ * @description 分页选项
  */
-export interface PaginationOption<T = any> {
+export interface PaginationOption<T = Record<string, any>> {
   /**
-   * 最大记录数
+   * @description 最大记录数
    * @default 10
    */
   limit?: number
@@ -14,41 +14,50 @@ export interface PaginationOption<T = any> {
   loadMoreKey?: Partial<T>
 }
 
+/**
+ * @description 动态类型
+ */
 export enum PostType {
-  /** 动态 */
+  /** 原帖 */
   ORIGINAL = 'originalPosts',
   /** 转发 */
   REPOST = 'reposts',
 }
 
+/**
+ * @description 发送动态选项
+ */
 export interface CreatePostOption {
   /**
-   * 同步到个人主页
-   * @default true
+   * @description 是否同步到个人主页
+   * @default `true`
    */
   syncToPersonalUpdates?: boolean
   /**
-   * 图片 key 列表
-   * @default []
+   * @description 图片 key 列表
+   * @default `[]`
    */
   pictureKeys?: string[]
 
   /**
-   * 圈子 ID
-   * @default undefined
+   * @description 圈子 ID
+   * @default `undefined`
    */
   topicId?: string
 }
 
+/**
+ * @description 发送评论选项
+ */
 export interface AddCommentOption {
   /**
-   * 同步到个人主页
-   * @default false
+   * @description 同步到个人主页
+   * @default `false`
    */
   syncToPersonalUpdates?: boolean
   /**
-   * 图片 key 列表
-   * @default []
+   * @description 图片 key 列表
+   * @default `[]`
    */
   pictureKeys?: string[]
 }
@@ -57,6 +66,26 @@ export interface ListCommentMoreKey {
   key: string
   partition: string
 }
-export type ListCommentOption = PaginationOption<ListCommentMoreKey> & {
+/**
+ * @description 获取评论选项
+ */
+export interface ListCommentOption
+  extends PaginationOption<ListCommentMoreKey> {
+  /**
+   * 排序
+   * @default `LIKES`
+   */
   order?: 'LIKES' | 'TIME'
+}
+
+/**
+ * @description 获取动态广场选项
+ */
+export interface ListRecommendFeedOption
+  extends PaginationOption<{ page: number }> {
+  /**
+   * @description 触发方式
+   * @default `auto`
+   */
+  trigger?: string
 }

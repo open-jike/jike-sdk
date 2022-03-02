@@ -49,7 +49,7 @@ export const listPrimary = <T = Comments.ListPrimaryResponse>(
         targetType,
         targetId,
         order: option.order ?? 'LIKES',
-        limit: option.limit,
+        limit: option.limit ?? 10,
         loadMoreKey: option.loadMoreKey,
       },
     })

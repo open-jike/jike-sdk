@@ -487,10 +487,7 @@ export interface LinkInfo {
   source: string
 }
 
-export interface ReadTrackInfo {
-  recommendReason: string
-  recommendReasonPolicy: string
-}
+export type ReadTrackInfo = Record<string, any>
 
 export interface ActionItem {
   type: string
@@ -587,4 +584,53 @@ export interface Comment {
   hideable: boolean
   deletable: boolean
   pinnable: boolean
+}
+
+export interface AdditionalInfo {
+  grayGroup: string
+  interestType: string
+  keywords: string
+  pictureClassifications: string
+  posterId: string
+  recallTag: string
+  recommendId: string
+  recommendTime: string
+  topicId: string
+}
+
+export interface Payload {
+  id: string
+  feedType: string
+  type: string
+  key: string
+  reason: string
+  readTrackInfo: ReadTrackInfo
+}
+
+export interface Reason {
+  key: string
+  text: string
+  payload: Payload
+}
+
+export interface DislikeMenu {
+  title: string
+  subtitle: string
+  reasons: Reason[]
+}
+
+export interface RecommendPost {
+  id: string
+  readTrackInfo: ReadTrackInfo
+  dislikeMenu: DislikeMenu
+  user: SimpleUser
+  topic: Topic
+  content: string
+  pictures: Picture[]
+  likeCount: number
+  commentCount: number
+  repostCount: number
+  shareCount: number
+  createdAt: Date
+  type: string
 }

@@ -4,6 +4,7 @@
     "src/api/notifications.ts",
     "src/api/personal-update.ts",
     "src/api/posts.ts",
+    "src/api/recommend-feed.ts",
     "src/api/user-relation.ts",
     "src/api/users.ts",
     "src/api/comments.ts",
