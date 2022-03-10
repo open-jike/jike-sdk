@@ -20,3 +20,25 @@ export const single = async <T = PersonalUpdate.SingleResponse>(
       },
     })
   )
+
+/**
+ * 获取关注动态
+ * @param option 分页选项
+ */
+export const followingUpdates = async <
+  T = PersonalUpdate.FollowingUpdatesResponse
+>(
+  option: PaginationOption<{
+    session: 'PopulatedUpdate'
+    lastReadTime: number
+    lastPageEarliestTime: number
+  }> = {}
+) =>
+  toResponse<T>(
+    request.post('1.0/personalUpdate/followingUpdates', {
+      json: {
+        limit: option.limit ?? 10,
+        loadMoreKey: option.loadMoreKey,
+      },
+    })
+  )

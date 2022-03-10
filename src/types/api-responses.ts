@@ -116,6 +116,15 @@ export namespace PersonalUpdate {
       lastId: string
     }
   }
+
+  export interface FollowingUpdatesResponse {
+    data: PostDetail[]
+    loadMoreKey?: {
+      session: 'PopulatedUpdate'
+      lastPageEarliestTime: number
+      lastReadTime: number
+    }
+  }
 }
 
 export namespace Comments {
