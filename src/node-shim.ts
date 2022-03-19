@@ -5,7 +5,6 @@ import {
   Request,
   Response,
   File,
-  // @ts-expect-error
   FormData,
 } from 'node-fetch'
 
