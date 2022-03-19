@@ -53,9 +53,7 @@
 
 </details>
 
-## Usage
-
-[API Reference](https://jike-sdk.surge.sh/)
+## Installation
 
 ### Node.js
 
@@ -71,62 +69,75 @@ npm i jike-sdk
 
 ```ts
 // 自带 node-fetch
-import { api, setAccessToken, ApiClient } from 'jike-sdk/node'
+import { setApiConfig } from 'jike-sdk/node'
 
 // 不带 node-fetch，需要自行 ployfill 或使用最新 Node.js
 // import { api, setAccessToken, ApiClient } from 'jike-sdk'
 
-setAccessToken('your access token')
-api.userRelation.getFollowingList('82D23B32-CF36-4C59-AD6F-D05E3552CBF3', {
-  limit: 100,
+setApiConfig({
+  // ...
 })
-
-// Or
-const client = ApiClient('your access token')
-client.users.profile()
 ```
 
 #### CJS 导入
 
 ```ts
 ;(async () => {
-  const { setAccessToken, getAccessToken } = await import('jike-sdk/node')
-  setAccessToken('your access token')
-  console.log(getAccessToken())
+  const { setApiConfig } = await import('jike-sdk/node')
+  setApiConfig({
+    // ...
+  })
 })()
 ```
 
 ### Deno
 
 ```ts
-import { setAccessToken, api } from 'https://cdn.skypack.dev/jike-sdk?dts'
-
-setAccessToken('your access token')
-api.users.getSmsCode('+86', 'your mobile phone')
+import { setApiConfig } from 'https://cdn.skypack.dev/jike-sdk?dts'
 ```
 
 ### 浏览器
 
 ```ts
-import { setAccessToken } from 'jike-sdk'
-
-setAccessToken('your access token')
+import { setApiConfig } from 'jike-sdk'
 ```
 
 或使用 CDN 的方式加载（与 Deno 一致）
 
 ```html
 <script type="module">
-  import {
-    setAccessToken,
-    getAccessToken,
-  } from 'https://cdn.skypack.dev/jike-sdk'
-  setAccessToken('your access token')
-  console.log(getAccessToken())
+  import { setApiConfig } from 'https://cdn.skypack.dev/jike-sdk'
 </script>
 ```
 
 **由于 CORS 策略的原因，第三方网站无法直接请求外部服务器。但可以使用浏览器扩展的能力请求。**
+
+## Usage
+
+[API Reference](https://jike-sdk.surge.sh/)
+
+```ts
+import { setApiConfig, setAccessToken, api, ApiClient } from 'jike-sdk'
+
+const apiConfig = {
+  endpointId: 'jike',
+  endpointUrl: '<jike-endpoint-url>', // 请自行替换
+  bundleId: '<bundle-id>', // 请自行替换
+  buildNo: '<build-no>', // 请自行替换
+  userAgent: '<jike-sdk-user-agent>', // 请自行替换
+  accessToken: '<access-token>', // 请自行替换
+}
+setApiConfig(apiConfig)
+
+setAccessToken('update-access-token')
+api.userRelation.getFollowingList('82D23B32-CF36-4C59-AD6F-D05E3552CBF3', {
+  limit: 100,
+})
+
+// 或使用 ApiClient
+const client = ApiClient(apiConfig)
+client.users.profile()
+```
 
 ## Alternatives
 
