@@ -4,7 +4,7 @@ import { defaultEnvironment } from './constants'
 import { generateUUID } from './utils'
 import type { KyInstance } from 'ky/distribution/types/ky'
 import type { BeforeRetryState } from 'ky/distribution/types/hooks'
-import type { ResponsePromise, Options } from 'ky'
+import type { Options, ResponsePromise } from 'ky'
 
 /**
  * API 配置

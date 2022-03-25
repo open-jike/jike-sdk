@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-namespace */
 import type {
+  Comment,
   Notification,
   PostDetail,
-  Comment,
+  RecommendPost,
   SimpleUser,
   TabIcons,
   User,
-  RecommendPost,
 } from './entity'
 
 export namespace Posts {

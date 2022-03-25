@@ -1,4 +1,4 @@
-import { toResponse, request } from '../request'
+import { request, toResponse } from '../request'
 import type { PaginationOption } from '../types/options'
 import type { PersonalUpdate } from '../types/api-responses'
 

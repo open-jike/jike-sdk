@@ -8,7 +8,7 @@ import type {
   ListCommentOption,
   PostType,
 } from '../types/options'
-import type { PostDetail, Comment } from '../types/entity'
+import type { Comment, PostDetail } from '../types/entity'
 import type { JikeClient } from './client'
 
 /**

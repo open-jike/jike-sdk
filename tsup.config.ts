@@ -5,7 +5,6 @@ import type { Options } from 'tsup'
 const $r = resolve.bind(undefined, __dirname)
 
 const common: Options = {
-  target: 'es2019',
   entry: [$r('src/index.ts')],
   sourcemap: true,
   dts: true,
@@ -19,6 +18,8 @@ export default defineConfig(() => {
 const modern = (): Options => {
   return {
     ...common,
+    platform: 'browser',
+    target: 'es2019',
     format: ['esm'],
     splitting: false,
     define: {
@@ -33,6 +34,8 @@ const modern = (): Options => {
 
 const node = (): Options => ({
   ...common,
+  target: 'node14.15',
+  platform: 'node',
   format: ['esm'],
   clean: true,
   define: {

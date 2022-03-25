@@ -4,7 +4,7 @@ import { JikePostWithDetail } from './post'
 import { rawTypeToEnum } from './utils/post'
 import type { PostDetail, SimpleUser } from '../types/entity'
 import type { Users } from '../types/api-responses'
-import type { PaginatedOption, PaginatedFetcher } from './utils/paginate'
+import type { PaginatedFetcher, PaginatedOption } from './utils/paginate'
 import type { JikeClient } from './client'
 
 export interface FollowerWithTime {

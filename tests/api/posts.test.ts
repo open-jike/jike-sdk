@@ -1,5 +1,5 @@
-import { describe, it, expect } from 'vitest'
-import { setApiConfig, api } from '../../src'
+import { describe, expect, it } from 'vitest'
+import { api, setApiConfig } from '../../src'
 import { PostType } from '../../src/types/options'
 import { config } from '../config'
 

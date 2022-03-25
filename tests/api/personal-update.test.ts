@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest'
+import { describe, expect, it } from 'vitest'
 import { api, setApiConfig } from '../../src'
 import { config } from '../config'
 describe('personal update should work', () => {

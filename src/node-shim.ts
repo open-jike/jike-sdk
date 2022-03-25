@@ -1,11 +1,11 @@
 import { randomUUID } from 'crypto'
 import {
-  default as fetch,
+  File,
+  FormData,
   Headers,
   Request,
   Response,
-  File,
-  FormData,
+  default as fetch,
 } from 'node-fetch'
 
 const globals: any = globalThis

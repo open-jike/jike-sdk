@@ -4,8 +4,8 @@ import { AbortController } from 'node-abort-controller'
 import {
   getAccessToken,
   request,
-  setApiConfig,
   resolveApiConfig,
+  setApiConfig,
 } from '../dist/node'
 import { defaultEnvironment } from '../src/constants'
 import type { ApiConfig } from '../src'

@@ -8,7 +8,7 @@ import { fetchPaginated } from './utils/paginate'
 import { AuthorizationError } from './errors/AuthorizationError'
 import type { Notification } from '../types/entity'
 import type { BeforeRetryState } from 'ky/distribution/types/hooks'
-import type { PaginatedOption, PaginatedFetcher } from './utils/paginate'
+import type { PaginatedFetcher, PaginatedOption } from './utils/paginate'
 import type { Api } from '../api'
 import type { ApiConfig, ApiConfigResolved } from '../request'
 

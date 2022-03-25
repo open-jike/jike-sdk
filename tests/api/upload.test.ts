@@ -1,8 +1,8 @@
 import sharp from 'sharp'
 import Md5 from 'md5'
-import { describe, it, expect } from 'vitest'
+import { describe, expect, it } from 'vitest'
 import { faker } from '@faker-js/faker'
-import { setApiConfig, api } from '../../src'
+import { api, setApiConfig } from '../../src'
 import { config } from '../config'
 
 describe('upload should work', async () => {

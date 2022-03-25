@@ -1,4 +1,4 @@
-import { getApiConfig, toResponse, request } from '../request'
+import { getApiConfig, request, toResponse } from '../request'
 import type { Users } from '../types/api-responses'
 
 /**

@@ -57,7 +57,7 @@
 
 ### Node.js
 
-Node.js >= 14.15.0 (推荐 v14.17.0 以上)
+Node.js >= 14.15.0 (推荐 v14.17.0 及以上)
 
 ```bash
 npm i jike-sdk

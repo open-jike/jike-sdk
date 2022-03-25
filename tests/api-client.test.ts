@@ -1,5 +1,5 @@
-import { describe, it, expect } from 'vitest'
-import { getAccessToken, ApiClient } from '../src'
+import { describe, expect, it } from 'vitest'
+import { ApiClient, getAccessToken } from '../src'
 import { config } from './config'
 
 describe('api client should work', async () => {

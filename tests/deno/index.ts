@@ -1,4 +1,4 @@
-import { setApiConfig, ApiClient } from '../../dist/index.js'
+import { ApiClient, setApiConfig } from '../../dist/index.js'
 // @ts-expect-error
 import { config } from './config.ts'
 

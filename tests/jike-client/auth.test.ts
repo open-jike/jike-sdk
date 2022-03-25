@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest'
+import { describe, expect, it } from 'vitest'
 import { JikeClient, RequestFailureError } from '../../src'
 import { config, refreshToken } from '../config'
 
