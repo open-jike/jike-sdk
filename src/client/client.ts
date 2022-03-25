@@ -60,6 +60,11 @@ export class JikeClient {
     const response = error.response
     if (response.status !== 401) return false
 
+    // don't retry when renewing token
+    if (request.url.includes('app_auth_tokens.refresh')) {
+      return false
+    }
+
     await this.renewToken()
     request.headers.set(
       `x-${this.#config.endpointId}-access-token`,
