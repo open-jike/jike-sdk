@@ -37,7 +37,7 @@
     "build": "MODE=node tsup && mv dist/index.d.ts dist/node.d.ts && MODE=modern tsup",
     "docs:build": "typedoc",
     "docs:preview": "serve docs",
-    "lint": "eslint .",
+    "lint": "eslint . --ext .js,.ts,.yml,.yaml,.md,.json,.json5",
     "lint:fix": "npm run lint -- --fix",
     "test": "vitest",
     "test:deno": "cd tests/deno && deno run --allow-net --import-map=import_map.json --allow-env index.ts",

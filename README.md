@@ -117,7 +117,7 @@ import { setApiConfig } from 'jike-sdk'
 [API Reference](https://jike-sdk.surge.sh/)
 
 ```ts
-import { setApiConfig, setAccessToken, api, ApiClient } from 'jike-sdk'
+import { ApiClient, api, setAccessToken, setApiConfig } from 'jike-sdk'
 
 const apiConfig = {
   endpointId: 'jike',
