@@ -22,9 +22,6 @@ const modern = (): Options => {
     target: 'es2019',
     format: ['esm'],
     splitting: false,
-    define: {
-      IS_NODE: 'false',
-    },
     minifySyntax: true,
     esbuildOptions: (options) => {
       options.outExtension = {}
@@ -34,13 +31,10 @@ const modern = (): Options => {
 
 const node = (): Options => ({
   ...common,
-  target: 'node14.15',
+  target: 'node14.17',
   platform: 'node',
   format: ['esm'],
   clean: true,
-  define: {
-    IS_NODE: 'true',
-  },
   minifySyntax: true,
   inject: [$r('src/node-shim.ts')],
   esbuildOptions: (options) => {
