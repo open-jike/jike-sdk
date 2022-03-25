@@ -7,7 +7,6 @@ const $r = resolve.bind(undefined, __dirname)
 const common: Options = {
   entry: [$r('src/index.ts')],
   sourcemap: true,
-  dts: true,
 }
 
 export default defineConfig(() => {

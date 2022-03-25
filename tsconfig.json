@@ -3,6 +3,7 @@
     "target": "ES2019",
     "module": "ES2015",
     "lib": ["ES2019"],
+    "outDir": "dist",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
