@@ -1,3 +1,4 @@
+import { randomUUID } from 'crypto'
 import {
   File,
   FormData,
@@ -22,4 +23,8 @@ if (!globals.FormData) {
   globals.FormData = FormData
 }
 
-export { fetch, Headers, Request, Response, FormData }
+// UUID
+if (!globals.crypto) globals.crypto = {}
+if (!globals.crypto.randomUUID) globals.crypto.randomUUID = randomUUID
+
+export { fetch, Headers, Request, Response, FormData, randomUUID }
