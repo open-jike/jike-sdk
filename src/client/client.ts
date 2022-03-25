@@ -111,6 +111,32 @@ export class JikeClient {
   }
 
   /**
+   * 密码登录
+   * @param areaCode 区号，如 `+86`
+   * @param mobile 手机号
+   * @param password 密码
+   * @throws {@link RequestFailureError} 请求失败错误
+   */
+  async loginWithPassword(
+    areaCode: string | number,
+    mobile: string,
+    password: string
+  ) {
+    const result = await this.#client.users.loginWithPhoneAndPassword(
+      resolveAreaCode(areaCode),
+      mobile,
+      password
+    )
+    if (!isSuccess(result)) throwRequestFailureError(result, '登录')
+    this.#refreshToken = result.headers.get(
+      `x-${this.#config.endpointId}-refresh-token`
+    )!
+    this.accessToken = result.headers.get(
+      `x-${this.#config.endpointId}-access-token`
+    )!
+  }
+
+  /**
    * 获取用户
    * @param username 用户名
    * @template M 是否为自己

@@ -16,6 +16,8 @@ export interface ApiConfigResolved {
   endpointUrl: string
   /** APP ID */
   bundleId: string
+  /** App 版本 */
+  appVersion: string
   /** 构建 ID */
   buildNo: string
   /** `access-token` */
@@ -32,7 +34,12 @@ export interface ApiConfigResolved {
 export type ApiConfig = Partial<ApiConfigResolved> &
   Pick<
     ApiConfigResolved,
-    'endpointId' | 'endpointUrl' | 'bundleId' | 'buildNo' | 'userAgent'
+    | 'endpointId'
+    | 'endpointUrl'
+    | 'bundleId'
+    | 'appVersion'
+    | 'buildNo'
+    | 'userAgent'
   >
 
 /**
@@ -100,6 +107,7 @@ export const resolveKyOptions = (): Options => {
             `x-${apiConfig.endpointId}-device-properties`,
             JSON.stringify({ idfv: apiConfig.idfv })
           )
+          req.headers.set(`App-Version`, apiConfig.appVersion)
           ;(req as any).highWaterMark = 1024 * 1024
         },
       ],
