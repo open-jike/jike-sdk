@@ -1,6 +1,7 @@
 import { HTTPError } from 'ky'
 import { resolveApiConfig } from '../request'
 import { ApiClient } from '../api-client'
+import { objectPick } from '../utils/objects'
 import { isSuccess, throwRequestFailureError } from './utils/response'
 import { resolveAreaCode } from './utils/user'
 import { JikeUser } from './user'
@@ -236,12 +237,34 @@ export class JikeClient {
   }
 
   /**
+   * 从 JSON 数据创建
+   * @param data 数据
+   */
+  static fromJSON(data: JikeClientJSON): JikeClient {
+    return new JikeClient(
+      objectPick(data, [
+        'endpointId',
+        'endpointUrl',
+        'bundleId',
+        'appVersion',
+        'buildNo',
+        'userAgent',
+        'deviceId',
+        'idfv',
+
+        'accessToken',
+        'refreshToken',
+      ])
+    )
+  }
+
+  /**
    * 反序列化
    * @param data 数据
    */
   static deserialize(data: string): JikeClient {
     const json: JikeClientJSON = JSON.parse(data)
-    return new JikeClient({ ...json })
+    return this.fromJSON(json)
   }
 }
 
