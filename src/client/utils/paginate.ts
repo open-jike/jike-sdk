@@ -5,7 +5,7 @@ export interface PaginatedOption<
   L extends keyof LimitOptionAll = keyof LimitOptionAll,
   K = unknown
 > {
-  limit?: LimitFn<T, L | 'total'>
+  limit?: LimitFn<L | 'total', T>
   /**
    * 当获取下一页时触发，返回 false 将停止获取下一页
    */
