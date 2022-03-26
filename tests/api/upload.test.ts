@@ -2,7 +2,7 @@ import sharp from 'sharp'
 import Md5 from 'md5'
 import { describe, expect, it } from 'vitest'
 import { faker } from '@faker-js/faker'
-import { api, setApiConfig } from '../../src'
+import { api, isSuccess, setApiConfig } from '../../src'
 import { config } from '../config'
 
 describe('upload should work', async () => {
@@ -11,8 +11,8 @@ describe('upload should work', async () => {
   let token: string
   const image = await sharp({
     create: {
-      width: Math.floor(Math.random() * 100),
-      height: Math.floor(Math.random() * 100),
+      width: Math.floor(Math.random() * 100) + 1,
+      height: Math.floor(Math.random() * 100) + 1,
       channels: 3,
       background: faker.internet.color(),
     },
@@ -23,8 +23,7 @@ describe('upload should work', async () => {
 
   it('token should work', async () => {
     const result = await api.upload.token(md5)
-    expect(result.status).toBe(200)
-    expect(result.data.success).toBe(true)
+    expect(isSuccess(result)).toBe(true)
     expect(result.data.uptoken).a('string')
     token = result.data.uptoken
   })

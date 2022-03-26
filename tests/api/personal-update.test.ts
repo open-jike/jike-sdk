@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
-import { api, setApiConfig } from '../../src'
+import { api, isSuccess, setApiConfig } from '../../src'
 import { config } from '../config'
+
 describe('personal update should work', () => {
   setApiConfig(config)
 
@@ -12,10 +13,15 @@ describe('personal update should work', () => {
         limit,
       }
     )
-    expect(result.status).toBe(200)
-    expect(result.data.success).toBe(true)
+    expect(isSuccess(result)).toBe(true)
     expect(
       result.data.data.filter((post) => !post.pinned?.personalUpdate).length
     ).toBe(limit)
+  })
+
+  it('followingUpdates should work', async () => {
+    const result = await api.personalUpdate.followingUpdates()
+    expect(isSuccess(result)).toBe(true)
+    expect(result.data.data.length).greaterThan(0)
   })
 })

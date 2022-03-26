@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { api, setApiConfig } from '../../src'
+import { api, isSuccess, setApiConfig } from '../../src'
 import { config } from '../config'
 
 describe('notifications should work', () => {
@@ -7,7 +7,7 @@ describe('notifications should work', () => {
 
   it('list should work', async () => {
     const result = await api.notifications.list()
-    expect(result.status).toBe(200)
+    expect(isSuccess(result)).toBe(true)
     expect(result.data.data.length).greaterThanOrEqual(1)
   })
 })

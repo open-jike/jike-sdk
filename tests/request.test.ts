@@ -13,20 +13,18 @@ import type { ApiConfig } from '../src'
 if (!globalThis.AbortController) globalThis.AbortController = AbortController
 
 describe('request', () => {
-  const config = {
+  const config: ApiConfig = {
     endpointId: 'keji',
     endpointUrl: 'https://keji.org/api/',
     bundleId: 'org.keji.keji',
+    appVersion: '1.2.3',
     buildNo: '10086',
     userAgent: 'keji-useragent',
   }
 
   it('access token should not be empty', () => {
     const token = 'TEST_TOKEN'
-    setApiConfig({
-      accessToken: token,
-      ...config,
-    })
+    setApiConfig({ ...config, accessToken: token })
     expect(getAccessToken()).toBe(token)
   })
 
@@ -64,15 +62,14 @@ describe('request', () => {
 
     it('headers should be correct', () => {
       expect(req.headers.get('User-Agent')).toBe(apiConfig.userAgent)
-      expect(req.headers.get(`x-${config.endpointId}-access-token`)).toBe(
-        apiConfig.accessToken
-      )
-      expect(
-        req.headers.get(`x-${config.endpointId}-device-properties`)
-      ).includes(apiConfig.idfv)
-      expect(req.headers.get(`x-${config.endpointId}-device-id`)).includes(
-        apiConfig.deviceId
-      )
+      expect(req.headers.get('App-Version')).toBe(apiConfig.appVersion)
+
+      const accessToken = `x-${config.endpointId}-access-token`
+      const deviceProperties = `x-${config.endpointId}-device-properties`
+      const deviceId = `x-${config.endpointId}-device-id`
+      expect(req.headers.get(accessToken)).toBe(apiConfig.accessToken)
+      expect(req.headers.get(deviceProperties)).includes(apiConfig.idfv)
+      expect(req.headers.get(deviceId)).includes(apiConfig.deviceId)
     })
   })
 

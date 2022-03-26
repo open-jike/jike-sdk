@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { api, setApiConfig } from '../../src'
+import { api, isSuccess, setApiConfig } from '../../src'
 import { config } from '../config'
 
 describe('users should work', () => {
@@ -24,8 +24,7 @@ describe('users should work', () => {
     const token = process.env['REFRESH_TOKEN']
     if (!token) return
     const result = await api.users.refreshToken(token)
-    expect(result.status).toBe(200)
-    expect(result.data.success).toBe(true)
+    expect(isSuccess(result)).toBe(true)
     expect(result.data[`x-${config.endpointId}-access-token`]).toBeTruthy()
     expect(result.data[`x-${config.endpointId}-refresh-token`]).toBeTruthy()
   })
@@ -37,16 +36,14 @@ describe('users should work', () => {
   it('sendSms should work', async () => {
     if (!mobile || smsCode || password) return
     const result = await api.users.getSmsCode('+86', mobile)
-    expect(result.status).toBe(200)
-    expect(result.data.success).toBe(true)
+    expect(isSuccess(result)).toBe(true)
     expect(result.data.data.action).toBe('LOGIN')
   })
 
   it('loginWithSmsCode should work', async () => {
     if (!mobile || !smsCode) return
     const result = await api.users.loginWithSmsCode('+86', mobile, smsCode)
-    expect(result.status).toBe(200)
-    expect(result.data.success).toBe(true)
+    expect(isSuccess(result)).toBe(true)
     if (result.data.success) expect(result.data.user).toBeTruthy()
   })
 
@@ -57,8 +54,7 @@ describe('users should work', () => {
       mobile,
       password
     )
-    expect(result.status).toBe(200)
-    expect(result.data.success).toBe(true)
+    expect(isSuccess(result)).toBe(true)
     if (result.data.success) expect(result.data.user).toBeTruthy()
   })
 
