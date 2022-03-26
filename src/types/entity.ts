@@ -511,6 +511,8 @@ export interface ReferenceItem {
   status: string
   targetId: string
   targetType: string
+  /** 引用图片地址 */
+  referenceImageUrl?: string
 }
 
 export interface Notification {
