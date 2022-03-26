@@ -11,6 +11,7 @@ import type {
 
 export namespace Posts {
   export interface CreateResponse {
+    /** 提示文本 */
     toast: string
     data: PostDetail
   }

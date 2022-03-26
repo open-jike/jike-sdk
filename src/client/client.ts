@@ -7,6 +7,8 @@ import { resolveAreaCode } from './utils/user'
 import { JikeUser } from './user'
 import { fetchPaginated } from './utils/paginate'
 import { AuthorizationError } from './errors/AuthorizationError'
+import { JikePost } from './post'
+import type { CreatePostOption, PostType } from '../types/options'
 import type { Notification } from '../types/entity'
 import type { BeforeRetryState } from 'ky/distribution/types/hooks'
 import type { PaginatedFetcher, PaginatedOption } from './utils/paginate'
@@ -193,6 +195,27 @@ export class JikeClient {
   }
 
   /**
+   *
+   * @param type 动态类型，原帖 或 转发
+   * @param content 内容
+   * @param options 发送动态选项
+   */
+  async createPost(
+    type: PostType,
+    content: string,
+    options?: CreatePostOption
+  ) {
+    const result = await this.#client.posts.create(type, content, options)
+    if (!isSuccess(result)) throwRequestFailureError(result, '发送动态')
+    return {
+      /** 动态 */
+      post: new JikePost(this, type, result.data.data.id, result.data.data),
+      /** 提示文本 */
+      toast: result.data.toast,
+    }
+  }
+
+  /**
    * 刷新 access token
    */
   async renewToken() {
@@ -217,14 +240,16 @@ export class JikeClient {
   async toJSON(): Promise<JikeClientJSON> {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { beforeRetry, ...config } = this.#config
-    const profile = await this.getSelf().queryProfile()
+    const profile = await this.getSelf()
+      .queryProfile()
+      .catch(() => undefined)
     return {
       ...config,
       accessToken: this.accessToken,
       refreshToken: this.refreshToken,
-      userId: profile.user.id,
-      username: profile.user.username,
-      screenName: profile.user.screenName,
+      userId: profile?.user.id ?? '',
+      username: profile?.user.username ?? '',
+      screenName: profile?.user.screenName ?? '',
     }
   }
 
