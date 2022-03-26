@@ -52,3 +52,5 @@ jobs:
         run: pnpm build
       - name: Test
         run: pnpm test run tests/request.test.ts
+        env:
+          NODE_OPTIONS: --experimental-abortcontroller

@@ -64,7 +64,6 @@
     "eslint-define-config": "^1.3.0",
     "esno": "^0.14.1",
     "md5": "^2.3.0",
-    "node-abort-controller": "^3.0.1",
     "serve": "^13.0.2",
     "sharp": "^0.30.3",
     "tsup": "^5.12.1",

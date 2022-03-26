@@ -1,6 +1,5 @@
 import { beforeAll, describe, expect, it } from 'vitest'
 import '../src/node-shim'
-import { AbortController } from 'node-abort-controller'
 import {
   getAccessToken,
   request,
@@ -9,8 +8,6 @@ import {
 } from '../dist/node'
 import { defaultEnvironment } from '../src/constants'
 import type { ApiConfig } from '../src'
-
-if (!globalThis.AbortController) globalThis.AbortController = AbortController
 
 describe('request', () => {
   const config: ApiConfig = {
