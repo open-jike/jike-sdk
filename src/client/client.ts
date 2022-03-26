@@ -154,6 +154,10 @@ export class JikeClient {
     return new JikeUser<M>(this, username)
   }
 
+  /**
+   * 获取自身用户
+   * @returns {@link JikeUser} 实例
+   */
   getSelf() {
     return new JikeUser<true>(this, undefined)
   }
@@ -187,6 +191,9 @@ export class JikeClient {
     )
   }
 
+  /**
+   * 刷新 access token
+   */
   async renewToken() {
     if (!this.#refreshToken)
       throw new Error('登录状态已失效，请重新获取 access-token！')
@@ -202,4 +209,45 @@ export class JikeClient {
       result.data[`x-${this.#config.endpointId}-refresh-token`]
     this.accessToken = result.data[`x-${this.#config.endpointId}-access-token`]
   }
+
+  /**
+   * 转换为 JSON 数据
+   */
+  async toJSON(): Promise<JikeClientJSON> {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { beforeRetry, ...config } = this.#config
+    const profile = await this.getSelf().queryProfile()
+    return {
+      ...config,
+      accessToken: this.accessToken,
+      refreshToken: this.refreshToken,
+      userId: profile.user.id,
+      username: profile.user.username,
+      screenName: profile.user.screenName,
+    }
+  }
+
+  /**
+   * 序列化
+   * @param space 缩进空格数
+   */
+  async serialize(space = 0): Promise<string> {
+    return JSON.stringify(await this.toJSON(), undefined, space)
+  }
+
+  /**
+   * 反序列化
+   * @param data 数据
+   */
+  static deserialize(data: string): JikeClient {
+    const json: JikeClientJSON = JSON.parse(data)
+    return new JikeClient({ ...json })
+  }
+}
+
+export interface JikeClientJSON extends Omit<ApiConfigResolved, 'beforeRetry'> {
+  refreshToken: string
+  userId: string
+  username: string
+  screenName: string
 }
