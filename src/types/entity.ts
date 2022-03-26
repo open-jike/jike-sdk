@@ -1,3 +1,5 @@
+import type { LiteralUnion } from '../utils/typings'
+
 /**
  * 头像图片
  */
@@ -152,7 +154,7 @@ export interface School {
    * - `PUBLIC`: 公开
    * - `ALUMNI_ONLY`: 仅校友可见
    */
-  privacyType: 'PUBLIC' | 'ALUMNI_ONLY'
+  privacyType: LiteralUnion<'PUBLIC' | 'ALUMNI_ONLY'>
 }
 
 /**
@@ -490,42 +492,60 @@ export interface LinkInfo {
 export type ReadTrackInfo = Record<string, any>
 
 export interface ActionItem {
-  type: string
+  type: LiteralUnion<'COMMENT' | 'LIKE' | 'FOLLOW'>
   users: SimpleUser[]
   usersCount: number
   id: string
   content: string
   pictures: any[]
   enablePictureComments: boolean
-  status: string
+  status: LiteralUnion<'NORMAL' | 'DELETED'>
   targetId: string
-  targetType: string
+  targetType: LiteralUnion<TargetType>
   collapsible: boolean
   collapsed: boolean
 }
+
+export type TargetType = PostTypeRaw | 'STORY'
 
 export interface ReferenceItem {
   id: string
   type: string
   content: string
-  status: string
+  status: LiteralUnion<'NORMAL' | 'DELETED'>
   targetId: string
-  targetType: string
+  targetType: LiteralUnion<TargetType>
   /** 引用图片地址 */
   referenceImageUrl?: string
 }
 
 export interface Notification {
   id: string
-  type: string
+  type: LiteralUnion<
+    | 'LIKE_STORY'
+    | 'REPLIED_TO_STORY_COMMENT'
+    | 'COMMENT_STORY'
+    | 'LIKE_PERSONAL_UPDATE'
+    | 'COMMENT_PERSONAL_UPDATE'
+    | 'REPLIED_TO_PERSONAL_UPDATE_COMMENT'
+    | 'LIKE_PERSONAL_UPDATE_COMMENT'
+    | 'COMMENT_AND_REPOST'
+    | 'USER_RESPECT'
+    | 'MENTION'
+    | 'USER_FOLLOWED'
+    | 'USER_SILENT_FOLLOWED'
+    | 'PERSONAL_UPDATE_REPOSTED'
+    | 'LIKE_AVATAR'
+    | 'AVATAR_GREET'
+  >
   createdAt: string
   updatedAt: string
   stoppable: boolean
   stopped: boolean
-  actionType: string
+  actionType: LiteralUnion<'actionType' | 'USER_LIST'>
   actionItem: ActionItem
   linkUrl: string
-  linkType: string
+  linkType: LiteralUnion<PostTypeRaw>
   referenceItem: ReferenceItem
 }
 

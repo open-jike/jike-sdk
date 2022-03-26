@@ -1,3 +1,5 @@
+import type { LiteralUnion } from '../utils/typings'
+
 /**
  * @description 分页选项
  */
@@ -44,6 +46,16 @@ export interface CreatePostOption {
    * @default `undefined`
    */
   topicId?: string
+
+  linkInfo?: {
+    type: LiteralUnion<'NORMAL' | 'AUDIO'>
+    pictureUrl: string
+    urlsInText: []
+    linkType: LiteralUnion<'default'>
+    title: string
+    linkUrl: string
+    supplementary: boolean
+  }
 }
 
 /**

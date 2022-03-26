@@ -19,6 +19,7 @@ export const create = <T = Posts.CreateResponse>(
         pictureKeys: options.pictureKeys ?? [],
         syncToPersonalUpdate: options.syncToPersonalUpdates ?? true,
         submitToTopic: options.topicId,
+        linkInfo: options.linkInfo,
       },
     })
   )
