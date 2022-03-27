@@ -1,10 +1,11 @@
 /* eslint-disable @typescript-eslint/no-namespace */
 import type {
   Comment,
+  FollowingUpdate,
   Notification,
   PostDetail,
+  Profile as ProfileEntity,
   RecommendPost,
-  SimpleUser,
   TabIcons,
   User,
 } from './entity'
@@ -35,14 +36,14 @@ export namespace Notifications {
 
 export namespace UserRelation {
   export interface GetFollowingListResponse {
-    data: SimpleUser[]
+    data: User[]
     loadMoreKey?: {
       createdAt: string
     }
   }
 
   export interface GetFollowerListResponse {
-    data: SimpleUser[]
+    data: User[]
     loadMoreKey?: {
       createdAt: string
     }
@@ -58,7 +59,7 @@ export namespace Users {
 
   export interface LoginResponse {
     isRegister: boolean
-    user: User
+    user: ProfileEntity
     enabledFeatures: string[]
     agreedProtocol: string[]
     bioUpdateAlert: boolean
@@ -70,7 +71,7 @@ export namespace Users {
 
   export interface GeneralProfile {
     /** 用户信息 */
-    user: User
+    user: ProfileEntity
   }
 
   /**
@@ -82,7 +83,7 @@ export namespace Users {
     /** 关系用户，仅他人用户信息可见 */
     relationUsers?: {
       message: string
-      users: SimpleUser[]
+      users: User[]
       page: string
     }
     /** 是否**不**可见，仅他人用户信息可见 */
@@ -119,7 +120,7 @@ export namespace PersonalUpdate {
   }
 
   export interface FollowingUpdatesResponse {
-    data: PostDetail[]
+    data: FollowingUpdate[]
     loadMoreKey?: {
       session: 'PopulatedUpdate'
       lastPageEarliestTime: number

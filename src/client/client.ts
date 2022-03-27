@@ -10,7 +10,7 @@ import { AuthorizationError } from './errors/AuthorizationError'
 import { JikePost } from './post'
 import type { PersonalUpdate } from '../types/api-responses'
 import type { CreatePostOption, PostType } from '../types/options'
-import type { Notification, PostDetail } from '../types/entity'
+import type { FollowingUpdate, Notification } from '../types/entity'
 import type { BeforeRetryState } from 'ky/distribution/types/hooks'
 import type { PaginatedFetcher, PaginatedOption } from './utils/paginate'
 import type { Api } from '../api'
@@ -202,13 +202,13 @@ export class JikeClient {
    */
   async queryFollowingUpdates(
     option: PaginatedOption<
-      PostDetail,
+      FollowingUpdate,
       'createdAt',
       FollowingUpdatesMoreKey
     > = {}
   ) {
     const fetcher: PaginatedFetcher<
-      PostDetail,
+      FollowingUpdate,
       FollowingUpdatesMoreKey
     > = async (lastKey) => {
       const result = await this.#client.personalUpdate.followingUpdates({

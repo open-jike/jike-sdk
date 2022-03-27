@@ -2,14 +2,14 @@ import { isSuccess, throwRequestFailureError } from './utils/response'
 import { fetchPaginated } from './utils/paginate'
 import { JikePostWithDetail } from './post'
 import { rawTypeToEnum } from './utils/post'
-import type { PostDetail, SimpleUser } from '../types/entity'
+import type { PostDetail, PostTypeRaw, User } from '../types/entity'
 import type { Users } from '../types/api-responses'
 import type { PaginatedFetcher, PaginatedOption } from './utils/paginate'
 import type { JikeClient } from './client'
 
 export interface FollowerWithTime {
   followTime?: string
-  user: SimpleUser
+  user: User
 }
 
 /**
@@ -88,22 +88,25 @@ export class JikeUser<M extends boolean = boolean> {
       }),
       option
     )
-    return data.map(
-      (item) =>
-        new JikePostWithDetail(
-          this.#client,
-          rawTypeToEnum(item.type),
-          item.id,
-          item
-        )
-    )
+
+    return data
+      .filter((item) => item.type !== 'PERSONAL_UPDATE')
+      .map(
+        (item) =>
+          new JikePostWithDetail(
+            this.#client,
+            rawTypeToEnum(item.type as PostTypeRaw),
+            item.id,
+            item
+          )
+      )
   }
 
   /**
    * 查询用户被关注
    */
-  queryFollowers(option: PaginatedOption<SimpleUser, never, string> = {}) {
-    const fetcher: PaginatedFetcher<SimpleUser, string> = async (lastKey) => {
+  queryFollowers(option: PaginatedOption<User, never, string> = {}) {
+    const fetcher: PaginatedFetcher<User, string> = async (lastKey) => {
       const result = await this.#client.apiClient.userRelation.getFollowerList(
         await this.getUsername(),
         {
@@ -162,8 +165,8 @@ export class JikeUser<M extends boolean = boolean> {
   /**
    * 查询用户关注
    */
-  queryFollowings(option: PaginatedOption<SimpleUser, never, string> = {}) {
-    const fetcher: PaginatedFetcher<SimpleUser, string> = async (lastKey) => {
+  queryFollowings(option: PaginatedOption<User, never, string> = {}) {
+    const fetcher: PaginatedFetcher<User, string> = async (lastKey) => {
       const result = await this.#client.apiClient.userRelation.getFollowingList(
         await this.getUsername(),
         { limit: 20, loadMoreKey: lastKey ? { createdAt: lastKey } : undefined }
