@@ -126,6 +126,9 @@ export namespace PersonalUpdate {
       lastReadTime: number
     }
   }
+
+  export type FollowingUpdatesResponseMoreKey =
+    FollowingUpdatesResponse['loadMoreKey']
 }
 
 export namespace Comments {

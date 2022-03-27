@@ -8,12 +8,15 @@ import { JikeUser } from './user'
 import { fetchPaginated } from './utils/paginate'
 import { AuthorizationError } from './errors/AuthorizationError'
 import { JikePost } from './post'
+import type { PersonalUpdate } from '../types/api-responses'
 import type { CreatePostOption, PostType } from '../types/options'
-import type { Notification } from '../types/entity'
+import type { Notification, PostDetail } from '../types/entity'
 import type { BeforeRetryState } from 'ky/distribution/types/hooks'
 import type { PaginatedFetcher, PaginatedOption } from './utils/paginate'
 import type { Api } from '../api'
 import type { ApiConfig, ApiConfigResolved } from '../request'
+
+type FollowingUpdatesMoreKey = PersonalUpdate.FollowingUpdatesResponseMoreKey
 
 export class JikeClient {
   #refreshToken: string
@@ -188,6 +191,37 @@ export class JikeClient {
       (item, data) => ({
         createdAt: new Date(item.createdAt),
         updatedAt: new Date(item.updatedAt),
+        total: data.length + 1,
+      }),
+      option
+    )
+  }
+
+  /**
+   * 查询关注动态
+   */
+  async queryFollowingUpdates(
+    option: PaginatedOption<
+      PostDetail,
+      'createdAt',
+      FollowingUpdatesMoreKey
+    > = {}
+  ) {
+    const fetcher: PaginatedFetcher<
+      PostDetail,
+      FollowingUpdatesMoreKey
+    > = async (lastKey) => {
+      const result = await this.#client.personalUpdate.followingUpdates({
+        loadMoreKey: lastKey,
+      })
+      if (!isSuccess(result)) throwRequestFailureError(result, '查询关注动态')
+      const newKey = result.data.loadMoreKey
+      return [newKey, result.data.data]
+    }
+    return fetchPaginated(
+      fetcher,
+      (item, data) => ({
+        createdAt: new Date(item.createdAt),
         total: data.length + 1,
       }),
       option
