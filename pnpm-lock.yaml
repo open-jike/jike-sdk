@@ -1,7 +1,7 @@
 lockfileVersion: 5.3
 
 specifiers:
-  '@faker-js/faker': ^6.0.0
+  '@faker-js/faker': ^6.1.1
   '@sxzz/eslint-config-prettier': ^2.1.0
   '@sxzz/eslint-config-ts': ^2.1.0
   '@types/md5': ^2.3.2
@@ -21,14 +21,14 @@ specifiers:
   tsup: ^5.12.1
   typedoc: ^0.22.13
   typescript: ^4.6.3
-  vitest: ^0.7.11
+  vitest: ^0.8.0
 
 dependencies:
   ky: 0.30.0
   node-fetch: 3.2.3
 
 devDependencies:
-  '@faker-js/faker': 6.0.0
+  '@faker-js/faker': 6.1.1
   '@sxzz/eslint-config-prettier': 2.1.0_eslint@8.12.0
   '@sxzz/eslint-config-ts': 2.1.0_eslint@8.12.0+typescript@4.6.3
   '@types/md5': 2.3.2
@@ -46,7 +46,7 @@ devDependencies:
   tsup: 5.12.1_typescript@4.6.3
   typedoc: 0.22.13_typescript@4.6.3
   typescript: 4.6.3
-  vitest: 0.7.11
+  vitest: 0.8.0
 
 packages:
 
@@ -88,8 +88,8 @@ packages:
       - supports-color
     dev: true
 
-  /@faker-js/faker/6.0.0:
-    resolution: {integrity: sha512-10zLCKhp3YEmBuko71ivcMoIZcCLXgQVck6aNswX+AWwaek/L8S3yz9i8m3tHigRkcF6F2vI+qtdtyySHK+bGA==}
+  /@faker-js/faker/6.1.1:
+    resolution: {integrity: sha512-8yq1LJVGn4GY06riLddIU1LbJm15yjt46hjfkpWNpH/mqdciPOBVzicKOJxzQNrGgVHVBxcdm7sgwjI/Y19MYw==}
     engines: {node: '>=14.0.0', npm: '>=7.0.0'}
     dev: true
 
@@ -3419,9 +3419,9 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vitest/0.7.11:
-    resolution: {integrity: sha512-xCEUBCpqiIVhUFIMCKKXDZ/bcPLk2EhPmTFA9qw+Kf+B2d/gm3ZBdUAMa3jIZNZ/d3esji5H6XZPNAk//9K4Kw==}
-    engines: {node: '>=v14.16.0'}
+  /vitest/0.8.0:
+    resolution: {integrity: sha512-8m8OufAQWXlNpjm5dTe5Lc60zruguKJljunveueYrd4aoeXaQvggLX0SPmIW3G6PDtnBdNEynSi+6pibjnutQA==}
+    engines: {node: '>=v14.19.1'}
     hasBin: true
     peerDependencies:
       '@vitest/ui': '*'
