@@ -28,6 +28,7 @@ const modern = (): Options => {
     esbuildOptions: (options) => {
       options.outExtension = {}
     },
+    external: ['eventemitter3'],
   }
 }
 
