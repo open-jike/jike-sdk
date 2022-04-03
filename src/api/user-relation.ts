@@ -1,6 +1,10 @@
 import { request, toResponse } from '../request'
 import type { UserRelation } from '../types/api-responses'
-import type { PaginationOption } from '../types/options'
+import type {
+  PaginationOption,
+  UserFollowOption,
+  UserUnfollowOption,
+} from '../types/options'
 
 /**
  * 获取关注列表
@@ -36,6 +40,45 @@ export const getFollowerList = <T = UserRelation.GetFollowerListResponse>(
         username,
         limit: option.limit ?? 10,
         loadMoreKey: option.loadMoreKey,
+      },
+    })
+  )
+
+/**
+ * 关注用户
+ * @param username 用户名
+ * @param pageName 页面名称，可选
+ */
+export const follow = <T = UserRelation.FollowResponse>(
+  username: string,
+  { pageName = 11 }: UserFollowOption = {}
+) =>
+  toResponse<T>(
+    request.post('1.0/userRelation/follow', {
+      json: {
+        sourcePageName: pageName,
+        currentPageName: pageName,
+        username,
+      },
+    })
+  )
+
+/**
+ * 取消关注用户
+ * @param username 用户名
+ * @param option 选项，可选
+ */
+export const unfollow = <T = UserRelation.UnfollowResponse>(
+  username: string,
+  { pageName = 49, ref = 'PROFILE_MY_FOLLOWINGS' }: UserUnfollowOption = {}
+) =>
+  toResponse<T>(
+    request.post('1.0/userRelation/unfollow', {
+      json: {
+        currentPageName: pageName,
+        username,
+        ref,
+        sourcePageName: pageName,
       },
     })
   )

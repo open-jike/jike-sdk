@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-namespace */
+import type { LiteralUnion } from '../utils/typings'
 import type {
   Comment,
   FollowingUpdate,
@@ -47,6 +48,14 @@ export namespace UserRelation {
     loadMoreKey?: {
       createdAt: string
     }
+  }
+
+  export interface FollowResponse {
+    toast: LiteralUnion<'关注成功'>
+  }
+
+  export interface UnfollowResponse {
+    toast: LiteralUnion<'关注已取消'>
   }
 }
 

@@ -2,6 +2,7 @@ import { isSuccess, throwRequestFailureError } from './utils/response'
 import { fetchPaginated } from './utils/paginate'
 import { JikePostWithDetail } from './post'
 import { rawTypeToEnum } from './utils/post'
+import type { UserUnfollowOption } from '../types/options'
 import type { PostDetail, PostTypeRaw, User } from '../types/entity'
 import type { Users } from '../types/api-responses'
 import type { PaginatedFetcher, PaginatedOption } from './utils/paginate'
@@ -184,5 +185,26 @@ export class JikeUser<M extends boolean = boolean> {
       }),
       option
     )
+  }
+
+  /**
+   * 关注用户
+   */
+  async follow() {
+    const result = await this.#client.apiClient.userRelation.follow(
+      await this.getUsername()
+    )
+    if (!isSuccess(result)) throwRequestFailureError(result, '关注用户')
+  }
+
+  /**
+   * 取消关注用户
+   */
+  async unfollow(option: UserUnfollowOption = {}) {
+    const result = await this.#client.apiClient.userRelation.unfollow(
+      await this.getUsername(),
+      option
+    )
+    if (!isSuccess(result)) throwRequestFailureError(result, '取消关注用户')
   }
 }

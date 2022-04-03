@@ -101,3 +101,18 @@ export interface ListRecommendFeedOption
    */
   trigger?: string
 }
+
+/**
+ * @description 关注用户选项
+ */
+export interface UserFollowOption {
+  pageName?: number
+}
+
+/**
+ * @description 取消关注用户选项
+ */
+export interface UserUnfollowOption {
+  pageName?: number
+  ref?: string
+}
