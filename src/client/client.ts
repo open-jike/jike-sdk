@@ -18,10 +18,17 @@ import type { ApiConfig, ApiConfigResolved } from '../request'
 
 type FollowingUpdatesMoreKey = PersonalUpdate.FollowingUpdatesResponseMoreKey
 
+interface Events {
+  onRenewToken: (accessToken: string, refreshToken: string) => void
+}
+
 export class JikeClient {
   #refreshToken: string
   #config: ApiConfigResolved
   #client!: Api
+  #listener: {
+    [K in keyof Events]?: Set<Events[K]>
+  } = {}
 
   get accessToken() {
     return this.#config.accessToken
@@ -266,6 +273,18 @@ export class JikeClient {
     this.#refreshToken =
       result.data[`x-${this.#config.endpointId}-refresh-token`]
     this.accessToken = result.data[`x-${this.#config.endpointId}-access-token`]
+
+    this.#triggerListener('onRenewToken', [this.accessToken, this.refreshToken])
+  }
+
+  #triggerListener<T extends keyof Events>(
+    type: T,
+    args: Parameters<Events[T]>
+  ) {
+    const listeners = this.#listener[type]
+    for (const listener of listeners ?? new Set()) {
+      listener.apply(this, args)
+    }
   }
 
   /**
@@ -324,6 +343,12 @@ export class JikeClient {
   static deserialize(data: string): JikeClient {
     const json: JikeClientJSON = JSON.parse(data)
     return this.fromJSON(json)
+  }
+
+  // TODO: use Event Emitter
+  addEventListener<T extends keyof Events>(type: T, listener: Events[T]) {
+    this.#listener[type] ||= new Set()
+    this.#listener[type]!.add(listener)
   }
 }
 
