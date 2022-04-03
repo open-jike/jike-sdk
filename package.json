@@ -47,6 +47,7 @@
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
+    "eventemitter3": "^4.0.7",
     "ky": "^0.30.0",
     "node-fetch": "3.2.3"
   },
