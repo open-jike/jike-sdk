@@ -141,14 +141,6 @@ const client = ApiClient(apiConfig)
 client.users.profile()
 ```
 
-## Alternatives
-
-- [jike-cli](https://github.com/junbaor/jike-cli) - 即刻命令行客户端 (Java)
-- [Jike Metro](https://github.com/Sorosliu1029/Jike-Metro) - 即刻 Ⓙ SDK (Python)
-- [Jike-Bus](https://github.com/nondanee/Jike-Bus) - 🚍 即刻 Ⓙ SDK for Node.js
-- [JIKEFM](https://github.com/0neSe7en/jikefm) - 即刻电台 📻 (Golang)
-- [jikeme](https://github.com/findingsea/jikeme) - 命令行摸 🐟 工具 (Golang)
-
 ## License
 
 [AGPL-3.0](./LICENSE) License © 2021-PRESENT [三咲智子](https://github.com/sxzz)
