@@ -47,9 +47,6 @@
     "release": "bumpp --commit --push --tag && npm publish",
     "prepublishOnly": "npm run build"
   },
-  "dependencies": {
-    "ky": "^0.30.0"
-  },
   "devDependencies": {
     "@faker-js/faker": "^6.1.2",
     "@sxzz/eslint-config-prettier": "^2.1.0",
@@ -64,6 +61,7 @@
     "eslint-define-config": "^1.3.0",
     "esno": "^0.14.1",
     "eventemitter3": "^4.0.7",
+    "ky": "^0.30.0",
     "md5": "^2.3.0",
     "node-fetch": "3.2.3",
     "rollup-plugin-esbuild": "^4.9.1",
