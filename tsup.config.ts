@@ -28,7 +28,7 @@ const modern = (): Options => {
     esbuildOptions: (options) => {
       options.outExtension = {}
     },
-    external: ['node-fetch', 'ky', 'eventemitter3'],
+    external: ['node-fetch', 'ky'],
     clean: true,
   }
 }

@@ -3,6 +3,7 @@
   "version": "0.13.0-beta.2",
   "packageManager": "pnpm@6.32.6",
   "description": "Jike Ⓙ SDK for Node.js",
+  "type": "module",
   "keywords": [
     "jike",
     "sdk"
@@ -20,12 +21,13 @@
   "module": "dist/index.js",
   "exports": {
     ".": {
-      "require": "./dist/node/index.js",
-      "import": "./dist/node/index.mjs"
+      "require": "./dist/node/index.cjs",
+      "import": "./dist/node/index.js"
     },
     "./index": {
       "import": "./dist/index.js"
-    }
+    },
+    "./*": "./*"
   },
   "repository": {
     "type": "git",
