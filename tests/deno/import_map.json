@@ -1,5 +1,6 @@
 {
   "imports": {
-    "ky": "https://cdn.skypack.dev/ky?dts"
+    "ky": "https://cdn.skypack.dev/ky?dts",
+    "eventemitter3": "https://cdn.skypack.dev/eventemitter3?dts"
   }
 }
