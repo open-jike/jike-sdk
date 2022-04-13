@@ -70,11 +70,13 @@ npm i jike-sdk
 如果使用 ESM 方式导入，需要把 `package.json` 的 `type` 设置为 `module`，或将后缀名改为 `.mjs`。
 
 ```ts
-// 自带 node-fetch
-import { setApiConfig } from 'jike-sdk/node'
+// index.mjs
 
-// 不带 node-fetch，需要自行 ployfill 或使用最新 Node.js
-// import { api, setAccessToken, ApiClient } from 'jike-sdk'
+// 自带 node-fetch
+import { setApiConfig } from 'jike-sdk'
+
+// 不带 node-fetch，需要自行 ployfill 或使用最新 Node.js，且需要自行安装 ky
+// import { setApiConfig } from 'jike-sdk/index'
 
 setApiConfig({
   // ...
@@ -84,12 +86,10 @@ setApiConfig({
 #### CJS 导入
 
 ```ts
-;(async () => {
-  const { setApiConfig } = await import('jike-sdk/node')
-  setApiConfig({
-    // ...
-  })
-})()
+const { setApiConfig } = require('jike-sdk')
+setApiConfig({
+  // ...
+})
 ```
 
 ### Deno
