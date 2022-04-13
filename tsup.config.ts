@@ -28,22 +28,20 @@ const modern = (): Options => {
     esbuildOptions: (options) => {
       options.outExtension = {}
     },
-    external: ['eventemitter3'],
+    external: ['eventemitter3', 'node-fetch'],
+    clean: true,
   }
 }
 
 const node = (): Options => ({
   ...common,
+  outDir: 'dist/node',
   target: 'node14.17',
   platform: 'node',
-  format: ['esm'],
-  clean: true,
+  format: ['cjs', 'esm'],
   define: {
     IS_NODE: 'true',
   },
   minifySyntax: true,
   inject: [$r('src/node-shim.ts')],
-  esbuildOptions: (options) => {
-    options.entryNames = '[dir]/node'
-  },
 })
