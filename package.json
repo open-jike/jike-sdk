@@ -51,8 +51,8 @@
   },
   "devDependencies": {
     "@faker-js/faker": "^6.1.2",
-    "@sxzz/eslint-config-prettier": "^2.1.0",
-    "@sxzz/eslint-config-ts": "^2.1.0",
+    "@sxzz/eslint-config-prettier": "^2.1.1",
+    "@sxzz/eslint-config-ts": "^2.1.1",
     "@types/md5": "^2.3.2",
     "@types/node": "*",
     "@types/sharp": "^0.30.2",

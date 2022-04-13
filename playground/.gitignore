@@ -1,3 +1,4 @@
 *
 !tsconfig.json
 !.gitignore
+!.eslintrc.cjs
