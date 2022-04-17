@@ -9,7 +9,7 @@ import { JikeUser } from './user'
 import { fetchPaginated } from './utils/paginate'
 import { AuthorizationError } from './errors/AuthorizationError'
 import { JikePost } from './post'
-import type { PersonalUpdate } from '../types/api-responses'
+import type { FollowingUpdatesMoreKey, JikeClientJSON } from './types'
 import type { CreatePostOption, PostType } from '../types/options'
 import type { FollowingUpdate, Notification } from '../types/entity'
 import type { BeforeRetryState } from 'ky/distribution/types/hooks'
@@ -17,11 +17,11 @@ import type { PaginatedFetcher, PaginatedOption } from './utils/paginate'
 import type { Api } from '../api'
 import type { ApiConfig, ApiConfigResolved } from '../request'
 
-type FollowingUpdatesMoreKey = PersonalUpdate.FollowingUpdatesResponseMoreKey
-
 interface EventMap {
   renewToken: () => void
 }
+
+export type { JikeClientJSON }
 
 export class JikeClient extends EventEmitter<EventMap> {
   #refreshToken: string
@@ -334,11 +334,4 @@ export class JikeClient extends EventEmitter<EventMap> {
     const json: JikeClientJSON = JSON.parse(data)
     return this.fromJSON(json)
   }
-}
-
-export interface JikeClientJSON extends Omit<ApiConfigResolved, 'beforeRetry'> {
-  refreshToken: string
-  userId: string
-  username: string
-  screenName: string
 }

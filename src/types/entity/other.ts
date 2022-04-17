@@ -24,9 +24,9 @@ export interface PostDetail {
   commentCount: number
   repostCount: number
   shareCount: number
-  pictures: any[]
+  pictures: Picture[]
   collected: boolean
-  collectTime?: any
+  collectTime?: string
   user: User
   createdAt: string
   isFeatured: boolean
@@ -58,7 +58,7 @@ export interface Target {
   likeCount: number
   shareCount: number
   rootType: string
-  pictures: any[]
+  pictures: Picture[]
   createdAt: string
   liked: boolean
   collected: boolean

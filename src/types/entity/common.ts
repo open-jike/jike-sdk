@@ -3,7 +3,7 @@ export interface CommonImage {
   smallPicUrl: string
   middlePicUrl: string
   picUrl: string
-  /** 格式，如 `jpeg` */
+  /** 格式，如 `jpeg`, `heic` */
   format: string
 }
 
