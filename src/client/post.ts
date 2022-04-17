@@ -74,6 +74,32 @@ export class JikePost {
   }
 
   /**
+   * 置顶动态
+   * @returns 置顶提示文本
+   */
+  async pin() {
+    const result = await this.apiClient.personalUpdate.pin(
+      enumTypeToRaw(this.type),
+      this.id
+    )
+    if (!isSuccess(result)) throwRequestFailureError(result, '置顶动态')
+    return result.data.toast
+  }
+
+  /**
+   * 取消置顶动态
+   * @returns 取消置顶提示文本
+   */
+  async unpin() {
+    const result = await this.apiClient.personalUpdate.unpin(
+      enumTypeToRaw(this.type),
+      this.id
+    )
+    if (!isSuccess(result)) throwRequestFailureError(result, '取消置顶动态')
+    return result.data.toast
+  }
+
+  /**
    * 添加评论
    * @returns 评论信息
    */

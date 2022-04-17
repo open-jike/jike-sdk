@@ -1,4 +1,5 @@
 import { request, toResponse } from '../request'
+import type { PostTypeRaw } from '../types/entity'
 import type { PaginationOption } from '../types/options'
 import type { PersonalUpdate } from '../types/api-responses'
 
@@ -39,6 +40,38 @@ export const followingUpdates = async <
       json: {
         limit: option.limit ?? 10,
         loadMoreKey: option.loadMoreKey,
+      },
+    })
+  )
+
+/**
+ * 置顶动态
+ */
+export const pin = async <T = PersonalUpdate.PinResponse>(
+  type: PostTypeRaw,
+  id: string
+) =>
+  toResponse<T>(
+    request.post('1.0/personalUpdate/pin', {
+      json: {
+        id,
+        type,
+      },
+    })
+  )
+
+/**
+ * 取消置顶动态
+ */
+export const unpin = async <T = PersonalUpdate.UnpinResponse>(
+  type: PostTypeRaw,
+  id: string
+) =>
+  toResponse<T>(
+    request.post('1.0/personalUpdate/unpin', {
+      json: {
+        id,
+        type,
       },
     })
   )

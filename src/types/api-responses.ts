@@ -139,6 +139,14 @@ export namespace PersonalUpdate {
 
   export type FollowingUpdatesResponseMoreKey =
     FollowingUpdatesResponse['loadMoreKey']
+
+  export interface PinResponse {
+    toast: LiteralUnion<'已置顶'>
+  }
+
+  export interface UnpinResponse {
+    toast: LiteralUnion<'已取消置顶'>
+  }
 }
 
 export namespace Comments {
