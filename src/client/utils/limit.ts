@@ -45,4 +45,4 @@ export const limitPage =
   ({ currentPage }) =>
     condition(currentPage)
 
-export const limitNone: LimitFn<never> = () => true
+export const limitNone = (): LimitFn<never> => () => true
