@@ -27,4 +27,11 @@ if (!globals.FormData) {
 if (!globals.crypto) globals.crypto = {}
 if (!globals.crypto.randomUUID) globals.crypto.randomUUID = randomUUID
 
-export { fetch, Headers, Request, Response, FormData, randomUUID }
+export const _nodeShim = {
+  fetch,
+  Headers,
+  Request,
+  Response,
+  FormData,
+  randomUUID,
+}

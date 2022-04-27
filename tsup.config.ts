@@ -28,7 +28,6 @@ const modern = (): Options => {
     esbuildOptions: (options) => {
       options.outExtension = {}
     },
-    external: ['node-fetch', 'ky'],
     clean: true,
   }
 }
@@ -43,5 +42,6 @@ const node = (): Options => ({
     IS_NODE: 'true',
   },
   minifySyntax: true,
+  noExternal: ['ky'],
   inject: [$r('src/node-shim.ts')],
 })

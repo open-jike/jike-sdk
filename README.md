@@ -77,10 +77,10 @@ npm i jike-sdk
 ```ts
 // index.mjs
 
-// 自带 node-fetch
+// 自带 node-fetch。node < 18 使用此版本。
 import { setApiConfig } from 'jike-sdk'
 
-// 不带 node-fetch，需要自行 ployfill 或使用最新 Node.js，且需要自行安装 ky
+// 不带 node-fetch。自行 ployfill 或 node >= 18 使用此版本。
 // import { setApiConfig } from 'jike-sdk/index'
 
 setApiConfig({
