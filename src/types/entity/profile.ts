@@ -1,3 +1,4 @@
+import type { StoryStatus } from './post'
 import type { LiteralUnion } from '../../utils/typings'
 import type { AvatarImage, BackgroundImage, StatsCount, User } from './user'
 
@@ -112,6 +113,22 @@ export interface Profile {
   isDefaultScreenName?: boolean
   /** 访客信息，仅自己可见 */
   profileVisitInfo?: ProfileVisitInfo
+  /** 是否关注 */
+  following: boolean
+  /** 是否拉黑 */
+  blocking: boolean
+  /** 是否 不看TA的内容 */
+  muting: boolean
+  /** 是否 添加到桌面小组件 */
+  watching: boolean
+  /** 是否特别关心 */
+  isWatching: boolean
+  /** 日记状态 */
+  storyStatus: LiteralUnion<StoryStatus>
+  /** 是否夸夸过 */
+  respected: boolean
+
+  [key: string]: any
 }
 
 /**

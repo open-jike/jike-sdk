@@ -5,9 +5,11 @@ export interface PaginatedOption<
   L extends keyof LimitOptionAll = keyof LimitOptionAll,
   K = unknown
 > {
+  /** @returns `true`: 继续下一页；`false`: 停止获取 */
   limit?: LimitFn<L | 'total', T>
   /**
-   * 当获取下一页时触发，返回 false 将停止获取下一页
+   * 当获取下一页时触发
+   * @returns `false`: 将停止获取下一页
    */
   onNextPage?: (
     currentPage: number,

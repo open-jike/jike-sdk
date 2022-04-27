@@ -131,7 +131,7 @@ export class JikeUser<M extends boolean = boolean> {
   }
 
   /**
-   * 查询用户被关注（带关注时间，较慢）
+   * 查询用户被关注，带关注时间。逐个用户查询，耗时较长。
    */
   queryFollowersWithTime(
     option: PaginatedOption<FollowerWithTime, 'followTime', string> = {}
@@ -161,6 +161,38 @@ export class JikeUser<M extends boolean = boolean> {
       }),
       option
     )
+  }
+
+  /**
+   * 是否关注用户
+   * @param user 用户名或用户实例
+   * @param mode
+   * `following`: 从 当前用户 的 关注 列表查找 目标用户 是否存在；
+   * `follower` : 从 目标用户 的 被关注 列表查找 当前用户 是否存在。
+   *
+   * 为提升查询速度，建议哪个数量少使用哪个。
+   */
+  async isFollowing(user: JikeUser | string, mode: 'following' | 'follower') {
+    const target = typeof user === 'string' ? this.#client.getUser(user) : user
+    const targetUsername = await (mode === 'following'
+      ? target.getUsername()
+      : this.getUsername())
+
+    const includes = (data: User[]) =>
+      data.some((item) => item.username === targetUsername)
+
+    let data: User[]
+    if (mode === 'following') {
+      data = await this.queryFollowings({
+        limit: (opt, item, data) => !includes(data),
+      })
+    } else {
+      data = await target.queryFollowers({
+        limit: (opt, item, data) => !includes(data),
+      })
+    }
+
+    return includes(data)
   }
 
   /**
