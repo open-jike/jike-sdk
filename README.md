@@ -100,7 +100,7 @@ setApiConfig({
 ### Deno
 
 ```ts
-import { setApiConfig } from 'https://cdn.skypack.dev/jike-sdk?dts'
+import { setApiConfig } from 'https://cdn.skypack.dev/jike-sdk/index?dts'
 ```
 
 ### 浏览器
@@ -113,7 +113,7 @@ import { setApiConfig } from 'jike-sdk'
 
 ```html
 <script type="module">
-  import { setApiConfig } from 'https://cdn.skypack.dev/jike-sdk'
+  import { setApiConfig } from 'https://cdn.skypack.dev/jike-sdk/index'
 </script>
 ```
 
