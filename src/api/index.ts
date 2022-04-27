@@ -18,7 +18,7 @@ import * as stories from './stories'
  * - {@link api/notifications | `notifications`}: 通知
  * - {@link api/comments | `comments`}: 评论
  * - {@link api/upload | `upload`}: 上传
- * - {@link api/stories | `stories`}: 快拍
+ * - {@link api/stories | `stories`}: 日记
  */
 export const api = {
   users,
