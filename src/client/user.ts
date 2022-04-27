@@ -54,7 +54,7 @@ export class JikeUser<M extends boolean = boolean> {
    * @param ignoreCache 不使用缓存
    */
   async queryProfile(ignoreCache = false) {
-    if (ignoreCache && this.#profile) return this.#profile
+    if (!ignoreCache && this.#profile) return this.#profile
 
     const result = await this.#client.apiClient.users.profile(this.#username)
     if (!isSuccess(result)) throwRequestFailureError(result, '查询用户信息')
