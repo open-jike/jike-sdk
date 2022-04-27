@@ -19,4 +19,7 @@ describe('user relation should work', () => {
     expect(isSuccess(result)).toBe(true)
     expect(result.data.data.length).toBe(limit)
   })
+
+  it.todo('follow should work')
+  it.todo('unfollow should work')
 })
