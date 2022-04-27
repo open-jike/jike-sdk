@@ -2,13 +2,12 @@
 import type { LiteralUnion } from '../utils/typings'
 import type {
   Comment,
-  FollowingFeed,
   FollowingUpdate,
-  ListUserStories,
   Notification,
   PostDetail,
   Profile as ProfileEntity,
   RecommendPost,
+  StoryDetails,
   TabIcons,
   User,
 } from './entity'
@@ -184,10 +183,10 @@ export namespace RecommendFeed {
 
 export namespace Stories {
   export interface FollowingFeedResponse {
-    data: FollowingFeed[]
+    data: { type: 'USER_STORY'; user: User }[]
   }
 
   export interface ListUserStoriesResponse {
-    data: ListUserStories[]
+    data: StoryDetails[]
   }
 }

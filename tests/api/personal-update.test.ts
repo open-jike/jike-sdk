@@ -4,6 +4,7 @@ import { config } from '../config'
 
 describe('personal update should work', () => {
   setApiConfig(config)
+
   it('single should work', async () => {
     const limit = 10
     const result = await api.personalUpdate.single(
