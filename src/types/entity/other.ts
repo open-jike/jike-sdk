@@ -162,50 +162,50 @@ export interface RecommendPost {
 }
 
 export interface FollowingFeed {
-  type: string,
+  type: string
   user: User
 }
 
 export interface storyPic {
-  key: string,
-  thumbnailUrl: string,
-  smallPicUrl: string,
-  middlePicUrl: string,
-  picUrl: string,
-  format: string,
-  cropperPosX: number,
-  cropperPosY: number,
-  width: number,
+  key: string
+  thumbnailUrl: string
+  smallPicUrl: string
+  middlePicUrl: string
+  picUrl: string
+  format: string
+  cropperPosX: number
+  cropperPosY: number
+  width: number
   height: number
 }
 export interface storyVideo {
-  duration: number,
-  height: number,
-  type: string,
-  width: number,
+  duration: number
+  height: number
+  type: string
+  width: number
   image: {
-    format: string,
-    picUrl: string,
+    format: string
+    picUrl: string
     thumbnailUrl: string
   }
 }
 
-export interface ListUserStories{
-  id: string,
-  type: string,
-  storyType: string,
-  user: User,
-  emoji?: string,
-  video?: storyVideo,
-  thumbnailVideo?: storyVideo,
-  status: string,
-  picture: storyPic,
-  liked: boolean,
-  likeCount: number,
-  commentCount: number,
-  viewerCount: number,
-  createdAt: string,
-  likedUsers: [],
-  enablePictureComments: boolean,
+export interface ListUserStories {
+  id: string
+  type: string
+  storyType: string
+  user: User
+  emoji?: string
+  video?: storyVideo
+  thumbnailVideo?: storyVideo
+  status: string
+  picture: storyPic
+  liked: boolean
+  likeCount: number
+  commentCount: number
+  viewerCount: number
+  createdAt: string
+  likedUsers: []
+  enablePictureComments: boolean
   isFeatured: boolean
 }

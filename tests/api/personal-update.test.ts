@@ -23,14 +23,4 @@ describe('personal update should work', () => {
     expect(isSuccess(result)).toBe(true)
     expect(result.data.data.length).greaterThan(0)
   })
-
-  it('followingFeed should work', async () => {
-    const result = await api.personalUpdate.followingFeed();
-    expect(isSuccess(result)).toBe(true);
-  })
-
-  it('listUserStories should work',async () => {
-    const result = await api.personalUpdate.listUserStories('c00cf715-b71b-464b-9dcc-d73e01878137');
-    expect(isSuccess(result)).toBe(true);
-  })
 })

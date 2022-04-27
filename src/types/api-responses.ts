@@ -2,8 +2,8 @@
 import type { LiteralUnion } from '../utils/typings'
 import type {
   Comment,
-  FollowingUpdate,
   FollowingFeed,
+  FollowingUpdate,
   ListUserStories,
   Notification,
   PostDetail,
@@ -183,11 +183,11 @@ export namespace RecommendFeed {
 }
 
 export namespace Stories {
-  export interface FollowingFeedResponse{
+  export interface FollowingFeedResponse {
     data: FollowingFeed[]
   }
 
-  export interface ListUserStoriesResponse{
+  export interface ListUserStoriesResponse {
     data: ListUserStories[]
   }
 }

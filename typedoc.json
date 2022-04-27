@@ -8,7 +8,8 @@
     "src/api/user-relation.ts",
     "src/api/users.ts",
     "src/api/comments.ts",
-    "src/api/upload.ts"
+    "src/api/upload.ts",
+    "src/api/stories.ts"
   ],
   "out": "docs",
   "name": "Ⓙ Jike SDK",
