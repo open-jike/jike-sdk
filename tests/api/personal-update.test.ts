@@ -9,9 +9,7 @@ describe('personal update should work', () => {
     const limit = 10
     const result = await api.personalUpdate.single(
       '82D23B32-CF36-4C59-AD6F-D05E3552CBF3',
-      {
-        limit,
-      }
+      { limit }
     )
     expect(isSuccess(result)).toBe(true)
     expect(
