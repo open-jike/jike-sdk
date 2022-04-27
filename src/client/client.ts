@@ -23,10 +23,13 @@ interface EventMap {
 
 export type { JikeClientJSON }
 
+const userSelfKey = Symbol('userSelfKey')
+
 export class JikeClient extends EventEmitter<EventMap> {
   #refreshToken: string
   #config: ApiConfigResolved
   #client!: Api
+  #userCache: { [userSelfKey]?: JikeUser<true> } & Record<string, JikeUser> = {}
 
   get accessToken() {
     return this.#config.accessToken
@@ -164,15 +167,17 @@ export class JikeClient extends EventEmitter<EventMap> {
    * @returns {@link JikeUser} 实例
    */
   getUser<M extends boolean = boolean>(username: string): JikeUser {
-    return new JikeUser<M>(this, username)
+    if (this.#userCache[username]) return this.#userCache[username]
+    return (this.#userCache[username] = new JikeUser<M>(this, username))
   }
 
   /**
    * 获取自身用户
    * @returns {@link JikeUser} 实例
    */
-  getSelf() {
-    return new JikeUser<true>(this, undefined)
+  getSelf(): JikeUser<true> {
+    if (this.#userCache[userSelfKey]) return this.#userCache[userSelfKey]!
+    return (this.#userCache[userSelfKey] = new JikeUser<true>(this, undefined))
   }
 
   /**

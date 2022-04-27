@@ -52,4 +52,10 @@ describe('constructor', () => {
     const { beforeRetry, ...clien2Config } = client2.config
     expect(clien2Config).toEqual(clienConfig)
   })
+
+  it('should create user instance only once', () => {
+    expect(client.getSelf()).toBe(client.getSelf())
+    const username = '82D23B32-CF36-4C59-AD6F-D05E3552CBF3'
+    expect(client.getUser(username)).toBe(client.getUser(username))
+  })
 })
