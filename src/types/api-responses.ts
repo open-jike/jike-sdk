@@ -7,6 +7,7 @@ import type {
   PostDetail,
   Profile as ProfileEntity,
   RecommendPost,
+  StoryDetails,
   TabIcons,
   User,
 } from './entity'
@@ -177,5 +178,15 @@ export namespace RecommendFeed {
     loadMoreKey?: {
       page: number
     }
+  }
+}
+
+export namespace Stories {
+  export interface FollowingFeedResponse {
+    data: { type: 'USER_STORY'; user: User }[]
+  }
+
+  export interface ListUserStoriesResponse {
+    data: StoryDetails[]
   }
 }

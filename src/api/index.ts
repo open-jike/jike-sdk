@@ -6,6 +6,7 @@ import * as personalUpdate from './personal-update'
 import * as notifications from './notifications'
 import * as comments from './comments'
 import * as upload from './upload'
+import * as stories from './stories'
 
 /**
  * API
@@ -17,6 +18,7 @@ import * as upload from './upload'
  * - {@link api/notifications | `notifications`}: 通知
  * - {@link api/comments | `comments`}: 评论
  * - {@link api/upload | `upload`}: 上传
+ * - {@link api/stories | `stories`}: 日记
  */
 export const api = {
   users,
@@ -27,6 +29,7 @@ export const api = {
   notifications,
   comments,
   upload,
+  stories,
 }
 /**
  * API 集合

@@ -7,6 +7,7 @@ import type {
   UrlsInText,
 } from './post'
 import type { User } from './user'
+import type { LiteralUnion } from '../../utils/typings'
 
 export type PostTypeRaw = 'ORIGINAL_POST' | 'REPOST'
 export type TargetType = PostTypeRaw | 'STORY'
@@ -159,4 +160,48 @@ export interface RecommendPost {
   shareCount: number
   createdAt: Date
   type: string
+}
+
+export interface StoryPic {
+  key: string
+  thumbnailUrl: string
+  smallPicUrl: string
+  middlePicUrl: string
+  picUrl: string
+  format: string
+  cropperPosX: number
+  cropperPosY: number
+  width: number
+  height: number
+}
+export interface StoryVideo {
+  duration: number
+  height: number
+  type: string
+  width: number
+  image: {
+    format: string
+    picUrl: string
+    thumbnailUrl: string
+  }
+}
+
+export interface StoryDetails {
+  id: string
+  type: 'STORY'
+  storyType: LiteralUnion<'PICTURE' | 'VIDEO'>
+  user: User
+  emoji?: string
+  video?: StoryVideo
+  thumbnailVideo?: StoryVideo
+  status: string
+  picture: StoryPic
+  liked: boolean
+  likeCount: number
+  commentCount: number
+  viewerCount: number
+  createdAt: string
+  likedUsers: []
+  enablePictureComments: boolean
+  isFeatured: boolean
 }
