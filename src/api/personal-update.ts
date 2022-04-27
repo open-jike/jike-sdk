@@ -1,7 +1,7 @@
 import { request, toResponse } from '../request'
 import type { PostTypeRaw } from '../types/entity'
 import type { PaginationOption } from '../types/options'
-import type { PersonalUpdate } from '../types/api-responses'
+import type { PersonalUpdate , Stories} from '../types/api-responses'
 
 /**
  * 获取用户动态
@@ -75,3 +75,25 @@ export const unpin = async <T = PersonalUpdate.UnpinResponse>(
       },
     })
   )
+
+/**
+ * 获取关注用户快拍列表
+ */
+export const followingFeed = async <T = Stories.FollowingFeedResponse>(
+
+) => toResponse<T>(
+  request.get('1.0/stories/followingFeed')
+)
+
+/**
+ * 获取用户的快拍详情
+ */
+export const listUserStories = async <T = Stories.ListUserStoriesResponse>(
+  username: string
+) => toResponse<T>(
+  request.get('1.0/stories/listUserStories',{
+    searchParams: {
+      username: username
+    },
+  })
+)

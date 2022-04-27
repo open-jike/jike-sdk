@@ -3,6 +3,8 @@ import type { LiteralUnion } from '../utils/typings'
 import type {
   Comment,
   FollowingUpdate,
+  FollowingFeed,
+  ListUserStories,
   Notification,
   PostDetail,
   Profile as ProfileEntity,
@@ -177,5 +179,15 @@ export namespace RecommendFeed {
     loadMoreKey?: {
       page: number
     }
+  }
+}
+
+export namespace Stories {
+  export interface FollowingFeedResponse{
+    data: FollowingFeed[]
+  }
+
+  export interface ListUserStoriesResponse{
+    data: ListUserStories[]
   }
 }

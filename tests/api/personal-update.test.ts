@@ -4,7 +4,6 @@ import { config } from '../config'
 
 describe('personal update should work', () => {
   setApiConfig(config)
-
   it('single should work', async () => {
     const limit = 10
     const result = await api.personalUpdate.single(
@@ -23,5 +22,15 @@ describe('personal update should work', () => {
     const result = await api.personalUpdate.followingUpdates()
     expect(isSuccess(result)).toBe(true)
     expect(result.data.data.length).greaterThan(0)
+  })
+
+  it('followingFeed should work', async () => {
+    const result = await api.personalUpdate.followingFeed();
+    expect(isSuccess(result)).toBe(true);
+  })
+
+  it('listUserStories should work',async () => {
+    const result = await api.personalUpdate.listUserStories('c00cf715-b71b-464b-9dcc-d73e01878137');
+    expect(isSuccess(result)).toBe(true);
   })
 })
