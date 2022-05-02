@@ -65,7 +65,7 @@
 
 ### Node.js
 
-Node.js >= v14.17.0
+Node.js >= v14.19.0
 
 ```bash
 npm i jike-sdk

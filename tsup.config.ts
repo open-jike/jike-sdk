@@ -35,7 +35,7 @@ const modern = (): Options => {
 const node = (): Options => ({
   ...common,
   outDir: 'dist/node',
-  target: 'node14.17',
+  target: 'node14.19',
   platform: 'node',
   format: ['cjs', 'esm'],
   define: {
