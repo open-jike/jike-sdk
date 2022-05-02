@@ -1,3 +1,7 @@
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const shim = (_value: any) => undefined
+shim(_nodeShim)
+
 export {
   request,
   getAccessToken,

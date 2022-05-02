@@ -7,6 +7,8 @@ const $r = resolve.bind(undefined, __dirname)
 const common: Options = {
   entry: [$r('src/index.ts')],
   sourcemap: true,
+  minifySyntax: true,
+  splitting: false,
 }
 
 export default defineConfig(() => {
@@ -24,7 +26,6 @@ const modern = (): Options => {
     define: {
       IS_NODE: 'false',
     },
-    minifySyntax: true,
     esbuildOptions: (options) => {
       options.outExtension = {}
     },
@@ -41,7 +42,6 @@ const node = (): Options => ({
   define: {
     IS_NODE: 'true',
   },
-  minifySyntax: true,
-  noExternal: ['ky'],
+  noExternal: ['node-fetch', 'ky'],
   inject: [$r('src/node-shim.ts')],
 })
