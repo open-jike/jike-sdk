@@ -1,5 +1,5 @@
 import { HTTPError } from 'ky'
-import { EventEmitter } from 'eventemitter3'
+import EventEmitter from 'eventemitter3'
 import { resolveApiConfig } from '../request'
 import { ApiClient } from '../api-client'
 import { objectPick } from '../utils/objects'

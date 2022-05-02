@@ -1,3 +1,4 @@
+import type { StoryStatus } from './post'
 import type { CommonImage } from './common'
 
 /**
@@ -80,6 +81,7 @@ export interface User {
   /** 尾部图标 */
   trailingIcons?: TrailingIcon[]
   following?: boolean
+  storyStatus?: StoryStatus
 }
 
 export interface RefRemark {

@@ -1,3 +1,4 @@
+import type { CommonImage } from './common'
 import type { Topic } from './topic'
 import type {
   Picture,
@@ -162,18 +163,14 @@ export interface RecommendPost {
   type: string
 }
 
-export interface StoryPic {
+export interface StoryPicture extends CommonImage {
   key: string
-  thumbnailUrl: string
-  smallPicUrl: string
-  middlePicUrl: string
-  picUrl: string
-  format: string
   cropperPosX: number
   cropperPosY: number
   width: number
   height: number
 }
+
 export interface StoryVideo {
   duration: number
   height: number
@@ -186,22 +183,22 @@ export interface StoryVideo {
   }
 }
 
-export interface StoryDetails {
-  id: string
+export interface Story {
   type: 'STORY'
+  id: string
   storyType: LiteralUnion<'PICTURE' | 'VIDEO'>
+  status: LiteralUnion<'PUBLIC'>
   user: User
   emoji?: string
   video?: StoryVideo
   thumbnailVideo?: StoryVideo
-  status: string
-  picture: StoryPic
+  picture?: StoryPicture
   liked: boolean
   likeCount: number
   commentCount: number
   viewerCount: number
   createdAt: string
-  likedUsers: []
+  likedUsers: User[]
   enablePictureComments: boolean
   isFeatured: boolean
 }

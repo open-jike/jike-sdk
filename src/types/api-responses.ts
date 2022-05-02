@@ -7,7 +7,7 @@ import type {
   PostDetail,
   Profile as ProfileEntity,
   RecommendPost,
-  StoryDetails,
+  Story,
   TabIcons,
   User,
 } from './entity'
@@ -187,6 +187,6 @@ export namespace Stories {
   }
 
   export interface ListUserStoriesResponse {
-    data: StoryDetails[]
+    data: Story[]
   }
 }
