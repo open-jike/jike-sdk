@@ -96,4 +96,13 @@ describe('new post should work', () => {
     expect(isSuccess(result)).toBe(true)
     expect(result.data.toast).toBe('删除成功')
   })
+
+  it('listLikedUsers should work', async () => {
+    const result = await api.posts.listLikedUsers(
+      PostType.ORIGINAL,
+      '626303a8079c68c18e2ac9bc'
+    )
+    expect(isSuccess(result)).toBe(true)
+    expect(result.data.data.length).greaterThan(0)
+  })
 })

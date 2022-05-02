@@ -8,7 +8,7 @@ import type {
   ListCommentOption,
   PostType,
 } from '../types/options'
-import type { Comment, PostDetail } from '../types/entity'
+import type { Comment, PostDetail, User } from '../types/entity'
 import type { JikeClient } from './client'
 
 /**
@@ -97,6 +97,31 @@ export class JikePost {
     )
     if (!isSuccess(result)) throwRequestFailureError(result, '取消置顶动态')
     return result.data.toast
+  }
+
+  /**
+   * 获取点赞用户列表
+   * @returns 用户列表
+   */
+  async listLikedUsers(option: PaginatedOption<User, never, string> = {}) {
+    const fetcher: PaginatedFetcher<User, string> = async (lastKey) => {
+      const result = await this.apiClient.posts.listLikedUsers(
+        this.type,
+        this.id,
+        { loadMoreKey: lastKey, limit: 500 }
+      )
+      if (!isSuccess(result))
+        throwRequestFailureError(result, '获取点赞用户列表')
+
+      const newKey = result.data.loadMoreKey
+      return [newKey, result.data.data]
+    }
+
+    return fetchPaginated(
+      fetcher,
+      (item, data) => ({ total: data.length + 1 }),
+      option
+    )
   }
 
   /**

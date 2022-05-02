@@ -25,6 +25,10 @@ export namespace Posts {
     /** 提示文本 */
     toast: string
   }
+  export interface ListLikedUsersResponse {
+    data: User[]
+    loadMoreKey?: string
+  }
 }
 
 export namespace Notifications {

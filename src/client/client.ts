@@ -261,6 +261,10 @@ export class JikeClient extends EventEmitter<EventMap> {
     }
   }
 
+  getPost(type: PostType, id: string) {
+    return new JikePost(this, type, id)
+  }
+
   /**
    * 刷新 access token
    */

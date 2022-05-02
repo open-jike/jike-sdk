@@ -63,6 +63,7 @@ export interface User {
   city?: string
   country?: string
   province?: string
+  ref?: string
   refRemark?: RefRemark
   bio?: string
   decorations?: {

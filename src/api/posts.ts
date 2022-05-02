@@ -1,5 +1,9 @@
 import { request, toResponse } from '../request'
-import type { CreatePostOption, PostType } from '../types/options'
+import type {
+  CreatePostOption,
+  PaginationOption,
+  PostType,
+} from '../types/options'
 import type { Posts } from '../types/api-responses'
 
 /**
@@ -81,5 +85,24 @@ export const remove = <T = Posts.RemoveResponse>(type: PostType, id: string) =>
   toResponse<T>(
     request.post(`1.0/${type}/remove`, {
       json: { id },
+    })
+  )
+
+/**
+ * 获取点赞用户列表
+ * @param id 动态ID
+ */
+export const listLikedUsers = <T = Posts.ListLikedUsersResponse>(
+  type: PostType,
+  id: string,
+  option: PaginationOption<string> = {}
+) =>
+  toResponse<T>(
+    request.post(`1.0/${type}/listLikedUsers`, {
+      json: {
+        id,
+        limit: option.limit ?? 100,
+        loadMoreKey: option.loadMoreKey,
+      },
     })
   )
