@@ -146,11 +146,15 @@ export class JikeUser<M extends boolean = boolean> {
       if (!isSuccess(result)) throwRequestFailureError(result, '查询用户被关注')
 
       const newKey = result.data.loadMoreKey?.createdAt
-      const data: FollowerWithTime = {
-        user: result.data.data[0],
-        followTime: newKey,
-      }
-      return [newKey, [data]]
+      const data: FollowerWithTime[] = result.data.data[0]
+        ? [
+            {
+              user: result.data.data[0],
+              followTime: newKey,
+            },
+          ]
+        : []
+      return [newKey, data]
     }
 
     return fetchPaginated(
