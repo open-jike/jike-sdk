@@ -122,9 +122,15 @@ export const resolveKyOptions = (): Options => {
   }
 }
 
+function throwNoConfig(): never {
+  throw new Error(
+    `API config is empty! Please call \`setApiConfig\` first.\nPlease refer to https://github.com/open-jike/jike-sdk#usage`
+  )
+}
+
 /** 获取 API 配置 */
 export const getApiConfig = () => {
-  if (!apiConfig) throw new Error('Please set apiConfig!')
+  if (!apiConfig) throwNoConfig()
   return apiConfig
 }
 
@@ -142,9 +148,12 @@ let _request: KyInstance
  * API 请求函数，继承自 [ky](https://github.com/sindresorhus/ky)
  */
 export const request = new Proxy(() => undefined, {
-  get: (_o, ...args) => Reflect.get(_request, ...args),
-  apply: (_o, ...args) => Reflect.apply(_request, ...args),
-  ownKeys: (_o, ...args) => Reflect.ownKeys(_request, ...args),
+  get: (_, ...args) => {
+    if (!apiConfig) throwNoConfig()
+    return Reflect.get(_request, ...args)
+  },
+  apply: (_, ...args) => Reflect.apply(_request, ...args),
+  ownKeys: (_, ...args) => Reflect.ownKeys(_request, ...args),
 }) as unknown as KyInstance
 
 type ResponseMeta = Pick<
