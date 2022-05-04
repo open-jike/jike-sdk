@@ -1,3 +1,4 @@
+import { Blob } from 'buffer'
 import sharp from 'sharp'
 import Md5 from 'md5'
 import { describe, expect, it } from 'vitest'
@@ -28,11 +29,22 @@ describe('upload should work', async () => {
     token = result.data.uptoken
   })
 
-  it('upload image', async () => {
-    const result = await api.upload.upload(image, token)
-    expect(result.success).toBe(true)
-    expect(result.fileUrl).to.be.a('string')
-    expect(result.id).to.be.a('string')
-    expect(result.key).a('string')
+  describe('upload image', () => {
+    it('Buffer should work', async () => {
+      // @ts-expect-error
+      const result = await api.upload.upload(new Blob([image.buffer]), token)
+      expect(result.success).toBe(true)
+      expect(result.fileUrl).to.be.a('string')
+      expect(result.id).to.be.a('string')
+      expect(result.key).a('string')
+    })
+
+    it('Blob should work', async () => {
+      const result = await api.upload.upload(image, token)
+      expect(result.success).toBe(true)
+      expect(result.fileUrl).to.be.a('string')
+      expect(result.id).to.be.a('string')
+      expect(result.key).a('string')
+    })
   })
 })

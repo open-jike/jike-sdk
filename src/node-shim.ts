@@ -1,5 +1,6 @@
 import { randomUUID } from 'crypto'
 import {
+  Blob,
   File,
   FormData,
   Headers,
@@ -20,6 +21,7 @@ if (!globals.fetch) {
 
 if (!globals.FormData) {
   globals.File = File
+  globals.Blob = Blob
   globals.FormData = FormData
 }
 
