@@ -1,6 +1,7 @@
 export * from './client'
 export * from './user'
 export * from './post'
+export type { JikeClientJSON } from './types'
 export * as limit from './utils/limit'
 export { RequestFailureError } from './errors/RequestFailureError'
 export { AuthorizationError } from './errors/AuthorizationError'

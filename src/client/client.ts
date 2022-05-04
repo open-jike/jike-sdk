@@ -21,8 +21,6 @@ interface EventMap {
   renewToken: () => void
 }
 
-export type { JikeClientJSON }
-
 const userSelfKey = Symbol('userSelfKey')
 
 export class JikeClient extends EventEmitter<EventMap> {
