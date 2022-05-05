@@ -173,11 +173,27 @@ export class JikeUser<M extends boolean = boolean> {
    * @param mode
    * `following`: 从 当前用户 的 关注 列表查找 目标用户 是否存在；
    * `follower` : 从 目标用户 的 被关注 列表查找 当前用户 是否存在。
+   * `auto`     : 根据 `following` 和 `follower` 数量，自动选择上述两种模式。
    *
    * 为提升查询速度，建议哪个数量少使用哪个。
    */
-  async isFollowing(user: JikeUser | string, mode: 'following' | 'follower') {
+  async isFollowing(
+    user: JikeUser | string,
+    mode: 'following' | 'follower' | 'auto'
+  ) {
     const target = typeof user === 'string' ? this.#client.getUser(user) : user
+
+    if (mode === 'auto') {
+      const thisProfile = await this.queryProfile()
+      const targetProfile = await target.queryProfile()
+
+      mode =
+        thisProfile.user.statsCount.followingCount >
+        targetProfile.user.statsCount.followedCount
+          ? 'follower'
+          : 'following'
+    }
+
     const targetUsername = await (mode === 'following'
       ? target.getUsername()
       : this.getUsername())
