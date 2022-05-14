@@ -1,4 +1,3 @@
-import type { CommonImage } from './common'
 import type { Topic } from './topic'
 import type {
   Picture,
@@ -8,7 +7,6 @@ import type {
   UrlsInText,
 } from './post'
 import type { User } from './user'
-import type { LiteralUnion } from '../../utils/typings'
 
 export type PostTypeRaw = 'ORIGINAL_POST' | 'REPOST'
 export type TargetType = PostTypeRaw | 'STORY'
@@ -161,44 +159,4 @@ export interface RecommendPost {
   shareCount: number
   createdAt: Date
   type: string
-}
-
-export interface StoryPicture extends CommonImage {
-  key: string
-  cropperPosX: number
-  cropperPosY: number
-  width: number
-  height: number
-}
-
-export interface StoryVideo {
-  duration: number
-  height: number
-  type: string
-  width: number
-  image: {
-    format: string
-    picUrl: string
-    thumbnailUrl: string
-  }
-}
-
-export interface Story {
-  type: 'STORY'
-  id: string
-  storyType: LiteralUnion<'PICTURE' | 'VIDEO'>
-  status: LiteralUnion<'PUBLIC'>
-  user: User
-  emoji?: string
-  video?: StoryVideo
-  thumbnailVideo?: StoryVideo
-  picture?: StoryPicture
-  liked: boolean
-  likeCount: number
-  commentCount: number
-  viewerCount: number
-  createdAt: string
-  likedUsers: User[]
-  enablePictureComments: boolean
-  isFeatured: boolean
 }

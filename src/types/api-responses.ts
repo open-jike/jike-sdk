@@ -194,3 +194,7 @@ export namespace Stories {
     data: Story[]
   }
 }
+
+export interface InteractiveResponse {
+  url: string
+}

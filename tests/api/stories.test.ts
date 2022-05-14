@@ -16,4 +16,13 @@ describe('stories should work', () => {
     )
     expect(isSuccess(result)).toBe(true)
   })
+
+  it('getVideo should word', async () => {
+    const result = await api.mediaMeta.interactive(
+      '627fcab1d505530011e9c7c4',
+      'STORY',
+      'user'
+    )
+    expect(isSuccess(result)).toBe(true)
+  })
 })

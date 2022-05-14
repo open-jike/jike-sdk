@@ -7,6 +7,7 @@ import * as notifications from './notifications'
 import * as comments from './comments'
 import * as upload from './upload'
 import * as stories from './stories'
+import * as mediaMeta from './media-meta'
 
 /**
  * API
@@ -30,6 +31,7 @@ export const api = {
   comments,
   upload,
   stories,
+  mediaMeta,
 }
 /**
  * API 集合
