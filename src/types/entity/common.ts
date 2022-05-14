@@ -1,10 +1,12 @@
+import type { LiteralUnion } from '../../utils/typings'
+
 export interface CommonImage {
   thumbnailUrl: string
   smallPicUrl: string
   middlePicUrl: string
   picUrl: string
   /** 格式，如 `jpeg`, `heic` */
-  format: string
+  format: LiteralUnion<'jpeg'>
 }
 
 export type Ref =
