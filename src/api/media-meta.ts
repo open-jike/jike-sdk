@@ -1,4 +1,5 @@
 import { request, toResponse } from '../request'
+import type { LiteralUnion } from '../utils/typings'
 import type { InteractiveResponse } from '../types/api-responses'
 
 /**
@@ -9,8 +10,8 @@ import type { InteractiveResponse } from '../types/api-responses'
  */
 export const interactive = async <T = InteractiveResponse>(
   id: string,
-  type: string,
-  trigger: string
+  type: LiteralUnion<'STORY'>,
+  trigger: LiteralUnion<'user'> = 'user'
 ) =>
   toResponse<T>(
     request.post('1.0/mediaMeta/interactive', {
