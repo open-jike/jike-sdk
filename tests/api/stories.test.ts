@@ -16,4 +16,9 @@ describe('stories should work', () => {
     )
     expect(isSuccess(result)).toBe(true)
   })
+
+  it('getStoryVideo should word', async () => {
+    const result = await api.stories.getStoryVideo('627fcab1d505530011e9c7c4')
+    expect(isSuccess(result)).toBe(true)
+  })
 })

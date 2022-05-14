@@ -21,3 +21,20 @@ export const listUserStories = async <T = Stories.ListUserStoriesResponse>(
       },
     })
   )
+
+/**
+ * 获取用户的日记视频地址
+ * @param id 视频日记id
+ */
+export const getStoryVideo = async <T = Stories.StoryVideoResponse>(
+  id: string
+) =>
+  toResponse<T>(
+    request.post('1.0/mediaMeta/interactive', {
+      searchParams: {
+        id,
+        type: 'STORY',
+        trigger: 'user',
+      },
+    })
+  )
