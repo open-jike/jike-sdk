@@ -193,8 +193,8 @@ export namespace Stories {
   export interface ListUserStoriesResponse {
     data: Story[]
   }
+}
 
-  export interface StoryVideoResponse {
-    url: string
-  }
+export interface InteractiveResponse {
+  url: string
 }
