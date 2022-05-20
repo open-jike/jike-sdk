@@ -1,7 +1,7 @@
 import type { CommonImage } from './common'
 import type { Topic } from '.'
 import type { User } from './user'
-import type { LiteralUnion } from '../../utils/typings'
+import type { LiteralUnion } from '../../utils'
 
 export type PostType = 'ORIGINAL_POST' | 'REPOST' | 'STORY'
 export type StoryStatus = 'NONE' | 'READ' | 'PICTURE'

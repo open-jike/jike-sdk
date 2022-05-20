@@ -1,4 +1,4 @@
-import type { LiteralUnion } from '../../utils/typings'
+import type { LiteralUnion } from '../../utils'
 import type { CommonImage, Ref } from './common'
 
 export interface Topic {

@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-namespace */
-import type { LiteralUnion } from '../utils/typings'
+
+import type { LiteralUnion } from '../utils'
 import type {
   Comment,
   FollowingUpdate,

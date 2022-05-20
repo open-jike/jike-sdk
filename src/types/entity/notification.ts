@@ -1,6 +1,6 @@
 import type { Picture, PostStatus, PostType } from './post'
 import type { User } from './user'
-import type { LiteralUnion } from '../../utils/typings'
+import type { LiteralUnion } from '../../utils'
 
 export interface Notification {
   id: string

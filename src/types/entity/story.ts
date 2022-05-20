@@ -1,5 +1,5 @@
 import type { CommonImage } from './common'
-import type { LiteralUnion } from '../../utils/typings'
+import type { LiteralUnion } from '../../utils'
 import type { User } from './user'
 
 export interface StoryPicture extends CommonImage {

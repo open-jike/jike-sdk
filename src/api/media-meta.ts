@@ -1,5 +1,5 @@
 import { request, toResponse } from '../request'
-import type { LiteralUnion } from '../utils/typings'
+import type { LiteralUnion } from '../utils'
 import type { InteractiveResponse } from '../types/api-responses'
 
 /**

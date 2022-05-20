@@ -1,4 +1,4 @@
-import type { LiteralUnion } from '../utils/typings'
+import type { LiteralUnion } from '../utils'
 
 /**
  * @description 分页选项

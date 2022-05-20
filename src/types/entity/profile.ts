@@ -1,5 +1,5 @@
 import type { StoryStatus } from './post'
-import type { LiteralUnion } from '../../utils/typings'
+import type { LiteralUnion } from '../../utils'
 import type { AvatarImage, BackgroundImage, StatsCount, User } from './user'
 
 /**

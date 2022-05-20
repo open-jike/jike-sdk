@@ -1,4 +1,4 @@
-import type { LiteralUnion } from '../../utils/typings'
+import type { LiteralUnion } from '../../utils'
 import type { StoryStatus } from './post'
 import type { CommonImage, Ref } from './common'
 
