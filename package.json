@@ -36,7 +36,7 @@
   "types": "dist/index.d.ts",
   "sideEffects": false,
   "scripts": {
-    "dev": "esmo playground/main.ts",
+    "dev": "tsx playground/main.ts",
     "build": "pnpm run build:lib && pnpm run build:types",
     "build:lib": "MODE=modern tsup && MODE=node tsup",
     "build:types": "tsc --emitDeclarationOnly --declaration",
@@ -68,7 +68,6 @@
     "esbuild": "^0.14.39",
     "eslint": "^8.15.0",
     "eslint-define-config": "^1.4.1",
-    "esno": "^0.15.0",
     "md5": "^2.3.0",
     "rollup": "^2.74.1",
     "rollup-plugin-esbuild": "^4.9.1",
