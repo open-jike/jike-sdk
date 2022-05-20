@@ -130,6 +130,7 @@ import { setApiConfig } from 'jike-sdk'
 ```ts
 import { ApiClient, api, setAccessToken, setApiConfig } from 'jike-sdk'
 
+// 自行在 GitHub 搜索「jike endpoint」探索配置
 const apiConfig = {
   endpointId: 'jike',
   endpointUrl: '<jike-endpoint-url>', // 请自行替换
@@ -149,6 +150,14 @@ api.userRelation.getFollowingList('82D23B32-CF36-4C59-AD6F-D05E3552CBF3', {
 const client = ApiClient(apiConfig)
 client.users.profile()
 ```
+
+## Sponsors
+
+<p align="center">
+  <a href="https://cdn.jsdelivr.net/gh/sxzz/sponsors/sponsors.svg">
+    <img src='https://cdn.jsdelivr.net/gh/sxzz/sponsors/sponsors.svg'/>
+  </a>
+</p>
 
 ## License
 
