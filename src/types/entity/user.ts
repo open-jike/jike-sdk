@@ -1,5 +1,6 @@
+import type { LiteralUnion } from '../../utils/typings'
 import type { StoryStatus } from './post'
-import type { CommonImage } from './common'
+import type { CommonImage, Ref } from './common'
 
 /**
  * 头像图片
@@ -63,7 +64,7 @@ export interface User {
   city?: string
   country?: string
   province?: string
-  ref?: string
+  ref?: LiteralUnion<Ref>
   refRemark?: RefRemark
   bio?: string
   decorations?: {
@@ -81,8 +82,15 @@ export interface User {
   sponsorExpiresAt?: string
   /** 尾部图标 */
   trailingIcons?: TrailingIcon[]
+  /** 是否关注 */
   following?: boolean
+  /** 是否 不看TA的内容 */
+  muting: boolean
+  /** 是否已注销 */
+  isCancelled?: true
+  /** 日记状态 */
   storyStatus?: StoryStatus
+  [key: string]: any
 }
 
 export interface RefRemark {

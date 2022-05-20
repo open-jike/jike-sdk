@@ -1,5 +1,6 @@
 import type { Topic } from './topic'
 import type {
+  LinkInfo,
   Picture,
   ReadTrackInfo,
   Rollouts,
@@ -44,6 +45,9 @@ export interface PostDetail {
   liked?: boolean
   syncCommentId?: string
   replyToComment?: Comment
+  topic?: Topic
+  /** 链接 */
+  linkInfo?: LinkInfo
 }
 
 export interface Target {
