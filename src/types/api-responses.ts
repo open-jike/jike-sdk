@@ -62,6 +62,14 @@ export namespace UserRelation {
   export interface UnfollowResponse {
     toast: LiteralUnion<'关注已取消'>
   }
+
+  export interface MuteResponse {
+    toast: LiteralUnion<'操作成功！'>
+  }
+
+  export interface UnmuteResponse {
+    toast: LiteralUnion<'操作成功！'>
+  }
 }
 
 export namespace Users {

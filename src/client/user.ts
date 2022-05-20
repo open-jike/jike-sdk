@@ -32,6 +32,14 @@ export class JikeUser<M extends boolean = boolean> {
   }
 
   /**
+   * 获取用户 ID
+   * @returns 用户 ID
+   */
+  async getId() {
+    return (await this.queryProfile()).user.id
+  }
+
+  /**
    * 获取用户名
    * @returns 用户名
    */
@@ -258,5 +266,25 @@ export class JikeUser<M extends boolean = boolean> {
       option
     )
     if (!isSuccess(result)) throwRequestFailureError(result, '取消关注用户')
+  }
+
+  /**
+   * 不看 TA 的内容
+   */
+  async mute() {
+    const result = await this.#client.apiClient.userRelation.mute(
+      await this.getId()
+    )
+    if (!isSuccess(result)) throwRequestFailureError(result, '不看 TA 的内容')
+  }
+
+  /**
+   * 重新看 TA 的内容
+   */
+  async unmute() {
+    const result = await this.#client.apiClient.userRelation.unmute(
+      await this.getId()
+    )
+    if (!isSuccess(result)) throwRequestFailureError(result, '重新看 TA 的内容')
   }
 }
