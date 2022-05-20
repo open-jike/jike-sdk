@@ -18,49 +18,49 @@
 <details>
   <summary>API 列表</summary>
 
-- 用户
-  - [x] 获取用户信息
-  - [x] 刷新 Access Token
-  - [x] 发送登录验证码
-  - [x] 短信登录
-  - [x] 手机号与密码登录
-  - [ ] 保存设备 Token
-  - [x] 弹一弹头像
-- 用户关系
-  - [x] 获取关注列表
-  - [x] 获取被关注列表
-  - [x] 关注
-  - [x] 取消关注
-  - [x] 是否关注用户
-  - [x] 不看 TA 的内容
-  - [x] 重新看 TA 的内容
-- 动态帖子
-  - [x] 发送动态
-  - [x] 获取动态详情
-  - [x] 分享动态
-  - [x] 点赞
-  - [x] 取消点赞
-  - [x] 获取点赞用户列表
-- 动态广场
-  - [x] 获取动态推荐
+- [用户](http://jike-sdk.surge.sh/modules/api_users.html)
+  - [x] [获取用户信息](http://jike-sdk.surge.sh/modules/api_users.html#profile)
+  - [x] [刷新 Access Token](http://jike-sdk.surge.sh/modules/api_users.html#refreshToken)
+  - [x] [发送登录验证码](http://jike-sdk.surge.sh/modules/api_users.html#getSmsCode)
+  - [x] [短信登录](http://jike-sdk.surge.sh/modules/api_users.html#loginWithSmsCode)
+  - [x] [手机号与密码登录](手机号与密码登录)
+  - [x] [弹一弹头像](http://jike-sdk.surge.sh/modules/api_users.html#avatarGreet)
+  - [ ] ~~保存设备 Token~~
+- [用户关系](http://jike-sdk.surge.sh/modules/api_user_relation.html)
+  - [x] [获取关注列表](http://jike-sdk.surge.sh/modules/api_user_relation.html#getFollowingList)
+  - [x] [获取被关注列表](http://jike-sdk.surge.sh/modules/api_user_relation.html#getFollowerList)
+  - [x] [关注](http://jike-sdk.surge.sh/modules/api_user_relation.html#follow)
+  - [x] [取消关注](http://jike-sdk.surge.sh/modules/api_user_relation.html#unfollow)
+  - [x] [是否关注用户](http://jike-sdk.surge.sh/classes/index.JikeUser.html#isFollowing)
+  - [x] [不看 TA 的内容](http://jike-sdk.surge.sh/modules/api_user_relation.html#mute)
+  - [x] [重新看 TA 的内容](http://jike-sdk.surge.sh/modules/api_user_relation.html#unmute)
+- [动态帖子](http://jike-sdk.surge.sh/modules/api_posts.html)
+  - [x] [发送动态](http://jike-sdk.surge.sh/modules/api_posts.html#create)
+  - [x] [获取动态详情](http://jike-sdk.surge.sh/modules/api_posts.html#get)
+  - [x] [分享动态](http://jike-sdk.surge.sh/modules/api_posts.html#share)
+  - [x] [点赞](http://jike-sdk.surge.sh/modules/api_posts.html#like)
+  - [x] [取消点赞](http://jike-sdk.surge.sh/modules/api_posts.html#unlike)
+  - [x] [获取点赞用户列表](http://jike-sdk.surge.sh/modules/api_posts.html#listLikedUsers)
+- [动态广场](http://jike-sdk.surge.sh/modules/api_recommend_feed.html)
+  - [x] [获取动态推荐](http://jike-sdk.surge.sh/modules/api_recommend_feed.html#list)
 - 评论
-  - [x] 获取评论
-  - [x] 发送评论
-  - [x] 点赞
-  - [x] 取消点赞
-- 动态
-  - [x] 获取用户动态
-  - [x] 获取关注动态
-  - [x] 置顶动态
-  - [x] 取消置顶动态
-- 通知
-  - [x] 获取通知列表
-- 上传
-  - [x] 获取上传 token
-  - [x] 上传图片
-- 日记
-  - [x] 获取关注用户日记列表
-  - [x] 获取用户的日记详情
+  - [x] [获取评论](http://jike-sdk.surge.sh/modules/api_comments.html#listPrimary)
+  - [x] [发送评论](http://jike-sdk.surge.sh/modules/api_comments.html#add)
+  - [x] [点赞](http://jike-sdk.surge.sh/modules/api_comments.html#like)
+  - [x] [取消点赞](http://jike-sdk.surge.sh/modules/api_comments.html#unlike)
+- [动态](http://jike-sdk.surge.sh/modules/api_personal_update.html)
+  - [x] [获取用户动态](http://jike-sdk.surge.sh/modules/api_personal_update.html#single)
+  - [x] [获取关注动态](http://jike-sdk.surge.sh/modules/api_personal_update.html#followingUpdates)
+  - [x] [置顶动态](http://jike-sdk.surge.sh/modules/api_personal_update.html#pin)
+  - [x] [取消置顶动态](http://jike-sdk.surge.sh/modules/api_personal_update.html#unpin)
+- [通知](http://jike-sdk.surge.sh/modules/api_notifications.html)
+  - [x] [获取通知列表](http://jike-sdk.surge.sh/modules/api_notifications.html#list)
+- [上传](http://jike-sdk.surge.sh/modules/api_upload.html)
+  - [x] [获取上传 token](http://jike-sdk.surge.sh/modules/api_upload.html#token)
+  - [x] [上传图片](http://jike-sdk.surge.sh/modules/api_upload.html#upload)
+- [日记](http://jike-sdk.surge.sh/modules/api_stories.html)
+  - [x] [获取关注用户日记列表](http://jike-sdk.surge.sh/modules/api_stories.html#followingFeed)
+  - [x] [获取用户的日记详情](http://jike-sdk.surge.sh/modules/api_stories.html#listUserStories)
 
 </details>
 
