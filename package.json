@@ -8,17 +8,22 @@
     "jike",
     "sdk"
   ],
+  "license": "AGPL-3.0",
   "homepage": "https://github.com/open-jike/jike-sdk#readme",
   "bugs": {
     "url": "https://github.com/open-jike/jike-sdk/issues"
   },
-  "license": "AGPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/open-jike/jike-sdk.git"
+  },
   "author": "三咲智子 <sxzz@sxzz.moe>",
   "files": [
     "dist",
     "*.d.ts"
   ],
   "module": "dist/index.js",
+  "types": "dist/index.d.ts",
   "exports": {
     ".": {
       "require": "./dist/node/index.cjs",
@@ -29,11 +34,6 @@
     },
     "./*": "./*"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/open-jike/jike-sdk.git"
-  },
-  "types": "dist/index.d.ts",
   "sideEffects": false,
   "scripts": {
     "dev": "tsx playground/main.ts",
