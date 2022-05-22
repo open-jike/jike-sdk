@@ -90,8 +90,8 @@ export const resolveKyOptions = (): Options => {
     fetch,
     hooks: {
       beforeRequest: [
-        (req) => {
-          const apiConfig = getApiConfig()
+        (req, opt) => {
+          const apiConfig = (opt as any).apiConfig as ApiConfigResolved
           const key = `x-${apiConfig.endpointId}-access-token`
           if (req.headers.get(key) === '') req.headers.delete(key)
           else if (apiConfig.accessToken && !req.headers.has(key))
@@ -144,17 +144,35 @@ export const getAccessToken = () => apiConfig.accessToken
 
 let _request: KyInstance
 
+const buildProxy = (targetGetter: () => any): any =>
+  new Proxy(() => undefined, {
+    get: (oldTarget, prop, args) => {
+      const target = targetGetter()
+      if (!apiConfig || !target) throwNoConfig()
+
+      if (['get', 'post'].includes(prop as string)) {
+        return buildProxy(() => target[prop])
+      }
+
+      return Reflect.get(target, prop, args)
+    },
+
+    apply: (oldTarget, prop, args) => {
+      const target = targetGetter()
+      if (!apiConfig || !target) throwNoConfig()
+
+      // add apiConfig to request options
+      args.slice(-1)[0].apiConfig = apiConfig
+
+      return Reflect.apply(target, prop, args)
+    },
+    ownKeys: (_, ...args) => Reflect.ownKeys(targetGetter(), ...args),
+  })
+
 /**
  * API 请求函数，继承自 [ky](https://github.com/sindresorhus/ky)
  */
-export const request = new Proxy(() => undefined, {
-  get: (_, ...args) => {
-    if (!apiConfig) throwNoConfig()
-    return Reflect.get(_request, ...args)
-  },
-  apply: (_, ...args) => Reflect.apply(_request, ...args),
-  ownKeys: (_, ...args) => Reflect.ownKeys(_request, ...args),
-}) as unknown as KyInstance
+export const request = buildProxy(() => _request) as KyInstance
 
 type ResponseMeta = Pick<
   Response,
