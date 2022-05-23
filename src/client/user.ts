@@ -19,7 +19,7 @@ export interface FollowerWithTime {
 export class JikeUser<M extends boolean = boolean> {
   #client: JikeClient
   #username?: string
-  #profile?: Users.Profile<M>
+  profile?: Users.Profile<M>
 
   constructor(
     client: JikeClient,
@@ -28,7 +28,7 @@ export class JikeUser<M extends boolean = boolean> {
   ) {
     this.#client = client
     this.#username = username
-    this.#profile = profile
+    this.profile = profile
   }
 
   /**
@@ -62,14 +62,14 @@ export class JikeUser<M extends boolean = boolean> {
    * @param ignoreCache 不使用缓存
    */
   async queryProfile(ignoreCache = false) {
-    if (!ignoreCache && this.#profile) return this.#profile
+    if (!ignoreCache && this.profile) return this.profile
 
     const result = await this.#client.apiClient.users.profile(this.#username)
     if (!isSuccess(result)) throwRequestFailureError(result, '查询用户信息')
-    this.#profile = result.data
-    this.#username = this.#profile.user.username
+    this.profile = result.data
+    this.#username = this.profile.user.username
 
-    return this.#profile
+    return this.profile
   }
 
   /**
