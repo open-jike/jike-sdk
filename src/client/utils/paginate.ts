@@ -5,6 +5,9 @@ export interface PaginatedOption<
   L extends keyof LimitOptionAll = keyof LimitOptionAll,
   K = unknown
 > {
+  /** 上一页的 key */
+  lastKey?: K
+
   /** @returns `true`: 继续下一页；`false`: 停止获取 */
   limit?: LimitFn<L | 'total', T>
   /**
@@ -16,6 +19,11 @@ export interface PaginatedOption<
     key: K | undefined,
     data: T[]
   ) => boolean | void
+  /**
+   * 当结束时触发
+   * @returns `false`: 将停止获取下一页
+   */
+  onDone?: (totalPage: number, key: K | undefined, data: T[]) => boolean | void
 }
 
 export type PaginatedFetcher<T, K> = (
@@ -31,7 +39,7 @@ export const fetchPaginated = async <
   limitOptionGetter: (item: T, data: T[]) => LimitOption<L | 'total'>,
   option: PaginatedOption<T, L, K>
 ) => {
-  let lastKey: K | undefined = undefined
+  let lastKey: K | undefined = option.lastKey
   const data: T[] = []
   let isContinue = true
   let page = 1
@@ -57,6 +65,8 @@ export const fetchPaginated = async <
 
     page++
   } while (isContinue && lastKey)
+
+  option.onDone?.(page, lastKey, data)
 
   return data
 }
