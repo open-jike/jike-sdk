@@ -18,7 +18,7 @@ export interface PersonalUpdate {
    */
   createdAt: string
   updateIds: string[]
-  action: LiteralUnion<'USER_FOLLOW'>
+  action: LiteralUnion<'USER_FOLLOW' | 'LIVE_SHARE'>
   usernames: string[]
   targetUsernames: string[]
   users: User[]
@@ -78,7 +78,20 @@ export interface OriginalPost {
   likeIcon?: LiteralUnion<'book'>
   /** 阅读时的 track 信息 */
   readTrackInfo: ReadTrackInfo
+  /** 是否点赞 */
+  liked?: boolean
 }
+
+/** 动态 */
+export type Post = OriginalPost /* | Repost */
+
+/** 主页动态 */
+export type PersonalPost = {
+  /**
+   * ISO-8601 格式，如 `2015-03-04T00:00:00.000Z`
+   */
+  actionTime: string
+} & Post
 
 /** 关注动态 */
 export type FollowingUpdate = {
@@ -86,7 +99,7 @@ export type FollowingUpdate = {
    * ISO-8601 格式，如 `2015-03-04T00:00:00.000Z`
    */
   actionTime: string
-} & (PersonalUpdate | OriginalPost)
+} & (PersonalUpdate | Post)
 
 /** 阅读时的 track 信息 */
 export interface ReadTrackInfo {

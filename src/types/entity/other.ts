@@ -1,54 +1,9 @@
 import type { Topic } from './topic'
-import type {
-  LinkInfo,
-  Picture,
-  ReadTrackInfo,
-  Rollouts,
-  ScrollingSubtitle,
-  UrlsInText,
-} from './post'
+import type { Picture, ReadTrackInfo, UrlsInText } from './post'
 import type { User } from './user'
 
 export type PostTypeRaw = 'ORIGINAL_POST' | 'REPOST'
 export type TargetType = PostTypeRaw | 'STORY'
-
-export interface PostDetail {
-  id: string
-  type: PostTypeRaw | 'PERSONAL_UPDATE'
-  content: string
-  /** 评论并转发到动态时存在。仅评论转发的内容，不包含上层评论 */
-  rawContent?: string
-  urlsInText: UrlsInText[]
-  status: string
-  isCommentForbidden: boolean
-  likeCount: number
-  commentCount: number
-  repostCount: number
-  shareCount: number
-  pictures: Picture[]
-  collected: boolean
-  collectTime?: string
-  user: User
-  createdAt: string
-  isFeatured: boolean
-  enablePictureComments: boolean
-  repostable: boolean
-  rollouts: Rollouts
-  scrollingSubtitles: ScrollingSubtitle[]
-  actionTime?: string
-  pinned?: {
-    personalUpdate: boolean
-  }
-  target?: Target
-  targetType?: string
-  rootType?: string
-  liked?: boolean
-  syncCommentId?: string
-  replyToComment?: Comment
-  topic?: Topic
-  /** 链接 */
-  linkInfo?: LinkInfo
-}
 
 export interface Target {
   type: string

@@ -5,7 +5,8 @@ import type {
   Comment,
   FollowingUpdate,
   Notification,
-  PostDetail,
+  OriginalPost,
+  PersonalPost,
   Profile as ProfileEntity,
   RecommendPost,
   Story,
@@ -17,10 +18,11 @@ export namespace Posts {
   export interface CreateResponse {
     /** 提示文本 */
     toast: string
-    data: PostDetail
+    data: OriginalPost
   }
   export interface GetResponse {
-    data: PostDetail
+    // TODO: post detail
+    data: any
   }
   export interface RemoveResponse {
     /** 提示文本 */
@@ -136,7 +138,7 @@ export namespace Users {
 
 export namespace PersonalUpdate {
   export interface SingleResponse {
-    data: PostDetail[]
+    data: PersonalPost[]
     loadMoreKey?: {
       lastId: string
     }

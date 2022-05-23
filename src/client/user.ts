@@ -1,9 +1,8 @@
+import { PostType } from '../types/options'
 import { isSuccess, throwRequestFailureError } from './utils/response'
 import { fetchPaginated } from './utils/paginate'
-import { JikePostWithDetail } from './post'
-import { rawTypeToEnum } from './utils/post'
 import type { UserUnfollowOption } from '../types/options'
-import type { PostDetail, PostTypeRaw, User } from '../types/entity'
+import type { PersonalPost, User } from '../types/entity'
 import type { Users } from '../types/api-responses'
 import type { PaginatedFetcher, PaginatedOption } from './utils/paginate'
 import type { JikeClient } from './client'
@@ -76,9 +75,9 @@ export class JikeUser<M extends boolean = boolean> {
    * 查询用户动态
    */
   async queryPersonalUpdate(
-    option: PaginatedOption<PostDetail, 'createdAt', string> = {}
+    option: PaginatedOption<PersonalPost, 'createdAt', string> = {}
   ) {
-    const fetcher: PaginatedFetcher<PostDetail, string> = async (lastKey) => {
+    const fetcher: PaginatedFetcher<PersonalPost, string> = async (lastKey) => {
       const result = await this.#client.apiClient.personalUpdate.single(
         await this.getUsername(),
         { limit: 500, loadMoreKey: lastKey ? { lastId: lastKey } : undefined }
@@ -89,7 +88,7 @@ export class JikeUser<M extends boolean = boolean> {
       return [newKey, result.data.data]
     }
 
-    const data = await fetchPaginated(
+    const updates = await fetchPaginated(
       fetcher,
       (item, data) => ({
         createdAt: new Date(item.createdAt),
@@ -98,17 +97,10 @@ export class JikeUser<M extends boolean = boolean> {
       option
     )
 
-    return data
-      .filter((item) => item.type !== 'PERSONAL_UPDATE')
-      .map(
-        (item) =>
-          new JikePostWithDetail(
-            this.#client,
-            rawTypeToEnum(item.type as PostTypeRaw),
-            item.id,
-            item
-          )
-      )
+    return updates.map((update) => {
+      // TODO: repost
+      return this.#client.getPost(PostType.ORIGINAL, update.id, update)
+    })
   }
 
   /**

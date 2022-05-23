@@ -3,15 +3,16 @@ import EventEmitter from 'eventemitter3'
 import { resolveApiConfig } from '../request'
 import { ApiClient } from '../api-client'
 import { objectPick } from '../utils'
+import { PostType } from '../types/options'
 import { isSuccess, throwRequestFailureError } from './utils/response'
 import { resolveAreaCode } from './utils/user'
 import { JikeUser } from './user'
 import { fetchPaginated } from './utils/paginate'
 import { AuthorizationError } from './errors/AuthorizationError'
-import { JikePost } from './post'
+import { JikePost, JikePostWithDetail } from './post'
+import type { CreatePostOption } from '../types/options'
 import type { FollowingUpdatesMoreKey, JikeClientJSON } from './types'
-import type { CreatePostOption, PostType } from '../types/options'
-import type { FollowingUpdate, Notification } from '../types/entity'
+import type { FollowingUpdate, Notification, Post } from '../types/entity'
 import type { BeforeRetryState } from 'ky/distribution/types/hooks'
 import type { PaginatedFetcher, PaginatedOption } from './utils/paginate'
 import type { Api } from '../api'
@@ -228,7 +229,7 @@ export class JikeClient extends EventEmitter<EventMap> {
       const newKey = result.data.loadMoreKey
       return [newKey, result.data.data]
     }
-    return fetchPaginated(
+    const updates = await fetchPaginated(
       fetcher,
       (item, data) => ({
         createdAt: new Date(item.createdAt),
@@ -236,6 +237,14 @@ export class JikeClient extends EventEmitter<EventMap> {
       }),
       option
     )
+    return updates.map((update) => {
+      // TODO repost
+      if (update.type === 'ORIGINAL_POST') {
+        return this.getPost(PostType.ORIGINAL, update.id, update)
+      } else {
+        return update
+      }
+    })
   }
 
   /**
@@ -253,14 +262,21 @@ export class JikeClient extends EventEmitter<EventMap> {
     if (!isSuccess(result)) throwRequestFailureError(result, '发送动态')
     return {
       /** 动态 */
-      post: new JikePost(this, type, result.data.data.id, result.data.data),
+      post: this.getPost(type, result.data.data.id, result.data.data),
       /** 提示文本 */
       toast: result.data.toast,
     }
   }
 
-  getPost(type: PostType, id: string) {
-    return new JikePost(this, type, id)
+  getPost(type: PostType, id: string): JikePost
+  getPost(type: PostType, id: string, detail: Post): JikePostWithDetail
+  getPost(
+    type: PostType,
+    id: string,
+    detail?: Post
+  ): JikePost | JikePostWithDetail {
+    if (!detail) return new JikePost(this, type, id)
+    else return new JikePostWithDetail(this, type, id, detail)
   }
 
   /**

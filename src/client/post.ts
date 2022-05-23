@@ -8,7 +8,7 @@ import type {
   ListCommentOption,
   PostType,
 } from '../types/options'
-import type { Comment, PostDetail, User } from '../types/entity'
+import type { Comment, Post, User } from '../types/entity'
 import type { JikeClient } from './client'
 
 /**
@@ -18,14 +18,9 @@ export class JikePost {
   #client: JikeClient
   type: PostType
   id: string
-  detail?: PostDetail
+  detail?: Post
 
-  constructor(
-    client: JikeClient,
-    type: PostType,
-    id: string,
-    detail?: PostDetail
-  ) {
+  constructor(client: JikeClient, type: PostType, id: string, detail?: Post) {
     this.#client = client
     this.type = type
     this.id = id
@@ -53,6 +48,7 @@ export class JikePost {
   async like() {
     const result = await this.apiClient.posts.like(this.type, this.id)
     if (!isSuccess(result)) throwRequestFailureError(result, '动态点赞')
+    if (this.detail) this.detail.liked = true
   }
 
   /**
@@ -61,6 +57,7 @@ export class JikePost {
   async unlike() {
     const result = await this.apiClient.posts.unlike(this.type, this.id)
     if (!isSuccess(result)) throwRequestFailureError(result, '取消动态点赞')
+    if (this.detail) this.detail.liked = false
   }
 
   /**
@@ -172,17 +169,12 @@ export class JikePost {
 }
 
 export class JikePostWithDetail extends JikePost {
-  constructor(
-    client: JikeClient,
-    type: PostType,
-    id: string,
-    detail: PostDetail
-  ) {
+  constructor(client: JikeClient, type: PostType, id: string, detail: Post) {
     super(client, type, id, detail)
     this.detail = detail
   }
 
-  getDetail(): PostDetail {
+  getDetail(): Post {
     return this.detail!
   }
 }
