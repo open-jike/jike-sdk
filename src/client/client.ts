@@ -12,7 +12,12 @@ import { AuthorizationError } from './errors/AuthorizationError'
 import { JikePost, JikePostWithDetail } from './post'
 import type { CreatePostOption } from '../types/options'
 import type { FollowingUpdatesMoreKey, JikeClientJSON } from './types'
-import type { FollowingUpdate, Notification, Post } from '../types/entity'
+import type {
+  FollowingUpdate,
+  Notification,
+  PersonalUpdate,
+  Post,
+} from '../types/entity'
 import type { BeforeRetryState } from 'ky/distribution/types/hooks'
 import type { PaginatedFetcher, PaginatedOption } from './utils/paginate'
 import type { Api } from '../api'
@@ -237,14 +242,18 @@ export class JikeClient extends EventEmitter<EventMap> {
       }),
       option
     )
-    return updates.map((update) => {
-      // TODO repost
-      if (update.type === 'ORIGINAL_POST') {
-        return this.getPost(PostType.ORIGINAL, update.id, update)
-      } else {
-        return update
+    return updates.map(
+      (
+        update
+      ): ({ actionTime: string } & PersonalUpdate) | JikePostWithDetail => {
+        // TODO repost
+        if (update.type === 'ORIGINAL_POST') {
+          return this.getPost(PostType.ORIGINAL, update.id, update)
+        } else {
+          return update
+        }
       }
-    })
+    )
   }
 
   /**

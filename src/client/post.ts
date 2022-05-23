@@ -169,12 +169,14 @@ export class JikePost {
 }
 
 export class JikePostWithDetail extends JikePost {
+  detail: Post
+
   constructor(client: JikeClient, type: PostType, id: string, detail: Post) {
     super(client, type, id, detail)
     this.detail = detail
   }
 
   getDetail(): Post {
-    return this.detail!
+    return this.detail
   }
 }
