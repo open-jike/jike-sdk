@@ -1,6 +1,6 @@
-import { PostType } from '../types/options'
 import { isSuccess, throwRequestFailureError } from './utils/response'
 import { fetchPaginated } from './utils/paginate'
+import { rawTypeToEnum } from './utils/post'
 import type { UserUnfollowOption } from '../types/options'
 import type { PersonalPost, User } from '../types/entity'
 import type { Users } from '../types/api-responses'
@@ -97,10 +97,9 @@ export class JikeUser<M extends boolean = boolean> {
       option
     )
 
-    return updates.map((update) => {
-      // TODO: repost
-      return this.#client.getPost(PostType.ORIGINAL, update.id, update)
-    })
+    return updates.map((update) =>
+      this.#client.getPost(rawTypeToEnum(update.type), update.id, update)
+    )
   }
 
   /**

@@ -82,8 +82,16 @@ export interface OriginalPost {
   liked?: boolean
 }
 
+/**
+ * 转帖
+ */
+export interface Repost {
+  type: 'REPOST'
+  [key: string]: any
+}
+
 /** 动态 */
-export type Post = OriginalPost /* | Repost */
+export type Post = OriginalPost | Repost
 
 /** 主页动态 */
 export type PersonalPost = {

@@ -246,9 +246,10 @@ export class JikeClient extends EventEmitter<EventMap> {
       (
         update
       ): ({ actionTime: string } & PersonalUpdate) | JikePostWithDetail => {
-        // TODO repost
         if (update.type === 'ORIGINAL_POST') {
           return this.getPost(PostType.ORIGINAL, update.id, update)
+        } else if (update.type === 'REPOST') {
+          return this.getPost(PostType.REPOST, update.id, update)
         } else {
           return update
         }
