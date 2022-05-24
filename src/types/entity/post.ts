@@ -18,7 +18,7 @@ export interface PersonalUpdate {
    */
   createdAt: string
   updateIds: string[]
-  action: LiteralUnion<'USER_FOLLOW' | 'LIVE_SHARE'>
+  action: LiteralUnion<'USER_FOLLOW' | 'LIVE_SHARE' | 'USER_RESPECT'>
   usernames: string[]
   targetUsernames: string[]
   users: User[]
