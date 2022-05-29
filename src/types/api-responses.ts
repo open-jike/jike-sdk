@@ -9,6 +9,7 @@ import type {
   PersonalPost,
   Profile as ProfileEntity,
   RecommendPost,
+  SquareFeed,
   Story,
   TabIcons,
   User,
@@ -208,4 +209,23 @@ export namespace Stories {
 
 export interface InteractiveResponse {
   url: string
+}
+
+export namespace Topic {
+  // 圈子动态
+  export interface GetTabsSquareFeedResponse {
+    data: SquareFeed[]
+    loadMoreKey?: {
+      lastId: string
+      suppressed: boolean
+    }
+  }
+
+  // 圈子热门动态
+  export interface GetTabsSelectedFeedResponse {
+    data: SquareFeed[]
+    loadMoreKey?: {
+      offset: number
+    }
+  }
 }

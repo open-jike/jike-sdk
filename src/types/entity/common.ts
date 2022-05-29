@@ -9,6 +9,17 @@ export interface CommonImage {
   format: LiteralUnion<'jpeg' | 'heic' | 'png'>
 }
 
+// 地图 POI
+export interface Poi {
+  poiId: string // id
+  name: string
+  location: number[] // 经纬度
+  countryname: string // 国家
+  pname: string // 省份
+  cityname: string // 城市
+  formattedAddress: string
+}
+
 export type Ref =
   | ''
   | 'FOLLOWINGS_FEED_FOLLOW_SECTION'

@@ -1,5 +1,6 @@
 import type { LiteralUnion } from '../../utils'
-import type { CommonImage, Ref } from './common'
+import type { CommonImage, Poi, Ref } from './common'
+import type { OriginalPost } from './post'
 
 export interface Topic {
   type: 'TOPIC'
@@ -75,4 +76,10 @@ export interface Topic {
 export interface SquarePicture extends CommonImage {
   livePhoto: any
   themes: any
+}
+
+export interface SquareFeed extends OriginalPost {
+  poi?: Poi
+  isSuppressed: boolean
+  subtitle: string
 }

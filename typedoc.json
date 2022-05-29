@@ -10,7 +10,8 @@
     "src/api/comments.ts",
     "src/api/upload.ts",
     "src/api/stories.ts",
-    "src/api/media-meta.ts"
+    "src/api/media-meta.ts",
+    "src/api/topic.ts"
   ],
   "out": "docs",
   "name": "Ⓙ Jike SDK",
