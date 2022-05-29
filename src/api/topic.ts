@@ -9,7 +9,8 @@ import type { PaginationOption } from '../types/options'
  */
 export const getTabsSquareFeed = <T = Topic.GetTabsSquareFeedResponse>(
   topicId: string,
-  option: PaginationOption = {}
+  // NOTE: suppressed 应该传 false，但不知道这个参数是什么意思
+  option: PaginationOption<{ lastId: string; suppressed: boolean }> = {}
 ) =>
   toResponse<T>(
     request.post('1.0/topics/tabs/square/feed', {

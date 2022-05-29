@@ -3,4 +3,3 @@ dist
 docs
 .DS_Store
 .pnpm-debug.log*
-tests/config.js
