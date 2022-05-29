@@ -8,6 +8,7 @@ import * as comments from './comments'
 import * as upload from './upload'
 import * as stories from './stories'
 import * as mediaMeta from './media-meta'
+import * as topic from './topic'
 
 /**
  * API
@@ -20,6 +21,7 @@ import * as mediaMeta from './media-meta'
  * - {@link api/comments | `comments`}: 评论
  * - {@link api/upload | `upload`}: 上传
  * - {@link api/stories | `stories`}: 日记
+ * - {@link api/topic | `topic`}: 圈子
  */
 export const api = {
   users,
@@ -32,6 +34,7 @@ export const api = {
   upload,
   stories,
   mediaMeta,
+  topic,
 }
 /**
  * API 集合

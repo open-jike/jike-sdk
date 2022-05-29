@@ -151,6 +151,10 @@ const client = ApiClient(apiConfig)
 client.users.profile()
 ```
 
+## Development
+
+see [Development.md](./Development.md)
+
 ## Sponsors
 
 <p align="center">
