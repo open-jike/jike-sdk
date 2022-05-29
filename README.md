@@ -151,6 +151,10 @@ const client = ApiClient(apiConfig)
 client.users.profile()
 ```
 
+## Contributing [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://makeapullrequest.com)
+
+see [CONTRIBUTING.md](./CONTRIBUTING.md)
+
 ## Sponsors
 
 <p align="center">
