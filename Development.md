@@ -23,8 +23,8 @@ setApiConfig({
   buildNo: '<build-no>', // 请自行替换
   userAgent: '<jike-sdk-user-agent>', // 请自行替换
   accessToken: '<access-token>', // 请自行替换
-  appVersion: '<app-version>',  // 请自行替换
-  deviceId: '<device-id>'   // 请自行替换
+  appVersion: '<app-version>', // 请自行替换
+  deviceId: '<device-id>', // 请自行替换
 })
 
 api.topic
@@ -32,7 +32,7 @@ api.topic
     limit: 10,
   })
   .then((res) => {
-    console.log("请求成功", res.data.data)
+    console.log('请求成功', res.data.data)
   })
   .catch((err) => {
     console.log('请求错误', err)
@@ -57,8 +57,8 @@ export const config = {
   buildNo: '<build-no>', // 请自行替换
   userAgent: '<jike-sdk-user-agent>', // 请自行替换
   accessToken: '<access-token>', // 请自行替换
-  appVersion: '<app-version>',  // 请自行替换
-  deviceId: '<device-id>'   // 请自行替换
+  appVersion: '<app-version>', // 请自行替换
+  deviceId: '<device-id>', // 请自行替换
 }
 ```
 
