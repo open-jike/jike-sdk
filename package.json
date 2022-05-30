@@ -81,5 +81,12 @@
   },
   "engines": {
     "node": ">=14.19.0"
+  },
+  "pnpm": {
+    "peerDependencyRules": {
+      "allowedVersions": {
+        "typescript": "4"
+      }
+    }
   }
 }
