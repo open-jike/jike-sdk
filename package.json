@@ -23,7 +23,7 @@
     "*.d.ts"
   ],
   "module": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "types": "index.d.ts",
   "exports": {
     ".": {
       "require": "./dist/node/index.cjs",
@@ -33,6 +33,14 @@
       "import": "./dist/index.js"
     },
     "./*": "./*"
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/*",
+        "./*"
+      ]
+    }
   },
   "sideEffects": false,
   "scripts": {
