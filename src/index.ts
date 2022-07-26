@@ -1,3 +1,5 @@
+export type { BeforeRequestHook } from 'ky'
+
 export {
   request,
   getAccessToken,

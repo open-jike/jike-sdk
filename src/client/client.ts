@@ -340,10 +340,14 @@ export class JikeClient extends EventEmitter<EventMap> {
   /**
    * 从 JSON 数据创建
    * @param data 数据
+   * @param config 其他配置项
    */
-  static fromJSON(data: JikeClientJSON): JikeClient {
-    return new JikeClient(
-      objectPick(data, [
+  static fromJSON(
+    data: JikeClientJSON,
+    config: Partial<ApiConfig> = {}
+  ): JikeClient {
+    return new JikeClient({
+      ...objectPick(data, [
         'endpointId',
         'endpointUrl',
         'bundleId',
@@ -355,8 +359,9 @@ export class JikeClient extends EventEmitter<EventMap> {
 
         'accessToken',
         'refreshToken',
-      ])
-    )
+      ]),
+      ...config,
+    })
   }
 
   /**
