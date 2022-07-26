@@ -4,7 +4,7 @@ import { defaultEnvironment } from './constants'
 import { generateUUID } from './utils'
 import type { KyInstance } from 'ky/distribution/types/ky'
 import type { BeforeRetryState } from 'ky/distribution/types/hooks'
-import type { Options, ResponsePromise } from 'ky'
+import type { BeforeRequestHook, Options, ResponsePromise } from 'ky'
 
 /**
  * API 配置
@@ -28,6 +28,7 @@ export interface ApiConfigResolved {
   idfv: string
   /** `User-Agent` 请求头 */
   userAgent: string
+  beforeRequest: BeforeRequestHook
   /** 是否重试 */
   beforeRetry: (state: BeforeRetryState) => boolean | Promise<boolean>
 }
@@ -60,6 +61,7 @@ export const resolveApiConfig = (config: ApiConfig): ApiConfigResolved => {
       generateUUID() ||
       defaultEnvironment.idfv
     ).toUpperCase(),
+    beforeRequest: config.beforeRequest ?? (() => undefined),
     beforeRetry: config.beforeRetry ?? (() => false),
   }
 }
@@ -109,6 +111,8 @@ export const resolveKyOptions = (): Options => {
           )
           req.headers.set(`App-Version`, apiConfig.appVersion)
           ;(req as any).highWaterMark = 1024 * 1024
+
+          return apiConfig.beforeRequest(req, opt)
         },
       ],
       beforeRetry: [
