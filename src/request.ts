@@ -113,6 +113,7 @@ export const resolveKyOptions = (): Options => {
       ],
       beforeRetry: [
         async (opts) => {
+          const apiConfig = (opts.options as any).apiConfig as ApiConfigResolved
           const isRetry = await apiConfig.beforeRetry(opts)
           if (isRetry) return
           throw opts.error
