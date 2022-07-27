@@ -23,7 +23,7 @@ import type { PaginatedFetcher, PaginatedOption } from './utils/paginate'
 import type { Api } from '../api'
 import type { ApiConfig, ApiConfigResolved } from '../request'
 
-interface EventMap {
+export interface EventMap {
   renewToken: () => void
 }
 

@@ -24,7 +24,7 @@ export interface Target {
   syncCommentId: string
 }
 
-interface ReplyToComment {
+export interface ReplyToComment {
   type: string
   id: string
   targetType: string
@@ -39,7 +39,7 @@ interface ReplyToComment {
   user: User
 }
 
-interface HotReply {
+export interface HotReply {
   type: string
   id: string
   targetType: string
@@ -83,7 +83,7 @@ export interface Comment {
   pinnable: boolean
 }
 
-interface Payload {
+export interface Payload {
   id: string
   feedType: string
   type: string
@@ -92,13 +92,13 @@ interface Payload {
   readTrackInfo: ReadTrackInfo
 }
 
-interface Reason {
+export interface Reason {
   key: string
   text: string
   payload: Payload
 }
 
-interface DislikeMenu {
+export interface DislikeMenu {
   title: string
   subtitle: string
   reasons: Reason[]
