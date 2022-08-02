@@ -2,8 +2,7 @@ name: Deploy Docs
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
   workflow_dispatch: {}
 
 jobs:
@@ -11,33 +10,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-
-      - name: Setup Node
+      - name: Set node
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 16.x
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: latest
+      - name: Setup
+        run: npm i -g @antfu/ni
 
-      - name: Cache ~/.pnpm-store
-        uses: actions/cache@v3
-        env:
-          cache-name: cache-pnpm-store
-        with:
-          path: ~/.pnpm-store
-          key: ${{ runner.os }}-docs-${{ env.cache-name }}-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-docs-${{ env.cache-name }}-
-            ${{ runner.os }}-docs-
-            ${{ runner.os }}-
+      - name: Install
+        run: nci
 
-      - name: Install Dependencies
-        run: pnpm install
-
-      - name: Build
+      - name: Build Docs
         run: pnpm run docs:build
 
       - name: Deploy
