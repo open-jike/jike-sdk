@@ -1,4 +1,4 @@
-import { Blob } from 'buffer'
+import { Blob } from 'node:buffer'
 import sharp from 'sharp'
 import Md5 from 'md5'
 import { describe, expect, it } from 'vitest'

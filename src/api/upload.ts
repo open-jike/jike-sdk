@@ -1,7 +1,7 @@
 import ky from 'ky'
 import { request, toResponse } from '../request'
 import type { Upload } from '../types/api-responses'
-import type { Blob as NodeBlob } from 'buffer'
+import type { Blob as NodeBlob } from 'node:buffer'
 
 export const token = <T = Upload.TokenResponse>(md5: string) =>
   toResponse<T>(
