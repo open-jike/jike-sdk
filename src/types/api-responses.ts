@@ -12,6 +12,7 @@ import type {
   SquareFeed,
   Story,
   TabIcons,
+  Topic,
   User,
 } from './entity'
 
@@ -226,6 +227,20 @@ export namespace Topics {
     data: SquareFeed[]
     loadMoreKey?: {
       offset: number
+    }
+  }
+
+  // 搜索圈子
+  export interface SearchResponse {
+    data: Topic[]
+    count: number
+    loadMoreKey?: {
+      skip: number
+    }
+    highlightWord: {
+      words: string[]
+      singleMaxHighlightTime: number
+      totalMaxHighlightTime: number
     }
   }
 }

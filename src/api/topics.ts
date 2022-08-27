@@ -1,4 +1,5 @@
 import { request, toResponse } from '../request'
+import type { LiteralUnion } from '../utils'
 import type { Topics } from '../types/api-responses'
 import type { PaginationOption } from '../types/options'
 
@@ -36,6 +37,32 @@ export const getTabsSelectedFeed = <T = Topics.GetTabsSelectedFeedResponse>(
       json: {
         topicId,
         limit: option.limit ?? 10,
+        loadMoreKey: option.loadMoreKey,
+      },
+    })
+  )
+
+/**
+ * 搜索圈子
+ * @param keywords 关键词
+ * @param option 选项
+ */
+export const search = <T = Topics.SearchResponse>(
+  keywords: string,
+  option: PaginationOption<{ skip: number }> & {
+    /** 类型 */
+    type?: LiteralUnion<'ALL'>
+    /** 仅用户发帖时为 true */
+    onlyUserPostEnabled?: boolean
+  } = {}
+) =>
+  toResponse<T>(
+    request.post('1.0/users/topics/search', {
+      json: {
+        type: option.type ?? 'ALL',
+        keywords,
+        onlyUserPostEnabled: option.onlyUserPostEnabled,
+        limit: option.limit ?? 20,
         loadMoreKey: option.loadMoreKey,
       },
     })

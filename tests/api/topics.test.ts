@@ -19,4 +19,10 @@ describe('topics should work', () => {
     expect(isSuccess(result)).toBe(true)
     expect(result.data.data.length).toBe(limit)
   })
+
+  it('search should work', async () => {
+    const result = await api.topics.search('好', { limit })
+    expect(isSuccess(result)).toBe(true)
+    expect(result.data.data.length).toBe(limit)
+  })
 })
