@@ -211,7 +211,7 @@ export interface InteractiveResponse {
   url: string
 }
 
-export namespace Topic {
+export namespace Topics {
   // 圈子动态
   export interface GetTabsSquareFeedResponse {
     data: SquareFeed[]

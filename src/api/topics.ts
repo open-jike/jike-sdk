@@ -1,5 +1,5 @@
 import { request, toResponse } from '../request'
-import type { Topic } from '../types/api-responses'
+import type { Topics } from '../types/api-responses'
 import type { PaginationOption } from '../types/options'
 
 /**
@@ -7,7 +7,7 @@ import type { PaginationOption } from '../types/options'
  * @param topicId 圈子 id
  * @param option 选项
  */
-export const getTabsSquareFeed = <T = Topic.GetTabsSquareFeedResponse>(
+export const getTabsSquareFeed = <T = Topics.GetTabsSquareFeedResponse>(
   topicId: string,
   // NOTE: suppressed 应该传 false，但不知道这个参数是什么意思
   option: PaginationOption<{ lastId: string; suppressed: boolean }> = {}
@@ -27,7 +27,7 @@ export const getTabsSquareFeed = <T = Topic.GetTabsSquareFeedResponse>(
  * @param topicId 圈子 id
  * @param option 选项
  */
-export const getTabsSelectedFeed = <T = Topic.GetTabsSelectedFeedResponse>(
+export const getTabsSelectedFeed = <T = Topics.GetTabsSelectedFeedResponse>(
   topicId: string,
   option: PaginationOption<{ offset: number }> = {}
 ) =>

@@ -11,7 +11,7 @@
     "src/api/upload.ts",
     "src/api/stories.ts",
     "src/api/media-meta.ts",
-    "src/api/topic.ts"
+    "src/api/topics.ts"
   ],
   "out": "docs",
   "name": "Ⓙ Jike SDK",

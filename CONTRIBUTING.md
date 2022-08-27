@@ -27,7 +27,7 @@ setApiConfig({
   deviceId: '<device-id>', // 请自行替换
 })
 
-api.topic
+api.topics
   .getTabsSquareFeed('562dfeb0daf87d13002cad92', {
     limit: 10,
   })
@@ -62,13 +62,13 @@ export const config = {
 }
 ```
 
-2. 新建测试文件, 如 `tests/api/topic.test.ts`, 编写测试代码
+2. 新建测试文件, 如 `tests/api/topics.test.ts`, 编写测试代码
 
 3. 执行测试用例
 
 ```shell
 pnpm run test
 
-# 测试指定的测试文件, 如只测试新增的 topic.test.ts
-pnpm run test topic
+# 测试指定的测试文件, 如只测试新增的 topics.test.ts
+pnpm run test topics
 ```
