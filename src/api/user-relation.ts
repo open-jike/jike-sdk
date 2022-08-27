@@ -13,7 +13,7 @@ import type {
  */
 export const getFollowingList = <T = UserRelation.GetFollowingListResponse>(
   username: string,
-  option: PaginationOption = {}
+  option: PaginationOption<string> = {}
 ) =>
   toResponse<T>(
     request.post('1.0/userRelation/getFollowingList', {
@@ -32,7 +32,7 @@ export const getFollowingList = <T = UserRelation.GetFollowingListResponse>(
  */
 export const getFollowerList = <T = UserRelation.GetFollowerListResponse>(
   username: string,
-  option: PaginationOption<{ createdAt: string }> = {}
+  option: PaginationOption<string> = {}
 ) =>
   toResponse<T>(
     request.post('1.0/userRelation/getFollowerList', {

@@ -12,12 +12,14 @@ describe('user relation should work', () => {
     const result = await api.userRelation.getFollowerList(username, { limit })
     expect(isSuccess(result)).toBe(true)
     expect(result.data.data.length).toBe(limit)
+    expect(result.data.loadMoreKey).toBeTypeOf('string')
   })
 
   it('getFollowingList should work', async () => {
     const result = await api.userRelation.getFollowingList(username, { limit })
     expect(isSuccess(result)).toBe(true)
     expect(result.data.data.length).toBe(limit)
+    expect(result.data.loadMoreKey).toBeTypeOf('string')
   })
 
   it.todo('follow should work')

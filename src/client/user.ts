@@ -111,12 +111,12 @@ export class JikeUser<M extends boolean = boolean> {
         await this.getUsername(),
         {
           limit: 20,
-          loadMoreKey: lastKey ? { createdAt: lastKey } : undefined,
+          loadMoreKey: lastKey,
         }
       )
       if (!isSuccess(result)) throwRequestFailureError(result, '查询用户被关注')
 
-      const newKey = result.data.loadMoreKey?.createdAt
+      const newKey = result.data.loadMoreKey
       return [newKey, result.data.data]
     }
 
@@ -140,11 +140,14 @@ export class JikeUser<M extends boolean = boolean> {
     ) => {
       const result = await this.#client.apiClient.userRelation.getFollowerList(
         await this.getUsername(),
-        { limit: 1, loadMoreKey: lastKey ? { createdAt: lastKey } : undefined }
+        {
+          limit: 1,
+          loadMoreKey: lastKey,
+        }
       )
       if (!isSuccess(result)) throwRequestFailureError(result, '查询用户被关注')
 
-      const newKey = result.data.loadMoreKey?.createdAt
+      const newKey = result.data.loadMoreKey
       const data: FollowerWithTime[] = result.data.data[0]
         ? [
             {
@@ -221,11 +224,11 @@ export class JikeUser<M extends boolean = boolean> {
     const fetcher: PaginatedFetcher<User, string> = async (lastKey) => {
       const result = await this.#client.apiClient.userRelation.getFollowingList(
         await this.getUsername(),
-        { limit: 20, loadMoreKey: lastKey ? { createdAt: lastKey } : undefined }
+        { limit: 20, loadMoreKey: lastKey }
       )
       if (!isSuccess(result)) throwRequestFailureError(result, '查询用户被关注')
 
-      const newKey = result.data.loadMoreKey?.createdAt
+      const newKey = result.data.loadMoreKey
       return [newKey, result.data.data]
     }
 

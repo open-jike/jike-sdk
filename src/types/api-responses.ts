@@ -48,16 +48,12 @@ export namespace Notifications {
 export namespace UserRelation {
   export interface GetFollowingListResponse {
     data: User[]
-    loadMoreKey?: {
-      createdAt: string
-    }
+    loadMoreKey?: string
   }
 
   export interface GetFollowerListResponse {
     data: User[]
-    loadMoreKey?: {
-      createdAt: string
-    }
+    loadMoreKey?: string
   }
 
   export interface FollowResponse {
