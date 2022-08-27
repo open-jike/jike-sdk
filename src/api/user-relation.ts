@@ -108,3 +108,31 @@ export const unmute = <T = UserRelation.UnmuteResponse>(userId: string) =>
       },
     })
   )
+
+/**
+ * 加入黑名单
+ * @param username 用户名
+ */
+export const addBlock = <T = UserRelation.AddBlockResponse>(username: string) =>
+  toResponse<T>(
+    request.post('1.0/userRelation/addBlock', {
+      json: {
+        username,
+      },
+    })
+  )
+
+/**
+ * 解除黑名单
+ * @param username 用户名
+ */
+export const removeBlock = <T = UserRelation.RemoveBlockResponse>(
+  username: string
+) =>
+  toResponse<T>(
+    request.post('1.0/userRelation/removeBlock', {
+      json: {
+        username,
+      },
+    })
+  )

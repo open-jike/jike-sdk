@@ -35,6 +35,8 @@
   - [x] [是否关注用户](http://jike-sdk.surge.sh/classes/index.JikeUser.html#isFollowing)
   - [x] [不看 TA 的内容](http://jike-sdk.surge.sh/functions/api_user_relation.mute.html)
   - [x] [重新看 TA 的内容](http://jike-sdk.surge.sh/functions/api_user_relation.unmute.html)
+  - [x] [加入黑名单](http://jike-sdk.surge.sh/functions/api_user_relation.addBlock.html)
+  - [x] [解除黑名单](http://jike-sdk.surge.sh/functions/api_user_relation.removeBlock.html)
 - [动态帖子](http://jike-sdk.surge.sh/modules/api_posts.html)
   - [x] [发送动态](http://jike-sdk.surge.sh/functions/api_posts.create.html)
   - [x] [获取动态详情](http://jike-sdk.surge.sh/functions/api_posts.get.html)

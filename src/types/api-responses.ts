@@ -71,6 +71,12 @@ export namespace UserRelation {
   export interface UnmuteResponse {
     toast: LiteralUnion<'操作成功！'>
   }
+  export interface AddBlockResponse {
+    toast: LiteralUnion<'已将其加入黑名单'>
+  }
+  export interface RemoveBlockResponse {
+    toast: LiteralUnion<'已将其解除黑名单'>
+  }
 }
 
 export namespace Users {
