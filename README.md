@@ -26,6 +26,7 @@
   - [x] [短信登录](http://jike-sdk.surge.sh/functions/api_users.loginWithSmsCode.html)
   - [x] [手机号与密码登录](http://jike-sdk.surge.sh/functions/api_users.loginWithPhoneAndPassword.html)
   - [x] [弹一弹头像](http://jike-sdk.surge.sh/functions/api_users.avatarGreet.html)
+  - [x] [修改用户信息](http://jike-sdk.surge.sh/functions/api_users.editProfile.html)
   - [ ] ~~保存设备 Token~~
 - [用户关系](http://jike-sdk.surge.sh/modules/api_user_relation.html)
   - [x] [获取关注列表](http://jike-sdk.surge.sh/functions/api_user_relation.getFollowingList.html)

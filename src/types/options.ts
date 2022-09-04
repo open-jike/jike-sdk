@@ -1,3 +1,4 @@
+import type { Profile } from './entity'
 import type { LiteralUnion } from '../utils'
 
 /**
@@ -115,4 +116,27 @@ export interface UserFollowOption {
 export interface UserUnfollowOption {
   pageName?: number
   ref?: string
+}
+
+/**
+ * @description 修改用户信息选项
+ */
+export interface EditProfilePayload
+  extends Partial<
+    Pick<
+      Profile,
+      | 'bio'
+      | 'gender'
+      | 'school'
+      | 'industries'
+      | 'country'
+      | 'province'
+      | 'city'
+      | 'birthday'
+      | 'screenName'
+    >
+  > {
+  /** 情感状态 */
+  relationshipState?: string
+  [key: string]: any
 }

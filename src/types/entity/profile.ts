@@ -127,6 +127,23 @@ export interface Profile {
   storyStatus: LiteralUnion<StoryStatus>
   /** 是否夸夸过 */
   respected: boolean
+  /** 行业 */
+  industries?: number[]
+  /** 情感状态 */
+  relationshipState?: {
+    id: string
+    text: LiteralUnion<
+      | '母胎solo'
+      | '今日单身'
+      | '等TA出现'
+      | '自由可撩'
+      | '单身不撩'
+      | '心里有人'
+      | '恋爱中'
+      | '一言难尽'
+    >
+  }
+  sponsorIconType?: LiteralUnion<'DEFAULT' | 'COLORFUL' | 'NONE'>
 
   [key: string]: any
 }

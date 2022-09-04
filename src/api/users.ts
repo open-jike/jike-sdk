@@ -1,4 +1,5 @@
 import { getApiConfig, request, toResponse } from '../request'
+import type { EditProfilePayload } from '../types/options'
 import type { Users } from '../types/api-responses'
 
 /**
@@ -108,5 +109,18 @@ export const avatarGreet = <T = Users.AvatarGreetResponse>(username: string) =>
       json: {
         username,
       },
+    })
+  )
+
+/**
+ * 修改用户信息
+ * @param payload 更新后的信息
+ */
+export const editProfile = <T = Users.EditProfileResponse>(
+  payload: EditProfilePayload
+) =>
+  toResponse<T>(
+    request.post('1.0/users/editProfile', {
+      json: payload,
     })
   )

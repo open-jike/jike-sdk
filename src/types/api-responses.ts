@@ -135,8 +135,11 @@ export namespace Users {
     ? MyProfile
     : UserProfile
 
-  export interface AvatarGreetResponse {
-    success: boolean
+  export type AvatarGreetResponse = {}
+
+  export interface EditProfileResponse {
+    toast: LiteralUnion<'已更新'>
+    alert?: any
   }
 }
 
