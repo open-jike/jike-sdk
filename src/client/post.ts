@@ -100,7 +100,7 @@ export class JikePost {
    * 获取点赞用户列表
    * @returns 用户列表
    */
-  async listLikedUsers(option: PaginatedOption<User, never, string> = {}) {
+  listLikedUsers(option: PaginatedOption<User, never, string> = {}) {
     const fetcher: PaginatedFetcher<User, string> = async (lastKey) => {
       const result = await this.apiClient.posts.listLikedUsers(
         this.type,
@@ -139,7 +139,7 @@ export class JikePost {
   /**
    * 查询评论
    */
-  async queryComments(
+  queryComments(
     order?: ListCommentOption['order'],
     option: PaginatedOption<Comment, 'createdAt', ListCommentMoreKey> = {}
   ) {

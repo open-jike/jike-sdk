@@ -20,7 +20,7 @@ export const profile = <T = Users.MyProfile & Users.UserProfile>(
  * 刷新 Access Token
  * @param refreshToken 登录时返回的 refresh token
  */
-export const refreshToken = async <T = Users.RefreshTokenResponse>(
+export const refreshToken = <T = Users.RefreshTokenResponse>(
   refreshToken: string
 ) =>
   toResponse<T>(

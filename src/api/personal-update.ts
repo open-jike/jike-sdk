@@ -8,7 +8,7 @@ import type { PersonalUpdate } from '../types/api-responses'
  * @param username 用户名
  * @param option 选项
  */
-export const single = async <T = PersonalUpdate.SingleResponse>(
+export const single = <T = PersonalUpdate.SingleResponse>(
   username: string,
   option: PaginationOption<{ lastId: string }> = {}
 ) =>
@@ -26,9 +26,7 @@ export const single = async <T = PersonalUpdate.SingleResponse>(
  * 获取关注动态
  * @param option 分页选项
  */
-export const followingUpdates = async <
-  T = PersonalUpdate.FollowingUpdatesResponse
->(
+export const followingUpdates = <T = PersonalUpdate.FollowingUpdatesResponse>(
   option: PaginationOption<{
     session: 'PopulatedUpdate'
     lastReadTime: number
@@ -47,7 +45,7 @@ export const followingUpdates = async <
 /**
  * 置顶动态
  */
-export const pin = async <T = PersonalUpdate.PinResponse>(
+export const pin = <T = PersonalUpdate.PinResponse>(
   type: PostTypeRaw,
   id: string
 ) =>
@@ -63,7 +61,7 @@ export const pin = async <T = PersonalUpdate.PinResponse>(
 /**
  * 取消置顶动态
  */
-export const unpin = async <T = PersonalUpdate.UnpinResponse>(
+export const unpin = <T = PersonalUpdate.UnpinResponse>(
   type: PostTypeRaw,
   id: string
 ) =>

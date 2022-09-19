@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest'
 import { ApiClient, getAccessToken } from '../src'
 import { config } from './config'
 
-describe('api client should work', async () => {
+describe('api client should work', () => {
   const client = ApiClient(config)
 
   it('access token should correct', async () => {

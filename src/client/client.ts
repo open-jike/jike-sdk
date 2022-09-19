@@ -187,7 +187,7 @@ export class JikeClient extends EventEmitter<EventMap> {
   /**
    * 查询通知
    */
-  async queryNotifications(
+  queryNotifications(
     option: PaginatedOption<
       Notification,
       'createdAt' | 'updatedAt',

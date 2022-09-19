@@ -8,7 +8,7 @@ import type { InteractiveResponse } from '../types/api-responses'
  * @param type 类型 如：STORY
  * @param trigger 触发 如：user
  */
-export const interactive = async <T = InteractiveResponse>(
+export const interactive = <T = InteractiveResponse>(
   id: string,
   type: LiteralUnion<'STORY'>,
   trigger: LiteralUnion<'user'> = 'user'
