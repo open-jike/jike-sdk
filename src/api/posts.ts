@@ -106,3 +106,25 @@ export const listLikedUsers = <T = Posts.ListLikedUsersResponse>(
       },
     })
   )
+
+/**
+ * 隐藏动态（仅会员）
+ * @param id 动态ID
+ */
+export const hide = <T = Posts.HideResponse>(type: PostType, id: string) =>
+  toResponse<T>(
+    request.post(`1.0/${type}/sponsor/hide`, {
+      json: { id },
+    })
+  )
+
+/**
+ * 转为公开动态（仅会员）
+ * @param id 动态ID
+ */
+export const recover = <T = Posts.HideResponse>(type: PostType, id: string) =>
+  toResponse<T>(
+    request.post(`1.0/${type}/sponsor/recover`, {
+      json: { id },
+    })
+  )

@@ -46,6 +46,8 @@
   - [x] [点赞](http://jike-sdk.surge.sh/functions/api_posts.like.html)
   - [x] [取消点赞](http://jike-sdk.surge.sh/functions/api_posts.unlike.html)
   - [x] [获取点赞用户列表](http://jike-sdk.surge.sh/functions/api_posts.listLikedUsers.html)
+  - [x] [隐藏动态](http://jike-sdk.surge.sh/functions/api_posts.hide.html)
+  - [x] [动态转为公开](http://jike-sdk.surge.sh/functions/api_posts.recover.html)
 - [动态广场](http://jike-sdk.surge.sh/modules/api_recommend_feed.html)
   - [x] [获取动态推荐](http://jike-sdk.surge.sh/functions/api_recommend_feed.list.html)
 - [评论](http://jike-sdk.surge.sh/modules/api_comments.html)

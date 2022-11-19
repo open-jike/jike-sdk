@@ -34,6 +34,18 @@ export namespace Posts {
     data: User[]
     loadMoreKey?: string
   }
+  export interface HideResponse {
+    /** 提示文本 */
+    toast: LiteralUnion<'已设置'>
+    isPrivate: boolean
+    privatizableStatus: LiteralUnion<'ENABLE_RECOVER'>
+  }
+  export interface RecoverResponse {
+    /** 提示文本 */
+    toast: LiteralUnion<'已设置'>
+    isPrivate: boolean
+    privatizableStatus: LiteralUnion<'ENABLE_HIDE'>
+  }
 }
 
 export namespace Notifications {
