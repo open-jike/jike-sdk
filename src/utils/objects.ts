@@ -4,7 +4,7 @@
  * @category Object
  * @fork {@link https://github.com/antfu/utils/blob/main/src/object.ts#L113}
  */
-export function objectPick<O, T extends keyof O>(
+export function objectPick<O extends object, T extends keyof O>(
   obj: O,
   keys: T[],
   omitUndefined = false
