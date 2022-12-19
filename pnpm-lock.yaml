@@ -14,7 +14,7 @@ specifiers:
   esbuild: ^0.16.9
   eslint: ^8.30.0
   eslint-define-config: ^1.12.0
-  eventemitter3: ^4.0.7
+  eventemitter3: ^5.0.0
   ky: ^0.33.0
   md5: ^2.3.0
   node-fetch: ^3.3.0
@@ -29,7 +29,7 @@ specifiers:
   vitest: ^0.25.8
 
 dependencies:
-  eventemitter3: 4.0.7
+  eventemitter3: 5.0.0
   ky: 0.33.0
   node-fetch: 3.3.0
 
@@ -1873,8 +1873,8 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
-  /eventemitter3/4.0.7:
-    resolution: {integrity: sha512-8guHBZCwKnFhYdHr2ysuRWErTwhoN2X8XELRlrRwpmfeY2jjuUN4taQMsULKUVo1K4DvZl+0pgfyoysHxvmvEw==}
+  /eventemitter3/5.0.0:
+    resolution: {integrity: sha512-riuVbElZZNXLeLEoprfNYoDSwTBRR44X3mnhdI1YcnENpWTCsTTVZ2zFuqQcpoyqPQIUXdiPEU0ECAq0KQRaHg==}
     dev: false
 
   /execa/5.1.1:
