@@ -38,6 +38,16 @@ export const unlike = <T = {}>(targetType: PostTypeRaw, id: string) =>
     })
   )
 
+export const remove = <T = Comments.RemoveResponse>(
+  targetType: PostTypeRaw,
+  id: string
+) =>
+  toResponse<T>(
+    request.post('1.0/comments/remove', {
+      json: { targetType, id },
+    })
+  )
+
 export const listPrimary = <T = Comments.ListPrimaryResponse>(
   targetType: PostTypeRaw,
   targetId: string,

@@ -190,6 +190,10 @@ export namespace Comments {
     toast: string
   }
 
+  export interface RemoveResponse {
+    toast: LiteralUnion<'已删除'>
+  }
+
   export interface ListPrimaryResponse {
     data: Comment[]
     loadMoreKey?: {

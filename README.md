@@ -55,6 +55,7 @@
   - [x] [发送评论](http://jike-sdk.sxzz.moe/functions/api_comments.add.html)
   - [x] [点赞](http://jike-sdk.sxzz.moe/functions/api_comments.like.html)
   - [x] [取消点赞](http://jike-sdk.sxzz.moe/functions/api_comments.unlike.html)
+  - [x] [删除评论](http://jike-sdk.sxzz.moe/functions/api_comments.remove.html)
 - [动态](http://jike-sdk.sxzz.moe/modules/api_personal_update.html)
   - [x] [获取用户动态](http://jike-sdk.sxzz.moe/functions/api_personal_update.single.html)
   - [x] [获取关注动态](http://jike-sdk.sxzz.moe/functions/api_personal_update.followingUpdates.html)
