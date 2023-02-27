@@ -70,7 +70,7 @@
     "@types/node": "^18.13.0",
     "@types/sharp": "^0.31.1",
     "@vitest/ui": "^0.28.5",
-    "bumpp": "^8.2.1",
+    "bumpp": "^9.0.0",
     "compare-versions": "^5.0.3",
     "dayjs": "^1.11.7",
     "esbuild": "^0.17.8",
