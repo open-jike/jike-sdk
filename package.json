@@ -1,7 +1,7 @@
 {
   "name": "jike-sdk",
   "version": "0.21.0",
-  "packageManager": "pnpm@7.27.0",
+  "packageManager": "pnpm@7.28.0",
   "description": "Jike Ⓙ SDK for Node.js",
   "type": "module",
   "keywords": [
@@ -64,28 +64,28 @@
   },
   "devDependencies": {
     "@faker-js/faker": "^7.6.0",
-    "@sxzz/eslint-config-prettier": "^2.4.4",
-    "@sxzz/eslint-config-ts": "^2.4.4",
+    "@sxzz/eslint-config-prettier": "^2.4.5",
+    "@sxzz/eslint-config-ts": "^2.4.5",
     "@types/md5": "^2.3.2",
-    "@types/node": "^18.13.0",
+    "@types/node": "^18.14.2",
     "@types/sharp": "^0.31.1",
-    "@vitest/ui": "^0.28.5",
+    "@vitest/ui": "^0.29.1",
     "bumpp": "^9.0.0",
     "compare-versions": "^5.0.3",
     "dayjs": "^1.11.7",
-    "esbuild": "^0.17.8",
-    "eslint": "^8.34.0",
+    "esbuild": "^0.17.10",
+    "eslint": "^8.35.0",
     "eslint-define-config": "^1.15.0",
     "md5": "^2.3.0",
-    "rollup": "^3.15.0",
+    "rollup": "^3.17.3",
     "rollup-plugin-esbuild": "^5.0.0",
     "serve": "^14.2.0",
     "sharp": "^0.31.3",
-    "tsup": "^6.6.2",
+    "tsup": "^6.6.3",
     "tsx": "^3.12.3",
-    "typedoc": "^0.23.25",
+    "typedoc": "^0.23.26",
     "typescript": "^4.9.5",
-    "vitest": "^0.28.5"
+    "vitest": "^0.29.1"
   },
   "engines": {
     "node": ">=14.19.0"
