@@ -21,7 +21,7 @@ specifiers:
   rollup-plugin-esbuild: ^5.0.0
   serve: ^14.2.0
   sharp: ^0.31.3
-  tsup: ^6.6.3
+  tsup: ^6.7.0
   tsx: ^3.12.5
   typedoc: 0.24.0-beta.3
   typescript: ^4.9.5
@@ -50,7 +50,7 @@ devDependencies:
   rollup-plugin-esbuild: 5.0.0_ch4d43cu5ixe5pbyxgxtmcegyu
   serve: 14.2.0
   sharp: 0.31.3
-  tsup: 6.6.3_typescript@4.9.5
+  tsup: 6.7.0_typescript@4.9.5
   tsx: 3.12.5
   typedoc: 0.24.0-beta.3_typescript@4.9.5
   typescript: 4.9.5
@@ -3825,14 +3825,14 @@ packages:
     resolution: {integrity: sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==}
     dev: true
 
-  /tsup/6.6.3_typescript@4.9.5:
-    resolution: {integrity: sha512-OLx/jFllYlVeZQ7sCHBuRVEQBBa1tFbouoc/gbYakyipjVQdWy/iQOvmExUA/ewap9iQ7tbJf9pW0PgcEFfJcQ==}
+  /tsup/6.7.0_typescript@4.9.5:
+    resolution: {integrity: sha512-L3o8hGkaHnu5TdJns+mCqFsDBo83bJ44rlK7e6VdanIvpea4ArPcU3swWGsLVbXak1PqQx/V+SSmFPujBK+zEQ==}
     engines: {node: '>=14.18'}
     hasBin: true
     peerDependencies:
       '@swc/core': ^1
       postcss: ^8.4.12
-      typescript: ^4.1.0 || 4
+      typescript: '>=4.1.0 || 4'
     peerDependenciesMeta:
       '@swc/core':
         optional: true
