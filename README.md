@@ -13,7 +13,7 @@
 ## Features
 
 - 🌈 可能是东半球最全的第三方 SDK
-- ⭐️ 同时支持 Node.js / 浏览器 / Deno
+- ⭐️ 同时支持 Node.js / 浏览器 / Deno / Bun
 - 🦾 自带 TypeScript 类型声明
 
 <details>
@@ -108,6 +108,22 @@ setApiConfig({
 
 ```ts
 const { setApiConfig } = require('jike-sdk')
+setApiConfig({
+  // ...
+})
+```
+
+### Bun
+
+Bun >= 0.5.8
+
+```bash
+bun i jike-sdk
+```
+
+```ts
+// index.ts
+import { setApiConfig } from 'jike-sdk'
 setApiConfig({
   // ...
 })
