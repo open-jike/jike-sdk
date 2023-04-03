@@ -1,7 +1,7 @@
 {
   "name": "jike-sdk",
   "version": "0.22.0",
-  "packageManager": "pnpm@7.30.0",
+  "packageManager": "pnpm@8.1.0",
   "description": "Jike Ⓙ SDK for Node.js",
   "type": "module",
   "keywords": [
