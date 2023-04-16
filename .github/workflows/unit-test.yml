@@ -52,5 +52,3 @@ jobs:
 
       - name: Test
         run: nr test tests/request.test.ts
-        env:
-          NODE_OPTIONS: --experimental-abortcontroller
