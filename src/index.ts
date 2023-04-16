@@ -1,3 +1,9 @@
+import * as ApiOptions from './types/options'
+import * as ApiResponses from './types/api-responses'
+import * as Entity from './types/entity'
+
+export { ApiOptions, ApiResponses, Entity }
+
 export type { BeforeRequestHook } from 'ky'
 
 export {
@@ -11,9 +17,6 @@ export {
 export * from './api'
 export * from './api-client'
 export * from './client'
-export * as ApiOptions from './types/options'
-export * as ApiResponses from './types/api-responses'
-export * as Entity from './types/entity'
 export type {
   ApiConfig,
   ApiConfigResolved,

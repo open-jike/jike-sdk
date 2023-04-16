@@ -23,7 +23,6 @@ export default defineConfig(() => {
       esbuildOptions: (options) => {
         options.outExtension = {}
       },
-      dts: true,
     },
     {
       ...common,

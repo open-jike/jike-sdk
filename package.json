@@ -48,7 +48,8 @@
   "sideEffects": false,
   "scripts": {
     "dev": "tsx playground/main.ts",
-    "build": "tsup",
+    "build": "tsup && pnpm run build:types",
+    "build:types": "tsc --emitDeclarationOnly --declaration",
     "docs:build": "typedoc",
     "docs:preview": "serve docs",
     "lint": "eslint . --ext .js,.ts,.yml,.yaml,.md,.json,.json5",
