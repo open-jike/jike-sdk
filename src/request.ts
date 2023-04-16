@@ -1,4 +1,3 @@
-/// <reference lib="dom" />
 import ky, { HTTPError } from 'ky'
 import { defaultEnvironment } from './constants'
 import { generateUUID } from './utils'

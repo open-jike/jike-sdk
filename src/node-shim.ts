@@ -1,39 +1,26 @@
-import { randomUUID } from 'node:crypto'
-import {
-  Blob,
+import { Blob } from 'node:buffer'
+import * as crypto from 'node:crypto'
+import { File, FormData, Headers, Request, Response, fetch } from 'undici'
+
+const globals = Object.assign(globalThis, {
   File,
-  FormData,
-  Headers,
-  Request,
-  Response,
-  default as fetch,
-} from 'node-fetch'
-
-const globals: any = globalThis
-
-// Fetch
-if (!globals.fetch) {
-  globals.fetch = fetch
-  globals.Headers = Headers
-  globals.Request = Request
-  globals.Response = Response
-}
-
-if (!globals.FormData) {
-  globals.File = File
-  globals.Blob = Blob
-  globals.FormData = FormData
-}
-
-// UUID
-if (!globals.crypto) globals.crypto = {}
-if (!globals.crypto.randomUUID) globals.crypto.randomUUID = randomUUID
-
-export const _nodeShim = {
+  Blob,
   fetch,
   Headers,
   Request,
   Response,
   FormData,
-  randomUUID,
+  crypto,
+})
+
+export {
+  File,
+  Blob,
+  fetch,
+  Headers,
+  Request,
+  Response,
+  FormData,
+  crypto,
+  globals as globalThis,
 }

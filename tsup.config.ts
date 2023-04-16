@@ -9,39 +9,30 @@ const common: Options = {
   sourcemap: true,
   minifySyntax: true,
   splitting: false,
+  clean: true,
 }
 
 export default defineConfig(() => {
-  if (process.env.MODE === 'modern') return modern()
-  else return node()
-})
-
-const modern = (): Options => {
-  return {
-    ...common,
-    platform: 'browser',
-    target: 'es2019',
-    format: ['esm'],
-    splitting: false,
-    define: {
-      IS_NODE: 'false',
+  return [
+    {
+      ...common,
+      platform: 'browser',
+      target: 'es2019',
+      format: ['esm'],
+      splitting: false,
+      esbuildOptions: (options) => {
+        options.outExtension = {}
+      },
+      dts: true,
     },
-    esbuildOptions: (options) => {
-      options.outExtension = {}
+    {
+      ...common,
+      outDir: 'dist/node',
+      target: 'node16.14',
+      platform: 'node',
+      format: ['cjs', 'esm'],
+      noExternal: ['ky'],
+      inject: [$r('src/node-shim.ts')],
     },
-    clean: true,
-  }
-}
-
-const node = (): Options => ({
-  ...common,
-  outDir: 'dist/node',
-  target: 'node14.19',
-  platform: 'node',
-  format: ['cjs', 'esm'],
-  define: {
-    IS_NODE: 'true',
-  },
-  noExternal: ['node-fetch', 'ky'],
-  inject: [$r('src/node-shim.ts')],
+  ]
 })

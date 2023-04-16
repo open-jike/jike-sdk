@@ -23,19 +23,22 @@
     "*.d.ts"
   ],
   "module": "dist/index.js",
-  "types": "index.d.ts",
+  "types": "dist/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/node/index.cjs",
+      "import": "./dist/index.js"
+    },
+    "./polyfill": {
+      "types": "./dist/index.d.ts",
       "require": "./dist/node/index.cjs",
       "import": "./dist/node/index.js"
-    },
-    "./index": {
-      "import": "./dist/index.js"
     },
     "./*": "./*"
   },
   "typesVersions": {
-    "*": {
+    "<=4.9": {
       "*": [
         "./dist/*",
         "./*"
@@ -45,13 +48,11 @@
   "sideEffects": false,
   "scripts": {
     "dev": "tsx playground/main.ts",
-    "build": "pnpm run build:lib && pnpm run build:types",
-    "build:lib": "MODE=modern tsup && MODE=node tsup",
-    "build:types": "tsc --emitDeclarationOnly --declaration",
+    "build": "tsup",
     "docs:build": "typedoc",
     "docs:preview": "serve docs",
     "lint": "eslint . --ext .js,.ts,.yml,.yaml,.md,.json,.json5",
-    "lint:fix": "npm run lint -- --fix",
+    "lint:fix": "pnpm run lint --fix",
     "test": "vitest",
     "test:deno": "cd tests/deno && deno run --allow-net --import-map=import_map.json --allow-env index.ts",
     "release": "bumpp && npm publish",
@@ -60,10 +61,11 @@
   "dependencies": {
     "eventemitter3": "^5.0.0",
     "ky": "^0.33.3",
-    "node-fetch": "^3.3.1"
+    "undici": "^5.21.2"
   },
   "devDependencies": {
     "@faker-js/faker": "^7.6.0",
+    "@rollup/plugin-inject": "^5.0.3",
     "@sxzz/eslint-config-prettier": "^2.4.6",
     "@sxzz/eslint-config-ts": "^2.4.6",
     "@types/md5": "^2.3.2",
@@ -71,13 +73,11 @@
     "@types/sharp": "^0.31.1",
     "@vitest/ui": "^0.30.0",
     "bumpp": "^9.1.0",
-    "compare-versions": "^5.0.3",
     "esbuild": "^0.17.15",
     "eslint": "^8.38.0",
     "eslint-define-config": "^1.17.0",
     "md5": "^2.3.0",
     "rollup": "^3.20.2",
-    "rollup-plugin-esbuild": "^5.0.0",
     "serve": "^14.2.0",
     "sharp": "^0.32.0",
     "tsup": "^6.7.0",
@@ -87,7 +87,7 @@
     "vitest": "^0.30.0"
   },
   "engines": {
-    "node": ">=14.19.0"
+    "node": ">=16.14.0"
   },
   "pnpm": {
     "peerDependencyRules": {

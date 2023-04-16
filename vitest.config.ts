@@ -1,22 +1,13 @@
+import path from 'node:path'
 import { defineConfig } from 'vitest/config'
-import esbuild from 'rollup-plugin-esbuild'
-import compareVersions from 'compare-versions'
-import type { Plugin } from 'rollup'
+import inject from '@rollup/plugin-inject'
 
-const FetchPolyfill: Plugin = {
-  name: 'FetchPloyfill',
-  transform(code, id) {
-    if (!id.endsWith('src/request.ts')) return
-    return `import './node-shim'; ${code}`
-  },
-}
-
-const plugins: Plugin[] = [esbuild({ target: 'node14' })]
-
-// Enable ployfill when node < 18
-if (compareVersions.compare(process.version, '18', '<'))
-  plugins.push(FetchPolyfill)
+const shim = path.resolve(__dirname, 'src/node-shim.ts')
 
 export default defineConfig({
-  plugins,
+  plugins: [
+    inject({
+      globalThis: [shim, 'globalThis'],
+    }),
+  ],
 })

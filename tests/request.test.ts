@@ -1,5 +1,4 @@
 import { beforeAll, describe, expect, it } from 'vitest'
-import '../src/node-shim'
 import {
   getAccessToken,
   request,

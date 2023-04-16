@@ -80,7 +80,7 @@
 
 ### Node.js
 
-Node.js >= v14.19.0
+Node.js >= v16.14.0
 
 ```bash
 npm i jike-sdk
@@ -93,11 +93,11 @@ npm i jike-sdk
 ```ts
 // index.mjs
 
-// 自带 node-fetch。node < 18 使用此版本。
+// 不带 undici。需自行 ployfill 或 node >= 18 使用此版本。
 import { setApiConfig } from 'jike-sdk'
 
-// 不带 node-fetch。自行 ployfill 或 node >= 18 使用此版本。
-// import { setApiConfig } from 'jike-sdk/index'
+// 自带 undici。node < 18 使用此版本。
+// import { setApiConfig } from 'jike-sdk/polyfill'
 
 setApiConfig({
   // ...
