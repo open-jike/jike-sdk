@@ -1,7 +1,7 @@
 {
   "name": "jike-sdk",
   "version": "0.23.2",
-  "packageManager": "pnpm@8.1.1",
+  "packageManager": "pnpm@8.2.0",
   "description": "Jike Ⓙ SDK for Node.js",
   "type": "module",
   "keywords": [
@@ -72,20 +72,20 @@
     "@types/md5": "^2.3.2",
     "@types/node": "^18.15.11",
     "@types/sharp": "^0.31.1",
-    "@vitest/ui": "^0.30.0",
+    "@vitest/ui": "^0.30.1",
     "bumpp": "^9.1.0",
-    "esbuild": "^0.17.15",
+    "esbuild": "^0.17.17",
     "eslint": "^8.38.0",
-    "eslint-define-config": "^1.17.0",
+    "eslint-define-config": "^1.18.0",
     "md5": "^2.3.0",
-    "rollup": "^3.20.2",
+    "rollup": "^3.20.3",
     "serve": "^14.2.0",
     "sharp": "^0.32.0",
     "tsup": "^6.7.0",
     "tsx": "^3.12.6",
-    "typedoc": "0.24.1",
+    "typedoc": "0.24.4",
     "typescript": "^5.0.4",
-    "vitest": "^0.30.0"
+    "vitest": "^0.30.1"
   },
   "engines": {
     "node": ">=16.14.0"
