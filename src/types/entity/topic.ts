@@ -1,6 +1,6 @@
-import type { LiteralUnion } from '../../utils'
-import type { CommonImage, Poi, Ref } from './common'
-import type { OriginalPost } from './post'
+import { type LiteralUnion } from '../../utils'
+import { type CommonImage, type Poi, type Ref } from './common'
+import { type OriginalPost } from './post'
 
 export interface Topic {
   type: 'TOPIC'

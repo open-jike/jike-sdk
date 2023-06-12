@@ -1,6 +1,6 @@
 import { request, toResponse } from '../request'
-import type { ListRecommendFeedOption } from '../types/options'
-import type { RecommendFeed } from '../types/api-responses'
+import { type ListRecommendFeedOption } from '../types/options'
+import { type RecommendFeed } from '../types/api-responses'
 
 /**
  * 获取动态广场

@@ -1,5 +1,5 @@
-import type { Profile } from './entity'
-import type { LiteralUnion } from '../utils'
+import { type LiteralUnion } from '../utils'
+import { type Profile } from './entity'
 
 /**
  * @description 分页选项

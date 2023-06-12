@@ -6,7 +6,7 @@ import {
   setApiConfig,
 } from '../dist/node'
 import { defaultEnvironment } from '../src/constants'
-import type { ApiConfig } from '../src'
+import { type ApiConfig } from '../src'
 
 describe('request', () => {
   const config: ApiConfig = {

@@ -1,15 +1,18 @@
+import {
+  type AddCommentOption,
+  type ListCommentMoreKey,
+  type ListCommentOption,
+  type PostType,
+} from '../types/options'
+import { type Comment, type Post, type User } from '../types/entity'
 import { isSuccess, throwRequestFailureError } from './utils/response'
 import { enumTypeToRaw } from './utils/post'
-import { fetchPaginated } from './utils/paginate'
-import type { PaginatedFetcher, PaginatedOption } from './utils/paginate'
-import type {
-  AddCommentOption,
-  ListCommentMoreKey,
-  ListCommentOption,
-  PostType,
-} from '../types/options'
-import type { Comment, Post, User } from '../types/entity'
-import type { JikeClient } from './client'
+import {
+  type PaginatedFetcher,
+  type PaginatedOption,
+  fetchPaginated,
+} from './utils/paginate'
+import { type JikeClient } from './client'
 
 /**
  * Jike 动态
@@ -36,7 +39,7 @@ export class JikePost {
    * @returns 动态详情
    */
   async queryDetail() {
-    if (this.detail) this.detail
+    if (this.detail) return this.detail
     const result = await this.apiClient.posts.get(this.type, this.id)
     if (!isSuccess(result)) throwRequestFailureError(result, '获取动态详情')
     return (this.detail = result.data.data)

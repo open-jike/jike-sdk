@@ -1,5 +1,5 @@
 import { request, toResponse } from '../request'
-import type { Stories } from '../types/api-responses'
+import { type Stories } from '../types/api-responses'
 
 /**
  * 获取关注用户日记列表

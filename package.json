@@ -52,7 +52,7 @@
     "build:types": "tsc --emitDeclarationOnly --declaration",
     "docs:build": "typedoc",
     "docs:preview": "serve docs",
-    "lint": "eslint . --ext .js,.ts,.yml,.yaml,.md,.json,.json5",
+    "lint": "eslint --cache .",
     "lint:fix": "pnpm run lint --fix",
     "test": "vitest",
     "test:deno": "cd tests/deno && deno run --allow-net --import-map=import_map.json --allow-env index.ts",
@@ -67,8 +67,7 @@
   "devDependencies": {
     "@faker-js/faker": "^8.0.2",
     "@rollup/plugin-inject": "^5.0.3",
-    "@sxzz/eslint-config-prettier": "^2.4.6",
-    "@sxzz/eslint-config-ts": "^2.4.6",
+    "@sxzz/eslint-config": "^3.0.0",
     "@types/md5": "^2.3.2",
     "@types/node": "^18.16.17",
     "@types/sharp": "^0.31.1",
@@ -89,12 +88,5 @@
   },
   "engines": {
     "node": ">=16.14.0"
-  },
-  "pnpm": {
-    "peerDependencyRules": {
-      "allowedVersions": {
-        "typescript": "4"
-      }
-    }
   }
 }

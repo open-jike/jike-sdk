@@ -1,7 +1,7 @@
 import { request, toResponse } from '../request'
-import type { PostTypeRaw } from '../types/entity'
-import type { PaginationOption } from '../types/options'
-import type { PersonalUpdate } from '../types/api-responses'
+import { type PostTypeRaw } from '../types/entity'
+import { type PaginationOption } from '../types/options'
+import { type PersonalUpdate } from '../types/api-responses'
 
 /**
  * 获取用户动态

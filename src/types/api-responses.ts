@@ -1,19 +1,19 @@
 /* eslint-disable @typescript-eslint/no-namespace */
 
-import type { LiteralUnion } from '../utils'
-import type {
-  Comment,
-  FollowingUpdate,
-  Notification,
-  OriginalPost,
-  PersonalPost,
-  Profile as ProfileEntity,
-  RecommendPost,
-  SquareFeed,
-  Story,
-  TabIcons,
-  Topic,
-  User,
+import { type LiteralUnion } from '../utils'
+import {
+  type Comment,
+  type FollowingUpdate,
+  type Notification,
+  type OriginalPost,
+  type PersonalPost,
+  type Profile as ProfileEntity,
+  type RecommendPost,
+  type SquareFeed,
+  type Story,
+  type TabIcons,
+  type Topic,
+  type User,
 } from './entity'
 
 export namespace Posts {

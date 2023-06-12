@@ -1,4 +1,4 @@
-import type { LimitFn, LimitOption, LimitOptionAll } from './limit'
+import { type LimitFn, type LimitOption, type LimitOptionAll } from './limit'
 
 export interface PaginatedOption<
   T,

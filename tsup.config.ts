@@ -1,6 +1,5 @@
 import { resolve } from 'node:path'
-import { defineConfig } from 'tsup'
-import type { Options } from 'tsup'
+import { type Options, defineConfig } from 'tsup'
 
 const $r = resolve.bind(undefined, __dirname)
 

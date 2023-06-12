@@ -1,9 +1,13 @@
-import ky, { HTTPError } from 'ky'
-import { defaultEnvironment } from './constants'
+import ky, {
+  type BeforeRequestHook,
+  HTTPError,
+  type Options,
+  type ResponsePromise,
+} from 'ky'
+import { type KyInstance } from 'ky/distribution/types/ky'
+import { type BeforeRetryState } from 'ky/distribution/types/hooks'
 import { generateUUID } from './utils'
-import type { KyInstance } from 'ky/distribution/types/ky'
-import type { BeforeRetryState } from 'ky/distribution/types/hooks'
-import type { BeforeRequestHook, Options, ResponsePromise } from 'ky'
+import { defaultEnvironment } from './constants'
 
 /**
  * API 配置
@@ -166,7 +170,7 @@ const buildProxy = (targetGetter: () => any): any =>
       if (!apiConfig || !target) throwNoConfig()
 
       // add apiConfig to request options
-      args.slice(-1)[0].apiConfig = apiConfig
+      args.at(-1).apiConfig = apiConfig
 
       return Reflect.apply(target, prop, args)
     },

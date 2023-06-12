@@ -1,7 +1,7 @@
 import { request, toResponse } from '../request'
-import type { LiteralUnion } from '../utils'
-import type { Topics } from '../types/api-responses'
-import type { PaginationOption } from '../types/options'
+import { type LiteralUnion } from '../utils'
+import { type Topics } from '../types/api-responses'
+import { type PaginationOption } from '../types/options'
 
 /**
  * 获取圈子动态

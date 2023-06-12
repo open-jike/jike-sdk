@@ -1,6 +1,6 @@
 import { request, toResponse } from '../request'
-import type { PaginationOption } from '../types/options'
-import type { Notifications } from '../types/api-responses'
+import { type PaginationOption } from '../types/options'
+import { type Notifications } from '../types/api-responses'
 
 /**
  * 获取通知列表

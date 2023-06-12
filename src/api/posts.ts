@@ -1,10 +1,10 @@
 import { request, toResponse } from '../request'
-import type {
-  CreatePostOption,
-  PaginationOption,
-  PostType,
+import {
+  type CreatePostOption,
+  type PaginationOption,
+  type PostType,
 } from '../types/options'
-import type { Posts } from '../types/api-responses'
+import { type Posts } from '../types/api-responses'
 
 /**
  * 发送动态

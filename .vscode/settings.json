@@ -27,5 +27,6 @@
     "jsonc",
     "yaml"
   ],
-  "cSpell.words": ["Jike"]
+  "cSpell.words": ["Jike"],
+  "eslint.experimental.useFlatConfig": true
 }

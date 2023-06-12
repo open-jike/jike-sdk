@@ -1,6 +1,6 @@
 import { request, toResponse } from '../request'
-import type { LiteralUnion } from '../utils'
-import type { InteractiveResponse } from '../types/api-responses'
+import { type LiteralUnion } from '../utils'
+import { type InteractiveResponse } from '../types/api-responses'
 
 /**
  * 获取视频地址
