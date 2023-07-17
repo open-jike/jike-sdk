@@ -71,6 +71,7 @@
     "@faker-js/faker": "^8.0.2",
     "@rollup/plugin-inject": "^5.0.3",
     "@sxzz/eslint-config": "^3.2.1",
+    "@sxzz/prettier-config": "^1.0.4",
     "@types/md5": "^2.3.2",
     "@types/node": "^18.16.19",
     "@types/sharp": "^0.31.1",
@@ -85,11 +86,12 @@
     "sharp": "^0.32.3",
     "tsup": "^7.1.0",
     "tsx": "^3.12.7",
-    "typedoc": "0.24.8",
+    "typedoc": "^0.24.8",
     "typescript": "^5.1.6",
     "vitest": "^0.33.0"
   },
   "engines": {
     "node": ">=16.14.0"
-  }
+  },
+  "prettier": "@sxzz/prettier-config"
 }

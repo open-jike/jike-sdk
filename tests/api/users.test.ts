@@ -21,7 +21,7 @@ describe('users should work', () => {
   })
 
   it('refreshToken should work', async () => {
-    const token = process.env['REFRESH_TOKEN']
+    const token = process.env.REFRESH_TOKEN
     if (!token) return
     const result = await api.users.refreshToken(token)
     expect(isSuccess(result)).toBe(true)

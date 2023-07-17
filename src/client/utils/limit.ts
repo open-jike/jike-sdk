@@ -12,7 +12,7 @@ export type LimitOption<K extends keyof LimitOptionAll> = Pick<
 
 export type LimitFn<
   K extends keyof LimitOptionAll = keyof LimitOptionAll,
-  T = any
+  T = any,
 > = (opt: LimitOption<K>, item: T, data: T[]) => boolean
 
 export const limitMaxCount =
