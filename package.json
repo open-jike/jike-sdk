@@ -19,8 +19,8 @@
   },
   "author": "三咲智子 <sxzz@sxzz.moe>",
   "files": [
-    "dist",
-    "*.d.ts"
+    "*.d.ts",
+    "dist"
   ],
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
