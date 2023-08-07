@@ -4,4 +4,10 @@ export default sxzz([
   {
     ignores: ['playground/**', 'docs/**', 'tests/deno/**'],
   },
+  {
+    files: ['**.md/**'],
+    rules: {
+      'unicorn/prefer-top-level-await': 'off',
+    },
+  },
 ])

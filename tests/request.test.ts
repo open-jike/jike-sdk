@@ -49,7 +49,7 @@ describe('request', () => {
         },
       })
       controller.abort()
-      req = await t.catch((err) => err)
+      req = await t.catch((error) => error)
     })
 
     it('prefix url should be correct', () => {

@@ -34,8 +34,8 @@ api.topics
   .then((res) => {
     console.log('请求成功', res.data.data)
   })
-  .catch((err) => {
-    console.log('请求错误', err)
+  .catch((error) => {
+    console.log('请求错误', error)
   })
 ```
 

@@ -221,10 +221,10 @@ export const toResponse = async <T>(
   let res: Response
   try {
     res = await response
-  } catch (err: unknown) {
-    if (err instanceof HTTPError) {
-      res = err.response
-    } else throw err
+  } catch (error: unknown) {
+    if (error instanceof HTTPError) {
+      res = error.response
+    } else throw error
   }
   const contentType = res.headers.get('content-type')
   let data: any

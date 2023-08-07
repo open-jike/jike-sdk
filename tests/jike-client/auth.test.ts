@@ -22,7 +22,7 @@ describe('login should work', () => {
 
     const err: RequestFailureError = await client
       .loginWithSmsCode(86, mobile, '123123')
-      .catch((err) => err)
+      .catch((error) => error)
     expect(err).instanceOf(RequestFailureError)
     expect(err.message).oneOf(['验证码已失效', '错误登录次数过多，请稍后再试'])
   })
