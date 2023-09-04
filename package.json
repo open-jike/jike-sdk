@@ -64,7 +64,7 @@
   },
   "dependencies": {
     "eventemitter3": "^5.0.1",
-    "ky": "^0.33.3",
+    "ky": "^1.0.0",
     "undici": "^5.23.0"
   },
   "devDependencies": {
