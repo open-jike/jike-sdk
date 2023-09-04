@@ -9,8 +9,8 @@ dependencies:
     specifier: ^5.0.1
     version: 5.0.1
   ky:
-    specifier: ^0.33.3
-    version: 0.33.3
+    specifier: ^1.0.0
+    version: 1.0.0
   undici:
     specifier: ^5.23.0
     version: 5.23.0
@@ -3353,9 +3353,9 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
-  /ky@0.33.3:
-    resolution: {integrity: sha512-CasD9OCEQSFIam2U8efFK81Yeg8vNMTBUqtMOHlrcWQHqUX3HeCl9Dr31u4toV7emlH8Mymk5+9p0lL6mKb/Xw==}
-    engines: {node: '>=14.16'}
+  /ky@1.0.0:
+    resolution: {integrity: sha512-ptUup6btycj2IXLL/L5Bh/QC9ghYC2k/BsnnSf0ccEap8FpCvJ32FL5s5Potb8NkH6HOTdnVGmyI1wkHZ3mfEQ==}
+    engines: {node: '>=18'}
     dev: false
 
   /levn@0.4.1:
