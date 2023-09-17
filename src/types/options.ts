@@ -73,6 +73,10 @@ export interface AddCommentOption {
    * @default `[]`
    */
   pictureKeys?: string[]
+  /**
+   * @description 回复的评论 ID
+   */
+  replyToCommentId?: string
 }
 
 export interface ListCommentMoreKey {

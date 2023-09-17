@@ -20,6 +20,7 @@ export const add = <T = Comments.AddResponse>(
         pictureKeys: option.pictureKeys ?? [],
         targetId,
         targetType,
+        replyToCommentId: option.replyToCommentId,
       },
     })
   )
