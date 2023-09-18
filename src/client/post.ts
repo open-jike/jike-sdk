@@ -1,7 +1,7 @@
 import {
   type AddCommentOption,
-  type ListCommentMoreKey,
-  type ListCommentOption,
+  type ListPrimaryCommentMoreKey,
+  type ListPrimaryCommentOption,
   type PostType,
 } from '../types/options'
 import { type Comment, type Post, type User } from '../types/entity'
@@ -143,10 +143,10 @@ export class JikePost {
    * 查询评论
    */
   queryComments(
-    order?: ListCommentOption['order'],
-    option: PaginatedOption<Comment, 'createdAt', ListCommentMoreKey> = {}
+    order?: ListPrimaryCommentOption['order'],
+    option: PaginatedOption<Comment, 'createdAt', ListPrimaryCommentMoreKey> = {}
   ) {
-    const fetcher: PaginatedFetcher<Comment, ListCommentMoreKey> = async (
+    const fetcher: PaginatedFetcher<Comment, ListPrimaryCommentMoreKey> = async (
       lastKey
     ) => {
       const result = await this.apiClient.comments.listPrimary(

@@ -15,6 +15,10 @@ import {
   type Topic,
   type User,
 } from './entity'
+import {
+  type ListCommentMoreKey,
+  type ListPrimaryCommentMoreKey,
+} from './options'
 
 export namespace Posts {
   export interface CreateResponse {
@@ -196,10 +200,12 @@ export namespace Comments {
 
   export interface ListPrimaryResponse {
     data: Comment[]
-    loadMoreKey?: {
-      key: string
-      partition: string
-    }
+    loadMoreKey?: ListPrimaryCommentMoreKey
+  }
+
+  export interface ListResponse {
+    data: Comment[]
+    loadMoreKey?: ListCommentMoreKey
   }
 }
 

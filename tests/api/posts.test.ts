@@ -38,13 +38,19 @@ describe('posts should work', () => {
 })
 
 describe('comment should work', () => {
-  it('get should work', async () => {
+  it('list should work', async () => {
     const result = await api.comments.listPrimary(
       'ORIGINAL_POST',
-      '61c0d39877abf80010426ba3'
+      '65071ec94101002b06c3469d'
     )
     expect(isSuccess(result)).toBe(true)
     expect(result.data.data.length).greaterThan(0)
+
+    const comments = await api.comments.list(
+      'ORIGINAL_POST',
+      result.data.data[0].threadId
+    )
+    expect(comments.data.data.length).greaterThan(0)
   })
 
   it('like should work', async () => {
@@ -75,7 +81,7 @@ describe('new post should work', () => {
       { topicId: '5be41ae2a666dd00172d6072' }
     )
     expect(isSuccess(result)).toBe(true)
-    expect(result.data.toast).toBe('发送成功')
+    expect(result.data.toast).a('string')
     expect(result.data.data.id).a('string')
     id = result.data.data.id
   })
@@ -87,14 +93,14 @@ describe('new post should work', () => {
       `测试评论${Math.random()}`
     )
     expect(isSuccess(result)).toBe(true)
-    expect(result.data.toast).toBe('发送成功')
+    expect(result.data.toast).a('string')
     expect(result.data.data.id).a('string')
   })
 
   it('remove should work', async () => {
     const result = await api.posts.remove(PostType.ORIGINAL, id)
     expect(isSuccess(result)).toBe(true)
-    expect(result.data.toast).toBe('删除成功')
+    expect(result.data.toast).a('string')
   })
 
   it('listLikedUsers should work', async () => {

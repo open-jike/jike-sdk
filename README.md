@@ -51,7 +51,8 @@
 - [动态广场](http://jike-sdk.sxzz.moe/modules/api_recommend_feed.html)
   - [x] [获取动态推荐](http://jike-sdk.sxzz.moe/functions/api_recommend_feed.list.html)
 - [评论](http://jike-sdk.sxzz.moe/modules/api_comments.html)
-  - [x] [获取评论](http://jike-sdk.sxzz.moe/functions/api_comments.listPrimary.html)
+  - [x] [获取动态下评论](http://jike-sdk.sxzz.moe/functions/api_comments.listPrimary.html)
+  - [x] [获取评论](http://jike-sdk.sxzz.moe/functions/api_comments.list.html)
   - [x] [发送评论](http://jike-sdk.sxzz.moe/functions/api_comments.add.html) （发送子评论）
   - [x] [点赞](http://jike-sdk.sxzz.moe/functions/api_comments.like.html)
   - [x] [取消点赞](http://jike-sdk.sxzz.moe/functions/api_comments.unlike.html)

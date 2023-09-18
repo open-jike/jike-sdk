@@ -1,6 +1,11 @@
 import { request, toResponse } from '../request'
 import { type PostTypeRaw } from '../types/entity'
-import { type AddCommentOption, type ListCommentOption } from '../types/options'
+import {
+  type AddCommentOption,
+  type ListCommentMoreKey,
+  type ListPrimaryCommentOption,
+  type PaginationOption,
+} from '../types/options'
 import { type Comments } from '../types/api-responses'
 
 export const add = <T = Comments.AddResponse>(
@@ -52,7 +57,7 @@ export const remove = <T = Comments.RemoveResponse>(
 export const listPrimary = <T = Comments.ListPrimaryResponse>(
   targetType: PostTypeRaw,
   targetId: string,
-  option: ListCommentOption = {}
+  option: ListPrimaryCommentOption = {}
 ) =>
   toResponse<T>(
     request.post('1.0/comments/listPrimary', {
@@ -61,6 +66,22 @@ export const listPrimary = <T = Comments.ListPrimaryResponse>(
         targetId,
         order: option.order ?? 'LIKES',
         limit: option.limit ?? 10,
+        loadMoreKey: option.loadMoreKey,
+      },
+    })
+  )
+
+export const list = <T = Comments.ListResponse>(
+  targetType: PostTypeRaw,
+  threadId: string,
+  option: PaginationOption<ListCommentMoreKey> = {}
+) =>
+  toResponse<T>(
+    request.post('1.0/comments/list', {
+      json: {
+        targetType,
+        threadId,
+        limit: option.limit ?? 20,
         loadMoreKey: option.loadMoreKey,
       },
     })

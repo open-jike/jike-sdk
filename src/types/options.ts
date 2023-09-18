@@ -79,20 +79,25 @@ export interface AddCommentOption {
   replyToCommentId?: string
 }
 
-export interface ListCommentMoreKey {
+export interface ListPrimaryCommentMoreKey {
   key: string
   partition: string
 }
 /**
- * @description 获取评论选项
+ * @description 获取主要评论选项
  */
-export interface ListCommentOption
-  extends PaginationOption<ListCommentMoreKey> {
+export interface ListPrimaryCommentOption
+  extends PaginationOption<ListPrimaryCommentMoreKey> {
   /**
    * 排序
    * @default `LIKES`
    */
   order?: 'LIKES' | 'TIME'
+}
+
+export interface ListCommentMoreKey {
+  skip: number
+  partition: LiteralUnion<'NORMAL'>
 }
 
 /**
