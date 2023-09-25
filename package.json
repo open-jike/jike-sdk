@@ -65,30 +65,30 @@
   "dependencies": {
     "eventemitter3": "^5.0.1",
     "ky": "^1.0.1",
-    "undici": "^5.24.0"
+    "undici": "^5.25.2"
   },
   "devDependencies": {
-    "@faker-js/faker": "^8.0.2",
+    "@faker-js/faker": "^8.1.0",
     "@rollup/plugin-inject": "^5.0.3",
-    "@sxzz/eslint-config": "^3.5.4",
+    "@sxzz/eslint-config": "^3.6.1",
     "@sxzz/prettier-config": "^1.0.4",
     "@types/md5": "^2.3.2",
-    "@types/node": "^18.17.17",
+    "@types/node": "^18.17.19",
     "@types/sharp": "^0.31.1",
-    "@vitest/ui": "^0.34.4",
+    "@vitest/ui": "^0.34.5",
     "bumpp": "^9.2.0",
     "esbuild": "^0.19.3",
-    "eslint": "^8.49.0",
+    "eslint": "^8.50.0",
     "eslint-define-config": "^1.23.0",
     "md5": "^2.3.0",
-    "rollup": "^3.29.2",
+    "rollup": "^3.29.3",
     "serve": "^14.2.1",
-    "sharp": "^0.32.5",
+    "sharp": "^0.32.6",
     "tsup": "^7.2.0",
-    "tsx": "^3.12.10",
+    "tsx": "^3.13.0",
     "typedoc": "^0.25.1",
     "typescript": "^5.2.2",
-    "vitest": "^0.34.4"
+    "vitest": "^0.34.5"
   },
   "engines": {
     "node": ">=16.14.0"
