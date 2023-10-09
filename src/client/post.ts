@@ -144,11 +144,16 @@ export class JikePost {
    */
   queryComments(
     order?: ListPrimaryCommentOption['order'],
-    option: PaginatedOption<Comment, 'createdAt', ListPrimaryCommentMoreKey> = {}
+    option: PaginatedOption<
+      Comment,
+      'createdAt',
+      ListPrimaryCommentMoreKey
+    > = {}
   ) {
-    const fetcher: PaginatedFetcher<Comment, ListPrimaryCommentMoreKey> = async (
-      lastKey
-    ) => {
+    const fetcher: PaginatedFetcher<
+      Comment,
+      ListPrimaryCommentMoreKey
+    > = async (lastKey) => {
       const result = await this.apiClient.comments.listPrimary(
         enumTypeToRaw(this.type),
         this.id,

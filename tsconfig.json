@@ -1,17 +1,17 @@
 {
   "compilerOptions": {
     "target": "ES2019",
-    "module": "ES2015",
     "lib": ["ES2019", "DOM"],
+    "module": "ES2015",
+    "moduleResolution": "Node",
+    "types": ["node"],
+    "resolveJsonModule": true,
+    "sourceMap": true,
     "outDir": "dist",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
-    "sourceMap": true,
-    "skipLibCheck": true,
-    "moduleResolution": "Node",
-    "resolveJsonModule": true,
-    "types": ["node"]
+    "skipLibCheck": true
   },
   "include": ["src/**/*"]
 }
