@@ -1,6 +1,6 @@
-import { type LiteralUnion } from '../../utils'
-import { type StoryStatus } from './post'
-import { type CommonImage, type Ref } from './common'
+import type { LiteralUnion } from '../../utils'
+import type { StoryStatus } from './post'
+import type { CommonImage, Ref } from './common'
 
 /**
  * 头像图片

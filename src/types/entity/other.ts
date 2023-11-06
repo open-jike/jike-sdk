@@ -1,6 +1,6 @@
-import { type Topic } from './topic'
-import { type Picture, type ReadTrackInfo, type UrlsInText } from './post'
-import { type User } from './user'
+import type { Topic } from './topic'
+import type { Picture, ReadTrackInfo, UrlsInText } from './post'
+import type { User } from './user'
 
 export type PostTypeRaw = 'ORIGINAL_POST' | 'REPOST'
 export type TargetType = PostTypeRaw | 'STORY'

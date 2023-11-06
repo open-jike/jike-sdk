@@ -1,11 +1,6 @@
-import { type LiteralUnion } from '../../utils'
-import { type StoryStatus } from './post'
-import {
-  type AvatarImage,
-  type BackgroundImage,
-  type StatsCount,
-  type User,
-} from './user'
+import type { LiteralUnion } from '../../utils'
+import type { StoryStatus } from './post'
+import type { AvatarImage, BackgroundImage, StatsCount, User } from './user'
 
 /**
  * 用户信息

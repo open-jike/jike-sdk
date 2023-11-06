@@ -1,6 +1,3 @@
-import { type UserUnfollowOption } from '../types/options'
-import { type PersonalPost, type User } from '../types/entity'
-import { type Users } from '../types/api-responses'
 import { isSuccess, throwRequestFailureError } from './utils/response'
 import {
   type PaginatedFetcher,
@@ -8,7 +5,10 @@ import {
   fetchPaginated,
 } from './utils/paginate'
 import { rawTypeToEnum } from './utils/post'
-import { type JikeClient } from './client'
+import type { UserUnfollowOption } from '../types/options'
+import type { PersonalPost, User } from '../types/entity'
+import type { Users } from '../types/api-responses'
+import type { JikeClient } from './client'
 
 export interface FollowerWithTime {
   followTime?: string

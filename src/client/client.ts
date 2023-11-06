@@ -1,6 +1,5 @@
 import { HTTPError } from 'ky'
 import EventEmitter from 'eventemitter3'
-import { type BeforeRetryState } from 'ky/distribution/types/hooks'
 import {
   type ApiConfig,
   type ApiConfigResolved,
@@ -9,13 +8,6 @@ import {
 import { ApiClient } from '../api-client'
 import { objectPick } from '../utils'
 import { type CreatePostOption, PostType } from '../types/options'
-import {
-  type FollowingUpdate,
-  type Notification,
-  type PersonalUpdate,
-  type Post,
-} from '../types/entity'
-import { type Api } from '../api'
 import { isSuccess, throwRequestFailureError } from './utils/response'
 import { resolveAreaCode } from './utils/user'
 import { JikeUser } from './user'
@@ -26,7 +18,15 @@ import {
 } from './utils/paginate'
 import { AuthorizationError } from './errors/AuthorizationError'
 import { JikePost, JikePostWithDetail } from './post'
-import { type FollowingUpdatesMoreKey, type JikeClientJSON } from './types'
+import type { Api } from '../api'
+import type {
+  FollowingUpdate,
+  Notification,
+  PersonalUpdate,
+  Post,
+} from '../types/entity'
+import type { BeforeRetryState } from 'ky/distribution/types/hooks'
+import type { FollowingUpdatesMoreKey, JikeClientJSON } from './types'
 
 export interface EventMap {
   renewToken: () => void

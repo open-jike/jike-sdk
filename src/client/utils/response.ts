@@ -1,8 +1,8 @@
 import { RequestFailureError } from '../errors/RequestFailureError'
-import {
-  type ApiFailureResponse,
-  type ApiResponse,
-  type ApiSuccessResponse,
+import type {
+  ApiFailureResponse,
+  ApiResponse,
+  ApiSuccessResponse,
 } from '../../request'
 
 export const isSuccess = <T extends Record<string, any>>(

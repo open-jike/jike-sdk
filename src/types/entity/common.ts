@@ -1,4 +1,4 @@
-import { type LiteralUnion } from '../../utils'
+import type { LiteralUnion } from '../../utils'
 
 export interface CommonImage {
   thumbnailUrl: string

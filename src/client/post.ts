@@ -1,10 +1,3 @@
-import {
-  type AddCommentOption,
-  type ListPrimaryCommentMoreKey,
-  type ListPrimaryCommentOption,
-  type PostType,
-} from '../types/options'
-import { type Comment, type Post, type User } from '../types/entity'
 import { isSuccess, throwRequestFailureError } from './utils/response'
 import { enumTypeToRaw } from './utils/post'
 import {
@@ -12,7 +5,14 @@ import {
   type PaginatedOption,
   fetchPaginated,
 } from './utils/paginate'
-import { type JikeClient } from './client'
+import type { Comment, Post, User } from '../types/entity'
+import type {
+  AddCommentOption,
+  ListPrimaryCommentMoreKey,
+  ListPrimaryCommentOption,
+  PostType,
+} from '../types/options'
+import type { JikeClient } from './client'
 
 /**
  * Jike 动态
