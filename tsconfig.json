@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
-    "target": "ES2019",
-    "lib": ["ES2019", "DOM"],
-    "module": "ES2015",
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM"],
+    "module": "ESNext",
     "moduleResolution": "Node",
     "resolveJsonModule": true,
     "types": ["node"],

@@ -8,6 +8,7 @@ const common = defineConfig({
   platform: 'neutral',
   target: 'es2022',
   splitting: false,
+  external: ['node:crypto'],
 })
 
 export default defineConfig([
