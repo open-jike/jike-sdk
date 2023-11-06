@@ -18,7 +18,7 @@ export interface PaginatedOption<
     currentPage: number,
     key: K | undefined,
     data: T[]
-  ) => boolean | undefined
+  ) => boolean | unknown | undefined
   /**
    * 当结束时触发
    * @returns `false`: 将停止获取下一页
