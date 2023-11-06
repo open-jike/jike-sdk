@@ -74,7 +74,6 @@
     "@sxzz/prettier-config": "^1.0.4",
     "@types/md5": "^2.3.4",
     "@types/node": "^20.8.10",
-    "@types/sharp": "^0.31.1",
     "@vitest/ui": "^0.34.6",
     "bumpp": "^9.2.0",
     "esbuild": "^0.19.5",
