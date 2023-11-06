@@ -1,12 +1,12 @@
 import { beforeAll, describe, expect, it } from 'vitest'
 import {
+  type ApiConfig,
   getAccessToken,
   request,
   resolveApiConfig,
   setApiConfig,
-} from '../dist/node'
+} from '../src'
 import { defaultEnvironment } from '../src/constants'
-import type { ApiConfig } from '../src'
 
 describe('request', () => {
   const config: ApiConfig = {
