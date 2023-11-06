@@ -1,9 +1,9 @@
 import { request, toResponse } from '../request'
-import { type UserRelation } from '../types/api-responses'
-import {
-  type PaginationOption,
-  type UserFollowOption,
-  type UserUnfollowOption,
+import type { UserRelation } from '../types/api-responses'
+import type {
+  PaginationOption,
+  UserFollowOption,
+  UserUnfollowOption,
 } from '../types/options'
 
 /**

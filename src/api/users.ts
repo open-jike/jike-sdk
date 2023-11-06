@@ -1,6 +1,6 @@
 import { getApiConfig, request, toResponse } from '../request'
-import { type EditProfilePayload } from '../types/options'
-import { type Users } from '../types/api-responses'
+import type { EditProfilePayload } from '../types/options'
+import type { Users } from '../types/api-responses'
 
 /**
  * 获取用户信息

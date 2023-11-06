@@ -1,6 +1,6 @@
-import { type LiteralUnion } from '../../utils'
-import { type Picture, type PostStatus, type PostType } from './post'
-import { type User } from './user'
+import type { LiteralUnion } from '../../utils'
+import type { Picture, PostStatus, PostType } from './post'
+import type { User } from './user'
 
 export interface Notification {
   id: string

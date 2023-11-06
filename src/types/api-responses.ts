@@ -1,24 +1,21 @@
 /* eslint-disable @typescript-eslint/no-namespace */
 
-import { type LiteralUnion } from '../utils'
-import {
-  type Comment,
-  type FollowingUpdate,
-  type Notification,
-  type OriginalPost,
-  type PersonalPost,
-  type Profile as ProfileEntity,
-  type RecommendPost,
-  type SquareFeed,
-  type Story,
-  type TabIcons,
-  type Topic,
-  type User,
+import type { LiteralUnion } from '../utils'
+import type {
+  Comment,
+  FollowingUpdate,
+  Notification,
+  OriginalPost,
+  PersonalPost,
+  Profile as ProfileEntity,
+  RecommendPost,
+  SquareFeed,
+  Story,
+  TabIcons,
+  Topic,
+  User,
 } from './entity'
-import {
-  type ListCommentMoreKey,
-  type ListPrimaryCommentMoreKey,
-} from './options'
+import type { ListCommentMoreKey, ListPrimaryCommentMoreKey } from './options'
 
 export namespace Posts {
   export interface CreateResponse {

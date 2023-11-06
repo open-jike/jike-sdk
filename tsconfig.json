@@ -4,13 +4,13 @@
     "lib": ["ES2019", "DOM"],
     "module": "ES2015",
     "moduleResolution": "Node",
-    "types": ["node"],
     "resolveJsonModule": true,
-    "sourceMap": true,
+    "types": ["node"],
+    "strict": true,
     "outDir": "dist",
+    "sourceMap": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "strict": true,
     "skipLibCheck": true
   },
   "include": ["src/**/*"]

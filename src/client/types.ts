@@ -1,5 +1,5 @@
-import { type ApiConfigResolved } from '../request'
-import { type PersonalUpdate } from '../types/api-responses'
+import type { ApiConfigResolved } from '../request'
+import type { PersonalUpdate } from '../types/api-responses'
 
 export interface JikeClientJSON extends Omit<ApiConfigResolved, 'beforeRetry'> {
   refreshToken: string

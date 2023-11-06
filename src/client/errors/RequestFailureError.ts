@@ -1,4 +1,4 @@
-import { type ApiResponse } from '../../request'
+import type { ApiResponse } from '../../request'
 
 /**
  * 请求失败错误

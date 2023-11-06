@@ -1,12 +1,12 @@
 import { request, toResponse } from '../request'
-import { type PostTypeRaw } from '../types/entity'
-import {
-  type AddCommentOption,
-  type ListCommentMoreKey,
-  type ListPrimaryCommentOption,
-  type PaginationOption,
+import type { PostTypeRaw } from '../types/entity'
+import type {
+  AddCommentOption,
+  ListCommentMoreKey,
+  ListPrimaryCommentOption,
+  PaginationOption,
 } from '../types/options'
-import { type Comments } from '../types/api-responses'
+import type { Comments } from '../types/api-responses'
 
 export const add = <T = Comments.AddResponse>(
   targetType: PostTypeRaw,
