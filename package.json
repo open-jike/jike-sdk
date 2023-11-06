@@ -22,18 +22,14 @@
     "*.d.ts",
     "dist"
   ],
+  "main": "dist/index.js",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "require": "./dist/node/index.cjs",
+      "require": "./dist/index.cjs",
       "import": "./dist/index.js"
-    },
-    "./polyfill": {
-      "types": "./dist/index.d.ts",
-      "require": "./dist/node/index.cjs",
-      "import": "./dist/node/index.js"
     },
     "./*": "./*"
   },
@@ -42,9 +38,6 @@
       "*": [
         "./dist/*",
         "./*"
-      ],
-      "polyfill": [
-        "./dist/index.d.ts"
       ]
     }
   },
@@ -90,7 +83,7 @@
     "vitest": "^0.34.6"
   },
   "engines": {
-    "node": ">=16.14.0"
+    "node": ">=18.12.0"
   },
   "prettier": "@sxzz/prettier-config"
 }
