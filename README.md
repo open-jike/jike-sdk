@@ -94,7 +94,7 @@ npm i jike-sdk
 ```ts
 // index.mjs
 
-// 不带 undici。使用此版本需 node >= 18 或 自行 ployfill。
+// 使用此版本需 node >= 18 或 自行 ployfill fetch。
 import { setApiConfig } from 'jike-sdk'
 
 setApiConfig({
