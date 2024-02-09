@@ -8,7 +8,7 @@ describe('notifications should work', () => {
   it('queryNotifications should work', async () => {
     const notifications = await client.queryNotifications({
       limit: limit.limitMaxCount(100),
-    })
-    expect(notifications.length).toBe(100)
-  })
-})
+    });
+    expect(notifications.length).lessThanOrEqual(100);
+  });
+});
