@@ -1,7 +1,7 @@
 {
   "name": "jike-sdk",
   "version": "0.26.1",
-  "packageManager": "pnpm@8.10.5",
+  "packageManager": "pnpm@8.15.1",
   "description": "Jike Ⓙ SDK for Node.js",
   "type": "module",
   "keywords": [
@@ -57,28 +57,28 @@
   },
   "dependencies": {
     "eventemitter3": "^5.0.1",
-    "ky": "^1.1.3"
+    "ky": "^1.2.0"
   },
   "devDependencies": {
-    "@faker-js/faker": "^8.3.1",
-    "@sxzz/eslint-config": "^3.7.4",
+    "@faker-js/faker": "^8.4.1",
+    "@sxzz/eslint-config": "^3.7.6",
     "@sxzz/prettier-config": "^2.0.0",
     "@types/md5": "^2.3.5",
-    "@types/node": "^20.9.2",
-    "@vitest/ui": "^1.0.4",
-    "bumpp": "^9.2.0",
-    "esbuild": "^0.19.6",
-    "eslint": "^8.54.0",
+    "@types/node": "^20.11.17",
+    "@vitest/ui": "^1.2.2",
+    "bumpp": "^9.3.0",
+    "esbuild": "^0.20.0",
+    "eslint": "^8.56.0",
     "eslint-define-config": "^1.24.1",
     "md5": "^2.3.0",
-    "rollup": "^4.5.0",
+    "rollup": "^4.10.0",
     "serve": "^14.2.1",
-    "sharp": "^0.32.6",
-    "tsup": "^8.0.0",
-    "tsx": "^4.1.4",
-    "typedoc": "^0.25.3",
-    "typescript": "^5.2.2",
-    "vitest": "^1.0.4"
+    "sharp": "^0.33.2",
+    "tsup": "^8.0.1",
+    "tsx": "^4.7.1",
+    "typedoc": "^0.25.8",
+    "typescript": "^5.3.3",
+    "vitest": "^1.2.2"
   },
   "engines": {
     "node": ">=18.12.0"
