@@ -1,7 +1,6 @@
+import type { Picture, Post, PostStatus, PostType } from './post'
 import type { LiteralUnion } from '../../utils'
-import type { Picture, PostStatus, PostType } from './post'
 import type { User } from './user'
-import { Post } from './post'
 
 export interface Notification {
   id: string
@@ -67,7 +66,3 @@ export interface ReferenceItem {
   /** 引用图片地址 */
   referenceImageUrl?: string
 }
-
-export type NotificationDetailPost = {
-  id: string
-} & Post
