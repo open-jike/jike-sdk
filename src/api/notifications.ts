@@ -22,9 +22,11 @@ export const list = <T = Notifications.ListResponse>(
 
 /**
  * 获取合并通知的列表
- * @param option 通知ID
+ * @param option 起始通知 ID
  */
-export const listMergedComment = <T = Notifications.ListMergedCommentResponse>(
+export const listMergedMentions = <
+  T = Notifications.ListMergedMentionsResponse,
+>(
   id: string,
 ) =>
   toResponse<T>(
@@ -39,17 +41,17 @@ export const listMergedComment = <T = Notifications.ListMergedCommentResponse>(
  *  获取通知列表，自动展开合并通知
  *  @param option 分页选项
  */
-export const listWithMerged = async <T = Notifications.ListWithMergedResponse>(
+export const listWithMerged = async (
   option: Pick<
     PaginationOption<{ lastNotificationId: string }>,
     'loadMoreKey'
   > = {},
 ) => {
-  let result = await list(option)
-  let notifications = result.data.data
+  const result = await list(option)
+  const notifications = result.data.data
   for (const notification of notifications) {
     if (notification.linkType === 'MERGED_MENTION') {
-      const mergedResult = await listMergedComment(notification.id)
+      const mergedResult = await listMergedMentions(notification.id)
       const mergedNotifications = mergedResult.data.data
       const index = notifications.indexOf(notification)
       notifications.splice(index, 1, ...mergedNotifications)

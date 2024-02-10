@@ -57,7 +57,7 @@ export namespace Notifications {
     }
   }
 
-  export interface ListMergedCommentResponse {
+  export interface ListMergedMentionsResponse {
     data: Notification[]
   }
 
