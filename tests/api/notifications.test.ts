@@ -11,8 +11,9 @@ describe('notifications should work', () => {
     expect(result.data.data.length).greaterThanOrEqual(1);
   });
 
+
   let testMergedCommentId = '65c464b350cd1a4d56c9bb53';
-  it.only('list merged_notifications should work', async () => {
+  it('list merged_notifications should work', async () => {
     const result = await api.notifications.listMergedComment(testMergedCommentId);
     expect(isSuccess(result)).toBe(true);
     expect(result.data.data.length).greaterThanOrEqual(1);
