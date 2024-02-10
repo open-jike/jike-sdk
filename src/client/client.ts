@@ -43,25 +43,20 @@ export class JikeClient extends EventEmitter<EventMap> {
   get accessToken() {
     return this.#config.accessToken
   }
-
   set accessToken(token) {
     this.#config.accessToken = token
     this.createClient()
   }
-
   get refreshToken() {
     return this.#refreshToken
   }
-
   get config() {
     return this.#config
   }
-
   set config(config) {
     this.#config = config
     this.createClient()
   }
-
   get apiClient() {
     return this.#client
   }
