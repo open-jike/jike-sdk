@@ -9,7 +9,6 @@ describe('notification should work', () => {
     const notifications = await client.queryNotifications({
       limit: limit.limitMaxCount(100),
     })
-    console.log(notifications.length)
     expect(notifications.length).lessThanOrEqual(100)
   })
 
@@ -20,7 +19,6 @@ describe('notification should work', () => {
       },
       true,
     )
-    console.log(notifications.length)
     expect(notifications.length).lessThanOrEqual(100)
   })
 })
