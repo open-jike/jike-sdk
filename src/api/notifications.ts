@@ -19,3 +19,20 @@ export const list = <T = Notifications.ListResponse>(
       },
     }),
   )
+
+
+/**
+ * 获取合并通知的列表
+ * @param option 通知ID
+ */
+export const listMergedComment = <T = Notifications.ListMergedCommentResponse>(
+  id: string,
+) =>
+  toResponse<T>(
+    request.post(`1.0/notifications/listMergedMentions`, {
+      json: {
+        startNotificationId: id,
+      },
+    })
+  )
+
