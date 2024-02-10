@@ -1,6 +1,7 @@
 import { request, toResponse } from '../request'
 import type { PaginationOption } from '../types/options'
 import type { Notifications } from '../types/api-responses'
+import type { Notification } from '../types/entity'
 
 /**
  * 获取通知列表
@@ -38,8 +39,8 @@ export const listMergedMentions = <
   )
 
 /**
- *  获取通知列表，自动展开合并通知
- *  @param option 分页选项
+ * 获取通知列表，自动展开合并通知
+ * @param option 分页选项
  */
 export const listWithMerged = async (
   option: Pick<
@@ -48,13 +49,13 @@ export const listWithMerged = async (
   > = {},
 ) => {
   const result = await list(option)
-  const notifications = result.data.data
-  for (const notification of notifications) {
-    if (notification.linkType === 'MERGED_MENTION') {
-      const mergedResult = await listMergedMentions(notification.id)
-      const mergedNotifications = mergedResult.data.data
-      const index = notifications.indexOf(notification)
-      notifications.splice(index, 1, ...mergedNotifications)
+  const notifications: Notification[] = []
+  for (const item of result.data.data) {
+    if (item.linkType === 'MERGED_MENTION') {
+      const merged = (await listMergedMentions(item.id)).data.data
+      notifications.push(...merged)
+    } else {
+      notifications.push(item)
     }
   }
   result.data.data = notifications
