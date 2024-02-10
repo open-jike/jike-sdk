@@ -12,12 +12,12 @@ export const followingFeed = <T = Stories.FollowingFeedResponse>() =>
  * @param username 用户名
  */
 export const listUserStories = <T = Stories.ListUserStoriesResponse>(
-  username: string
+  username: string,
 ) =>
   toResponse<T>(
     request.get('1.0/stories/listUserStories', {
       searchParams: {
         username,
       },
-    })
+    }),
   )

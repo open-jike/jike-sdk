@@ -93,7 +93,7 @@ export class JikeClient extends EventEmitter<EventMap> {
     await this.renewToken()
     request.headers.set(
       `x-${this.#config.endpointId}-access-token`,
-      this.#config.accessToken
+      this.#config.accessToken,
     )
 
     return true
@@ -108,7 +108,7 @@ export class JikeClient extends EventEmitter<EventMap> {
   async sendSmsCode(areaCode: string | number, mobile: string) {
     const result = await this.#client.users.getSmsCode(
       resolveAreaCode(areaCode),
-      mobile
+      mobile,
     )
     if (!isSuccess(result)) throwRequestFailureError(result, '发送短信验证码')
   }
@@ -123,20 +123,20 @@ export class JikeClient extends EventEmitter<EventMap> {
   async loginWithSmsCode(
     areaCode: string | number,
     mobile: string,
-    smsCode: string | number
+    smsCode: string | number,
   ) {
     const result = await this.#client.users.loginWithSmsCode(
       resolveAreaCode(areaCode),
       mobile,
-      smsCode
+      smsCode,
     )
     if (!isSuccess(result)) throwRequestFailureError(result, '登录')
 
     this.#refreshToken = result.headers.get(
-      `x-${this.#config.endpointId}-refresh-token`
+      `x-${this.#config.endpointId}-refresh-token`,
     )!
     this.accessToken = result.headers.get(
-      `x-${this.#config.endpointId}-access-token`
+      `x-${this.#config.endpointId}-access-token`,
     )!
   }
 
@@ -150,19 +150,19 @@ export class JikeClient extends EventEmitter<EventMap> {
   async loginWithPassword(
     areaCode: string | number,
     mobile: string,
-    password: string
+    password: string,
   ) {
     const result = await this.#client.users.loginWithPhoneAndPassword(
       resolveAreaCode(areaCode),
       mobile,
-      password
+      password,
     )
     if (!isSuccess(result)) throwRequestFailureError(result, '登录')
     this.#refreshToken = result.headers.get(
-      `x-${this.#config.endpointId}-refresh-token`
+      `x-${this.#config.endpointId}-refresh-token`,
     )!
     this.accessToken = result.headers.get(
-      `x-${this.#config.endpointId}-access-token`
+      `x-${this.#config.endpointId}-access-token`,
     )!
   }
 
@@ -197,7 +197,7 @@ export class JikeClient extends EventEmitter<EventMap> {
       Notification,
       'createdAt' | 'updatedAt',
       string
-    > = {}
+    > = {},
   ) {
     const fetcher: PaginatedFetcher<Notification, string> = async (lastKey) => {
       const result = await this.#client.notifications.list({
@@ -214,7 +214,7 @@ export class JikeClient extends EventEmitter<EventMap> {
         updatedAt: new Date(item.updatedAt),
         total: data.length + 1,
       }),
-      option
+      option,
     )
   }
 
@@ -226,7 +226,7 @@ export class JikeClient extends EventEmitter<EventMap> {
       FollowingUpdate,
       'createdAt',
       FollowingUpdatesMoreKey
-    > = {}
+    > = {},
   ) {
     const fetcher: PaginatedFetcher<
       FollowingUpdate,
@@ -245,11 +245,11 @@ export class JikeClient extends EventEmitter<EventMap> {
         createdAt: new Date(item.createdAt),
         total: data.length + 1,
       }),
-      option
+      option,
     )
     return updates.map(
       (
-        update
+        update,
       ): ({ actionTime: string } & PersonalUpdate) | JikePostWithDetail => {
         if (update.type === 'ORIGINAL_POST') {
           return this.getPost(PostType.ORIGINAL, update.id, update)
@@ -258,7 +258,7 @@ export class JikeClient extends EventEmitter<EventMap> {
         } else {
           return update
         }
-      }
+      },
     )
   }
 
@@ -271,7 +271,7 @@ export class JikeClient extends EventEmitter<EventMap> {
   async createPost(
     type: PostType,
     content: string,
-    options?: CreatePostOption
+    options?: CreatePostOption,
   ) {
     const result = await this.#client.posts.create(type, content, options)
     if (!isSuccess(result)) throwRequestFailureError(result, '发送动态')
@@ -288,7 +288,7 @@ export class JikeClient extends EventEmitter<EventMap> {
   getPost(
     type: PostType,
     id: string,
-    detail?: Post
+    detail?: Post,
   ): JikePost | JikePostWithDetail {
     if (!detail) return new JikePost(this, type, id)
     else return new JikePostWithDetail(this, type, id, detail)
@@ -304,7 +304,7 @@ export class JikeClient extends EventEmitter<EventMap> {
     const result = await this.apiClient.users.refreshToken(this.#refreshToken)
     if (!isSuccess(result)) {
       throw new AuthorizationError(
-        '刷新 access-token 失败。可能是太久没有活动，refresh token 已失效！'
+        '刷新 access-token 失败。可能是太久没有活动，refresh token 已失效！',
       )
     }
 
@@ -349,7 +349,7 @@ export class JikeClient extends EventEmitter<EventMap> {
    */
   static fromJSON(
     data: JikeClientJSON,
-    config: Partial<ApiConfig> = {}
+    config: Partial<ApiConfig> = {},
   ): JikeClient {
     return new JikeClient({
       ...objectPick(data, [

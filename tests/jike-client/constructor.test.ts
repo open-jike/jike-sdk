@@ -31,7 +31,7 @@ describe('constructor', () => {
         userId: profile.user.id,
         username: profile.user.username,
         screenName: profile.user.screenName,
-      })
+      }),
     )
   })
 

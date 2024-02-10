@@ -9,7 +9,7 @@ describe('post', () => {
   it('createPost should work', async () => {
     const { post, toast } = await client.createPost(
       PostType.ORIGINAL,
-      '👋 Hello World!\n\n ✨ From Jike SDK. \n\n Made with ❤️.'
+      '👋 Hello World!\n\n ✨ From Jike SDK. \n\n Made with ❤️.',
     )
 
     expect(toast).to.be.a('string')

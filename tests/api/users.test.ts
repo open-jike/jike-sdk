@@ -52,7 +52,7 @@ describe('users should work', () => {
     const result = await api.users.loginWithPhoneAndPassword(
       '+86',
       mobile,
-      password
+      password,
     )
     expect(isSuccess(result)).toBe(true)
     if (result.data.success) expect(result.data.user).toBeTruthy()
@@ -60,7 +60,7 @@ describe('users should work', () => {
 
   it('avatarGreet should work', async () => {
     const result = await api.users.avatarGreet(
-      '5C505995-681E-4C1E-AD4A-1CC683627B6E'
+      '5C505995-681E-4C1E-AD4A-1CC683627B6E',
     )
     expect(result.status).toBe(200)
     expect(result.data.success).is.a('boolean')

@@ -106,11 +106,11 @@ export const resolveKyOptions = (): Options => {
           req.headers.set('bundleid', apiConfig.bundleId)
           req.headers.set(
             `x-${apiConfig.endpointId}-device-id`,
-            apiConfig.deviceId
+            apiConfig.deviceId,
           )
           req.headers.set(
             `x-${apiConfig.endpointId}-device-properties`,
-            JSON.stringify({ idfv: apiConfig.idfv })
+            JSON.stringify({ idfv: apiConfig.idfv }),
           )
           req.headers.set(`App-Version`, apiConfig.appVersion)
           ;(req as any).highWaterMark = 1024 * 1024
@@ -132,7 +132,7 @@ export const resolveKyOptions = (): Options => {
 
 function throwNoConfig(): never {
   throw new Error(
-    `API config is empty! Please call \`setApiConfig\` first.\nPlease refer to https://github.com/open-jike/jike-sdk#usage`
+    `API config is empty! Please call \`setApiConfig\` first.\nPlease refer to https://github.com/open-jike/jike-sdk#usage`,
   )
 }
 
@@ -216,7 +216,7 @@ export type ApiResponse<T = any> = ApiSuccessResponse<T> | ApiFailureResponse<T>
 
 export const toResponse = async <T>(
   response: ResponsePromise,
-  hook?: (data: T) => T
+  hook?: (data: T) => T,
 ): Promise<ApiResponse<T>> => {
   let res: Response
   try {

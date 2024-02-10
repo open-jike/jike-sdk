@@ -12,7 +12,7 @@ describe('stories should work', () => {
 
   it('listUserStories should work', async () => {
     const result = await api.stories.listUserStories(
-      'c00cf715-b71b-464b-9dcc-d73e01878137'
+      'c00cf715-b71b-464b-9dcc-d73e01878137',
     )
     expect(isSuccess(result)).toBe(true)
   })
@@ -21,7 +21,7 @@ describe('stories should work', () => {
     const result = await api.mediaMeta.interactive(
       '627fcab1d505530011e9c7c4',
       'STORY',
-      'user'
+      'user',
     )
     expect(isSuccess(result)).toBe(true)
   })

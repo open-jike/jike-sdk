@@ -11,7 +11,7 @@ import type { PaginationOption } from '../types/options'
 export const getTabsSquareFeed = <T = Topics.GetTabsSquareFeedResponse>(
   topicId: string,
   // NOTE: suppressed 应该传 false，但不知道这个参数是什么意思
-  option: PaginationOption<{ lastId: string; suppressed: boolean }> = {}
+  option: PaginationOption<{ lastId: string; suppressed: boolean }> = {},
 ) =>
   toResponse<T>(
     request.post('1.0/topics/tabs/square/feed', {
@@ -20,7 +20,7 @@ export const getTabsSquareFeed = <T = Topics.GetTabsSquareFeedResponse>(
         limit: option.limit ?? 10,
         loadMoreKey: option.loadMoreKey,
       },
-    })
+    }),
   )
 
 /**
@@ -30,7 +30,7 @@ export const getTabsSquareFeed = <T = Topics.GetTabsSquareFeedResponse>(
  */
 export const getTabsSelectedFeed = <T = Topics.GetTabsSelectedFeedResponse>(
   topicId: string,
-  option: PaginationOption<{ offset: number }> = {}
+  option: PaginationOption<{ offset: number }> = {},
 ) =>
   toResponse<T>(
     request.post('1.0/topics/tabs/selected/feed', {
@@ -39,7 +39,7 @@ export const getTabsSelectedFeed = <T = Topics.GetTabsSelectedFeedResponse>(
         limit: option.limit ?? 10,
         loadMoreKey: option.loadMoreKey,
       },
-    })
+    }),
   )
 
 /**
@@ -54,7 +54,7 @@ export const search = <T = Topics.SearchResponse>(
     type?: LiteralUnion<'ALL'>
     /** 仅用户发帖时为 true */
     onlyUserPostEnabled?: boolean
-  } = {}
+  } = {},
 ) =>
   toResponse<T>(
     request.post('1.0/users/topics/search', {
@@ -65,5 +65,5 @@ export const search = <T = Topics.SearchResponse>(
         limit: option.limit ?? 20,
         loadMoreKey: option.loadMoreKey,
       },
-    })
+    }),
   )

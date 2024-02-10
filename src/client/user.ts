@@ -26,7 +26,7 @@ export class JikeUser<M extends boolean = boolean> {
   constructor(
     client: JikeClient,
     username?: string,
-    profile?: Users.Profile<M>
+    profile?: Users.Profile<M>,
   ) {
     this.#client = client
     this.#username = username
@@ -78,12 +78,12 @@ export class JikeUser<M extends boolean = boolean> {
    * 查询用户动态
    */
   async queryPersonalUpdate(
-    option: PaginatedOption<PersonalPost, 'createdAt', string> = {}
+    option: PaginatedOption<PersonalPost, 'createdAt', string> = {},
   ) {
     const fetcher: PaginatedFetcher<PersonalPost, string> = async (lastKey) => {
       const result = await this.#client.apiClient.personalUpdate.single(
         await this.getUsername(),
-        { limit: 500, loadMoreKey: lastKey ? { lastId: lastKey } : undefined }
+        { limit: 500, loadMoreKey: lastKey ? { lastId: lastKey } : undefined },
       )
       if (!isSuccess(result)) throwRequestFailureError(result, '查询用户动态')
 
@@ -97,11 +97,11 @@ export class JikeUser<M extends boolean = boolean> {
         createdAt: new Date(item.createdAt),
         total: data.length + 1,
       }),
-      option
+      option,
     )
 
     return updates.map((update) =>
-      this.#client.getPost(rawTypeToEnum(update.type), update.id, update)
+      this.#client.getPost(rawTypeToEnum(update.type), update.id, update),
     )
   }
 
@@ -115,7 +115,7 @@ export class JikeUser<M extends boolean = boolean> {
         {
           limit: 20,
           loadMoreKey: lastKey,
-        }
+        },
       )
       if (!isSuccess(result)) throwRequestFailureError(result, '查询用户被关注')
 
@@ -128,7 +128,7 @@ export class JikeUser<M extends boolean = boolean> {
       (_item, data) => ({
         total: data.length + 1,
       }),
-      option
+      option,
     )
   }
 
@@ -136,17 +136,17 @@ export class JikeUser<M extends boolean = boolean> {
    * 查询用户被关注，带关注时间。逐个用户查询，耗时较长。
    */
   queryFollowersWithTime(
-    option: PaginatedOption<FollowerWithTime, 'followTime', string> = {}
+    option: PaginatedOption<FollowerWithTime, 'followTime', string> = {},
   ) {
     const fetcher: PaginatedFetcher<FollowerWithTime, string> = async (
-      lastKey
+      lastKey,
     ) => {
       const result = await this.#client.apiClient.userRelation.getFollowerList(
         await this.getUsername(),
         {
           limit: 1,
           loadMoreKey: lastKey,
-        }
+        },
       )
       if (!isSuccess(result)) throwRequestFailureError(result, '查询用户被关注')
 
@@ -168,7 +168,7 @@ export class JikeUser<M extends boolean = boolean> {
         followTime: item.followTime ? new Date(item.followTime) : new Date(0),
         total: data.length + 1,
       }),
-      option
+      option,
     )
   }
 
@@ -184,7 +184,7 @@ export class JikeUser<M extends boolean = boolean> {
    */
   async isFollowing(
     user: JikeUser | string,
-    mode: 'following' | 'follower' | 'auto'
+    mode: 'following' | 'follower' | 'auto',
   ) {
     const target = typeof user === 'string' ? this.#client.getUser(user) : user
 
@@ -227,7 +227,7 @@ export class JikeUser<M extends boolean = boolean> {
     const fetcher: PaginatedFetcher<User, string> = async (lastKey) => {
       const result = await this.#client.apiClient.userRelation.getFollowingList(
         await this.getUsername(),
-        { limit: 20, loadMoreKey: lastKey }
+        { limit: 20, loadMoreKey: lastKey },
       )
       if (!isSuccess(result)) throwRequestFailureError(result, '查询用户被关注')
 
@@ -240,7 +240,7 @@ export class JikeUser<M extends boolean = boolean> {
       (_item, data) => ({
         total: data.length + 1,
       }),
-      option
+      option,
     )
   }
 
@@ -249,7 +249,7 @@ export class JikeUser<M extends boolean = boolean> {
    */
   async follow() {
     const result = await this.#client.apiClient.userRelation.follow(
-      await this.getUsername()
+      await this.getUsername(),
     )
     if (!isSuccess(result)) throwRequestFailureError(result, '关注用户')
   }
@@ -260,7 +260,7 @@ export class JikeUser<M extends boolean = boolean> {
   async unfollow(option: UserUnfollowOption = {}) {
     const result = await this.#client.apiClient.userRelation.unfollow(
       await this.getUsername(),
-      option
+      option,
     )
     if (!isSuccess(result)) throwRequestFailureError(result, '取消关注用户')
   }
@@ -270,7 +270,7 @@ export class JikeUser<M extends boolean = boolean> {
    */
   async mute() {
     const result = await this.#client.apiClient.userRelation.mute(
-      await this.getId()
+      await this.getId(),
     )
     if (!isSuccess(result)) throwRequestFailureError(result, '不看 TA 的内容')
   }
@@ -280,7 +280,7 @@ export class JikeUser<M extends boolean = boolean> {
    */
   async unmute() {
     const result = await this.#client.apiClient.userRelation.unmute(
-      await this.getId()
+      await this.getId(),
     )
     if (!isSuccess(result)) throwRequestFailureError(result, '重新看 TA 的内容')
   }

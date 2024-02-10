@@ -6,14 +6,14 @@ import type { Users } from '../types/api-responses'
  * 获取用户信息
  */
 export const profile = <T = Users.MyProfile & Users.UserProfile>(
-  username?: string
+  username?: string,
 ) =>
   toResponse<T>(
     request('1.0/users/profile', {
       searchParams: {
         username: username ?? '',
       },
-    })
+    }),
   )
 
 /**
@@ -21,14 +21,14 @@ export const profile = <T = Users.MyProfile & Users.UserProfile>(
  * @param refreshToken 登录时返回的 refresh token
  */
 export const refreshToken = <T = Users.RefreshTokenResponse>(
-  refreshToken: string
+  refreshToken: string,
 ) =>
   toResponse<T>(
     request.post('app_auth_tokens.refresh', {
       headers: {
         [`x-${getApiConfig().endpointId}-refresh-token`]: refreshToken,
       },
-    })
+    }),
   )
 
 /**
@@ -38,7 +38,7 @@ export const refreshToken = <T = Users.RefreshTokenResponse>(
  */
 export const getSmsCode = <T = Users.GetSmsCodeResponse>(
   areaCode: string,
-  mobile: string
+  mobile: string,
 ) =>
   toResponse<T>(
     request.post('1.0/users/getSmsCode', {
@@ -47,7 +47,7 @@ export const getSmsCode = <T = Users.GetSmsCodeResponse>(
         areaCode,
         mobilePhoneNumber: mobile,
       },
-    })
+    }),
   )
 
 /**
@@ -59,7 +59,7 @@ export const getSmsCode = <T = Users.GetSmsCodeResponse>(
 export const loginWithSmsCode = <T = Users.LoginResponse>(
   areaCode: string,
   mobile: string,
-  smsCode: string | number
+  smsCode: string | number,
 ) =>
   toResponse<T>(
     request.post('1.0/users/mixLoginWithPhone', {
@@ -75,7 +75,7 @@ export const loginWithSmsCode = <T = Users.LoginResponse>(
     (data) => ({
       success: !(data as any).error,
       ...data,
-    })
+    }),
   )
 
 /**
@@ -87,7 +87,7 @@ export const loginWithSmsCode = <T = Users.LoginResponse>(
 export const loginWithPhoneAndPassword = <T = Users.LoginResponse>(
   areaCode: string,
   mobile: string,
-  password: string
+  password: string,
 ) =>
   toResponse<T>(
     request.post('1.0/users/loginWithPhoneAndPassword', {
@@ -96,7 +96,7 @@ export const loginWithPhoneAndPassword = <T = Users.LoginResponse>(
         mobilePhoneNumber: mobile,
         password,
       },
-    })
+    }),
   )
 
 /**
@@ -109,7 +109,7 @@ export const avatarGreet = <T = Users.AvatarGreetResponse>(username: string) =>
       json: {
         username,
       },
-    })
+    }),
   )
 
 /**
@@ -117,10 +117,10 @@ export const avatarGreet = <T = Users.AvatarGreetResponse>(username: string) =>
  * @param payload 更新后的信息
  */
 export const editProfile = <T = Users.EditProfileResponse>(
-  payload: EditProfilePayload
+  payload: EditProfilePayload,
 ) =>
   toResponse<T>(
     request.post('1.0/users/editProfile', {
       json: payload,
-    })
+    }),
   )

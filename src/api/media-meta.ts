@@ -11,7 +11,7 @@ import type { InteractiveResponse } from '../types/api-responses'
 export const interactive = <T = InteractiveResponse>(
   id: string,
   type: LiteralUnion<'STORY'>,
-  trigger: LiteralUnion<'user'> = 'user'
+  trigger: LiteralUnion<'user'> = 'user',
 ) =>
   toResponse<T>(
     request.post('1.0/mediaMeta/interactive', {
@@ -20,5 +20,5 @@ export const interactive = <T = InteractiveResponse>(
         type,
         trigger,
       },
-    })
+    }),
   )

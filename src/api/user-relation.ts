@@ -13,7 +13,7 @@ import type {
  */
 export const getFollowingList = <T = UserRelation.GetFollowingListResponse>(
   username: string,
-  option: PaginationOption<string> = {}
+  option: PaginationOption<string> = {},
 ) =>
   toResponse<T>(
     request.post('1.0/userRelation/getFollowingList', {
@@ -22,7 +22,7 @@ export const getFollowingList = <T = UserRelation.GetFollowingListResponse>(
         limit: option.limit ?? 10,
         loadMoreKey: option.loadMoreKey,
       },
-    })
+    }),
   )
 
 /**
@@ -32,7 +32,7 @@ export const getFollowingList = <T = UserRelation.GetFollowingListResponse>(
  */
 export const getFollowerList = <T = UserRelation.GetFollowerListResponse>(
   username: string,
-  option: PaginationOption<string> = {}
+  option: PaginationOption<string> = {},
 ) =>
   toResponse<T>(
     request.post('1.0/userRelation/getFollowerList', {
@@ -41,7 +41,7 @@ export const getFollowerList = <T = UserRelation.GetFollowerListResponse>(
         limit: option.limit ?? 10,
         loadMoreKey: option.loadMoreKey,
       },
-    })
+    }),
   )
 
 /**
@@ -51,7 +51,7 @@ export const getFollowerList = <T = UserRelation.GetFollowerListResponse>(
  */
 export const follow = <T = UserRelation.FollowResponse>(
   username: string,
-  { pageName = 11 }: UserFollowOption = {}
+  { pageName = 11 }: UserFollowOption = {},
 ) =>
   toResponse<T>(
     request.post('1.0/userRelation/follow', {
@@ -60,7 +60,7 @@ export const follow = <T = UserRelation.FollowResponse>(
         currentPageName: pageName,
         username,
       },
-    })
+    }),
   )
 
 /**
@@ -70,7 +70,7 @@ export const follow = <T = UserRelation.FollowResponse>(
  */
 export const unfollow = <T = UserRelation.UnfollowResponse>(
   username: string,
-  { pageName = 49, ref = 'PROFILE_MY_FOLLOWINGS' }: UserUnfollowOption = {}
+  { pageName = 49, ref = 'PROFILE_MY_FOLLOWINGS' }: UserUnfollowOption = {},
 ) =>
   toResponse<T>(
     request.post('1.0/userRelation/unfollow', {
@@ -80,7 +80,7 @@ export const unfollow = <T = UserRelation.UnfollowResponse>(
         ref,
         sourcePageName: pageName,
       },
-    })
+    }),
   )
 
 /**
@@ -93,7 +93,7 @@ export const mute = <T = UserRelation.MuteResponse>(userId: string) =>
       json: {
         id: userId,
       },
-    })
+    }),
   )
 
 /**
@@ -106,7 +106,7 @@ export const unmute = <T = UserRelation.UnmuteResponse>(userId: string) =>
       json: {
         id: userId,
       },
-    })
+    }),
   )
 
 /**
@@ -119,7 +119,7 @@ export const addBlock = <T = UserRelation.AddBlockResponse>(username: string) =>
       json: {
         username,
       },
-    })
+    }),
   )
 
 /**
@@ -127,12 +127,12 @@ export const addBlock = <T = UserRelation.AddBlockResponse>(username: string) =>
  * @param username 用户名
  */
 export const removeBlock = <T = UserRelation.RemoveBlockResponse>(
-  username: string
+  username: string,
 ) =>
   toResponse<T>(
     request.post('1.0/userRelation/removeBlock', {
       json: {
         username,
       },
-    })
+    }),
   )

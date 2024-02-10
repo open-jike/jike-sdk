@@ -10,12 +10,12 @@ export const list = <T = Notifications.ListResponse>(
   option: Pick<
     PaginationOption<{ lastNotificationId: string }>,
     'loadMoreKey'
-  > = {}
+  > = {},
 ) =>
   toResponse<T>(
     request.post('1.0/notifications/list', {
       json: {
         loadMoreKey: option.loadMoreKey,
       },
-    })
+    }),
   )

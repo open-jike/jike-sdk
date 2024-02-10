@@ -10,7 +10,7 @@ import type { PersonalUpdate } from '../types/api-responses'
  */
 export const single = <T = PersonalUpdate.SingleResponse>(
   username: string,
-  option: PaginationOption<{ lastId: string }> = {}
+  option: PaginationOption<{ lastId: string }> = {},
 ) =>
   toResponse<T>(
     request.post('1.0/personalUpdate/single', {
@@ -19,7 +19,7 @@ export const single = <T = PersonalUpdate.SingleResponse>(
         limit: option.limit ?? 10,
         loadMoreKey: option.loadMoreKey,
       },
-    })
+    }),
   )
 
 /**
@@ -31,7 +31,7 @@ export const followingUpdates = <T = PersonalUpdate.FollowingUpdatesResponse>(
     session: 'PopulatedUpdate'
     lastReadTime: number
     lastPageEarliestTime: number
-  }> = {}
+  }> = {},
 ) =>
   toResponse<T>(
     request.post('1.0/personalUpdate/followingUpdates', {
@@ -39,7 +39,7 @@ export const followingUpdates = <T = PersonalUpdate.FollowingUpdatesResponse>(
         limit: option.limit ?? 10,
         loadMoreKey: option.loadMoreKey,
       },
-    })
+    }),
   )
 
 /**
@@ -47,7 +47,7 @@ export const followingUpdates = <T = PersonalUpdate.FollowingUpdatesResponse>(
  */
 export const pin = <T = PersonalUpdate.PinResponse>(
   type: PostTypeRaw,
-  id: string
+  id: string,
 ) =>
   toResponse<T>(
     request.post('1.0/personalUpdate/pin', {
@@ -55,7 +55,7 @@ export const pin = <T = PersonalUpdate.PinResponse>(
         id,
         type,
       },
-    })
+    }),
   )
 
 /**
@@ -63,7 +63,7 @@ export const pin = <T = PersonalUpdate.PinResponse>(
  */
 export const unpin = <T = PersonalUpdate.UnpinResponse>(
   type: PostTypeRaw,
-  id: string
+  id: string,
 ) =>
   toResponse<T>(
     request.post('1.0/personalUpdate/unpin', {
@@ -71,5 +71,5 @@ export const unpin = <T = PersonalUpdate.UnpinResponse>(
         id,
         type,
       },
-    })
+    }),
   )

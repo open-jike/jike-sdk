@@ -12,13 +12,13 @@ describe('user', async () => {
   describe('isFollowing should work', () => {
     it('follower mode should work', async () => {
       expect(await client.getSelf().isFollowing(username, 'follower')).toBe(
-        following
+        following,
       )
     })
 
     it('following mode should work', async () => {
       expect(await client.getSelf().isFollowing(username, 'following')).toBe(
-        following
+        following,
       )
     })
   })

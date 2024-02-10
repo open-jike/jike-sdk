@@ -17,7 +17,7 @@ export interface PaginatedOption<
   onNextPage?: (
     currentPage: number,
     key: K | undefined,
-    data: T[]
+    data: T[],
   ) => boolean | unknown | undefined
   /**
    * 当结束时触发
@@ -26,12 +26,12 @@ export interface PaginatedOption<
   onDone?: (
     totalPage: number,
     key: K | undefined,
-    data: T[]
+    data: T[],
   ) => boolean | undefined
 }
 
 export type PaginatedFetcher<T, K> = (
-  lastKey: K | undefined
+  lastKey: K | undefined,
 ) => Promise<[K | undefined, T[]]>
 
 export const fetchPaginated = async <
@@ -41,7 +41,7 @@ export const fetchPaginated = async <
 >(
   fetcher: (lastKey: K | undefined) => Promise<[K | undefined, T[]]>,
   limitOptionGetter: (item: T, data: T[]) => LimitOption<L | 'total'>,
-  option: PaginatedOption<T, L, K>
+  option: PaginatedOption<T, L, K>,
 ) => {
   let lastKey: K | undefined = option.lastKey
   const data: T[] = []

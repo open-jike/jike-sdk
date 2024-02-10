@@ -80,7 +80,7 @@ export class JikePost {
   async pin() {
     const result = await this.apiClient.personalUpdate.pin(
       enumTypeToRaw(this.type),
-      this.id
+      this.id,
     )
     if (!isSuccess(result)) throwRequestFailureError(result, '置顶动态')
     return result.data.toast
@@ -93,7 +93,7 @@ export class JikePost {
   async unpin() {
     const result = await this.apiClient.personalUpdate.unpin(
       enumTypeToRaw(this.type),
-      this.id
+      this.id,
     )
     if (!isSuccess(result)) throwRequestFailureError(result, '取消置顶动态')
     return result.data.toast
@@ -108,7 +108,7 @@ export class JikePost {
       const result = await this.apiClient.posts.listLikedUsers(
         this.type,
         this.id,
-        { loadMoreKey: lastKey, limit: 500 }
+        { loadMoreKey: lastKey, limit: 500 },
       )
       if (!isSuccess(result))
         throwRequestFailureError(result, '获取点赞用户列表')
@@ -120,7 +120,7 @@ export class JikePost {
     return fetchPaginated(
       fetcher,
       (item, data) => ({ total: data.length + 1 }),
-      option
+      option,
     )
   }
 
@@ -133,7 +133,7 @@ export class JikePost {
       enumTypeToRaw(this.type),
       this.id,
       content,
-      option
+      option,
     )
     if (!isSuccess(result)) throwRequestFailureError(result, '添加评论')
     return result.data.data
@@ -148,7 +148,7 @@ export class JikePost {
       Comment,
       'createdAt',
       ListPrimaryCommentMoreKey
-    > = {}
+    > = {},
   ) {
     const fetcher: PaginatedFetcher<
       Comment,
@@ -157,7 +157,7 @@ export class JikePost {
       const result = await this.apiClient.comments.listPrimary(
         enumTypeToRaw(this.type),
         this.id,
-        { loadMoreKey: lastKey, limit: 500, order }
+        { loadMoreKey: lastKey, limit: 500, order },
       )
       if (!isSuccess(result)) throwRequestFailureError(result, '查询用户动态')
 
@@ -171,7 +171,7 @@ export class JikePost {
         createdAt: new Date(item.createdAt),
         total: data.length + 1,
       }),
-      option
+      option,
     )
   }
 }

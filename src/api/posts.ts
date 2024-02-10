@@ -14,7 +14,7 @@ import type { Posts } from '../types/api-responses'
 export const create = <T = Posts.CreateResponse>(
   type: PostType,
   content: string,
-  options: CreatePostOption = {}
+  options: CreatePostOption = {},
 ) =>
   toResponse<T>(
     request.post(`1.0/${type}/create`, {
@@ -25,7 +25,7 @@ export const create = <T = Posts.CreateResponse>(
         submitToTopic: options.topicId,
         linkInfo: options.linkInfo,
       },
-    })
+    }),
   )
 
 /**
@@ -36,7 +36,7 @@ export const get = <T = Posts.GetResponse>(type: PostType, id: string) =>
   toResponse<T>(
     request(`1.0/${type}/get`, {
       searchParams: { id },
-    })
+    }),
   )
 
 /**
@@ -52,7 +52,7 @@ export const share = <T = {}>(type: PostType, id: string, method: string) =>
         id,
         method,
       },
-    })
+    }),
   )
 
 /**
@@ -63,7 +63,7 @@ export const like = <T = {}>(type: PostType, id: string) =>
   toResponse<T>(
     request.post(`1.0/${type}/like`, {
       json: { id },
-    })
+    }),
   )
 
 /**
@@ -74,7 +74,7 @@ export const unlike = <T = {}>(type: PostType, id: string) =>
   toResponse<T>(
     request.post(`1.0/${type}/unlike`, {
       json: { id },
-    })
+    }),
   )
 
 /**
@@ -85,7 +85,7 @@ export const remove = <T = Posts.RemoveResponse>(type: PostType, id: string) =>
   toResponse<T>(
     request.post(`1.0/${type}/remove`, {
       json: { id },
-    })
+    }),
   )
 
 /**
@@ -95,7 +95,7 @@ export const remove = <T = Posts.RemoveResponse>(type: PostType, id: string) =>
 export const listLikedUsers = <T = Posts.ListLikedUsersResponse>(
   type: PostType,
   id: string,
-  option: PaginationOption<string> = {}
+  option: PaginationOption<string> = {},
 ) =>
   toResponse<T>(
     request.post(`1.0/${type}/listLikedUsers`, {
@@ -104,7 +104,7 @@ export const listLikedUsers = <T = Posts.ListLikedUsersResponse>(
         limit: option.limit ?? 100,
         loadMoreKey: option.loadMoreKey,
       },
-    })
+    }),
   )
 
 /**
@@ -115,7 +115,7 @@ export const hide = <T = Posts.HideResponse>(type: PostType, id: string) =>
   toResponse<T>(
     request.post(`1.0/${type}/sponsor/hide`, {
       json: { id },
-    })
+    }),
   )
 
 /**
@@ -126,5 +126,5 @@ export const recover = <T = Posts.HideResponse>(type: PostType, id: string) =>
   toResponse<T>(
     request.post(`1.0/${type}/sponsor/recover`, {
       json: { id },
-    })
+    }),
   )

@@ -12,7 +12,7 @@ export const add = <T = Comments.AddResponse>(
   targetType: PostTypeRaw,
   targetId: string,
   content: string,
-  option: AddCommentOption = {}
+  option: AddCommentOption = {},
 ) =>
   toResponse<T>(
     request.post('1.0/comments/add', {
@@ -27,37 +27,37 @@ export const add = <T = Comments.AddResponse>(
         targetType,
         replyToCommentId: option.replyToCommentId,
       },
-    })
+    }),
   )
 
 export const like = <T = {}>(targetType: PostTypeRaw, id: string) =>
   toResponse<T>(
     request.post('1.0/comments/like', {
       json: { targetType, id },
-    })
+    }),
   )
 
 export const unlike = <T = {}>(targetType: PostTypeRaw, id: string) =>
   toResponse<T>(
     request.post('1.0/comments/unlike', {
       json: { targetType, id },
-    })
+    }),
   )
 
 export const remove = <T = Comments.RemoveResponse>(
   targetType: PostTypeRaw,
-  id: string
+  id: string,
 ) =>
   toResponse<T>(
     request.post('1.0/comments/remove', {
       json: { targetType, id },
-    })
+    }),
   )
 
 export const listPrimary = <T = Comments.ListPrimaryResponse>(
   targetType: PostTypeRaw,
   targetId: string,
-  option: ListPrimaryCommentOption = {}
+  option: ListPrimaryCommentOption = {},
 ) =>
   toResponse<T>(
     request.post('1.0/comments/listPrimary', {
@@ -68,13 +68,13 @@ export const listPrimary = <T = Comments.ListPrimaryResponse>(
         limit: option.limit ?? 10,
         loadMoreKey: option.loadMoreKey,
       },
-    })
+    }),
   )
 
 export const list = <T = Comments.ListResponse>(
   targetType: PostTypeRaw,
   threadId: string,
-  option: PaginationOption<ListCommentMoreKey> = {}
+  option: PaginationOption<ListCommentMoreKey> = {},
 ) =>
   toResponse<T>(
     request.post('1.0/comments/list', {
@@ -84,5 +84,5 @@ export const list = <T = Comments.ListResponse>(
         limit: option.limit ?? 20,
         loadMoreKey: option.loadMoreKey,
       },
-    })
+    }),
   )

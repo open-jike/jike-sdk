@@ -17,7 +17,7 @@ describe('posts should work', () => {
     const result = await api.posts.share(
       PostType.ORIGINAL,
       '61b8b9d298f39200100ba010',
-      'weibo'
+      'weibo',
     )
     expect(isSuccess(result)).toBe(true)
 
@@ -41,14 +41,14 @@ describe('comment should work', () => {
   it('list should work', async () => {
     const result = await api.comments.listPrimary(
       'ORIGINAL_POST',
-      '65071ec94101002b06c3469d'
+      '65071ec94101002b06c3469d',
     )
     expect(isSuccess(result)).toBe(true)
     expect(result.data.data.length).greaterThan(0)
 
     const comments = await api.comments.list(
       'ORIGINAL_POST',
-      result.data.data[0].threadId
+      result.data.data[0].threadId,
     )
     expect(comments.data.data.length).greaterThan(0)
   })
@@ -56,7 +56,7 @@ describe('comment should work', () => {
   it('like should work', async () => {
     const result = await api.comments.like(
       'ORIGINAL_POST',
-      '61c04361d8c958001025e772'
+      '61c04361d8c958001025e772',
     )
     expect(isSuccess(result)).toBe(true)
   })
@@ -64,7 +64,7 @@ describe('comment should work', () => {
   it('unlike should work', async () => {
     const result = await api.comments.unlike(
       'ORIGINAL_POST',
-      '61c04361d8c958001025e772'
+      '61c04361d8c958001025e772',
     )
     expect(isSuccess(result)).toBe(true)
   })
@@ -78,7 +78,7 @@ describe('new post should work', () => {
       PostType.ORIGINAL,
       `Test Post. \n\n${Math.random()}`,
       /** 悄悄话 */
-      { topicId: '5be41ae2a666dd00172d6072' }
+      { topicId: '5be41ae2a666dd00172d6072' },
     )
     expect(isSuccess(result)).toBe(true)
     expect(result.data.toast).a('string')
@@ -90,7 +90,7 @@ describe('new post should work', () => {
     const result = await api.comments.add(
       'ORIGINAL_POST',
       id,
-      `测试评论${Math.random()}`
+      `测试评论${Math.random()}`,
     )
     expect(isSuccess(result)).toBe(true)
     expect(result.data.toast).a('string')
@@ -106,7 +106,7 @@ describe('new post should work', () => {
   it('listLikedUsers should work', async () => {
     const result = await api.posts.listLikedUsers(
       PostType.ORIGINAL,
-      '626303a8079c68c18e2ac9bc'
+      '626303a8079c68c18e2ac9bc',
     )
     expect(isSuccess(result)).toBe(true)
     expect(result.data.data.length).greaterThan(0)

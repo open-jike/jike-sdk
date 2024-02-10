@@ -23,7 +23,7 @@ export const limitMaxCount =
 export const limitAfterTime =
   <T extends 'createdAt' | 'updatedAt' | 'followTime'>(
     type: T,
-    target: Date
+    target: Date,
   ): LimitFn<T> =>
   (opt) => {
     const option = opt as LimitOption<'createdAt' | 'updatedAt' | 'followTime'>
@@ -33,7 +33,7 @@ export const limitAfterTime =
 export const limitBeforeTime =
   <T extends 'createdAt' | 'updatedAt' | 'followTime'>(
     type: T,
-    target: Date
+    target: Date,
   ): LimitFn<T> =>
   (opt) => {
     const option = opt as LimitOption<'createdAt' | 'updatedAt' | 'followTime'>

@@ -6,7 +6,7 @@ import type {
 } from '../../request'
 
 export const isSuccess = <T extends Record<string, any>>(
-  response: ApiResponse<T>
+  response: ApiResponse<T>,
 ): response is ApiSuccessResponse<T> =>
   response.status === 200 && response.data.success
 
@@ -15,7 +15,7 @@ export const isSuccess = <T extends Record<string, any>>(
  */
 export function throwRequestFailureError<T extends Record<string, any>>(
   response: ApiFailureResponse<T>,
-  action: string
+  action: string,
 ): never {
   let reason = response?.data?.error
   if (!reason && response.status === 401) reason = '未登录'

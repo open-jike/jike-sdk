@@ -7,12 +7,12 @@ export const token = <T = Upload.TokenResponse>(md5: string) =>
   toResponse<T>(
     request.get('1.0/upload/token', {
       searchParams: { md5 },
-    })
+    }),
   )
 
 export const upload = async (
   image: NodeBlob | Blob | Buffer,
-  token: string
+  token: string,
 ) => {
   let file: Blob
   if (typeof Buffer !== 'undefined' && Buffer.isBuffer(image)) {

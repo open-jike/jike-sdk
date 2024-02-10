@@ -7,7 +7,7 @@ import type { RecommendFeed } from '../types/api-responses'
  * @param option 选项
  */
 export const list = <T = RecommendFeed.ListResponse>(
-  option: ListRecommendFeedOption = {}
+  option: ListRecommendFeedOption = {},
 ) =>
   toResponse<T>(
     request.post('1.0/recommendFeed/list', {
@@ -16,5 +16,5 @@ export const list = <T = RecommendFeed.ListResponse>(
         trigger: option.trigger ?? 'auto',
         loadMoreKey: option.loadMoreKey,
       },
-    })
+    }),
   )
