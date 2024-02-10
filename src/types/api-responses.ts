@@ -60,6 +60,13 @@ export namespace Notifications {
   export interface ListMergedCommentResponse {
     data: Notification[]
   }
+
+  export interface ListWithMergedResponse {
+    data: Notification[]
+    loadMoreKey?: {
+      lastNotificationId: string
+    }
+  }
 }
 
 export namespace UserRelation {

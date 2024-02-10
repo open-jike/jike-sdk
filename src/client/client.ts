@@ -1,102 +1,98 @@
-import { HTTPError } from 'ky'
-import EventEmitter from 'eventemitter3'
+import {HTTPError} from 'ky';
+import EventEmitter from 'eventemitter3';
+import {type ApiConfig, type ApiConfigResolved, resolveApiConfig} from '../request';
+import {ApiClient} from '../api-client';
+import {objectPick} from '../utils';
+import {type CreatePostOption, PostType} from '../types/options';
+import {isSuccess, throwRequestFailureError} from './utils/response';
+import {resolveAreaCode} from './utils/user';
+import {JikeUser} from './user';
 import {
-  type ApiConfig,
-  type ApiConfigResolved,
-  resolveApiConfig,
-} from '../request'
-import { ApiClient } from '../api-client'
-import { objectPick } from '../utils'
-import { type CreatePostOption, PostType } from '../types/options'
-import { isSuccess, throwRequestFailureError } from './utils/response'
-import { resolveAreaCode } from './utils/user'
-import { JikeUser } from './user'
-import {
+  fetchPaginated,
   type PaginatedFetcher,
   type PaginatedOption,
-  fetchPaginated,
-} from './utils/paginate'
-import { AuthorizationError } from './errors/AuthorizationError'
-import { JikePost, JikePostWithDetail } from './post'
-import type { Api } from '../api'
-import type {
-  FollowingUpdate,
-  Notification,
-  PersonalUpdate,
-  Post,
-} from '../types/entity'
-import type { BeforeRetryState } from 'ky/distribution/types/hooks'
-import type { FollowingUpdatesMoreKey, JikeClientJSON } from './types'
+} from './utils/paginate';
+import {AuthorizationError} from './errors/AuthorizationError';
+import {JikePost, JikePostWithDetail} from './post';
+import type {Api} from '../api';
+import type {FollowingUpdate, Notification, PersonalUpdate, Post} from '../types/entity';
+import type {BeforeRetryState} from 'ky/distribution/types/hooks';
+import type {FollowingUpdatesMoreKey, JikeClientJSON} from './types';
 
 export interface EventMap {
-  renewToken: () => void
+  renewToken: () => void;
 }
 
-const userSelfKey = Symbol('userSelfKey')
+const userSelfKey = Symbol('userSelfKey');
 
 export class JikeClient extends EventEmitter<EventMap> {
-  #refreshToken: string
-  #config: ApiConfigResolved
-  #client!: Api
-  #userCache: { [userSelfKey]?: JikeUser<true> } & Record<string, JikeUser> = {}
+  #refreshToken: string;
+  #config: ApiConfigResolved;
+  #client!: Api;
+  #userCache: { [userSelfKey]?: JikeUser<true> } & Record<string, JikeUser> = {};
 
   get accessToken() {
-    return this.#config.accessToken
+    return this.#config.accessToken;
   }
+
   set accessToken(token) {
-    this.#config.accessToken = token
-    this.createClient()
+    this.#config.accessToken = token;
+    this.createClient();
   }
+
   get refreshToken() {
-    return this.#refreshToken
+    return this.#refreshToken;
   }
+
   get config() {
-    return this.#config
+    return this.#config;
   }
+
   set config(config) {
-    this.#config = config
-    this.createClient()
+    this.#config = config;
+    this.createClient();
   }
+
   get apiClient() {
-    return this.#client
+    return this.#client;
   }
 
   constructor({
-    refreshToken = '',
-    ...config
-  }: ApiConfig & { refreshToken?: string }) {
-    super()
+                refreshToken = '',
+                ...config
+              }: ApiConfig & { refreshToken?: string }) {
+    super();
 
-    this.#refreshToken = refreshToken
-    this.#config = resolveApiConfig(config)
-    this.createClient()
+    this.#refreshToken = refreshToken;
+    this.#config = resolveApiConfig(config);
+    this.createClient();
   }
 
   private createClient() {
     this.#client = ApiClient({
       ...this.#config,
       beforeRetry: this.beforeRetry.bind(this),
-    })
+    });
   }
 
   private async beforeRetry({ request, error }: BeforeRetryState) {
-    if (!(error instanceof HTTPError)) return false
+    if (!(error instanceof HTTPError)) return false;
 
-    const response = error.response
-    if (response.status !== 401) return false
+    const response = error.response;
+    if (response.status !== 401) return false;
 
     // don't retry when renewing token
     if (request.url.includes('app_auth_tokens.refresh')) {
-      return false
+      return false;
     }
 
-    await this.renewToken()
+    await this.renewToken();
     request.headers.set(
-      `x-${this.#config.endpointId}-access-token`,
-      this.#config.accessToken
-    )
+      `x-${ this.#config.endpointId }-access-token`,
+      this.#config.accessToken,
+    );
 
-    return true
+    return true;
   }
 
   /**
@@ -108,9 +104,9 @@ export class JikeClient extends EventEmitter<EventMap> {
   async sendSmsCode(areaCode: string | number, mobile: string) {
     const result = await this.#client.users.getSmsCode(
       resolveAreaCode(areaCode),
-      mobile
-    )
-    if (!isSuccess(result)) throwRequestFailureError(result, '发送短信验证码')
+      mobile,
+    );
+    if (!isSuccess(result)) throwRequestFailureError(result, '发送短信验证码');
   }
 
   /**
@@ -123,21 +119,21 @@ export class JikeClient extends EventEmitter<EventMap> {
   async loginWithSmsCode(
     areaCode: string | number,
     mobile: string,
-    smsCode: string | number
+    smsCode: string | number,
   ) {
     const result = await this.#client.users.loginWithSmsCode(
       resolveAreaCode(areaCode),
       mobile,
-      smsCode
-    )
-    if (!isSuccess(result)) throwRequestFailureError(result, '登录')
+      smsCode,
+    );
+    if (!isSuccess(result)) throwRequestFailureError(result, '登录');
 
     this.#refreshToken = result.headers.get(
-      `x-${this.#config.endpointId}-refresh-token`
-    )!
+      `x-${ this.#config.endpointId }-refresh-token`,
+    )!;
     this.accessToken = result.headers.get(
-      `x-${this.#config.endpointId}-access-token`
-    )!
+      `x-${ this.#config.endpointId }-access-token`,
+    )!;
   }
 
   /**
@@ -150,20 +146,20 @@ export class JikeClient extends EventEmitter<EventMap> {
   async loginWithPassword(
     areaCode: string | number,
     mobile: string,
-    password: string
+    password: string,
   ) {
     const result = await this.#client.users.loginWithPhoneAndPassword(
       resolveAreaCode(areaCode),
       mobile,
-      password
-    )
-    if (!isSuccess(result)) throwRequestFailureError(result, '登录')
+      password,
+    );
+    if (!isSuccess(result)) throwRequestFailureError(result, '登录');
     this.#refreshToken = result.headers.get(
-      `x-${this.#config.endpointId}-refresh-token`
-    )!
+      `x-${ this.#config.endpointId }-refresh-token`,
+    )!;
     this.accessToken = result.headers.get(
-      `x-${this.#config.endpointId}-access-token`
-    )!
+      `x-${ this.#config.endpointId }-access-token`,
+    )!;
   }
 
   /**
@@ -176,8 +172,8 @@ export class JikeClient extends EventEmitter<EventMap> {
    * @returns {@link JikeUser} 实例
    */
   getUser<M extends boolean = boolean>(username: string): JikeUser {
-    if (this.#userCache[username]) return this.#userCache[username]
-    return (this.#userCache[username] = new JikeUser<M>(this, username))
+    if (this.#userCache[username]) return this.#userCache[username];
+    return (this.#userCache[username] = new JikeUser<M>(this, username));
   }
 
   /**
@@ -185,28 +181,32 @@ export class JikeClient extends EventEmitter<EventMap> {
    * @returns {@link JikeUser} 实例
    */
   getSelf(): JikeUser<true> {
-    if (this.#userCache[userSelfKey]) return this.#userCache[userSelfKey]!
-    return (this.#userCache[userSelfKey] = new JikeUser<true>(this, undefined))
+    if (this.#userCache[userSelfKey]) return this.#userCache[userSelfKey]!;
+    return (this.#userCache[userSelfKey] = new JikeUser<true>(this, undefined));
   }
 
   /**
    * 查询通知
    */
   queryNotifications(
-    option: PaginatedOption<
-      Notification,
-      'createdAt' | 'updatedAt',
-      string
-    > = {}
+    option: PaginatedOption<Notification, 'createdAt' | 'updatedAt', string> = {},
+    withMerged = false,
   ) {
     const fetcher: PaginatedFetcher<Notification, string> = async (lastKey) => {
-      const result = await this.#client.notifications.list({
+      const listFunction = withMerged
+        ? this.#client.notifications.listWithMerged
+        : this.#client.notifications.list;
+
+      const result = await listFunction({
         loadMoreKey: lastKey ? { lastNotificationId: lastKey } : undefined,
-      })
-      if (!isSuccess(result)) throwRequestFailureError(result, '查询通知')
-      const newKey = result.data.loadMoreKey?.lastNotificationId
-      return [newKey, result.data.data]
-    }
+      });
+
+      if (!isSuccess(result)) throwRequestFailureError(result, '查询通知');
+
+      const newKey = result.data.loadMoreKey?.lastNotificationId;
+      return [newKey, result.data.data];
+    };
+
     return fetchPaginated(
       fetcher,
       (item, data) => ({
@@ -214,9 +214,10 @@ export class JikeClient extends EventEmitter<EventMap> {
         updatedAt: new Date(item.updatedAt),
         total: data.length + 1,
       }),
-      option
-    )
+      option,
+    );
   }
+
 
   /**
    * 查询关注动态
@@ -226,7 +227,7 @@ export class JikeClient extends EventEmitter<EventMap> {
       FollowingUpdate,
       'createdAt',
       FollowingUpdatesMoreKey
-    > = {}
+    > = {},
   ) {
     const fetcher: PaginatedFetcher<
       FollowingUpdate,
@@ -234,32 +235,32 @@ export class JikeClient extends EventEmitter<EventMap> {
     > = async (lastKey) => {
       const result = await this.#client.personalUpdate.followingUpdates({
         loadMoreKey: lastKey,
-      })
-      if (!isSuccess(result)) throwRequestFailureError(result, '查询关注动态')
-      const newKey = result.data.loadMoreKey
-      return [newKey, result.data.data]
-    }
+      });
+      if (!isSuccess(result)) throwRequestFailureError(result, '查询关注动态');
+      const newKey = result.data.loadMoreKey;
+      return [newKey, result.data.data];
+    };
     const updates = await fetchPaginated(
       fetcher,
       (item, data) => ({
         createdAt: new Date(item.createdAt),
         total: data.length + 1,
       }),
-      option
-    )
+      option,
+    );
     return updates.map(
       (
-        update
+        update,
       ): ({ actionTime: string } & PersonalUpdate) | JikePostWithDetail => {
         if (update.type === 'ORIGINAL_POST') {
-          return this.getPost(PostType.ORIGINAL, update.id, update)
+          return this.getPost(PostType.ORIGINAL, update.id, update);
         } else if (update.type === 'REPOST') {
-          return this.getPost(PostType.REPOST, update.id, update)
+          return this.getPost(PostType.REPOST, update.id, update);
         } else {
-          return update
+          return update;
         }
-      }
-    )
+      },
+    );
   }
 
   /**
@@ -271,16 +272,16 @@ export class JikeClient extends EventEmitter<EventMap> {
   async createPost(
     type: PostType,
     content: string,
-    options?: CreatePostOption
+    options?: CreatePostOption,
   ) {
-    const result = await this.#client.posts.create(type, content, options)
-    if (!isSuccess(result)) throwRequestFailureError(result, '发送动态')
+    const result = await this.#client.posts.create(type, content, options);
+    if (!isSuccess(result)) throwRequestFailureError(result, '发送动态');
     return {
       /** 动态 */
       post: this.getPost(type, result.data.data.id, result.data.data),
       /** 提示文本 */
       toast: result.data.toast,
-    }
+    };
   }
 
   getPost(type: PostType, id: string): JikePost
@@ -288,10 +289,10 @@ export class JikeClient extends EventEmitter<EventMap> {
   getPost(
     type: PostType,
     id: string,
-    detail?: Post
+    detail?: Post,
   ): JikePost | JikePostWithDetail {
-    if (!detail) return new JikePost(this, type, id)
-    else return new JikePostWithDetail(this, type, id, detail)
+    if (!detail) return new JikePost(this, type, id);
+    else return new JikePostWithDetail(this, type, id, detail);
   }
 
   /**
@@ -299,20 +300,20 @@ export class JikeClient extends EventEmitter<EventMap> {
    */
   async renewToken() {
     if (!this.#refreshToken)
-      throw new Error('登录状态已失效，请重新获取 access-token！')
+      throw new Error('登录状态已失效，请重新获取 access-token！');
 
-    const result = await this.apiClient.users.refreshToken(this.#refreshToken)
+    const result = await this.apiClient.users.refreshToken(this.#refreshToken);
     if (!isSuccess(result)) {
       throw new AuthorizationError(
-        '刷新 access-token 失败。可能是太久没有活动，refresh token 已失效！'
-      )
+        '刷新 access-token 失败。可能是太久没有活动，refresh token 已失效！',
+      );
     }
 
     this.#refreshToken =
-      result.data[`x-${this.#config.endpointId}-refresh-token`]
-    this.accessToken = result.data[`x-${this.#config.endpointId}-access-token`]
+      result.data[`x-${ this.#config.endpointId }-refresh-token`];
+    this.accessToken = result.data[`x-${ this.#config.endpointId }-access-token`];
 
-    this.emit('renewToken')
+    this.emit('renewToken');
   }
 
   /**
@@ -320,10 +321,10 @@ export class JikeClient extends EventEmitter<EventMap> {
    */
   async toJSON(): Promise<JikeClientJSON> {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { beforeRetry, ...config } = this.#config
+    const { beforeRetry, ...config } = this.#config;
     const profile = await this.getSelf()
       .queryProfile()
-      .catch(() => undefined)
+      .catch(() => undefined);
     return {
       ...config,
       accessToken: this.accessToken,
@@ -331,7 +332,7 @@ export class JikeClient extends EventEmitter<EventMap> {
       userId: profile?.user.id ?? '',
       username: profile?.user.username ?? '',
       screenName: profile?.user.screenName ?? '',
-    }
+    };
   }
 
   /**
@@ -339,7 +340,7 @@ export class JikeClient extends EventEmitter<EventMap> {
    * @param space 缩进空格数
    */
   async serialize(space = 0): Promise<string> {
-    return JSON.stringify(await this.toJSON(), undefined, space)
+    return JSON.stringify(await this.toJSON(), undefined, space);
   }
 
   /**
@@ -349,7 +350,7 @@ export class JikeClient extends EventEmitter<EventMap> {
    */
   static fromJSON(
     data: JikeClientJSON,
-    config: Partial<ApiConfig> = {}
+    config: Partial<ApiConfig> = {},
   ): JikeClient {
     return new JikeClient({
       ...objectPick(data, [
@@ -366,7 +367,7 @@ export class JikeClient extends EventEmitter<EventMap> {
         'refreshToken',
       ]),
       ...config,
-    })
+    });
   }
 
   /**
@@ -374,7 +375,7 @@ export class JikeClient extends EventEmitter<EventMap> {
    * @param data 数据
    */
   static deserialize(data: string): JikeClient {
-    const json: JikeClientJSON = JSON.parse(data)
-    return this.fromJSON(json)
+    const json: JikeClientJSON = JSON.parse(data);
+    return this.fromJSON(json);
   }
 }
