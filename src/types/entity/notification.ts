@@ -1,5 +1,5 @@
-import type { LiteralUnion } from '../../utils'
 import type { Picture, PostStatus, PostType } from './post'
+import type { LiteralUnion } from '../../utils'
 import type { User } from './user'
 
 export interface Notification {
@@ -20,6 +20,8 @@ export interface Notification {
     | 'PERSONAL_UPDATE_REPOSTED'
     | 'LIKE_AVATAR'
     | 'AVATAR_GREET'
+    | 'MERGED_COMMENT'
+    | 'MENTION_FROM_UNFOLLOWED_USER'
   >
   /**
    * ISO-8601 格式，如 `2015-03-04T00:00:00.000Z`
@@ -35,7 +37,7 @@ export interface Notification {
   actionType: LiteralUnion<'actionType' | 'USER_LIST'>
   actionItem: ActionItem
   linkUrl: string
-  linkType: LiteralUnion<PostType>
+  linkType: LiteralUnion<PostType | 'MERGED_MENTION'>
   referenceItem: ReferenceItem
 }
 

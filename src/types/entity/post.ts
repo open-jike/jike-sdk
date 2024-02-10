@@ -87,6 +87,7 @@ export interface OriginalPost {
  */
 export interface Repost {
   type: 'REPOST'
+  id: string
   [key: string]: any
 }
 

@@ -198,15 +198,21 @@ export class JikeClient extends EventEmitter<EventMap> {
       'createdAt' | 'updatedAt',
       string
     > = {},
+    withMerged = false,
   ) {
     const fetcher: PaginatedFetcher<Notification, string> = async (lastKey) => {
-      const result = await this.#client.notifications.list({
+      const listFn =
+        this.#client.notifications[withMerged ? 'listWithMerged' : 'list']
+
+      const result = await listFn({
         loadMoreKey: lastKey ? { lastNotificationId: lastKey } : undefined,
       })
       if (!isSuccess(result)) throwRequestFailureError(result, '查询通知')
+
       const newKey = result.data.loadMoreKey?.lastNotificationId
       return [newKey, result.data.data]
     }
+
     return fetchPaginated(
       fetcher,
       (item, data) => ({

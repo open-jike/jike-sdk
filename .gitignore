@@ -5,3 +5,4 @@ docs
 .pnpm-debug.log*
 .vercel
 .eslintcache
+.idea

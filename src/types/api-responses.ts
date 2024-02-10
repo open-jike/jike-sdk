@@ -56,6 +56,10 @@ export namespace Notifications {
       lastNotificationId: string
     }
   }
+
+  export interface ListMergedMentionsResponse {
+    data: Notification[]
+  }
 }
 
 export namespace UserRelation {
