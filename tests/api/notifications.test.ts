@@ -21,7 +21,6 @@ describe('notifications should work', () => {
 
   it.only('list with merged should work', async () => {
     const result = await api.notifications.listWithMerged()
-    // console.log(result.data.data.length);
     expect(result.data.data.length).greaterThanOrEqual(1)
   })
 })
