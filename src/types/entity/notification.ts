@@ -1,4 +1,4 @@
-import type { Picture, Post, PostStatus, PostType } from './post'
+import type { Picture, PostStatus, PostType } from './post'
 import type { LiteralUnion } from '../../utils'
 import type { User } from './user'
 
