@@ -71,7 +71,7 @@
     "bumpp": "^9.3.0",
     "esbuild": "^0.20.0",
     "eslint": "^8.56.0",
-    "eslint-define-config": "^1.24.1",
+    "eslint-define-config": "^2.1.0",
     "md5": "^2.3.0",
     "rollup": "^4.10.0",
     "serve": "^14.2.1",
