@@ -37,7 +37,7 @@ export interface Notification {
   actionType: LiteralUnion<'actionType' | 'USER_LIST'>
   actionItem: ActionItem
   linkUrl: string
-  linkType: LiteralUnion<PostType> | 'MERGED_MENTION'
+  linkType: LiteralUnion<PostType | 'MERGED_MENTION'>
   referenceItem: ReferenceItem
 }
 
