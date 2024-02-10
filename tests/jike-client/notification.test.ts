@@ -8,16 +8,19 @@ describe('notification should work', () => {
   it('queryNotifications should work', async () => {
     const notifications = await client.queryNotifications({
       limit: limit.limitMaxCount(100),
-    });
-    console.log(notifications.length);
-    expect(notifications.length).lessThanOrEqual(100);
-  });
+    })
+    console.log(notifications.length)
+    expect(notifications.length).lessThanOrEqual(100)
+  })
 
   it('queryNotifications with merged should work', async () => {
-    const notifications = await client.queryNotifications({
-      limit: limit.limitMaxCount(100),
-    }, true);
-    console.log(notifications.length);
-    expect(notifications.length).lessThanOrEqual(100);
-  });
-});
+    const notifications = await client.queryNotifications(
+      {
+        limit: limit.limitMaxCount(100),
+      },
+      true,
+    )
+    console.log(notifications.length)
+    expect(notifications.length).lessThanOrEqual(100)
+  })
+})

@@ -20,7 +20,6 @@ export const list = <T = Notifications.ListResponse>(
     }),
   )
 
-
 /**
  * 获取合并通知的列表
  * @param option 通知ID
@@ -33,9 +32,8 @@ export const listMergedComment = <T = Notifications.ListMergedCommentResponse>(
       json: {
         startNotificationId: id,
       },
-    })
+    }),
   )
-
 
 /**
  *  获取通知列表，自动展开合并通知
@@ -45,8 +43,8 @@ export const listWithMerged = async <T = Notifications.ListWithMergedResponse>(
   option: Pick<
     PaginationOption<{ lastNotificationId: string }>,
     'loadMoreKey'
-  > = {}
-) =>{
+  > = {},
+) => {
   let result = await list(option)
   let notifications = result.data.data
   for (const notification of notifications) {
@@ -59,7 +57,4 @@ export const listWithMerged = async <T = Notifications.ListWithMergedResponse>(
   }
   result.data.data = notifications
   return result
-
-
 }
-

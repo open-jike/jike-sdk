@@ -1,7 +1,7 @@
 import type { LiteralUnion } from '../../utils'
 import type { Picture, PostStatus, PostType } from './post'
 import type { User } from './user'
-import {Post} from './post';
+import { Post } from './post'
 
 export interface Notification {
   id: string
@@ -69,6 +69,5 @@ export interface ReferenceItem {
 }
 
 export type NotificationDetailPost = {
-  id : string
-
+  id: string
 } & Post
