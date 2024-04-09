@@ -1,3 +1,4 @@
+import process from 'node:process'
 import { describe, expect, it } from 'vitest'
 import { JikeClient, RequestFailureError } from '../../src'
 import { config, refreshToken } from '../config'

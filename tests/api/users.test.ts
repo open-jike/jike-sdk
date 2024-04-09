@@ -1,3 +1,4 @@
+import process from 'node:process'
 import { describe, expect, it } from 'vitest'
 import { api, isSuccess, setApiConfig } from '../../src'
 import { config } from '../config'

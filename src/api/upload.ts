@@ -1,6 +1,6 @@
+import { Buffer, type Blob as NodeBlob } from 'node:buffer'
 import ky from 'ky'
 import { request, toResponse } from '../request'
-import type { Blob as NodeBlob } from 'node:buffer'
 import type { Upload } from '../types/api-responses'
 
 export const token = <T = Upload.TokenResponse>(md5: string) =>
