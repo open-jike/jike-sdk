@@ -1,6 +1,7 @@
-import { Buffer, type Blob as NodeBlob } from 'node:buffer'
+/* eslint-disable node/prefer-global/buffer */
 import ky from 'ky'
 import { request, toResponse } from '../request'
+import type { Buffer, Blob as NodeBlob } from 'node:buffer'
 import type { Upload } from '../types/api-responses'
 
 export const token = <T = Upload.TokenResponse>(md5: string) =>
@@ -15,7 +16,10 @@ export const upload = async (
   token: string,
 ) => {
   let file: Blob
-  if (typeof Buffer !== 'undefined' && Buffer.isBuffer(image)) {
+  if (
+    typeof globalThis.Buffer !== 'undefined' &&
+    globalThis.Buffer.isBuffer(image)
+  ) {
     file = new Blob([image.buffer])
   } else {
     file = image as Blob
