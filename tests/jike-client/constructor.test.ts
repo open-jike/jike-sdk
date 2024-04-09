@@ -8,7 +8,7 @@ describe('constructor', () => {
   it('toJSON should work', async () => {
     const json = await client.toJSON()
     const profile = await client.getSelf().queryProfile()
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
     const { beforeRetry, ...cfg } = client.config
     expect(json).toEqual({
       ...cfg,
@@ -22,7 +22,7 @@ describe('constructor', () => {
   it('serialize should work', async () => {
     const data = await client.serialize()
     const profile = await client.getSelf().queryProfile()
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
     const { beforeRetry, ...cfg } = client.config
     expect(data).toEqual(
       JSON.stringify({
@@ -37,18 +37,18 @@ describe('constructor', () => {
 
   it('fromJSON should work', async () => {
     const client2 = JikeClient.fromJSON(await client.toJSON())
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
     const { beforeRetry: _, ...clienConfig } = client.config
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
     const { beforeRetry, ...clien2Config } = client2.config
     expect(clien2Config).toEqual(clienConfig)
   })
 
   it('serialize should work', async () => {
     const client2 = JikeClient.fromJSON(JSON.parse(await client.serialize()))
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
     const { beforeRetry: _, ...clienConfig } = client.config
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
     const { beforeRetry, ...clien2Config } = client2.config
     expect(clien2Config).toEqual(clienConfig)
   })
