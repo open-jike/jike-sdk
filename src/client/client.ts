@@ -325,7 +325,6 @@ export class JikeClient extends EventEmitter<EventMap> {
    * 转换为 JSON 数据
    */
   async toJSON(): Promise<JikeClientJSON> {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { beforeRetry, ...config } = this.#config
     const profile = await this.getSelf()
       .queryProfile()
