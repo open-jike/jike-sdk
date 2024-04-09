@@ -40,9 +40,6 @@ devDependencies:
   eslint:
     specifier: ^9.0.0
     version: 9.0.0
-  eslint-define-config:
-    specifier: ^1.24.1
-    version: 1.24.1
   md5:
     specifier: ^2.3.0
     version: 2.3.0
