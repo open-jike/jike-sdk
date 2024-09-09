@@ -62,7 +62,7 @@
     "ky": "^1.2.3"
   },
   "devDependencies": {
-    "@faker-js/faker": "^8.4.1",
+    "@faker-js/faker": "^9.0.0",
     "@sxzz/eslint-config": "^3.9.0",
     "@sxzz/prettier-config": "^2.0.1",
     "@types/md5": "^2.3.5",
