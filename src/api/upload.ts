@@ -20,7 +20,7 @@ export const upload = async (
     typeof globalThis.Buffer !== 'undefined' &&
     globalThis.Buffer.isBuffer(image)
   ) {
-    file = new Blob([image.buffer])
+    file = new Blob([image])
   } else {
     file = image as Blob
   }
