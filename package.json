@@ -84,5 +84,8 @@
   "engines": {
     "node": ">=20.19.0"
   },
-  "prettier": "@sxzz/prettier-config"
+  "prettier": "@sxzz/prettier-config",
+  "tsdown": {
+    "platform": "neutral"
+  }
 }
