@@ -1,6 +1,6 @@
 import { getApiConfig, request, toResponse } from '../request'
-import type { EditProfilePayload } from '../types/options'
 import type { Users } from '../types/api-responses'
+import type { EditProfilePayload } from '../types/options'
 
 /**
  * 获取用户信息
@@ -66,7 +66,7 @@ export const loginWithSmsCode = <T = Users.LoginResponse>(
       json: {
         areaCode,
         mobilePhoneNumber: mobile,
-        smsCode: `${smsCode}`,
+        smsCode: String(smsCode),
       },
       headers: {
         [`x-${getApiConfig().endpointId}-access-token`]: '',

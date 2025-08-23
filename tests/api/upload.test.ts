@@ -1,8 +1,8 @@
 import { Blob } from 'node:buffer'
-import sharp from 'sharp'
-import Md5 from 'md5'
-import { describe, expect, it } from 'vitest'
 import { faker } from '@faker-js/faker'
+import Md5 from 'md5'
+import sharp from 'sharp'
+import { describe, expect, it } from 'vitest'
 import { api, isSuccess, setApiConfig } from '../../src'
 import { config } from '../config'
 

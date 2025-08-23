@@ -1,5 +1,5 @@
-import { type Api, api } from './api'
-import { type ApiConfig, setApiConfig } from './request'
+import { api, type Api } from './api'
+import { setApiConfig, type ApiConfig } from './request'
 
 /**
  * API 客户端

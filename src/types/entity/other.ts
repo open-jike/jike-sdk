@@ -1,5 +1,5 @@
-import type { Topic } from './topic'
 import type { Picture, ReadTrackInfo, UrlsInText } from './post'
+import type { Topic } from './topic'
 import type { User } from './user'
 
 export type PostTypeRaw = 'ORIGINAL_POST' | 'REPOST'

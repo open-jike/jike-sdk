@@ -1,14 +1,14 @@
-import * as users from './users'
-import * as userRelation from './user-relation'
+import * as comments from './comments'
+import * as mediaMeta from './media-meta'
+import * as notifications from './notifications'
+import * as personalUpdate from './personal-update'
 import * as posts from './posts'
 import * as recommendFeed from './recommend-feed'
-import * as personalUpdate from './personal-update'
-import * as notifications from './notifications'
-import * as comments from './comments'
-import * as upload from './upload'
 import * as stories from './stories'
-import * as mediaMeta from './media-meta'
 import * as topics from './topics'
+import * as upload from './upload'
+import * as userRelation from './user-relation'
+import * as users from './users'
 
 /**
  * API

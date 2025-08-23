@@ -1,7 +1,7 @@
 import { request, toResponse } from '../request'
-import type { PaginationOption } from '../types/options'
 import type { Notifications } from '../types/api-responses'
 import type { Notification } from '../types/entity'
+import type { PaginationOption } from '../types/options'
 
 /**
  * 获取通知列表
@@ -23,7 +23,7 @@ export const list = <T = Notifications.ListResponse>(
 
 /**
  * 获取合并通知的列表
- * @param option 起始通知 ID
+ * @param id 起始通知 ID
  */
 export const listMergedMentions = <
   T = Notifications.ListMergedMentionsResponse,

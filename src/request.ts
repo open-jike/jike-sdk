@@ -1,13 +1,13 @@
 import ky, {
-  type BeforeRequestHook,
   HTTPError,
+  type BeforeRequestHook,
   type Options,
   type ResponsePromise,
 } from 'ky'
-import { generateUUID } from './utils'
 import { defaultEnvironment } from './constants'
-import type { KyInstance } from 'ky/distribution/types/ky'
+import { generateUUID } from './utils'
 import type { BeforeRetryState } from 'ky/distribution/types/hooks'
+import type { KyInstance } from 'ky/distribution/types/ky'
 
 /**
  * API 配置

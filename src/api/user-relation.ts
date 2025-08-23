@@ -47,7 +47,8 @@ export const getFollowerList = <T = UserRelation.GetFollowerListResponse>(
 /**
  * 关注用户
  * @param username 用户名
- * @param pageName 页面名称，可选
+ * @param options
+ * @param options.pageName 页面名称，可选
  */
 export const follow = <T = UserRelation.FollowResponse>(
   username: string,
@@ -66,7 +67,9 @@ export const follow = <T = UserRelation.FollowResponse>(
 /**
  * 取消关注用户
  * @param username 用户名
- * @param option 选项，可选
+ * @param options 选项，可选
+ * @param options.pageName 页面名称，可选
+ * @param options.ref 来源页面名称，可选
  */
 export const unfollow = <T = UserRelation.UnfollowResponse>(
   username: string,

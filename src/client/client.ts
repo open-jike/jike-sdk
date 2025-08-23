@@ -1,23 +1,13 @@
-import { HTTPError } from 'ky'
 import EventEmitter from 'eventemitter3'
+import { HTTPError } from 'ky'
+import { ApiClient } from '../api-client'
 import {
+  resolveApiConfig,
   type ApiConfig,
   type ApiConfigResolved,
-  resolveApiConfig,
 } from '../request'
-import { ApiClient } from '../api-client'
+import { PostType, type CreatePostOption } from '../types/options'
 import { objectPick } from '../utils'
-import { type CreatePostOption, PostType } from '../types/options'
-import { isSuccess, throwRequestFailureError } from './utils/response'
-import { resolveAreaCode } from './utils/user'
-import { JikeUser } from './user'
-import {
-  type PaginatedFetcher,
-  type PaginatedOption,
-  fetchPaginated,
-} from './utils/paginate'
-import { AuthorizationError } from './errors/AuthorizationError'
-import { JikePost, JikePostWithDetail } from './post'
 import type { Api } from '../api'
 import type {
   FollowingUpdate,
@@ -25,8 +15,18 @@ import type {
   PersonalUpdate,
   Post,
 } from '../types/entity'
-import type { BeforeRetryState } from 'ky/distribution/types/hooks'
+import { AuthorizationError } from './errors/AuthorizationError'
+import { JikePost, JikePostWithDetail } from './post'
+import { JikeUser } from './user'
+import {
+  fetchPaginated,
+  type PaginatedFetcher,
+  type PaginatedOption,
+} from './utils/paginate'
+import { isSuccess, throwRequestFailureError } from './utils/response'
+import { resolveAreaCode } from './utils/user'
 import type { FollowingUpdatesMoreKey, JikeClientJSON } from './types'
+import type { BeforeRetryState } from 'ky/distribution/types/hooks'
 
 export interface EventMap {
   renewToken: () => void

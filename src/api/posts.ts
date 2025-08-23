@@ -1,13 +1,14 @@
 import { request, toResponse } from '../request'
+import type { Posts } from '../types/api-responses'
 import type {
   CreatePostOption,
   PaginationOption,
   PostType,
 } from '../types/options'
-import type { Posts } from '../types/api-responses'
 
 /**
  * 发送动态
+ * @param type 动态类型
  * @param content 内容
  * @param options 其他选项
  */
@@ -30,6 +31,7 @@ export const create = <T = Posts.CreateResponse>(
 
 /**
  * 获取动态详情
+ * @param type 动态类型
  * @param id 动态ID
  */
 export const get = <T = Posts.GetResponse>(type: PostType, id: string) =>
@@ -41,9 +43,9 @@ export const get = <T = Posts.GetResponse>(type: PostType, id: string) =>
 
 /**
  * 分享动态
+ * @param type 动态类型
  * @param id 动态ID
  * @param method 分享方式
- * @returns
  */
 export const share = <T = {}>(type: PostType, id: string, method: string) =>
   toResponse<T>(
@@ -57,6 +59,7 @@ export const share = <T = {}>(type: PostType, id: string, method: string) =>
 
 /**
  * 点赞动态
+ * @param type 动态类型
  * @param id 动态ID
  */
 export const like = <T = {}>(type: PostType, id: string) =>
@@ -68,6 +71,7 @@ export const like = <T = {}>(type: PostType, id: string) =>
 
 /**
  * 取消点赞动态
+ * @param type 动态类型
  * @param id 动态ID
  */
 export const unlike = <T = {}>(type: PostType, id: string) =>
@@ -79,6 +83,7 @@ export const unlike = <T = {}>(type: PostType, id: string) =>
 
 /**
  * 删除动态
+ * @param type 动态类型
  * @param id 动态ID
  */
 export const remove = <T = Posts.RemoveResponse>(type: PostType, id: string) =>
@@ -90,6 +95,7 @@ export const remove = <T = Posts.RemoveResponse>(type: PostType, id: string) =>
 
 /**
  * 获取点赞用户列表
+ * @param type 动态类型
  * @param id 动态ID
  */
 export const listLikedUsers = <T = Posts.ListLikedUsersResponse>(
@@ -109,6 +115,7 @@ export const listLikedUsers = <T = Posts.ListLikedUsersResponse>(
 
 /**
  * 隐藏动态（仅会员）
+ * @param type 动态类型
  * @param id 动态ID
  */
 export const hide = <T = Posts.HideResponse>(type: PostType, id: string) =>
@@ -120,6 +127,7 @@ export const hide = <T = Posts.HideResponse>(type: PostType, id: string) =>
 
 /**
  * 转为公开动态（仅会员）
+ * @param type 动态类型
  * @param id 动态ID
  */
 export const recover = <T = Posts.HideResponse>(type: PostType, id: string) =>

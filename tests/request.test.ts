@@ -1,10 +1,10 @@
 import { beforeAll, describe, expect, it } from 'vitest'
 import {
-  type ApiConfig,
   getAccessToken,
   request,
   resolveApiConfig,
   setApiConfig,
+  type ApiConfig,
 } from '../src'
 import { defaultEnvironment } from '../src/constants'
 

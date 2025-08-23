@@ -1,5 +1,5 @@
-import type { Picture, PostStatus, PostType } from './post'
 import type { LiteralUnion } from '../../utils'
+import type { Picture, PostStatus, PostType } from './post'
 import type { User } from './user'
 
 export interface Notification {

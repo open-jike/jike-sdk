@@ -4,7 +4,7 @@ export { limit }
 export * from './client'
 export * from './user'
 export * from './post'
-export type { JikeClientJSON, FollowingUpdatesMoreKey } from './types'
+export type { FollowingUpdatesMoreKey, JikeClientJSON } from './types'
 export { RequestFailureError } from './errors/RequestFailureError'
 export { AuthorizationError } from './errors/AuthorizationError'
 export type { PaginatedOption } from './utils/paginate'

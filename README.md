@@ -159,7 +159,7 @@ import { setApiConfig } from 'jike-sdk'
 [API Reference](https://jike-sdk.sxzz.moe/)
 
 ```ts
-import { ApiClient, api, setAccessToken, setApiConfig } from 'jike-sdk'
+import { api, ApiClient, setAccessToken, setApiConfig } from 'jike-sdk'
 
 // 自行在 GitHub 搜索「jike endpoint」探索配置
 const apiConfig = {

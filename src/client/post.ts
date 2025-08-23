@@ -1,10 +1,3 @@
-import { isSuccess, throwRequestFailureError } from './utils/response'
-import { enumTypeToRaw } from './utils/post'
-import {
-  type PaginatedFetcher,
-  type PaginatedOption,
-  fetchPaginated,
-} from './utils/paginate'
 import type { Comment, Post, User } from '../types/entity'
 import type {
   AddCommentOption,
@@ -12,6 +5,13 @@ import type {
   ListPrimaryCommentOption,
   PostType,
 } from '../types/options'
+import {
+  fetchPaginated,
+  type PaginatedFetcher,
+  type PaginatedOption,
+} from './utils/paginate'
+import { enumTypeToRaw } from './utils/post'
+import { isSuccess, throwRequestFailureError } from './utils/response'
 import type { JikeClient } from './client'
 
 /**
