@@ -17,21 +17,16 @@
     "type": "git",
     "url": "git+https://github.com/open-jike/jike-sdk.git"
   },
-  "author": "三咲智子 <sxzz@sxzz.moe>",
+  "author": "Kevin Deng <sxzz@sxzz.moe>",
   "files": [
-    "*.d.ts",
     "dist"
   ],
-  "main": "dist/index.js",
-  "module": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "require": "./dist/index.cjs",
-      "import": "./dist/index.js"
-    },
-    "./*": "./*"
+    ".": "./dist/index.js",
+    "./package.json": "./package.json"
   },
   "typesVersions": {
     "*": {
@@ -53,7 +48,7 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest",
     "test:deno": "cd tests/deno && deno run --allow-net --import-map=import_map.json --allow-env index.ts",
-    "release": "bumpp && pnpm publish",
+    "release": "bumpp",
     "prepublishOnly": "pnpm run build"
   },
   "dependencies": {
@@ -86,6 +81,7 @@
   },
   "prettier": "@sxzz/prettier-config",
   "tsdown": {
-    "platform": "neutral"
+    "platform": "neutral",
+    "exports": true
   }
 }
