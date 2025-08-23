@@ -44,7 +44,7 @@
   "sideEffects": false,
   "scripts": {
     "dev": "tsx playground/main.ts",
-    "build": "tsup && pnpm run build:types",
+    "build": "tsdown && pnpm run build:types",
     "build:types": "tsc --emitDeclarationOnly --declaration",
     "docs:build": "typedoc",
     "docs:preview": "serve docs",
@@ -76,7 +76,7 @@
     "rollup": "^4.47.1",
     "serve": "^14.2.4",
     "sharp": "^0.34.3",
-    "tsup": "^8.5.0",
+    "tsdown": "^0.14.1",
     "tsx": "^4.20.4",
     "typedoc": "^0.28.10",
     "typescript": "^5.9.2",
