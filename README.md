@@ -86,31 +86,15 @@
 
 ### Node.js
 
-Node.js >= v18.12.0
+Node.js >= v20.19.0
 
 ```bash
 npm i jike-sdk
 ```
 
-#### ESM 导入
-
-如果使用 ESM 方式导入，需要把 `package.json` 的 `type` 设置为 `module`，或将后缀名改为 `.mjs`。
-
 ```ts
-// index.mjs
-
-// 使用此版本需 node >= 18 或 自行 ployfill fetch。
 import { setApiConfig } from 'jike-sdk'
 
-setApiConfig({
-  // ...
-})
-```
-
-#### CJS 导入
-
-```ts
-const { setApiConfig } = require('jike-sdk')
 setApiConfig({
   // ...
 })
@@ -182,7 +166,7 @@ const client = ApiClient(apiConfig)
 client.users.profile()
 ```
 
-## Contributing [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://makeapullrequest.com)
+## Contributing
 
 see [CONTRIBUTING.md](./CONTRIBUTING.md)
 
@@ -196,4 +180,4 @@ see [CONTRIBUTING.md](./CONTRIBUTING.md)
 
 ## License
 
-[AGPL-3.0](./LICENSE) License © 2021-PRESENT [三咲智子](https://github.com/sxzz)
+[AGPL-3.0](./LICENSE) License © 2021-PRESENT [Kevin Deng](https://github.com/sxzz)
