@@ -1,5 +1,5 @@
 import EventEmitter from 'eventemitter3'
-import { HTTPError } from 'ky'
+import { HTTPError, type BeforeRetryState } from 'ky'
 import { ApiClient } from '../api-client'
 import {
   resolveApiConfig,
@@ -26,7 +26,6 @@ import {
 import { isSuccess, throwRequestFailureError } from './utils/response'
 import { resolveAreaCode } from './utils/user'
 import type { FollowingUpdatesMoreKey, JikeClientJSON } from './types'
-import type { BeforeRetryState } from 'ky/distribution/types/hooks'
 
 export interface EventMap {
   renewToken: () => void

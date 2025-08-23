@@ -13,6 +13,7 @@ describe('personal update should work', () => {
     )
     expect(isSuccess(result)).toBe(true)
     expect(
+      // @ts-expect-error
       result.data.data.filter((post) => !post.pinned?.personalUpdate).length,
     ).toBe(limit)
   })
