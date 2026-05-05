@@ -8,7 +8,7 @@ on:
 
 jobs:
   unit-test:
-    uses: sxzz/workflows/.github/workflows/unit-test.yml@v1
+    uses: sxzz/workflows/.github/workflows/unit-test.yml@main
     with:
       typecheck: cp tests/config.example.ts tests/config.ts && pnpm run typecheck
       test: cp tests/config.example.ts tests/config.ts && test tests/request.test.ts
